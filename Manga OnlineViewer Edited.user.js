@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name Manga OnlineViewer
+// @name Manga OnlineViewer Edit
 // @author wernser412
 // @updateURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js

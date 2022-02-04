@@ -1,5 +1,9 @@
 # Manga OnlineViewer
-### Installation
+### Leer
+No es un script originado por mi solo edito y traduzco el script.
+Script original por [TagoDR](https://github.com/TagoDR/MangaOnlineViewer)
+
+### Instalación
 
 ##### [Main Reader](https://github.com/TagoDR/MangaOnlineViewer/raw/master/Manga_OnlineViewer.user.js)
 ##### [Adult Reader](https://github.com/TagoDR/MangaOnlineViewer/raw/master/Manga_OnlineViewer_Adult.user.js)

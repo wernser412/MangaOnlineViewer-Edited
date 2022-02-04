@@ -1,6 +1,7 @@
 # Manga OnlineViewer
 ### Leer
 No es un script originado por mi solo edito y traduzco el script.
+
 Script original por [TagoDR](https://github.com/TagoDR/MangaOnlineViewer)
 
 ### Instalación
@@ -27,6 +28,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jqu
 ### Descripción
 MangaOnlineViewer ayuda a acelerar la lectura al cargar todas las páginas (imágenes) del capítulo actual del manga en una página en una estructura de tipo lista.
 Tenga en cuenta que en algunos sitios, MangaOnlineViewer puede utilizar más recursos.  Solo abra una pestaña para cada sitio a la vez y espere a que la página se cargue por completo.
+
 Intentaré mantener este script actualizado, sin embargo, casi nunca visito algunos de los sitios admitidos.  Si el script ya no funciona para un sitio, publique el problema en el área Problemas/Comentarios y tenga paciencia.
 
 Permito que este script se publique o se use en cualquier lugar siempre que se me dé crédito y se me proporcione un enlace a este sitio.  Permito que partes de mi guión se usen libremente.
@@ -138,8 +140,7 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - Imágenes de carga diferida [Default off]
 
 ### Reglas para agregar nuevos sitios de Manga
-1. El sitio debe tener mangas raros/únicos (Significado: no está disponible en otros sitios, o es un
-   mejor calidad)
+1. El sitio debe tener mangas raros/únicos (Significado: no está disponible en otros sitios, o es un mejor calidad)
 2. El sitio debe ser lo suficientemente fuerte o, de lo contrario, mi secuencia de comandos puede fallar.
 3. El sitio no debe ser exclusivo de un puñado de títulos de manga (Significado: no pequeños scanlators)
 

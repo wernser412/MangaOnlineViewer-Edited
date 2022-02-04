@@ -6,9 +6,9 @@ Script original por [TagoDR](https://github.com/TagoDR/MangaOnlineViewer)
 
 ### Instalación
 
-##### [Main Reader](https://github.com/TagoDR/MangaOnlineViewer/raw/master/Manga_OnlineViewer.user.js)
-##### [Adult Reader](https://github.com/TagoDR/MangaOnlineViewer/raw/master/Manga_OnlineViewer_Adult.user.js)
-##### Official Source: [GitHub](https://github.com/TagoDR/MangaOnlineViewer)
+##### [Main Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
+##### [Adult Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
+##### Official Source: [GitHub](https://github.com/wernser412)
 
 ### Navegadores compatibles
 Firefox y Chrome con [Tampermonkey](https://tampermonkey.net/) o [Violentmonkey](https://violentmonkey.github.io/).
@@ -97,6 +97,13 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [xyzcomics](http://xyzcomics.com/) _[English]_
 - [TMOHentai](http://tmohentai.com/) _[Spanish]_
 - [vermangasporno](https://vermangasporno.com/) / [vercomicsporno](https://vercomicsporno.com/) _[Spanish]_
+
+### Sitios Agregado
+- [Wtechnews](https://lectortmo.com/) _[Spanish]_
+- [Otakuworldgames](https://lectortmo.com/) _[Spanish]_
+- [Animationforyou](https://lectortmo.com/) _[Spanish]_
+- [Animalcanine](https://lectortmo.com/) _[Spanish]_
+- [Gamesnk](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
   <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>

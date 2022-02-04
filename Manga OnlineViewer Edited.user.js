@@ -53,7 +53,7 @@
 // @include /https?:\/\/(www.)?readmng.com\/.+\/[0-9.]+(\/[0-9]*)?/
 // @include /https?:\/\/raw.senmanga.com\/.+\/.+\/?/
 // @include /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/
-// @include /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk).com\/.+\/.+\/(paginated|cascade)/
+// @include /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love).com\/.+\/.+\/(paginated|cascade)/
 // @include /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/
 // @include /https?:\/\/(www.)?bato.to\/chapter.*/
 // @exclude /https?:\/\/(www.)?tsumino.com\/.+/
@@ -659,7 +659,7 @@
 
   var tmofans2 = {
     name: 'TuMangaOnline',
-    url: /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk).com\/.+\/.+\/(paginated|cascade)/,
+    url: /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love).com\/.+\/.+\/(paginated|cascade)/,
     homepage: 'https://lectortmo.com/',
     language: ['Spanish'],
     category: 'manga',

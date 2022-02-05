@@ -106,6 +106,7 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [Gamesnk](https://lectortmo.com/) _[Spanish]_
 - [Cook2love](https://lectortmo.com/) _[Spanish]_
 - [Mangalong](https://lectortmo.com/) _[Spanish]_
+- [Motornk](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
   <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>

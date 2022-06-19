@@ -98,7 +98,7 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [TMOHentai](http://tmohentai.com/) _[Spanish]_
 - [vermangasporno](https://vermangasporno.com/) / [vercomicsporno](https://vercomicsporno.com/) _[Spanish]_
 
-### Sitios Agregado
+### Sitios Agregados por wernser412
 - [Wtechnews](https://lectortmo.com/) _[Spanish]_
 - [Otakuworldgames](https://lectortmo.com/) _[Spanish]_
 - [Animationforyou](https://lectortmo.com/) _[Spanish]_

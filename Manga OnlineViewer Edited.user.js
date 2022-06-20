@@ -5,7 +5,7 @@
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
 // @description Shows all pages at once in online view for these sites: Asura Scans,Flame Scans, ComiCastle, DisasterScans, Dynasty-Scans, FoOlSlide, Funmanga, HatigarmScans, KomiRaw, Leitor, LHTranslation, MangaHaus,Isekai Scan,Comic Kiba,Zinmanga,mangatx,Toonily,Mngazuki,ReaperScans, MangaDex, MangaDoom, MangaFreak, MangaFox, MangaHere, MangaHub, MangaInn, MangaKakalot,MangaNelo, MangaLyght, MangaNato, MangaPark, MangaSee,Manga4life, MangaTown, NineManga, RawDevart, ReadComicsOnline, ReadManga Today, SenManga(Raw), TuMangaOnline, UnionMangas, Batoto
-// @version 2022.06.19:V12
+// @version 2022.06.19:V13
 // @license MIT
 // @grant GM_getValue
 // @grant GM_setValue
@@ -730,8 +730,12 @@
         quant: num,
         prev: $('.chapter-prev a').attr('href'),
         next: $('.chapter-next a').attr('href'),
-        listPages: [...Array(num).keys()].map(i => W.location.href.replace(/\/[0-9]+$/, "/".concat(i + 1))),
-        listImages: $('.viewer-image-container img').get().map(item => $(item).attr('data-src')),
+        listPages: [...Array(num).keys()].map((i) =>
+          W.location.href.replace(/\/[0-9]+$/, '/'.concat(i + 1)),
+        ),
+        listImages: $('.viewer-image-container img')
+          .get()
+          .map((item) => $(item).attr('data-src')),
         img: '#viewer-container img, .viewer-page'
       };
     }
@@ -969,6 +973,7 @@
     readmangatoday,
     senmanga,
     tmofans,
+    tmofans2,
     unionmangas,
     batoto,
   ];

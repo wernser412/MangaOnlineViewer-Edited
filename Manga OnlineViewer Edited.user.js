@@ -4,8 +4,8 @@
 // @updateURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
-// @description Shows all pages at once in online view for these sites: Asura Scans,Flame Scans, ComiCastle, DisasterScans, Dynasty-Scans, FoOlSlide, Funmanga, HatigarmScans, KomiRaw, Leitor, LHTranslation, MangaHaus,Isekai Scan,Comic Kiba,Zinmanga,mangatx,Toonily,Mngazuki,ReaperScans, MangaDex, MangaDoom, MangaFreak, MangaFox, MangaHere, MangaHub, MangaInn, MangaKakalot,MangaNelo, MangaLyght, MangaNato, MangaPark, MangaSee,Manga4life, MangaTown, NineManga, RawDevart, ReadComicsOnline, ReadManga Today, SenManga(Raw), TuMangaOnline, UnionMangas, Batoto
-// @version 2022.06.19:V13
+// @description Shows all pages at once in online view for these sites: Asura Scans, Flame Scans, Realm Scans, Alpha-scans, Batoto, ComiCastle, Dynasty-Scans, InManga, KLManga, Leitor, LHTranslation, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MangaPark, MangaRaw, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, SenManga(Raw), ShimadaScans, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Yuri-ism, Sense-Scans, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, ReaperScans, JaiminisBox, DisasterScans, ManhuaPlus
+// @version 05.08.2022:V1
 // @license MIT
 // @grant GM_getValue
 // @grant GM_setValue
@@ -13,2478 +13,4331 @@
 // @grant GM_deleteValue
 // @grant GM_xmlhttpRequest
 // @connect *
-// @require https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
+// @require https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js
+// @require https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js
+// @require https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js
-// @require https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.10/sweetalert2.min.js
-// @require https://cdnjs.cloudflare.com/ajax/libs/color-scheme/1.0.1/color-scheme.min.js
-// @require https://cdnjs.cloudflare.com/ajax/libs/unveil2/2.0.8/jquery.unveil2.min.js
-// @require https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js
-// @require https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.6/jquery.minicolors.min.js
-// @include /https?:\/\/(www.)?(asurascans|flamescans).(com|org)\/.+/
-// @include /https?:\/\/(www.)?comicastle.org\/comic\/.+\/[0-9]+.*/
-// @include /https?:\/\/(www.)?disasterscans.com\/manga\/.+\/chapter-.+/
+// @require https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.23/sweetalert2.min.js
+// @include /https?:\/\/(www.)?(asurascans|flamescans|realmscans|alpha-scans).(com|org)\/.+/
+// @include /https?:\/\/(www.)?bato.to\/chapter.*/
+// @include /https?:\/\/(www.)?comicastle.org\/read\/.+\/[0-9]+.*/
 // @include /https?:\/\/(www.)?dynasty-scans.com\/chapters\/.+/
-// @include /^(?!.*jaiminisbox).*\/read\/.+/
-// @include /https?:\/\/(www.)?funmanga.com\/.+\/[0-9]+/
-// @include /https?:\/\/(www.)?hatigarmscanz.net\/comics\/.+\/.+\/.+/
-// @include /https?:\/\/(www.)?(komiraw).com\/.+\/.+/
+// @include /https?:\/\/(www.)?inmanga.com\/ver\/manga\/.+\/.+/
+// @include /https?:\/\/(www.)?klmanga.com\/.+chapter.+/
 // @include /https?:\/\/(www.)?leitor.net\/manga\/.+\/.+\/.+/
 // @include /https?:\/\/(www.)?lhtranslation.net\/read.+/
-// @include /https?:\/\/.+\/(manga|series)\/.+\/.+/
+// @include /https?:\/\/(www.)?mangabuddy.com\/.+\/chapter.+/
 // @include /https?:\/\/(www.)?mangadex.org\/chapter\/.+(\/.+)?/
-// @include /https?:\/\/(www.)?mngdoom.com\/.+\/[0-9]+/
+// @include /https?:\/\/(www.)?(fanfox.net|mangahere.cc)\/manga\/.+\/.+\//
 // @include /https?:\/\/.{3,4}?(mangafreak).net\/Read.+/
-// @include /https?:\/\/(www.)?fanfox.net\/manga\/.+\/.+\//
-// @include /https?:\/\/(www.)?mangahere.cc\/manga\/.+\/.+/
+// @include /https?:\/\/(www.)?mangago.me\/.*\/.*\/.*/
+// @include /https?:\/\/(www.)?mangahosted.com\/manga\/.+\/.+/
 // @include /https?:\/\/(www.)?(mangahub).io\/chapter\/.+\/.+/
-// @include /https?:\/\/(www.)?mangainn.net\/.+\/[0-9]+(\/[0-9]*)?/
-// @include /https?:\/\/(www.)?(manganelo|mangakakalot).com\/chapter\/.+\/.+/
-// @include /https?:\/\/manga.lyght.net\/series\/.+\.html/
-// @include /https?:\/\/(www.)?(manganato|readmanganato).com\/manga-\w\w\d+\/chapter-\d+/
+// @include /https?:\/\/(www.)?((manganelo|mangakakalot).com\/chapter\/.+\/.+|(manganato|readmanganato).com\/manga-\w\w\d+\/chapter-\d+)/
 // @include /https?:\/\/(www.)?mangapark.(com|me|org|net)\/(manga|chapter|comic)\/.+\/.+/
+// @include /https?:\/\/(www.)?mcreader.net\/reader\/.*/
+// @include /https?:\/\/(www.)?mangareader.to\/read\/.+\/.+\/.+/
 // @include /https?:\/\/(www.)?(mangasee123|manga4life).com\/read-online\/.+/
-// @include /https?:\/\/(www.)?mangatown.com\/manga\/.+\/.+/
+// @include /https?:\/\/(www.)?mangatigre.net\/.+\/.+\/.+/
+// @include /https?:\/\/(www.|m.)?mangatown.com\/manga\/.+\/.+/
+// @include /https?:\/\/(www.)?manhuascan.io\/.+chapter.+/
 // @include /https?:\/\/(www.)?ninemanga.com\/chapter\/.+\/.+\.html/
+// @include /https?:\/\/(www.)?pandamanga.xyz\/.+\/.+\/.+/
 // @include /https?:\/\/(www.)?rawdevart.com\/comic\/.+\/.+\//
-// @include /https?:\/\/(www.)?readcomicsonline.ru\/comic\/.*\/[0-9]*/
-// @include /https?:\/\/(www.)?readmng.com\/.+\/[0-9.]+(\/[0-9]*)?/
+// @include /https?:\/\/(www.)?readcomicsonline.ru\/comic\/.*\/\d*/
+// @include /https?:\/\/(www.)?(funmanga|mngdoom|readmng|mangainn).(com|net)\/.+\/\d+/
 // @include /https?:\/\/raw.senmanga.com\/.+\/.+\/?/
+// @include /https?:\/\/(www.)?shimadascans.com\/.+series.+/
+// @include /https?:\/\/(www.)?(tenmanga|gardenmanage).com\/(chapter|statuses)\/.+/
 // @include /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/
-// @include /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion).com\/.+\/.+\/(paginated|cascade)/
+// @include /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion|cooker2love|vsrecipes|recipesaniki|dariusmotor|vgmotor|mynewsrecipes).com\/.+\/.+\/(paginated|cascade)/
 // @include /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/
-// @include /https?:\/\/(www.)?bato.to\/chapter.*/
+// @include /https?:\/\/(www.)?webtoons.com\/.+viewer.+/
+// @include /https?:\/\/(www.)?(manga33).com\/manga\/.+/
+// @include /https?:\/\/(www.)?zeroscans.com\/comics\/.+/
+// @include /^(?!.*jaiminisbox).*\/read\/.+/
+// @include /https?:\/\/.+\/(manga|series)\/.+\/.+/
 // @exclude /https?:\/\/(www.)?tsumino.com\/.+/
 // @exclude /https?:\/\/(www.)?pururin.io\/.+/
 // ==/UserScript==
 
 (function () {
-  'use strict';
+    'use strict';
 
-  var W =
-    typeof unsafeWindow === 'undefined'
-      ? window
-      : unsafeWindow; /* global $:readonly, JSZip:readonly ,NProgress:readonly , jscolor:readonly , ColorScheme:readonly , Swal:readonly */
-
-  var batoto = {
-    name: 'Batoto',
-    url: /https?:\/\/(www.)?bato.to\/chapter.*/,
-    homepage: 'http://bato.to/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      const num = $('#viewer .item').length;
-      return {
-        title: $('.nav-title a').text(),
-        series: $('.nav-title a').attr('href'),
-        quant: num,
-        prev: $('.nav-prev a').attr('href'),
-        next: $('.nav-next a').attr('href'),
-        listImages: $('.page-img')
-          .get()
-          .map((i) => $(i).attr('src')),
-      };
-    },
-  };
-
-  var comicastle = {
-    name: 'ComiCastle',
-    url: /https?:\/\/(www.)?comicastle.org\/comic\/.+\/[0-9]+.*/,
-    homepage: 'http://www.comicastle.org/',
-    language: ['English'],
-    category: 'comic',
-    run() {
-      const url = $('.form-control:last option').get();
-      const chapter = $('.form-control:first option');
-      return {
-        title: chapter.find(':selected').text(),
-        series: $('.navbar-header a').attr('href'),
-        quant: url.length,
-        prev: chapter.find(':selected').prev().val(),
-        next: chapter.find(':selected').next().val(),
-        listPages: url.map((item) => $(item).val()),
-        img: '.chapter-img',
-      };
-    },
-  };
-
-  var disasterscans = {
-    name: 'DisasterScans',
-    url: /https?:\/\/(www.)?disasterscans.com\/manga\/.+\/chapter-.+/,
-    homepage: 'https://disasterscans.com/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      return {
-        title: $('#chapter-heading').text(),
-        series: W.mangaNav.mangaUrl,
-        quant: W.chapter_preloaded_images.length,
-        prev: $('select.single-chapter-select option:selected').next().val(),
-        next: $('select.single-chapter-select option:selected').prev().val(),
-        listImages: W.chapter_preloaded_images,
-      };
-    },
-  };
-
-  var dysnatyscans = {
-    name: 'Dynasty-Scans',
-    url: /https?:\/\/(www.)?dynasty-scans.com\/chapters\/.+/,
-    homepage: 'https://dynasty-scans.com/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      return {
-        title: $('#chapter-title').text(),
-        series: '#',
-        quant: W.pages.length,
-        prev: $('#prev_link').attr('href'),
-        next: $('#next_link').attr('href'),
-        listImages: W.pages.map((x) => x.image),
-      };
-    },
-  };
-
-  var foolslide = {
-    name: 'FoOlSlide',
-    url: /^(?!.*jaiminisbox).*\/read\/.+/,
-    homepage: '',
-    language: ['English'],
-    obs: 'Any Scanlator site that uses FoOLSlide',
-    category: 'manga',
-    run() {
-      const temp = ''.concat(W.location.href.substr(0, W.location.href.lastIndexOf('/')), '/');
-      const url = temp.match(/page\/$/) ? temp : ''.concat(temp, 'page/');
-      const num = $('.topbar_right .dropdown li').length;
-      const chapter = $('.topbar_left .dropdown_parent:last ul li a');
-      return {
-        title: $('title').text().trim(),
-        series: $('div.tbtitle div.text a:first').attr('href'),
-        quant: num,
-        prev: chapter
-          .eq(
-            chapter.index(
-              chapter.filter("[href*='".concat(W.location.pathname.replace(/page.+/, ''), "']")),
-            ) + 1,
-          )
-          .attr('href'),
-        next: chapter
-          .eq(
-            chapter.index(
-              chapter.filter("[href*='".concat(W.location.pathname.replace(/page.+/, ''), "']")),
-            ) - 1,
-          )
-          .attr('href'),
-        listPages: [...Array(num).keys()].map((i) => url + (i + 1)),
-        img: 'img.open',
-      };
-    },
-  };
-
-  var funmanga = {
-    name: 'Funmanga',
-    url: /https?:\/\/(www.)?funmanga.com\/.+\/[0-9]+/,
-    homepage: 'http://funmanga.com/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      const chapter = $('.extra-buttons select:first option:selected');
-      const url = $('.widget-heading select option').get().slice(1);
-      return {
-        title: $('title').text().trim(),
-        series: $('h5.widget-heading a:first').attr('href'),
-        quant: url.length,
-        prev: chapter.next('option').val(),
-        next: chapter.prev('option').val(),
-        listPages: url.map((item) => $(item).val()),
-        img: '.img-responsive',
-      };
-    },
-  };
-
-  var hatigarmscans = {
-    name: 'HatigarmScans',
-    url: /https?:\/\/(www.)?hatigarmscanz.net\/comics\/.+\/.+\/.+/,
-    homepage: 'https://hatigarmscanz.net/home',
-    language: ['English'],
-    category: 'manga',
-    waitVar: 'chapterPages',
-    run() {
-      return {
-        title: $('.page-section-title').text().trim(),
-        series: $('div.heading + a').attr('href'),
-        quant: W.chapterPages.length,
-        prev: $('.container div div a:eq(0)').attr('href'),
-        next: $('.container div div a:eq(1)').attr('href'),
-        listImages: W.chapterPages,
-      };
-    },
-  };
-
-  var leitor = {
-    name: 'Leitor',
-    url: /https?:\/\/(www.)?leitor.net\/manga\/.+\/.+\/.+/,
-    homepage: 'https://leitor.net/',
-    language: ['Portuguese'],
-    category: 'manga',
-    run() {
-      const token = $('script[src*=token]')
-        .attr('src')
-        .match(/[&?]token=(\w+)&?/i)[1];
-      const idRelease = $('script[src*=token]')
-        .attr('src')
-        .match(/[&?]id_release=(\d+)&?/i)[1];
-      let api = null;
-      const url = 'https://leitor.net/leitor/pages/'.concat(idRelease, '.json?key=').concat(token);
-      $.ajax({
-        type: 'GET',
-        url,
-        async: false,
-        success(res) {
-          api = res;
+    // == AsuraScans and FlameScans ====================================================================
+    var asurasflamecans = {
+        name: ['Asura Scans', 'Flame Scans', 'Realm Scans', 'Alpha-scans'],
+        url: /https?:\/\/(www.)?(asurascans|flamescans|realmscans|alpha-scans).(com|org)\/.+/,
+        homepage: [
+            'https://www.asurascans.com/',
+            'https://flamescans.org/',
+            'https://realmscans.com/',
+            'https://alpha-scans.org/',
+        ],
+        language: ['English'],
+        category: 'manga',
+        waitEle: '#chapter option:nth-child(2)',
+        run() {
+            const chapter = document.querySelector('#chapter option:checked');
+            const images = [...document.querySelectorAll('#readerarea img')];
+            return {
+                title: document.querySelector('.entry-title')?.textContent?.trim(),
+                series: document.querySelector('.allc a')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.nextElementSibling?.getAttribute('value'),
+                next: chapter?.previousElementSibling?.getAttribute('value'),
+                listImages: images.map((img) => img.getAttribute('data-src') || img.getAttribute('src')),
+            };
         },
-      });
-      return {
-        title: $('title').text().trim(),
-        series: $('.series-cover a').attr('href'),
-        quant: api.images.length,
-        prev: $('.chapter-list .selected').next().find('a').attr('href'),
-        next: $('.chapter-list .selected').prev().find('a').attr('href'),
-        listImages: api.images,
-      };
-    },
-  };
+    };
 
-  var lhtranslation = {
-    name: 'LHTranslation',
-    url: /https?:\/\/(www.)?lhtranslation.net\/read.+/,
-    homepage: 'http://lhtranslation.net/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      return {
-        title: $('.chapter-img.tieude font').text(),
-        series: $('.navbar-brand.manga-name').attr('href'),
-        quant: $('img.chapter-img').length,
-        prev: $('.form-control option:selected').next().val(),
-        next: $('.form-control option:selected').prev().val(),
-        listImages: $('img.chapter-img')
-          .get()
-          .map((item) => $(item).attr('src')),
-      };
-    },
-  };
-
-  var mangadex = {
-    name: 'MangaDex',
-    url: /https?:\/\/(www.)?mangadex.org\/chapter\/.+(\/.+)?/,
-    homepage: 'https://mangadex.org/',
-    language: ['English'],
-    category: 'manga',
-    waitEle: "a[href^='/chapter/']",
-    run() {
-      let server = null;
-      const chapterId = W.location.pathname.match(/\/chapter\/([^/]+)(\/[0-9]+)?/)[1];
-      const home = 'https://api.mangadex.org/at-home/server/'.concat(chapterId);
-      $.ajax({
-        type: 'GET',
-        url: home,
-        async: false,
-        success(res) {
-          server = res;
+    // == Batoto =======================================================================================
+    var batoto = {
+        name: 'Batoto',
+        url: /https?:\/\/(www.)?bato.to\/chapter.*/,
+        homepage: 'http://bato.to/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('.page-img')];
+            return {
+                title: document.querySelector('.nav-title a')?.textContent?.trim(),
+                series: document.querySelector('.nav-title a')?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('.nav-prev a')?.getAttribute('href'),
+                next: document.querySelector('.nav-next a')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
         },
-      });
-      return {
-        title: $('title').text().replace(' - MangaDex', ''),
-        series: $("a[href^='/title/']:last").attr('href'),
-        quant: server.chapter.data.length,
-        prev: $("a[href^='/chapter/']").eq(1).attr('href'),
-        next: $("a[href^='/chapter/']").eq(0).attr('href'),
-        listImages: server.chapter.data.map((img) =>
-          ''.concat(server.baseUrl, '/data/').concat(server.chapter.hash, '/').concat(img),
-        ),
-      };
-    },
-  };
+    };
 
-  var mangadoom = {
-    name: 'MangaDoom',
-    url: /https?:\/\/(www.)?mngdoom.com\/.+\/[0-9]+/,
-    homepage: 'https://mngdoom.com/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      const url = $('.selectPage:first option').get();
-      const chapter = $('.chapterSelect:first option:selected');
-      return {
-        title: $('.widget-heading > div > div:first').text().trim(),
-        series: $('.widget-heading a').attr('href'),
-        quant: url.length,
-        prev: chapter.next().val(),
-        next: chapter.prev().val(),
-        listPages: url.map((item) => $(item).val()),
-        img: 'img.img-responsive',
-      };
-    },
-  };
-
-  var mangafox = {
-    name: 'MangaFox',
-    url: /https?:\/\/(www.)?fanfox.net\/manga\/.+\/.+\//,
-    homepage: 'http://fanfox.net/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      function decode(data, page) {
-        const toBeEval = data.match(/'[^']*'/g)[5].replace(/'/g, '');
-        const keyWords = data
-          .match(/'[^']*'/g)[6]
-          .replace(/'/g, '')
-          .split('|');
-        function charFromPosition(i) {
-          return (
-            (i < 31 ? '' : charFromPosition(parseInt(i / 31, 10))) +
-            (i % 31 > 35 ? String.fromCharCode((i % 31) + 29) : (i % 31).toString(36))
-          );
-        }
-        const replacingValues = {};
-        keyWords.forEach((ele, i) => {
-          replacingValues[charFromPosition(i)] = ele || charFromPosition(i);
-        });
-        const res = toBeEval.replace(/\b\w+\b/g, (y) => replacingValues[y]);
-        return (
-          res.match(/pix="([^;]+)";/)[1] +
-          res.match(/pvalue=\["([^,]+)","([^,\]]+)"/)[page === 0 ? 1 : 2]
-        );
-      }
-      const src = [...Array(W.imagecount).keys()].map((i) => {
-        let img = '';
-        $.ajax({
-          url: 'chapterfun.ashx',
-          async: false,
-          data: {
-            cid: W.chapterid,
-            page: i,
-            key: $('#dm5_key').val(),
-          },
-        }).done((data) => {
-          img = decode(data, i);
-        });
-        return img;
-      });
-      return {
-        title: $('.reader-header-title div:first').text().trim(),
-        series: $('.reader-header-title a').attr('href'),
-        quant: W.imagecount,
-        prev: W.prechapterurl,
-        next: W.nextchapterurl,
-        listImages: src,
-      };
-    },
-  };
-
-  var mangahere = {
-    name: 'MangaHere',
-    url: /https?:\/\/(www.)?mangahere.cc\/manga\/.+\/.+/,
-    homepage: 'http://www.mangahere.cc/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      function decode(data, page) {
-        const toBeEval = data.match(/'[^']*'/g)[5].replace(/'/g, '');
-        const keyWords = data
-          .match(/'[^']*'/g)[6]
-          .replace(/'/g, '')
-          .split('|');
-        function charFromPosition(i) {
-          return (
-            (i < 31 ? '' : charFromPosition(parseInt(i / 31, 10))) +
-            (i % 31 > 35 ? String.fromCharCode((i % 31) + 29) : (i % 31).toString(36))
-          );
-        }
-        const replacingValues = {};
-        keyWords.forEach((ele, i) => {
-          replacingValues[charFromPosition(i)] = ele || charFromPosition(i);
-        });
-        const res = toBeEval.replace(/\b\w+\b/g, (y) => replacingValues[y]);
-        return (
-          res.match(/pix="([^;]+)";/)[1] +
-          res.match(/pvalue=\["([^,]+)","([^,\]]+)"/)[page === 0 ? 1 : 2]
-        );
-      }
-      const src = [...Array(W.imagecount).keys()].map((i) => {
-        let img = '';
-        $.ajax({
-          url: 'chapterfun.ashx',
-          async: false,
-          data: {
-            cid: W.chapterid,
-            page: i,
-            key: $('#dm5_key').val(),
-          },
-        }).done((data) => {
-          img = decode(data, i);
-        });
-        return img;
-      });
-      return {
-        title: $('.reader-header-title div:first').text().trim(),
-        series: $('.reader-header-title a').attr('href'),
-        quant: W.imagecount,
-        prev: W.prechapterurl,
-        next: W.nextchapterurl,
-        listImages: src,
-      };
-    },
-  };
-
-  var mangainn = {
-    name: 'MangaInn',
-    url: /https?:\/\/(www.)?mangainn.net\/.+\/[0-9]+(\/[0-9]*)?/,
-    homepage: 'http://www.mangainn.net/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      return {
-        title: W.chapter_page_title.trim(),
-        series: W.manga_url,
-        quant: W.images.length,
-        prev: W.prev_chapter_url,
-        next: W.next_chapter_url,
-        listImages: W.images.map((i) => i.url),
-      };
-    },
-  };
-
-  var mangakakalot = {
-    name: ['MangaKakalot', 'MangaNelo'],
-    url: /https?:\/\/(www.)?(manganelo|mangakakalot).com\/chapter\/.+\/.+/,
-    homepage: ['https://mangakakalot.com/page', 'http://www.manganelo.com/'],
-    language: ['English'],
-    category: 'manga',
-    run() {
-      const images = $('#vungdoc img, .container-chapter-reader img').get();
-      return {
-        title: $('.info-top-chapter h2, .panel-chapter-info-top h1').text().trim(),
-        series: $('span a[title]').eq(1).attr('href'),
-        quant: images.length,
-        prev: $('.navi-change-chapter-btn-prev:first, .next:first').attr('href'),
-        next: $('.navi-change-chapter-btn-next:first, .back:first').attr('href'),
-        listImages: images.map((i) => $(i).attr('src')),
-      };
-    },
-  };
-
-  var mangalyght = {
-    name: 'MangaLyght',
-    url: /https?:\/\/manga.lyght.net\/series\/.+\.html/,
-    homepage: 'http://manga.lyght.net/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      const chapter = $('.selectchapter option:selected');
-      const url = ''
-        .concat($("form[name='pageSelector1']").attr('action'), '?ch=')
-        .concat(chapter.val().replace(' ', '+'), '&page=');
-      const num = $('.selectpage option').length;
-      const origin = $('div.entry h1 a');
-      return {
-        title: origin.text().trim(),
-        series: origin.attr('href'),
-        quant: num,
-        prev: ''.concat(W.location.pathname, '?ch=').concat(chapter.prev().val()).replace(' ', '+'),
-        next: ''.concat(W.location.pathname, '?ch=').concat(chapter.next().val()).replace(' ', '+'),
-        listPages: [...Array(num).keys()].map((i) => url + (i + 1)),
-        img: '#mainimage',
-      };
-    },
-  };
-
-  var mangapark = {
-    name: 'MangaPark',
-    url: /https?:\/\/(www.)?mangapark.(com|me|org|net)\/(manga|chapter|comic)\/.+\/.+/,
-    homepage: 'http://mangapark.net/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      const pass = JSON.parse(CryptoJS.AES.decrypt(amWord, amPass).toString(CryptoJS.enc.Utf8));
-      return {
-        title: ''.concat(amSub_name, ' - ').concat(mpEpi_name),
-        series: currSubUrl,
-        quant: imgPathLis.length,
-        prev: prevEpiUrl,
-        next: nextEpiUrl,
-        listImages: imgPathLis.map((i, index) =>
-          ''.concat(imgCdnHost + i, '?').concat(pass[index]),
-        ),
-      };
-    },
-  };
-
-  var mangasee = {
-    name: ['MangaSee', 'Manga4life'],
-    url: /https?:\/\/(www.)?(mangasee123|manga4life).com\/read-online\/.+/,
-    homepage: ['https://mangasee123.com/', 'https://manga4life.com/'],
-    language: ['English'],
-    category: 'manga',
-    waitAttr: ['.img-fluid', 'src'],
-    run() {
-      const src = $('.img-fluid').attr('src');
-      const CurChapter = JSON.parse(
-        $('script')
-          .text()
-          .match(/CurChapter = ({.+});/)[1],
-      );
-      const CHAPTERS = JSON.parse(
-        $('script')
-          .text()
-          .match(/CHAPTERS = (\[{.+}\]);/)[1],
-      );
-      const CurChapterIndex = CHAPTERS.findIndex((chap) => chap.Chapter === CurChapter.Chapter);
-      function ChapterURLEncode(reference) {
-        let ChapterString = CHAPTERS[CurChapterIndex + reference];
-        if (ChapterString === undefined) {
-          return '#';
-        }
-        ChapterString = ChapterString.Chapter;
-        let Index = '';
-        const IndexString = ChapterString.substring(0, 1);
-        if (IndexString !== '1') {
-          Index = '-index-'.concat(IndexString);
-        }
-        const Chapter = parseInt(ChapterString.slice(1, -1), 10);
-        let Odd = '';
-        const OddString = ChapterString[ChapterString.length - 1];
-        if (OddString !== '0') {
-          Odd = '.'.concat(OddString);
-        }
-        return W.location.href.replace(
-          /-chapter-.+/,
-          '-chapter-'.concat(Chapter).concat(Odd).concat(Index, '.html'),
-        );
-      }
-      return {
-        title: $('title')
-          .text()
-          .replace(/ Page .+/, ''),
-        series: $('.MainContainer a:first').attr('href'),
-        quant: CurChapter.Page,
-        prev: ChapterURLEncode(-1),
-        next: ChapterURLEncode(+1),
-        listImages: [...Array(parseInt(CurChapter.Page, 10)).keys()].map((i) =>
-          src.replace(/-\d\d\d.png/, '-'.concat(String('000'.concat(i + 1)).slice(-3), '.png')),
-        ),
-      };
-    },
-  };
-
-  var mangatown = {
-    name: 'MangaTown',
-    url: /https?:\/\/(www.)?mangatown.com\/manga\/.+\/.+/,
-    homepage: 'http://www.mangatown.com/',
-    language: ['English'],
-    category: 'manga',
-    waitEle: '#top_chapter_list option',
-    waitMax: 5000,
-    run() {
-      const num = $('.page_select select:first option').get().slice(0, -1);
-      const chapter = $('#top_chapter_list option').eq(W.current_chapter_index);
-      return {
-        title: $('.title h1').text(),
-        series: $('.title h2 a').attr('href'),
-        quant: num.length,
-        prev: chapter.prev().val(),
-        next: chapter.next().val(),
-        listPages: num.map((item) => $(item).val()),
-        img: '#image',
-      };
-    },
-  };
-
-  var ninemanga = {
-    name: 'NineManga',
-    url: /https?:\/\/(www.)?ninemanga.com\/chapter\/.+\/.+\.html/,
-    homepage: 'http://ninemanga.com/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      return {
-        title: $('.tip a:first').text(),
-        series: $('.subgiude a:eq(1)').attr('href'),
-        quant: $('#page:first option').length,
-        prev: $('.chnav a:first').attr('href'),
-        next: $('.chnav a:eq(1)').attr('href'),
-        listPages: $('#page:first option')
-          .get()
-          .map((item) => $(item).val()),
-        img: '.manga_pic',
-      };
-    },
-  };
-
-  var readcomicsonline = {
-    name: 'ReadComicsOnline',
-    url: /https?:\/\/(www.)?readcomicsonline.ru\/comic\/.*\/[0-9]*/,
-    homepage: 'http://readcomicsonline.ru/',
-    language: ['English'],
-    category: 'comic',
-    run() {
-      return {
-        title: W.title.replace(/ - Page [0-9]+/, ''),
-        series: $('div.pager-cnt a:first').attr('href'),
-        quant: W.pages.length,
-        prev: W.prev_chapter,
-        next: W.next_chapter,
-        listImages: $('#all img')
-          .get()
-          .map((i) => $(i).attr('data-src')),
-      };
-    },
-  };
-
-  var readmangatoday = {
-    name: 'ReadManga Today',
-    url: /https?:\/\/(www.)?readmng.com\/.+\/[0-9.]+(\/[0-9]*)?/,
-    homepage: 'http://www.readmng.com/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      return {
-        title: W.chapter_page_title.trim(),
-        series: W.manga_url,
-        quant: W.images.length,
-        prev: W.prev_chapter_url,
-        next: W.next_chapter_url,
-        listImages: W.images.map((i) => i.url),
-      };
-    },
-  };
-
-  var senmanga = {
-    name: 'SenManga(Raw)',
-    url: /https?:\/\/raw.senmanga.com\/.+\/.+\/?/,
-    homepage: 'http://raw.senmanga.com/',
-    language: ['Original'],
-    category: 'manga',
-    run() {
-      const url = '/'
-        .concat(W.location.pathname.split('/')[1], '/')
-        .concat(W.location.pathname.split('/')[2]);
-      const num = parseInt($("select[name='page'] option:last").val(), 10);
-      const chapter = $('select[name="chapter"] option:selected');
-      const origin = $('.title a');
-      return {
-        title: $('.title').text().trim(),
-        series: origin.attr('href'),
-        quant: num,
-        prev: origin.attr('href') + chapter.next().val(),
-        next: origin.attr('href') + chapter.prev().val(),
-        listPages: [...Array(num).keys()].map((i) => ''.concat(url, '/').concat(i + 1, '/')),
-        img: '#picture',
-        before() {
-          $('body')
-            .contents()
-            .filter(() => this.nodeType === 3)
-            .remove();
+    // == ComiCastle ===================================================================================
+    var comicastle = {
+        name: 'ComiCastle',
+        url: /https?:\/\/(www.)?comicastle.org\/read\/.+\/[0-9]+.*/,
+        homepage: 'http://www.comicastle.org/',
+        language: ['English'],
+        category: 'comic',
+        waitEle: '.form-control option:nth-child(1)',
+        run() {
+            const images = [...document.querySelectorAll('.form-control')[1].querySelectorAll('option')];
+            const chapter = document.querySelectorAll('.form-control')[0].querySelector('option:checked');
+            return {
+                title: chapter?.textContent?.trim(),
+                series: document.querySelector('.navbar-header a')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.previousElementSibling?.getAttribute('value'),
+                next: chapter?.nextElementSibling?.getAttribute('value'),
+                listImages: images.map((img) => img.getAttribute('alt')),
+            };
         },
-      };
-    },
-  };
+    };
 
-  var tmofans = {
-    name: 'TuMangaOnline',
-    url: /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/,
-    homepage: 'https://lectortmo.com/',
-    language: ['Spanish'],
-    category: 'manga',
-    run() {
-      const num =
-        $('#viewer-pages-select:first option').get().length || $('.img-container img').get().length;
-      return {
-        title: $('title').text().trim(),
-        series: $('a[title="Volver"]').attr('href'),
-        quant: num,
-        prev: $('.chapter-prev a').attr('href'),
-        next: $('.chapter-next a').attr('href'),
-        listPages: [...Array(num).keys()].map((i) =>
-          W.location.href.replace(/\/[0-9]+$/, '/'.concat(i + 1)),
-        ),
-        listImages: $('.img-container img')
-          .get()
-          .map((item) => $(item).attr('data-src')),
-        img: '#viewer-container img, .viewer-page',
-      };
-    },
-  };
+    // == DynastyScans =================================================================================
+    var dysnatyscans = {
+        name: 'Dynasty-Scans',
+        url: /https?:\/\/(www.)?dynasty-scans.com\/chapters\/.+/,
+        homepage: 'https://dynasty-scans.com/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            return {
+                title: document.querySelector('#chapter-title')?.textContent?.trim(),
+                series: document.querySelector('#chapter-title a')?.getAttribute('href'),
+                pages: W.pages.length,
+                prev: document.querySelector('#prev_link')?.getAttribute('href'),
+                next: document.querySelector('#next_link')?.getAttribute('href'),
+                listImages: W.pages.map((x) => x.image),
+            };
+        },
+    };
+
+    // == InManga ===================================================================================
+    /* eslint-disable no-underscore-dangle */
+    var inmanga = {
+        name: 'InManga',
+        url: /https?:\/\/(www.)?inmanga.com\/ver\/manga\/.+\/.+/,
+        homepage: 'https://inmanga.com//',
+        language: ['Spanish'],
+        category: 'manga',
+        waitVar: 'pageController',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const images = [...document.querySelectorAll('#PageList option')];
+            const chapter = document.querySelector('#ChapList option:checked');
+            const src = W.pageController._containers.pageUrl;
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: `../${W.pageController._containers.mangaIdentification}`,
+                pages: images.length,
+                prev: chapter?.previousElementSibling?.getAttribute('value'),
+                next: chapter?.nextElementSibling?.getAttribute('value'),
+                listImages: images.map((img, index) => src.replace('identification', img.getAttribute('value')).replace('pageNumber', index)),
+            };
+        },
+    };
+
+    // == FoOlSlide ====================================================================================
+    var foolslide = {
+        name: ['FoOlSlide', 'Kireicake', 'Yuri-ism', 'Sense-Scans'],
+        url: /^(?!.*jaiminisbox).*\/read\/.+/,
+        homepage: [
+            '#',
+            'https://reader.kireicake.com',
+            'https://www.yuri-ism.net',
+            'https://sensescans.com/',
+        ],
+        language: ['English'],
+        obs: 'Any Site that uses FoOLSlide',
+        category: 'manga',
+        waitEle: 'img.open',
+        run() {
+            const chapter = [...document.querySelectorAll('.topbar_left .dropdown_parent:last-of-type li')];
+            const origin = chapter.findIndex((item) => {
+                const url = item.querySelector('a')?.getAttribute('href');
+                if (url)
+                    return window.location.href.startsWith(url);
+                return false;
+            });
+            const pages = [...document.querySelectorAll('.topbar_right .dropdown li')];
+            const images = [...document.querySelectorAll('.inner img:not(.open)')];
+            const num = images.length > 1 ? images.length : pages.length;
+            return {
+                title: chapter.at(origin)?.querySelector('a')?.textContent?.trim(),
+                series: document.querySelector('div.tbtitle div.text a')?.getAttribute('href'),
+                pages: num,
+                prev: chapter
+                    .at(origin + 1)
+                    ?.querySelector('a')
+                    ?.getAttribute('href'),
+                next: chapter
+                    .at(origin - 1)
+                    ?.querySelector('a')
+                    ?.getAttribute('href'),
+                listPages: images.length > 1
+                    ? null
+                    : Array(num)
+                        .fill(0)
+                        .map((_, i) => `${window.location.href.replace(/\/\d+$/, '')}/${i + 1}`),
+                listImages: images.length > 1 ? images.map((img) => img.getAttribute('src')) : null,
+                img: 'img.open',
+            };
+        },
+    };
+
+    // == KLManga ======================================================================================
+    var klmanga = {
+        name: 'KLManga',
+        url: /https?:\/\/(www.)?klmanga.com\/.+chapter.+/,
+        homepage: 'https://klmanga.com/',
+        language: ['Raw'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('.chapter-content img')];
+            const chapter = document.querySelectorAll('.form-control')[0].querySelector('option:checked');
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.navbar-brand')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.nextElementSibling?.getAttribute('value'),
+                next: chapter?.previousElementSibling?.getAttribute('value'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
+    // == Leitor =======================================================================================
+    var leitor = {
+        name: 'Leitor',
+        url: /https?:\/\/(www.)?leitor.net\/manga\/.+\/.+\/.+/,
+        homepage: 'https://leitor.net/',
+        language: ['Portuguese'],
+        category: 'manga',
+        async run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const url = `https://leitor.net/leitor/pages/${W.READER_ID_RELEASE}.json?key=${W.READER_TOKEN}`;
+            const api = await fetch(url).then((res) => res.json());
+            const chapter = document.querySelector('.chapter-list .selected');
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.series-cover a')?.getAttribute('href'),
+                pages: api.images.length,
+                prev: chapter?.nextElementSibling?.querySelector('a')?.getAttribute('href'),
+                next: chapter?.previousElementSibling?.querySelector('a')?.getAttribute('href'),
+                listImages: api.images.map((img) => img.avif || img.legacy),
+            };
+        },
+    };
+
+    // == LHTranslation ================================================================================
+    var lhtranslation = {
+        name: 'LHTranslation',
+        url: /https?:\/\/(www.)?lhtranslation.net\/read.+/,
+        homepage: 'https://lhtranslation.net/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const chapter = document.querySelector('.form-control option:checked');
+            const images = [...document.querySelectorAll('img.chapter-img')];
+            return {
+                title: document.querySelector('.chapter-img.tieude font')?.textContent?.trim(),
+                series: document.querySelector('.navbar-brand.manga-name')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.nextElementSibling?.getAttribute('value'),
+                next: chapter?.previousElementSibling?.getAttribute('value'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
+    // == Madara WordPress Plugin ======================================================================
+    // https://themeforest.net/item/madara-wordpress-theme-for-manga/20849828
+    var madarawp = {
+        name: [
+            'Madara WordPress Plugin',
+            'MangaHaus',
+            'Isekai Scan',
+            'Comic Kiba',
+            'Zinmanga',
+            'mangatx',
+            'Toonily',
+            'Mngazuki',
+            'ReaperScans',
+            'JaiminisBox',
+            'DisasterScans',
+            'ManhuaPlus',
+        ],
+        url: /https?:\/\/.+\/(manga|series)\/.+\/.+/,
+        homepage: [
+            '#',
+            'https://manhuaus.com',
+            'https://isekaiscan.com/',
+            'https://comickiba.com/',
+            'https://zinmanga.com/',
+            'https://mangatx.com/',
+            'https://toonily.net/',
+            'https://mangazuki.me/',
+            'https://reaperscans.com/',
+            'https://jaiminisbox.net',
+            'https://disasterscans.com/',
+            'https://manhuaplus.com/',
+        ],
+        language: ['English'],
+        obs: 'Any Site that uses Madara Wordpress Plugin',
+        category: 'manga',
+        run() {
+            const images = [
+                ...document.querySelectorAll('.wp-manga-chapter-img, .blocks-gallery-item img, .reading-content img'),
+            ];
+            return {
+                title: document.querySelector('#chapter-heading')?.textContent?.trim(),
+                series: (document.querySelector('.breadcrumb li:nth-child(3) a') ||
+                    document.querySelector('.breadcrumb li:nth-child(2) a'))?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('.prev_page')?.getAttribute('href'),
+                next: document.querySelector('.next_page')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('src') ||
+                    img.getAttribute('data-src') ||
+                    img.getAttribute('data-full-url')),
+            };
+        },
+    };
+
+    // == MangaBuddy ===================================================================================
+    var mangabuddy = {
+        name: 'MangaBuddy',
+        url: /https?:\/\/(www.)?mangabuddy.com\/.+\/chapter.+/,
+        homepage: 'https://mangabuddy.com/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('#chapter-images img')];
+            return {
+                title: document.querySelector('.chapter-info')?.textContent?.trim(),
+                series: document
+                    .querySelector('#breadcrumbs-container div:nth-child(2) a')
+                    ?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('a.prev')?.getAttribute('href'),
+                next: document.querySelector('a.next')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
+    // == MangaDex =====================================================================================
+    var mangadex = {
+        name: 'MangaDex',
+        url: /https?:\/\/(www.)?mangadex.org\/chapter\/.+(\/.+)?/,
+        homepage: 'https://mangadex.org/',
+        language: ['English'],
+        category: 'manga',
+        waitEle: "a[href^='/chapter/']",
+        async run() {
+            const chapterId = window.location.pathname.match(/\/chapter\/([^/]+)(\/\d+)?/)[1];
+            const home = `https://api.mangadex.org/at-home/server/${chapterId}`;
+            const server = await fetch(home).then((res) => res.json());
+            const images = server.chapter.data;
+            const chapters = document.querySelectorAll("a[href^='/chapter/']");
+            return {
+                title: document.querySelector('title')?.text.replace(' - MangaDex', ''),
+                series: document.querySelector("a.text-primary[href^='/title/']")?.getAttribute('href'),
+                pages: images.length,
+                prev: chapters[1].getAttribute('href'),
+                next: chapters[0].getAttribute('href'),
+                listImages: images.map((img) => `${server.baseUrl}/data/${server.chapter.hash}/${img}`),
+            };
+        },
+    };
+
+    // == MangaFox =====================================================================================
+    var mangafox = {
+        name: ['MangaFox', 'MangaHere'],
+        url: /https?:\/\/(www.)?(fanfox.net|mangahere.cc)\/manga\/.+\/.+\//,
+        homepage: ['https://fanfox.net/', 'https://www.mangahere.cc/'],
+        language: ['English'],
+        category: 'manga',
+        waitVar: 'chapterid',
+        async run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const key = document.querySelector('#dm5_key')?.getAttribute('value');
+            const options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+            };
+            const src = Array(W.imagecount)
+                .fill(0)
+                .map(async (_, i) => {
+                const url = `chapterfun.ashx?cid=${W.chapterid || W.chapter_id}&page=${i}&key=${key}`;
+                const api = await fetch(url, options).then((res) => res.text());
+                // eslint-disable-next-line no-eval
+                (0, eval)(api);
+                // @ts-ignore
+                return d;
+            });
+            const images = await Promise.all(src);
+            return {
+                title: document.querySelector('.reader-header-title div')?.textContent?.trim(),
+                series: document.querySelector('.reader-header-title a')?.getAttribute('href'),
+                pages: W.imagecount,
+                prev: W.prechapterurl,
+                next: W.nextchapterurl,
+                listImages: images.map((img, i) => img[i === 0 ? 0 : 1]),
+            };
+        },
+    };
+
+    // == MangaFreak ===================================================================================
+    var mangafreak = {
+        name: 'MangaFreak',
+        url: /https?:\/\/.{3,4}?(mangafreak).net\/Read.+/,
+        homepage: 'https://mangafreak.net/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const chapter = document.querySelector('.chapter_list select option:checked');
+            const images = [...document.querySelectorAll('.mySlides img')];
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.title a')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.previousElementSibling?.getAttribute('value'),
+                next: chapter?.nextElementSibling?.getAttribute('value'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
+    var mangago = {
+        name: 'Mangago',
+        url: /https?:\/\/(www.)?mangago.me\/.*\/.*\/.*/,
+        homepage: 'https://www.mangago.me/',
+        language: ['English'],
+        category: 'manga',
+        waitVar: 'imgsrcs',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const key = CryptoJS.enc.Hex.parse('e11adc3949ba59abbe56e057f20f883e');
+            const iv = CryptoJS.enc.Hex.parse('1234567890abcdef1234567890abcdef');
+            const opinion = { iv, padding: CryptoJS.pad.ZeroPadding };
+            const images = CryptoJS.AES.decrypt(W.imgsrcs, key, opinion)
+                .toString(CryptoJS.enc.Utf8)
+                .split(',');
+            return {
+                title: `${W.manga_name} ${W.chapter_name}`,
+                series: W.mid,
+                pages: W.total_pages,
+                prev: document.querySelector('.recom p:nth-child(5) a')?.getAttribute('href'),
+                next: W.next_c_url,
+                listImages: images,
+            };
+        },
+    };
+
+    // == mangahosted ===================================================================================
+    var mangahosted = {
+        name: 'mangahosted',
+        url: /https?:\/\/(www.)?mangahosted.com\/manga\/.+\/.+/,
+        homepage: 'https://mangahosted.com/',
+        language: ['Portuguese'],
+        category: 'manga',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const images = [...document.querySelectorAll('picture img')];
+            return {
+                title: $('.breadcrumb li:eq(3)').text().trim(),
+                series: $('.breadcrumb li:eq(2) a').attr('href'),
+                pages: images.length,
+                prev: W.$read_prev,
+                next: W.$read_next,
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
+    // == MangaHub =====================================================================================
+    var mangahub = {
+        name: 'MangaHub',
+        url: /https?:\/\/(www.)?(mangahub).io\/chapter\/.+\/.+/,
+        homepage: 'https://mangahub.io/',
+        language: ['English'],
+        category: 'manga',
+        waitEle: '#select-chapter',
+        async run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const slug = W.CURRENT_MANGA_SLUG || window.location.pathname.split('/')[2];
+            const number = window.location.pathname.split('/')[3].replace('chapter-', '');
+            const data = { query: `{chapter(x:m01,slug:"${slug}",number:${number}){pages}}` };
+            const options = {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+            const api = await fetch('https://api.mghubcdn.com/graphql', options).then((res) => res.json());
+            const images = Object.values(JSON.parse(api?.data.chapter.pages.toString()));
+            return {
+                title: document.querySelector('#mangareader h3')?.textContent?.trim(),
+                series: document.querySelector('#mangareader a')?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('.previous a')?.getAttribute('href'),
+                next: document.querySelector('.next a')?.getAttribute('href'),
+                listImages: images.map((i) => `https://img.mghubcdn.com/file/imghub/${i}`),
+            };
+        },
+    };
+
+    // == MangaKakalot =================================================================================
+    var mangakakalot = {
+        name: ['MangaKakalot', 'MangaNelo', 'MangaNato'],
+        url: /https?:\/\/(www.)?((manganelo|mangakakalot).com\/chapter\/.+\/.+|(manganato|readmanganato).com\/manga-\w\w\d+\/chapter-\d+)/,
+        homepage: [
+            'https://mangakakalot.com/page',
+            'https://www.manganelo.com/',
+            'https://www.manganato.com/',
+        ],
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('#vungdoc img, .container-chapter-reader img')];
+            return {
+                title: document
+                    .querySelector('.info-top-chapter h2, .imageOptions-chapter-info-top h1, .panel-chapter-info-top h1')
+                    ?.textContent?.trim(),
+                series: document.querySelectorAll('span a[title]').item(1).getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('.navi-change-chapter-btn-prev, .next')?.getAttribute('href'),
+                next: document.querySelector('.navi-change-chapter-btn-next, .back')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
+    var mangapark = {
+        name: 'MangaPark',
+        url: /https?:\/\/(www.)?mangapark.(com|me|org|net)\/(manga|chapter|comic)\/.+\/.+/,
+        homepage: 'https://mangapark.net/',
+        language: ['English'],
+        category: 'manga',
+        waitVar: 'CryptoJS',
+        run() {
+            const pass = JSON.parse(CryptoJS.AES.decrypt(amWord, amPass).toString(CryptoJS.enc.Utf8));
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.nav-title a')?.getAttribute('href'),
+                pages: imgPathLis.length,
+                prev: document.querySelector('.nav-prev a')?.getAttribute('href'),
+                next: document.querySelector('.nav-next a')?.getAttribute('href'),
+                listImages: imgPathLis.map((i, index) => `${imgCdnHost + i}?${pass[index]}`),
+            };
+        },
+    };
+
+    // == MangaRaw =====================================================================================
+    var mangaraw = {
+        name: 'MangaRaw',
+        url: /https?:\/\/(www.)?mcreader.net\/reader\/.*/,
+        homepage: 'https://www.manga-raw.club/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('#chapter-reader img')];
+            return {
+                title: document.querySelector('.titles')?.textContent?.trim(),
+                series: document.querySelector('.titles a')?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('.chnav.prev')?.getAttribute('href'),
+                next: document.querySelector('.chnav.next')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
+    // == Mangareader ==================================================================================
+    var mangareader = {
+        name: 'Mangareader',
+        url: /https?:\/\/(www.)?mangareader.to\/read\/.+\/.+\/.+/,
+        homepage: 'https://mangareader.to',
+        language: ['English'],
+        category: 'manga',
+        obs: 'Some galleries will not be usable',
+        waitEle: '.ds-image, .iv-card',
+        run() {
+            const chapter = document.querySelector('.chapter-item.active');
+            const images = [
+                ...document.querySelectorAll('.ds-image:not(.shuffled)[data-url], .iv-card:not(.shuffled)[data-url]'),
+            ];
+            return {
+                title: document.querySelector('.hr-manga h2')?.textContent?.trim(),
+                series: document.querySelector('.hr-manga')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.nextElementSibling?.querySelector('a')?.getAttribute('href'),
+                next: chapter?.previousElementSibling?.querySelector('a')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('data-url')),
+            };
+        },
+    };
+
+    // == MangaSee =====================================================================================
+    var mangasee = {
+        name: ['MangaSee', 'Manga4life'],
+        url: /https?:\/\/(www.)?(mangasee123|manga4life).com\/read-online\/.+/,
+        homepage: ['https://mangasee123.com/', 'https://manga4life.com/'],
+        language: ['English'],
+        category: 'manga',
+        waitAttr: ['.img-fluid', 'src'],
+        run() {
+            const src = document.querySelector('.img-fluid')?.getAttribute('src') || '';
+            const script = [...document.querySelectorAll('body script:not([src])')].at(-1)?.textContent;
+            const textCurChapter = script?.match(/CurChapter = ({.+});/) || [];
+            const CurChapter = JSON.parse(textCurChapter[1]);
+            const textCHAPTERS = script?.match(/CHAPTERS = (\[\{.+}]);/) || [];
+            const CHAPTERS = JSON.parse(textCHAPTERS[1]);
+            const CurChapterIndex = CHAPTERS.findIndex((chap) => chap.Chapter === CurChapter.Chapter);
+            function ChapterURLEncode(reference) {
+                let ChapterString = CHAPTERS[CurChapterIndex + reference];
+                if (ChapterString === undefined) {
+                    return '#';
+                }
+                ChapterString = ChapterString.Chapter;
+                let Index = '';
+                const IndexString = ChapterString.substring(0, 1);
+                if (IndexString !== '1') {
+                    Index = `-index-${IndexString}`;
+                }
+                const Chapter = parseInt(ChapterString.slice(1, -1), 10);
+                let Odd = '';
+                const OddString = ChapterString[ChapterString.length - 1];
+                if (OddString !== '0') {
+                    Odd = `.${OddString}`;
+                }
+                return window.location.href.replace(/-chapter-.+/, `-chapter-${Chapter}${Odd}${Index}.html`);
+            }
+            return {
+                title: document
+                    .querySelector('title')
+                    ?.textContent?.replace(/ Page .+/, '')
+                    .trim(),
+                series: document.querySelector('.MainContainer a')?.getAttribute('href'),
+                pages: parseInt(CurChapter.Page, 10),
+                prev: ChapterURLEncode(-1),
+                next: ChapterURLEncode(+1),
+                listImages: Array(parseInt(CurChapter.Page, 10))
+                    .fill(0)
+                    .map((_, i) => src.replace(/-\d\d\d.png/, `-${String(`000${i + 1}`).slice(-3)}.png`)),
+            };
+        },
+    };
+
+    // == MangaTigre ===================================================================================
+    var mangatigre = {
+        name: 'MangaTigre',
+        url: /https?:\/\/(www.)?mangatigre.net\/.+\/.+\/.+/,
+        homepage: 'https://www.mangatigre.net/',
+        language: ['Spanish'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('.chapter-content img')];
+            const chapter = document.querySelector('.form-control option:checked');
+            return {
+                title: document.querySelector('.page-title')?.textContent?.trim(),
+                series: document.querySelector('.breadcrumb li:nth-child(3) a')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.nextElementSibling?.getAttribute('value'),
+                next: chapter?.previousElementSibling?.getAttribute('value'),
+                listImages: images.map((img) => img.getAttribute('data-src') || img.getAttribute('src')),
+            };
+        },
+    };
+
+    // == MangaTown ====================================================================================
+    var mangatown = {
+        name: 'MangaTown',
+        url: /https?:\/\/(www.|m.)?mangatown.com\/manga\/.+\/.+/,
+        homepage: 'https://www.mangatown.com/',
+        language: ['English'],
+        category: 'manga',
+        waitVar: 'chapter_id',
+        async run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const key = document.querySelector('#dm5_key')?.getAttribute('value');
+            const options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+            };
+            const src = Array(W.total_pages)
+                .fill(0)
+                .map(async (_, i) => {
+                const url = `chapterfun.ashx?cid=${W.chapter_id}&page=${i}&key=${key}`;
+                const api = await fetch(url, options).then((res) => res.text());
+                // eslint-disable-next-line no-eval
+                (0, eval)(api);
+                // @ts-ignore
+                return d;
+            });
+            const images = await Promise.all(src);
+            const chapter = document.querySelector('#top_chapter_list option:checked');
+            return {
+                title: document.querySelector('.title h1')?.textContent,
+                series: W.series_url,
+                pages: images.length,
+                prev: chapter?.previousElementSibling?.getAttribute('value'),
+                next: chapter?.nextElementSibling?.getAttribute('value'),
+                listImages: images.map((img, i) => img[i === 0 ? 0 : 1]),
+            };
+        },
+    };
+
+    var manhuascan = {
+        name: 'ManhuaScan',
+        url: /https?:\/\/(www.)?manhuascan.io\/.+chapter.+/,
+        homepage: 'https://manhuascan.io/',
+        language: ['English'],
+        category: 'manga',
+        waitVar: 'imgsrcs',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const key = CryptoJS.enc.Hex.parse('e11adc3949ba59abbe56e057f20f131e');
+            const iv = CryptoJS.enc.Hex.parse('1234567890abcdef1234567890abcdef');
+            const opinion = { iv, padding: CryptoJS.pad.ZeroPadding };
+            const images = CryptoJS.AES.decrypt(W.imgsrcs, key, opinion)
+                .toString(CryptoJS.enc.Utf8)
+                .split(',');
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.breadcrumb li:nth-child(3) a')?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('.chapter-select a:first-of-type')?.getAttribute('href'),
+                next: document.querySelector('.chapter-select a:last-of-type')?.getAttribute('href'),
+                listImages: images,
+            };
+        },
+    };
+
+    // == NineManga ====================================================================================
+    var ninemanga = {
+        name: 'NineManga',
+        url: /https?:\/\/(www.)?ninemanga.com\/chapter\/.+\/.+\.html/,
+        homepage: 'https://ninemanga.com/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const chapter = document.querySelector('#chapter option:checked');
+            const pages = [...document.querySelector('#page').querySelectorAll('option')];
+            return {
+                title: document.querySelector('.tip a')?.textContent?.trim(),
+                series: document.querySelector('.subgiude > li:nth-child(2) > a')?.getAttribute('href'),
+                pages: pages.length,
+                prev: chapter?.nextElementSibling?.getAttribute('value'),
+                next: chapter?.previousElementSibling?.getAttribute('value'),
+                listPages: pages.map((item) => $(item).val()),
+                img: '.manga_pic',
+            };
+        },
+    };
+
+    // == PandaManga ==================================================================================
+    var pandamanga = {
+        name: 'PandaManga',
+        url: /https?:\/\/(www.)?pandamanga.xyz\/.+\/.+\/.+/,
+        homepage: 'https://www.pandamanga.com/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const chapter = document.querySelector('.select-chapter option:checked');
+            const data = JSON.parse(document.getElementById('__NEXT_DATA__').textContent);
+            const images = data.props.pageProps.mangaview.source
+                .split(',')
+                .filter((url) => url.length > 0);
+            return {
+                title: data.props.pageProps.mangaview.nameSeoChapter,
+                series: document.querySelector('.allc a')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.nextElementSibling?.getAttribute('value'),
+                next: chapter?.previousElementSibling?.getAttribute('value'),
+                listImages: images,
+            };
+        },
+    };
+
+    // == RawDevart  ===================================================================================
+    var rawdevart = {
+        name: 'RawDevart',
+        url: /https?:\/\/(www.)?rawdevart.com\/comic\/.+\/.+\//,
+        homepage: 'https://rawdevart.com',
+        language: ['Raw'],
+        category: 'manga',
+        waitVar: 'rconfig',
+        waitEle: '#chapter-list select',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const chapter = document.querySelector('#chapter-list option:checked');
+            const images = [...document.querySelectorAll('#img-container img')];
+            return {
+                title: W.rconfig.chapterTitle,
+                series: W.rconfig.prefix,
+                pages: images.length,
+                prev: chapter?.nextElementSibling?.getAttribute('value'),
+                next: chapter?.previousElementSibling?.getAttribute('value'),
+                listImages: images.map((item) => $(item).attr('data-src') || $(item).attr('src')),
+            };
+        },
+    };
+
+    // == ReadComicsOnline =============================================================================
+    var readcomicsonline = {
+        name: 'ReadComicsOnline',
+        url: /https?:\/\/(www.)?readcomicsonline.ru\/comic\/.*\/\d*/,
+        homepage: 'https://readcomicsonline.ru/',
+        language: ['English'],
+        category: 'comic',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const images = [...document.querySelectorAll('#all img')];
+            return {
+                title: W.title.replace(/ - Page \d+/, ''),
+                series: document.querySelector('div.pager-cnt a')?.getAttribute('href'),
+                pages: W.pages.length,
+                prev: W.prev_chapter,
+                next: W.next_chapter,
+                listImages: images.map((img) => img.getAttribute('data-src')),
+            };
+        },
+    };
+
+    // == ReadManga.Today ==============================================================================
+    var readmangatoday = {
+        name: ['ReadManga Today', 'Funmanga', 'MangaDoom', 'MangaInn'],
+        url: /https?:\/\/(www.)?(funmanga|mngdoom|readmng|mangainn).(com|net)\/.+\/\d+/,
+        homepage: [
+            'https://www.readmng.com/',
+            'https://funmanga.com/',
+            'https://mngdoom.com/',
+            'https://www.mangainn.net/',
+        ],
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            return {
+                title: W.chapter_page_title,
+                series: W.manga_url,
+                pages: W.images.length,
+                prev: W.prev_chapter_url,
+                next: W.next_chapter_url,
+                listImages: W.images.map((item) => item.url),
+            };
+        },
+    };
+
+    // == SenManga =====================================================================================
+    var senmanga = {
+        name: 'SenManga(Raw)',
+        url: /https?:\/\/raw.senmanga.com\/.+\/.+\/?/,
+        homepage: 'https://raw.senmanga.com/',
+        language: ['Raw'],
+        category: 'manga',
+        run() {
+            const url = `/${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}`;
+            const num = parseInt(document.querySelector('.page-list select option:last-child')?.getAttribute('value') || '0', 10);
+            const chapter = [...document.querySelectorAll('.dropdown-chapter li')];
+            const origin = chapter.findIndex((item) => item.querySelector('a')?.getAttribute('href') === window.location.href);
+            return {
+                title: $('.title').text().trim(),
+                series: document.querySelector('.breadcrumb li:nth-child(2) a')?.getAttribute('href'),
+                pages: num,
+                prev: chapter
+                    .at(origin + 1)
+                    ?.querySelector('a')
+                    ?.getAttribute('href'),
+                next: chapter
+                    .at(origin - 1)
+                    ?.querySelector('a')
+                    ?.getAttribute('href'),
+                listPages: Array(num)
+                    .fill(0)
+                    .map((_, i) => `${url}/${i + 1}/`),
+                img: '.picture',
+            };
+        },
+    };
+
+    // == ShimadaScans =================================================================================
+    var shimadascans = {
+        name: 'ShimadaScans',
+        url: /https?:\/\/(www.)?shimadascans.com\/.+series.+/,
+        homepage: 'https://shimadascans.com/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('.reading-content img')];
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.breadcrumb li:nth-child(2) a')?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('a.prev_page')?.getAttribute('href'),
+                next: document.querySelector('a.next_page')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
+    // == TenManga =====================================================================================
+    var tenmanga = {
+        name: 'TenManga',
+        url: /https?:\/\/(www.)?(tenmanga|gardenmanage).com\/(chapter|statuses)\/.+/,
+        homepage: 'https://www.tenmanga.com/',
+        language: ['English'],
+        category: 'manga',
+        waitVar: '_pageCtrl',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const chapter = document.querySelector('.mangaread-pagenav select option:checked');
+            // eslint-disable-next-line no-underscore-dangle
+            const images = W._pageCtrl.options.all_imgs_url;
+            return {
+                title: document.querySelector('.title  h1')?.textContent?.trim(),
+                series: document.querySelector('.title  a:nth-child(2)')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.nextElementSibling?.getAttribute('value'),
+                next: chapter?.previousElementSibling?.getAttribute('value'),
+                listImages: images,
+            };
+        },
+    };
+
+    // == TMOFans ==================================================================================
+    var tmofans = {
+        name: 'TuMangaOnline',
+        url: /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/,
+        homepage: 'https://lectortmo.com/',
+        language: ['Spanish'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('.img-container img')];
+            const pages = [
+                ...document.querySelectorAll('div.container:nth-child(4) select#viewer-pages-select option'),
+            ];
+            const num = images.length > 1 ? images.length : pages.length;
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('a[title="Volver"]')?.getAttribute('href'),
+                pages: num,
+                prev: document.querySelector('.chapter-prev a')?.getAttribute('href'),
+                next: document.querySelector('.chapter-next a')?.getAttribute('href'),
+                listPages: images.length > 1
+                    ? null
+                    : Array(num)
+                        .fill(0)
+                        .map((_, i) => `${window.location.href.replace(/\/\d+$/, '')}/${i + 1}`),
+                listImages: images.length > 1 ? images.map((item) => $(item).attr('data-src')) : null,
+                img: '#viewer-container img, .viewer-page',
+            };
+        },
+    };
 
   var tmofans2 = {
     name: 'TuMangaOnline',
-    url: /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion).com\/.+\/.+\/(paginated|cascade)/,
+    url: /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion|cooker2love|vsrecipes|recipesaniki|dariusmotor|vgmotor|mynewsrecipes).com\/.+\/.+\/(paginated|cascade)/,
     homepage: 'https://lectortmo.com/',
     language: ['Spanish'],
     category: 'manga',
     run() {
-      const num = $('#viewer-pages-select:first option').get().length || $('.viewer-image-container img').get().length;
-      return {
-        title: $('title').text().trim(),
-        series: $('a[title="Volver"]').attr('href'),
-        quant: num,
-        prev: $('.chapter-prev a').attr('href'),
-        next: $('.chapter-next a').attr('href'),
-        listPages: [...Array(num).keys()].map((i) =>
-          W.location.href.replace(/\/[0-9]+$/, '/'.concat(i + 1)),
-        ),
-        listImages: $('.viewer-image-container img')
-          .get()
-          .map((item) => $(item).attr('data-src')),
-        img: '#viewer-container img, .viewer-page'
-      };
-    }
-  };
-
-  var unionmangas = {
-    name: 'UnionMangas',
-    url: /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/,
-    homepage: 'https://unionleitor.top/',
-    language: ['Portuguese'],
-    category: 'manga',
-    run() {
-      return {
-        title: $('.titulo-leitura').text().trim(),
-        series: $('.breadcrumbs a:last').attr('href'),
-        quant: $('#paginas option').get().length,
-        prev: '/leitor/'
-          .concat($('#mangaUrl').text(), '/')
-          .concat($('.listCap:selected').prev().val()),
-        next: '/leitor/'
-          .concat($('#mangaUrl').text(), '/')
-          .concat($('.listCap:selected').prev().next()),
-        listImages: $('.img-manga')
-          .get()
-          .map((i) => $(i).attr('src')),
-      };
-    },
-  };
-
-  var rawdevart = {
-    name: 'RawDevart',
-    url: /https?:\/\/(www.)?rawdevart.com\/comic\/.+\/.+\//,
-    homepage: 'https://rawdevart.com',
-    language: ['Original'],
-    category: 'manga',
-    waitVar: 'rconfig',
-    waitEle: '#chapter-list select',
-    run() {
-      return {
-        title: W.rconfig.chapterTitle,
-        series: W.rconfig.prefix,
-        quant: $('#img-container img').get().length,
-        prev: $('#chapter-list option:selected').next().val(),
-        next: $('#chapter-list option:selected').prev().val(),
-        listImages: $('#img-container img')
-          .get()
-          .map((item) => $(item).attr('data-src') || $(item).attr('src')),
-      };
-    },
-  };
-
-  var asurasflamecans = {
-    name: ['Asura Scans', 'Flame Scans'],
-    url: /https?:\/\/(www.)?(asurascans|flamescans).(com|org)\/.+/,
-    homepage: ['https://www.asurascans.com/', 'https://flamescans.org/'],
-    language: ['English'],
-    category: 'manga',
-    waitEle: '#chapter option:eq(1)',
-    waitMax: 5000,
-    run() {
-      const chapter = $('#chapter option:selected');
-      const images = $('#readerarea p img').get();
-      return {
-        title: $('.entry-title').text().trim(),
-        series: $('.allc a').attr('href'),
-        quant: images.length,
-        prev: chapter.next().val(),
-        next: chapter.prev().val(),
-        listImages: images.map((i) => $(i).attr('src')),
-      };
-    },
-  };
-
-  var madarawp = {
-    name: [
-      'MangaHaus',
-      'Isekai Scan',
-      'Comic Kiba',
-      'Zinmanga',
-      'mangatx',
-      'Toonily',
-      'Mngazuki',
-      'ReaperScans',
-    ],
-    url: /https?:\/\/.+\/(manga|series)\/.+\/.+/,
-    homepage: [
-      'https://manhuaus.com',
-      'https://isekaiscan.com/',
-      'https://comickiba.com/',
-      'https://zinmanga.com/',
-      'https://mangatx.com/',
-      'https://toonily.net/',
-      'https://mangazuki.me/',
-      'https://reaperscans.com/',
-    ],
-    language: ['English'],
-    obs: 'Any Site that uses Madara Wordpress Plugin',
-    category: 'manga',
-    run() {
-      const src = $('.wp-manga-chapter-img, .blocks-gallery-item img').get();
-      return {
-        title: $('#chapter-heading').text().trim(),
-        series: $('.breadcrumb li a:last').attr('href'),
-        quant: src.length,
-        prev: $('.prev_page:first').attr('href'),
-        next: $('.next_page:first').attr('href'),
-        listImages: src.map(
-          (i) => $(i).attr('src') || $(i).attr('data-src') || $(i).attr('data-full-url'),
-        ),
-      };
-    },
-  };
-
-  var mangahub = {
-    name: 'MangaHub',
-    url: /https?:\/\/(www.)?(mangahub).io\/chapter\/.+\/.+/,
-    homepage: 'https://mangahub.io/',
-    language: ['English'],
-    category: 'manga',
-    waitEle: '#select-chapter',
-    run() {
-      let api = null;
-      const slug = W.CURRENT_MANGA_SLUG || W.location.pathname.split('/')[2];
-      const number = W.location.pathname.split('/')[3].replace('chapter-', '');
-      const data = {
-        query: '{chapter(x:m01,slug:"'.concat(slug, '",number:').concat(number, '){pages}}'),
-      };
-      $.ajax({
-        type: 'POST',
-        url: 'https://api.mghubcdn.com/graphql',
-        data,
-        async: false,
-        success(res) {
-          api = res;
+            const images = [...document.querySelectorAll('.viewer-image-container img')];
+            const pages = [
+                ...document.querySelectorAll('div.container:nth-child(4) select#viewer-pages-select option'),
+            ];
+            const num = images.length > 1 ? images.length : pages.length;
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('a[title="Volver"]')?.getAttribute('href'),
+                pages: num,
+                prev: document.querySelector('.chapter-prev a')?.getAttribute('href'),
+                next: document.querySelector('.chapter-next a')?.getAttribute('href'),
+                listPages: images.length > 1
+                    ? null
+                    : Array(num)
+                        .fill(0)
+                        .map((_, i) => `${window.location.href.replace(/\/\d+$/, '')}/${i + 1}`),
+                listImages: images.length > 1 ? images.map((item) => $(item).attr('data-src')) : null,
+                img: '#viewer-container img, .viewer-page',
+            };
         },
-      });
-      const images = Object.values(JSON.parse(api.data.chapter.pages));
-      return {
-        title: $('#mangareader h3').text().trim(),
-        series: $('#mangareader a:first').attr('href'),
-        quant: images.length,
-        prev: $('.previous a').attr('href'),
-        next: $('.next a').attr('href'),
-        listImages: images.map((i) => 'https://img.mghubcdn.com/file/imghub/'.concat(i)),
-      };
-    },
-  };
-
-  var mangafreak = {
-    name: 'MangaFreak',
-    url: /https?:\/\/.{3,4}?(mangafreak).net\/Read.+/,
-    homepage: 'https://mangafreak.net/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      const images = $('.mySlides img').get();
-      return {
-        title: $('title').text().trim(),
-        series: $('.title a').attr('href'),
-        quant: images.length,
-        prev: $('.chapter_list select option:selected').prev().val(),
-        next: $('.chapter_list select option:selected').next().val(),
-        listImages: images.map((i) => $(i).attr('src')),
-      };
-    },
-  };
-
-  var komiraw = {
-    name: 'KomiRaw',
-    url: /https?:\/\/(www.)?(komiraw).com\/.+\/.+/,
-    homepage: 'https://komiraw.com/',
-    language: ['English'],
-    category: 'manga',
-    timer: 4000,
-    run() {
-      const images = $('img.chapter-img').get();
-      return {
-        title: $('.chapter-title').attr('title').trim(),
-        series: $('#boxtopchap a').attr('href'),
-        quant: images.length,
-        prev: $('#chapter-nav-bot #prev_chap').attr('href'),
-        next: $('#chapter-nav-bot #next_chap').attr('href'),
-        listImages: images.map((i) => $(i).attr('src')),
-      };
-    },
-  };
-
-  var manganato = {
-    name: 'MangaNato',
-    url: /https?:\/\/(www.)?(manganato|readmanganato).com\/manga-\w\w\d+\/chapter-\d+/,
-    homepage: 'http://www.manganato.com/',
-    language: ['English'],
-    category: 'manga',
-    run() {
-      const images = $('#vungdoc img, .container-chapter-reader img').get();
-      return {
-        title: $('.info-top-chapter h2, .panel-chapter-info-top h1').text().trim(),
-        series: $('span a[title]').eq(1).attr('href'),
-        quant: images.length,
-        prev: $('.navi-change-chapter-btn-prev:first, .next:first').attr('href'),
-        next: $('.navi-change-chapter-btn-next:first, .back:first').attr('href'),
-        listImages: images.map((i) => $(i).attr('src')),
-      };
-    },
-  };
-
-  var sites = [
-    asurasflamecans,
-    comicastle,
-    disasterscans,
-    dysnatyscans,
-    foolslide,
-    funmanga,
-    hatigarmscans,
-    komiraw,
-    leitor,
-    lhtranslation,
-    madarawp,
-    mangadex,
-    mangadoom,
-    mangafreak,
-    mangafox,
-    mangahere,
-    mangahub,
-    mangainn,
-    mangakakalot,
-    mangalyght,
-    manganato,
-    mangapark,
-    mangasee,
-    mangatown,
-    ninemanga,
-    rawdevart,
-    readcomicsonline,
-    readmangatoday,
-    senmanga,
-    tmofans,
-    tmofans2,
-    unionmangas,
-    batoto,
-  ];
-
-  function logScript(...text) {
-    console.log('MangaOnlineViewer: ', ...text);
-    return text;
-  }
-  const logScriptC = (x) => (y) => logScript(x, y)[1];
-  typeof GM_listValues !== 'undefined' ? GM_listValues : () => [];
-  typeof GM_deleteValue !== 'undefined' ? GM_deleteValue : (name) => logScript('Removing: ', name);
-  const getInfoGM =
-    typeof GM_info !== 'undefined'
-      ? GM_info
-      : {
-          scriptHandler: 'Console',
-          script: {
-            name: 'Debug',
-            version: 'Testing',
-          },
-        };
-  const getValueGM =
-    typeof GM_getValue !== 'undefined'
-      ? GM_getValue
-      : (name, defaultValue = null) => logScript('Getting: ', name, '=', defaultValue)[3];
-  const setValueGM =
-    typeof GM_setValue !== 'undefined'
-      ? GM_setValue
-      : (name, value) => logScript('Getting: ', name, '=', value);
-  function getBrowser() {
-    const ua = navigator.userAgent;
-    let tem;
-    let M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-    if (/trident/i.test(M[1])) {
-      tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-      return 'IE '.concat(tem[1] || '');
-    }
-    if (M[1] === 'Chrome') {
-      tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
-      if (tem !== null) {
-        return tem.slice(1).join(' ').replace('OPR', 'Opera');
-      }
-    }
-    M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-    tem = ua.match(/version\/(\d+)/i);
-    if (tem !== null) {
-      M.splice(1, 1, tem[1]);
-    }
-    return M.join(' ');
-  }
-  function getEngine() {
-    return ''.concat(getInfoGM.scriptHandler || 'Greasemonkey', ' ').concat(getInfoGM.version);
-  }
-  const isMobile = W.matchMedia('screen and (max-width: 1024px)').matches;
-
-  const cache = {
-    zip: new JSZip(),
-    downloadFiles: 0,
-    Data: {},
-  };
-  const getExtension = (mimeType) =>
-    ((/image\/(?<ext>jpe?g|png|webp)/.exec(mimeType) || {}).groups || {}).ext || '' || 'png';
-  const getFilename = (name, index, total, ext) =>
-    ''
-      .concat(name)
-      .concat((index + 1).toString().padStart(Math.floor(Math.log10(total)) + 1, '0'), '.')
-      .concat(ext.replace('jpeg', 'jpg'));
-  function generateZip() {
-    if (cache.downloadFiles === 0) {
-      const filenameRegex = /^(?<name>.*?)(?<index>\d+)\.(?<ext>\w+)$/;
-      const images = $('.MangaPage img');
-      const filenames = (() => {
-        const result = [];
-        for (let i = 0; i < images.length; i += 1) {
-          const img = $(images[i]);
-          const filename = img.attr('src').split(/[?#]/)[0].split('/').pop();
-          const match = filenameRegex.exec(filename);
-          if (!match) break;
-          const { name, index, ext } = match.groups;
-          const fixedFilename = getFilename(name, index, images.length, ext);
-          if (result.length > 0 && fixedFilename <= result[result.length - 1]) break;
-          result.push(fixedFilename);
-        }
-        if (result.length < images.length) return [];
-        return result;
-      })();
-      images.get().forEach((value, index) => {
-        const img = $(value);
-        const src = img.attr('src');
-        const base64 = /^data:(?<mimeType>image\/\w+);base64,+(?<data>.+)/.exec(src);
-        if (base64) {
-          const filename = getFilename(
-            'Page ',
-            index,
-            images.length,
-            getExtension(base64.groups.mimeType),
-          );
-          cache.zip.file(filename, base64.groups.data, {
-            base64: true,
-            createFolders: true,
-          });
-          logScript(''.concat(filename, ' Added to Zip from Base64 Image, From: ').concat(src));
-          cache.downloadFiles += 1;
-        } else {
-          try {
-            GM_xmlhttpRequest({
-              method: 'GET',
-              url: src,
-              overrideMimeType: 'text/plain; charset=x-user-defined',
-              responseType: 'blob',
-              onload(request) {
-                const filename =
-                  filenames[index] ||
-                  getFilename('Page ', index, images.length, getExtension(request.response.type));
-                cache.zip.file(filename, request.response, {
-                  base64: true,
-                  createFolders: true,
-                  compression: 'DEFLATE',
-                });
-                logScript(
-                  ''
-                    .concat(filename, ' Added to Zip as Base64 Image, From: ')
-                    .concat(src, ', Data:'),
-                  request.response,
-                );
-                cache.downloadFiles += 1;
-              },
-            });
-          } catch (e) {
-            logScript(e);
-          }
-        }
-      });
-    }
-    const total = parseInt($('#Counters').find('b').text(), 10);
-    if (cache.downloadFiles < total) {
-      logScript('Waiting for Files to Download '.concat(cache.downloadFiles, ' of ').concat(total));
-      setTimeout(generateZip, 2000);
-    } else {
-      const blobLink = document.getElementById('blob');
-      try {
-        blobLink.download = ''.concat($('#series i').first().text().trim(), '.zip');
-        cache.zip
-          .generateAsync({
-            type: 'blob',
-          })
-          .then((content) => {
-            blobLink.href = W.URL.createObjectURL(content);
-            logScript('Download Ready');
-            $('#blob')[0].click();
-          });
-      } catch (e) {
-        logScript(e);
-        blobLink.innerHTML += ' (not supported on this browser)';
-      }
-    }
-  }
-
-  const settings = {
-    Theme: getValueGM('MangaTheme', 'Light'),
-    CustomTheme: getValueGM('MangaCustomTheme', '#3d0099'),
-    CustomThemeBody: getValueGM('MangaCustomThemeBody', '#000000'),
-    CustomThemeText: getValueGM('MangaCustomThemeText', '#ffffff'),
-    CustomThemeLines: getValueGM('MangaCustomThemeLines', '#666666'),
-    CustomThemePanel: getValueGM('MangaCustomThemePanel', '#333333'),
-    CustomThemeButton: getValueGM('MangaCustomThemebutton', '#282828'),
-    FitWidthIfOversized: getValueGM('MangaFitWidthIfOversized', true),
-    ShowThumbnails: getValueGM('MangaShowThumbnails', true),
-    DownloadZip: getValueGM('MangaDownloadZip', false),
-    Timer: parseInt(getValueGM('MangaTimer', 1000), 10),
-    Zoom: parseInt(getValueGM('MangaZoom', 100), 10),
-    zoomStep: parseInt(getValueGM('MangaZoomStep', 25), 10),
-    loadMode: getValueGM('MangaLoadMode', 'normal'),
-    viewMode: getValueGM('MangaViewMode', ''),
-    bookmarks: JSON.parse(getValueGM('MangaBookmarks', '[]')),
-    lazyLoadImages: getValueGM('MangaLazyLoadImages', false),
-    lazyStart: parseInt(getValueGM('MangaLazyStart', 50), 10),
-    hidePageControls: getValueGM('MangaHidePageControls', false),
-  };
-  if (isMobile) {
-    settings.lazyLoadImages = true;
-    settings.lazyStart = parseInt(getValueGM('MangaLazyStart', 5), 10);
-    settings.FitWidthIfOversized = true;
-    settings.ShowThumbnails = false;
-    settings.viewMode = '';
-  }
-  const bookmarkTimeLimit = 1000 * 60 * 60 * 24 * 30 * 12;
-  settings.bookmarks = settings.bookmarks.filter((el) => Date.now() - el.date < bookmarkTimeLimit);
-  setValueGM('MangaBookmarks', JSON.stringify(settings.bookmarks));
-  const icon = {
-    enlarge:
-      'data:image/png;base64,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',
-    reduce:
-      'data:image/png;base64,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%3D%3D',
-    restore:
-      'data:image/png;base64,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%3D',
-    fitWidth:
-      'data:image/png;base64,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',
-    fitHeight:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEV0lEQVR42sWWXWgcVRTHz8zsZj8jWkGw4oNWgghNH6wPLYpJ1hYfFKko+GbriqEiQq0+9MO2vohCqoIvfRAlgi/6oqKI1CbRWm01rUyirUuaZJPdlSSQTfdjZna+djxnNhNnd+98VFEvXObeGeb+f/d/z733cPA/F87dSafTqVgstgnrvyKmaRqYplleW1uTmABYtjZUdUpTVfzCtT52Phlt1kDub06JCALE4/F+hJj2AuivVqtiXZLwX45ZW+O22jMrAH23tEN2Dey8sywgZ1Op1DYEmPIGqNVESZJtAZ5fF3Zm7YJYqnLw1jcWjDzBt4l3CbtKT08PpJJJf4BavS7Ksuw7c+p99BPASQT45ajAXCLW4NFoFJJBAHUCUJRu+90uYFMsAbx/zoLXHhVgU9ojPhgAiUQiAECSRMUDwHbC1X/njAUHHuLZgdrRtygIIxFIxOP+ABIBNBqhAE6dtWD/g8LGIJw7CBkxILR2QQCALIsNH4ANCOyPnrdg707hLzgfcQcAd4I/gEwAeA74ATgQH09a8NR9fJuolzgVnudDACiKqIYAoPr5lAWPbeO7hL0gCAC3oj+AQgB4ZAaJUz19xYLd9/CBwtcH0GiIGssBxrlwbg7g/i1cl7AXCL0PBMAAtB3gfcQnJiY2fpifn4dsNhvKgdAAmq63jmIPgPHxcRgcHLTbY2NjkMlkQjuAh1EAgKqKOsUArhcLggoBDAwM2GtK7aGhIU/hzneBACoBrDvgVBJyBqNKtufzeSisWXD7TVxoB8IDGIan/W6RsVwTMncLoYSvC8BAAFsQZ867hDufX06b8Eh/hCnebDYxBbDsNj2dwysedBDhDrABeI/Zu5+fTBrw5PZImzgJU6UxUGgDhJaREyJw4w29/gDaOoDjQNsd0AHw4Y86PL2zp02c4odyP7pPFKVhty2rCQLehOVqfXXH9nt3mKYxEwjAr+8CzmcJTn2rw/6BnjZxusorlSpg4gm1Wg3oXomieCyRkLPP7NtbLBQ+xZxD9wUg64Lsp/L2aQ1e2h2zLSZoyqTK5TIsFgo2QCqZgs2bb8VbkDeHh4efv3z5ygerq6u6W/BvA+gmwMjXKrzycBx4MG3Lr12rQOmPEhQQ4PE9exBKp7Z18OWDRy5OXhopFot6h54/QOf+d0O8950G757R4PtDaUhEDMBEBpaWlmFhcRFMdGPXrowNcvzE8TcunL9w7OrV2S5xXwAnBrwAzs6Y8PoXKnx1IGkHGqbzKFiE/MICbLnzDujtTVso/ubkzxeP5XI5pjgbQNdFsyMIWetv4BKM/qBD9oEoUP5A9i+g+NLyMvT13WUePnzo6K/Tv52cnZ31FP9HAPQ0mphmcZYNUKlUbPslpaGcePXIi3Nz86OlUslXnAWwlQ4J2lJeGU7niUc7QNUNqNUlmP49V37h2X3PraysfIa7wQgS7wLAWd+M4reF+ZE5GMfJiWQyL0tSKHGWA/95+RN8q4s/S0hajQAAAABJRU5ErkJggg==',
-    reload:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC70lEQVR4XrXQa0xTdxgG8Pd/es6x2JbL2iINtCQdAkvAuOAwBMKMfiBZJGWMYQIx68plwwEbUfACeIlGyJbQVYMxsjGGZkHDIFZHIBurboOQESgLldaISMu6cmprSi/0cnp6TL8IiSb9tN+H5+OTJw/8r/rHVgCgAr7qmZKoLown7y3rgiMnf4aY2q/roeP6Aio/9RtZc/F33kedMw0lx3WnDzcP88pbhmE7DLb5dcYKc4+cmG2DfXva5D5qecFe0JuD3Wa7T+XYxOp8RNIhQZIfK+8Yeb1gdMEFhDgR1xoDBxxhUuOkUY+XxVq9GPnFBmLzvDhK93B31lu58sxnkAOl6gmIwqNx1eCDD3P2waUHf+Q7gsEOGoWkDArq6YjfhyfFZ0X4vEyaA5gHMfsZv/f9t+z9T6hwLvNqgWnZAicmx/mrNluR3W7+208ZVLRtXpnEed6YmCn6E0Q7vGGOf3bTtXbNaTZO25aMEceKCV4p674Dn3yvEyi6bhfkHW0XjrIsFKon4NPhxYT83qmz0vPa07tqr7ybuL8qLq1uEF4jEUuh9KQaiqubUXF1E6hnLaCZ+5dT1TsWv+ezb8QJB1VkG8tCTDcWKfjBQOHKSUpeol1TFfb99fGe1qtEkfoefD4wB19PPI1v/k4nrzg3QNRotFsnqkaWgAcvsIePPRlOGi9x0JjCFwplRdxhdXZKKpEpyyVJMk5KebwKT4ixUVbTEAMZsHWi1Q5GysE1WV21z9b8lxxr3kN+q18IG/wD/3l3n11YYTSrtsCPLqe7aNNpX/yyryvkWP4HolA0pGf6gSWmMCxYUYloUTfQWDoKM4AAsRiLIlwcC6UIgrNCZLnsNmoncZ4ofP+mZqsgStY0CCzji8ciu08hmtfIBNZXI3TQirGEm2AC8wJ2/Zc485AxCHxGP6+DN5LV3gJZ3VB2uuruT2mV3yoTi6tTxIX1wuR3PiDeazMACTFIlC2QWnOOk1rVWSApOyaXKBoglpfB+En628ogAgAAAABJRU5ErkJggg%3D%3D',
-    zoomIn:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACoUlEQVQ4jZXQu2tTYRjH8e9535OTmDQxaZuYU6NNi9a7CaiQSczmWBGKm0WHLkL9DxTETSkF0YqD1kEUvCJI6yBxUiTVqPUKLa1JJfZiehLTkzQ3h1htQBB/08sLz+e5KKzKmXMXgk1O16lyuRJ0N7cemJv9lpifn0/ksrnhK4NnY/wlcuUxcPn6gKPJeVNv2xhuD24OtrT4aXK1+NfYHeHFbLa3o2uXe/zls9G/AucvXRtwujwnd+/ey7auLvR1PrwtHvR1Xta3BViqOjCM75HOLduD7149f9AAXBy+Ha5Uqtf27Y3Q2R7AqqlIqSAVBVUKbFYNn7eV5HdBcWku3NG14+mHxIupFUDMpJL9fn0D7YH1lCoK+QKUynD07CRCAaFAs8vKntBOmv2bsdrs/asnEJUq4TZdR5UKDiustYMUUDRzmMtQAwTgb3bh14NYNK17NaDmzULYscaGFPXCI6cnKZo5CmaOQ/0jFMwsDy/1oKoKrR4XFovWcEQ19yM/ZWSNoCo3IBW4faYTgP3HRnhy5SDVGmTy9VVUKbBqlgZAmEtLicmpaaSoISWovyYpmFmEAEX582eaBppFJhqAUml5MP7qNV/Ts6gSpKx3G7vVg1CgWoVSBbI/8mTmviAUBhuAu8MXYkZm4f6Ne4+YXcjULy9AAWo1MJdhYdHg8cgdPr2Nk/oYb5hAAmzaFho1DGPr64+TW/PFMlbNSiZXYN4wmfgyw/j4Sz6/f4PHViWdTh+JRqOj8Xg8DfVGv9Nz/GSv2+3pd3s84SanE01KqrVKorxcHNzZ4SOdTl+NxWIUi8VFXdejQ0NDiQbgX+nr6+sNhUK/EbvdHpX/LvuTsbGxRCAQmI5EIt2pVMqWTCYP/xewgvh8vmmv19s9MTFx4ifGBwN4Ure0EAAAAABJRU5ErkJggg%3D%3D',
-    zoomOut:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAClElEQVQ4jZWQTUsbURiFz9w7mYmOSfNhYkZjjVJTba0J1EKW8R8IBXEpdOGmoP+gBemuRQJSCV1Uuyhd2C8KhXSVrlqK0bGkrS4MamJNNRonMZmJSSZdxFgHBOmBy3u5cJ733MPgnKYfz3paTOYHlUrVY7G1Bvf3/kiZTEbK5/ILz0KPorhAtHGZCb+YEVpMr8T2q/4uT6/HbnehxWx3NTUJ/qNcbrzbe8sSX/4SuRDwZG5+xmS2Tg0ODqHf64XY5oTDboXY5kBHuxtFTYAsHwZ6rt/w/Fj5+l4HeLqw6K9Wtfk7QwH0dLnBcywoZUAZBiwlMPIcnI5WJA8JSsV9f7f35udf0rfNBoDspJKTLrETXe4OlKsMCipQrgAMA5DTYzPzuO0bgM3VC97YPHk+Aalq8LeLIljKQOCBK80AJUChBCgnQA0AAeCymeESPTBw3Mh5AFtQVL/QZAQldePYwwRKSh6qkkdJOYaq5PBhbhQsy6DVaobBwOlKZPPHhU05J3tY2gnKAIvTPQAArQZoWn1mC/WvsJSA5ww6AFGKRSmxuQVKaqAUYE+TUAYgpN5F401RZHAGKukA5fJJaGllFb/Te2ApQOlpeaQ+NQ0oV4HccQHZ/W0QBiEd4M3CbFTOHrx7+fYj9g6yZ2YGQK1WL/LgSManyGusx5eQWlvSJaAAcK3fF5FluW91LdFXKFXAczyyeRUZWUFiewfx+DLWf36Hjdewu7s7FgwGI7FYLA3UF51p9N7UuMVinbRYrX6TyQQDpdBqValyUgoNdDuRTqefR6NRqKp6JIricDgclnSAyzQxMTHu8/nOIIIgDNPLbf8Ui8Ukt9u9FQgERlKplDGZTN79L0AD4nQ6txwOx8jGxsb9vyYg/nmG24G2AAAAAElFTkSuQmCC',
-    zoomRestore:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACsUlEQVR4Xp2SW0iTYRjH/5/fYdtnTc0jrhPW0Dwt7HC3mZBeKF1pbVoO26V3RkK3URcqiLBADRxEXZR2o9LuDAaKeSHOw1ZuRdBhTs3cNL9tbt/29m6gqASBP/jB8168fx6e50FHR0eb1Wp9PjAwMJS0v79/aHBw0NbV1fWiurr6Av5Hc3PzbXKAQCBAnE4nsdvtpLe3N2Qyme7W19fnVVVV8fgXra2t9wglFouR5eVl4nA4SDAYJHvE4/HE1OSkq6WlxczzfAaOkMayrAKUiYn3cLncMBgM8K1vYnbxIz55v2B6doEprdSV9XR399TV1d0CIBwKoChBYdk01NbehNv7FcHtPziVnQ3CKxCJxjDhmMYJdVa+xdL2QBTFs4cCqFw4HIbX+xlqtRo//GvIzc9HFDx2EgK2IMLj/42ZuXkY9IZiGlB8NECIRqNITxeRhBMU8EsEHzeicK2F8TPEYEVi8GP1F3Jy80SO43IAMHsBXLImhCCwGQAt8G1lHf7vEviTWal3PCFDIXA4f7oQ66v+CB327qEOGAYQBAEZGWr4fD6Ua89BlgKAHIHA0/DwDs5nqXCl4hLG39lXJGnHA4DsdwBCwPMcWI7H6OgYzGYz0pUiphY+YXMjhJIzBbhxVY/ZmQ/o6+uTI5HdNBzEct/SGYmEydLiIrHZbOSZ1ZqqSVwmSf5sBcn42Bi5dv06KSoqInTtSwAq9odIQCDLMra2t6DRFILlWLwZHsaDh53JM8fjJ0/hnJ+HrrICoVAoodfrywG8pl7e2wKbHIRWq4VOp0NDQwNMRiOampqojTAa76Rsb2+HJElzHo8HNTU1ZSqV6hWAEoZenkmrvfhIqVTy2IMACUJSBcMwKelneWTk7UvaRalGo7FkZmbC7XY34hiUUa1UG7Ucx0BBzaMWUMW/uh49keTZSXYAAAAASUVORK5CYII%3D',
-    zoomWidth:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACyUlEQVR4XqWSX0hTbRjAn/ecdSbbNJdFK/p3tTAvXI4IwrwJ6vtEqK819abIG1GCYRcFs+FNXdS+z82tP1ARpX7VVUVoYgWl07oItH8KUcHUxf7Y5v667exse3rfEUsxr/rBw3k453l/D895XmI2m3dJkqQGilwuj25YX2FGgFpCuApEhGw2G+QITCdT6QZRFJEQAkvhKisrr1RVVY3Q53OFQjGcTqebjxmObjMYDMqmxkal8djR7YhYX6pSuZhwBQ6HYw4RpcHBAan7v3/ziWQK/7Z7kJFIxPGv7jkMR6LodPRgj912x2KxQFdXVzHAbrfPIqW/rw8XQiFsuu7Djvte9M8H0fPNi6f/n8XDlz0YDC1gZ6f5lc1mY2eKIYOf8DyB9l4vfIqoYMaPYPiaBkYuD5AUJWi9HYfdcqG0rKwMlv6HoiBPC6+d2ARtdxOgKefhwpG1wCY+PxgDd0CCWy2bwWoVI5FIlDbjVgrWCAJEowtgN5bDuScZUClKCp2CyTjcbNkA8ej3rChmwjzJQy6HwCA0iiqtVgsvR8Ygk4rBxQYOovFFiC2mwGlUQSIWgkePB5J0zVU8yZUCEuConOeWCHQ6Hej1ehh1jUE4HCl0RzqX1+eD4eGnyPOykuPG+i0YfO+XcXgij2T5CIgI1dXVLIGhoaHiOyZSq9Ugzb/1ZKWdOw7otspdHyZu5Mr1OSq5y1Yxg4i5TCaDLBhut3tZeDwebG0/ZbW21Uw6THvj7+6dwauW5rSz2/qPDCk5Cr2yhXFoChqN5tdV5TjgeR54QhSX+idrLCf3BJ65RsnB/bXKkenJXiZghwrxG4o75whCKAHgmvi8sU6v9Y9PffGVKDUVMtpBTovWwOoUJIIglLD8ozsND1+/0Tg79o0LXH5AFggEHphMJgUASLAKAmVqauoFyxfFPLQdWgc1dYbaOuNZIGyEP+EHsrF5Hxph5xoAAAAASUVORK5CYII%3D',
-    hide: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAbpJREFUeNrUk8FKAlEUhu9oqRQ2JCG0UBgNWijWQkFhiAqaXERLceE21+16A1+gRQshCFy5MGiTCROBguEqzGkVI0kgumihOKQw3f4zOL2Aqw58MHPv+f9zzr0zAuecLRIOtmAsbCAgrIf5KGtgHyggBHzzvC+ggxp4AiNbZxsIMDh1u91niqJs5XI5v6Zpq41Gw0WbsizPIpHIpFQqDWu12vt0Oi1Cd0d1aQQPOE8kEhf1el2uVCrbpmmuBwIB12RiMAIiF63RHuVQLmksrdPpTKPq42AwmBqGwQlVVTlFsXjNZfmAK8oJR1fc3qdc0pB2CS7ZZDLpQ/uu2WxmzVUoFFDZZJeXV9Z7OBxln59vzN6nXNKgUJYMblqt1vpoNNr2IChBkiSmqk2WSh1ZAo/HzZaXpT+DbwQ0H6R1OhyOfrfb/Wk2m2Y8Ht8QRdGLeZmmvbJQaIeJog/VNXZ4uGcZ67rez+fz9ziLW7oVAXPYV5FEA8fpdDqayWSivV5vs91ue6liLBYbB4PBfrlc7lSr1Q4aeMDyM52TbWB/FysgAnaBH3jn62MwBC9AA4b97Qj//19Y2OBXgAEA3HnRUkre/J0AAAAASUVORK5CYII%3D',
-    settings:
-      'data:image/png;base64,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%3D',
-    menu: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABqUlEQVR4XqWTPWtUQRhGz/vO7HWDYNJaWyz5FSJEgoWlYCGInaClCGpI4geC1mJjIWshqGn9CGwQf4TmJo0/wRRK1Jt7H+eOO8VCsIgHHjjD8MDMy4ydfLD57cfvdqFphZjFAB3mBgM3jldhjxOr73RU5lM3Np0A+Fp/BjcMw62PeL7jXBm1AMlDdil5bayeX6TvRkRmvBsJbikD3CPQUIUDXuwGAConuwTBBYCAyJRLyyOCQYxw7ZHx5KZ4tbnDhaURABuTbS4uLSLBm+QFB8ty/bExDHD1ofH0hqAFU0voyHF1ZFcKohDL7Me3xeVUHt8STQvRyFcaOJni6j0YGUEElaPwckVIEAAPUAVjOCBTHCU3oxCLvp7UuDnBI+4BOGAYnY2tGoBjUxeiKi2AuTtv1fNrmi5l+T5qJT2b1PoppfT+Jft+9m319N0yRM7dNSrg7D3jw4oAMHU45Fin7AHww4a4tSbOrBsf10UHWHmyZDC37ALC7AxUPJcBvGwimHUsl6As/usv9N0413z/NL/2/nTTdnSigP3jO5oZg2D0XQNOAQscjb0/9SM6Il0maJIAAAAASUVORK5CYII%3D',
-    webComic:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACvUlEQVR42rWXaW4aQRCFayDs4IDZ7Bi83CGHyPLDMDiRZYRygRwmV4hQkCWbYbO5RDhBZMkLJGGzwezrkOo2xIEwhA7tJz0hesT019XV1YUA09KeSFL3wO+Hq+sbEASBehWNRiPq3Z1tOI3F4J0o6nC4N3k++3YbAtwRgGwuByqVaqXJJ5JlGbwezwRgHYcqSgCuEylaOPCL8P1HHgFWW/0jwAi2XmwggIQAATcOFZUBogggilAoFlcO/0RkC9wuF5xKCBBYEqBUvuUK4HTY2QAq1SqXySeyWa1sALVanSvA2pqFDaDRbHIFMJtMbADtdpsrgMFgYAPodvv4dcRpegF0Os2SAJJUIIWIFA9MX07zC7SojQvRYoBoPF4Q9/c5rXxaUiIBAZ9vIYDzczicNpvNL2Wyep4RQDcajcyHUOgNjpSUANbQ22gHWs05AEN0GX2DrikBPEMb0bo5z1YVCWcX3UIPlADUyVTqU38w+Eiv0f+aQ6AvJUkn+nxTV+88zQKYo7FYHX+48nIH/T7EUyly7BZCzAI48BiWyDG8vLqmybPsPtBoYdT2dncgHIlA6OgIer0eJM7O4P0CCMU6kM3mHjoiBgCybV6vB74cH8PbV6/Ban2OBa0LyfNzRQjlhuRnnh4dFpGju7W5AREECJD7pN4Au32dRiKJkZi3HYqlOF9gb0gIwKbbRSMQPDyELk7cbrVpJEhOpNLpvxJTuSEplZkBaOPhdMDXTAa+XVzQl5OtkYdDCAWDgFUWcHv/0ROOAW4rd7B8BjwCGPQGMBoNc58z3YbV+3umyf+EmCfmjqiOCcRFD7UJLBYzG0Cz1eIDMJbJaGQD6HQ6XAH0ej0bQL/f43kbg0ajZQMYDmXFhGIHEECtVrEBEPEEIFoGwIbeG38+hUgBuoQFhUiLNqE1TwRAWm3yh+N3Kf4FvfygMCu2Xp8AAAAASUVORK5CYII%3D',
-    bookmark:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACfUlEQVQ4T5WTW0iTARiGnzl/TadLnUGpebgRDU2zg2YQmBdBJHYwNUHyhGIFURdaCJnQhUpUF2EoHqE8VZB4E0QlhaampmZZVprzUEpz859u0/3OGFGUaeB3/b4PH+/7fTL+M4dDNyTJgaZeU+1aMtl//LInt1O7sSwQfaZ2J7C8mnZNgL9K2P2m/3EHpimC9ySED2l4tS5AUXZUaU5JbSbGYYqzU8pyaz5mrQegGm0tG/LeFe3G/GfULeUzPsca/QHNSojsYLBzrI+fn4e9naBUubm6OCkULv6+m7bFpJzez+IszI+AtovmurvPh4ZN7+YMyzqNiG5BkomjWmlSlhDpXlRRfj1HEZgMGAAjLImgVYNhDPSfYLYXDG9BFEG0AZmCeZ2Z9OpvxdYQZYEeQlrlzQtFEXEZKvR6MEzBwjSIg6BpA50VYAKjAwjutH+QNGnV47mDk0uVv1twhn038qJvpWYlh9qYjTDT+dNsGAWTGRYdsci9qHph6j1fOXJWL9FqzWNljZ51lyOaE4967kDdAmY9LFpgwR4UPtR3Ob0+WdwZA0z8CvOfO3h61as3KnQmBL0JJDmY7WHRAWxdeDau7DtwpTv0zyb+Amx1JWjgmkuPUjAK4ACuASDZwaQazEuIdq7moLz+sDEtA6tucDxMyLx/TlWK3JavRjfLpdrpmmXkFMZ7nNoi6GyspriSiawHPYayVQHlSRsb0w+5n2h4aXx/sWGq4Mv3pXqr0NddnliYsDk/Ya9DQMUjzb2MO9r41QDKh5nKjqY+qa2qw1AAqFdcnXdquGN+bIgQeaRsNhwQV7bg5GzLdr1EO2BZ40ttnG2J0Ev0A3NWzQ/Exfbo5qJ4cQAAAABJRU5ErkJggg==',
-    pictureRight:
-      'data:image/png;base64,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',
-    pictureDown:
-      'data:image/png;base64,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',
-    pictureLeft:
-      'data:image/png;base64,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',
-    controls:
-      'data:image/png;base64,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',
-  };
-
-  function isNothing(value) {
-    const isEmptyObject = (a) => {
-      if (!Array.isArray(a) && a.length !== 0) {
-        const hasNonempty = Object.keys(a).some((element) => !isNothing(a[element]));
-        return hasNonempty ? false : isEmptyObject(Object.keys(a));
-      }
-      return !a.some((element) => !isNothing(element));
     };
-    return (
-      value == false ||
-      value === 0 ||
-      typeof value === 'undefined' ||
-      value == null ||
-      (typeof value === 'object' && isEmptyObject(value))
-    );
-  }
 
-  function getHtml(url, wait = settings.Timer) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        logScript('Getting page: '.concat(url));
-        $.ajax({
-          type: 'GET',
-          url,
-          dataType: 'html',
-          async: true,
-          success: (html) => {
-            logScript('Got page: '.concat(url));
-            resolve(html);
-          },
-          retryCount: 0,
-          retryLimit: 10,
-          retryWait: 10000,
-          timeout: 1000,
-          created: Date.now(),
-          error() {
-            this.retryCount += 1;
-            if (this.retryCount <= this.retryLimit) {
-              logScript('Retrying Getting page: '.concat(url));
-              setTimeout(() => {
-                $.ajax(this);
-              }, this.retryWait);
-            } else {
-              logScript('Failed Getting page: '.concat(url));
-            }
-          },
-        });
-      }, wait);
-    });
-  }
-  function applyZoom(page, newZoom) {
-    const zoom = newZoom || settings.Zoom;
-    const pages = page || '.PageContent img';
-    $(pages).each((index, value) => {
-      $(value).removeAttr('width').removeAttr('height').removeAttr('style');
-      if (zoom === 1000) {
-        $(value).width($(window).width());
-      } else if (zoom === -1000) {
-        $(value).height(
-          $(window).height() +
-            ($('#Navigation').hasClass('disabled') ? 0 : -34) +
-            ($('#Chapter').hasClass('WebComic') ? 0 : -35),
-        );
-      } else {
-        $(value).width($(value).prop('naturalWidth') * (zoom / 100));
-      }
-    });
-  }
-  function reloadImage(img) {
-    const src = img.attr('src');
-    if (src !== undefined) {
-      img.removeAttr('src');
-      setTimeout(() => {
-        img.attr('src', src);
-      }, 500);
-    }
-  }
-  function onImagesDone() {
-    logScript('Images Loading Complete');
-    if (!settings.lazyLoadImages) {
-      $('.download').attr('href', '#download');
-      logScript('Download Available');
-      if (settings.DownloadZip) {
-        $('#blob').click();
-      }
-    }
-  }
-  function updateProgress() {
-    const total = $('.PageContent img').get().length;
-    const loaded = $('.PageContent img.imgLoaded').get().length;
-    const percentage = Math.floor((loaded / total) * 100);
-    $('title').html('('.concat(percentage, '%) ').concat($('#series i').first().text()));
-    $('#Counters i, #NavigationCounters i').html(loaded);
-    NProgress.configure({
-      showSpinner: false,
-    }).set(loaded / total);
-    logScript('Progress: '.concat(percentage, '%'));
-    if (loaded === total) onImagesDone();
-  }
-  function onImagesProgress(imgLoad, image) {
-    const $item = $(image.img);
-    if (image.isLoaded) {
-      $item.addClass('imgLoaded');
-      $item.removeClass('imgBroken');
-      const thumb = $item.attr('id').replace('PageImg', 'ThumbnailImg');
-      $('#'.concat(thumb))
-        .attr('src', $item.attr('src'))
-        .on('load', () => applyZoom($item));
-    } else {
-      $item.addClass('imgBroken');
-      reloadImage($item);
-      $item.parent().imagesLoaded().progress(onImagesProgress);
-    }
-    updateProgress();
-  }
-  function normalizeUrl(url) {
-    let uri = url.trim();
-    if (uri.startsWith('//')) {
-      uri = 'https:'.concat(uri);
-    }
-    return uri;
-  }
-  function addImg(index, imageSrc) {
-    const src = normalizeUrl(imageSrc);
-    if (!settings.lazyLoadImages || index < settings.lazyStart) {
-      $('#PageImg'.concat(index)).attr('src', src);
-      $('#PageImg'.concat(index)).parent().imagesLoaded().progress(onImagesProgress);
-      logScript('Loaded Image:', index, 'Source:', src);
-    } else {
-      $('#PageImg'.concat(index))
-        .attr('data-src', src)
-        .unveil({
-          offset: 1000,
-        })
-        .on('loaded.unveil', () => {
-          $('#PageImg'.concat(index)).parent().imagesLoaded().progress(onImagesProgress);
-          logScript(
-            'Unveiled Image: ',
-            index,
-            ' Source: ',
-            $('#PageImg'.concat(index)).attr('src'),
-          );
-        });
-    }
-    return index;
-  }
-  function addPage(manga, index, pageUrl) {
-    if (!settings.lazyLoadImages || index < settings.lazyStart) {
-      getHtml(pageUrl).then((response) => {
-        const src = normalizeUrl(
-          $(response)
-            .find(manga.img)
-            .attr(manga.lazyAttr || 'src'),
-        );
-        $('#PageImg'.concat(index)).attr('src', src);
-        $('#PageImg'.concat(index)).parent().imagesLoaded().progress(onImagesProgress);
-        logScript('Loaded Page:', index, 'Source:', src);
-      });
-    } else {
-      $('#PageImg'.concat(index))
-        .attr(
-          'data-src',
-          'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
-        )
-        .unveil({
-          offset: 2000,
-        })
-        .on('loaded.unveil', () => {
-          getHtml(pageUrl).then((response) => {
-            const src = normalizeUrl(
-              $(response)
-                .find(manga.img)
-                .attr(manga.lazyAttr || 'src'),
-            );
-            $('#PageImg'.concat(index)).attr('src', src).width('auto');
-            $('#PageImg'.concat(index)).parent().imagesLoaded().progress(onImagesProgress);
-            logScript(
-              'Unveiled Page: ',
-              index,
-              ' Source: ',
-              $('#PageImg'.concat(index)).attr('src'),
-            );
-          });
-        });
-    }
-    return index;
-  }
-  function delayAdd(src, wait = settings.Timer) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(src);
-      }, wait);
-    });
-  }
-  const loadMangaPages = (begin, manga) =>
-    manga.listPages.map((url, index) =>
-      index >= begin
-        ? delayAdd(url, (manga.timer || settings.Timer) * (index - begin)).then((response) =>
-            addPage(manga, index + 1, response),
-          )
-        : null,
-    );
-  const loadMangaImages = (begin, manga) =>
-    manga.listImages.map((src, index) =>
-      index >= begin
-        ? delayAdd(src, (manga.timer || settings.Timer) * (index - begin)).then((response) =>
-            addImg(index + 1, response),
-          )
-        : null,
-    );
-  function loadManga(manga, begin) {
-    settings.lazyLoadImages = manga.lazy || settings.lazyLoadImages;
-    logScript('Loading Images');
-    logScript('Intervals: '.concat(manga.timer || settings.Timer || 'Default(1000)'));
-    logScript('Lazy: '.concat(settings.lazyLoadImages));
-    if (settings.lazyLoadImages) {
-      logScript('Download may not work with Lazy Loading Images');
-    }
-    if (!isNothing(manga.listImages)) {
-      logScript('Method: Images:', manga.listImages);
-      loadMangaImages(begin - 1, manga);
-    } else if (!isNothing(manga.listPages)) {
-      logScript('Method: Pages:', manga.listPages);
-      loadMangaPages(begin - 1, manga);
-    } else {
-      logScript('Method: Brute Force');
-      manga.bruteForce({
-        begin,
-        addImg,
-        addPage: (index, pageUrl) => addPage(manga, index, pageUrl),
-        loadMangaImages: (m) => loadMangaImages(begin - 1, m),
-        loadMangaPages: (m) => loadMangaPages(begin - 1, m),
-        getHtml,
-        wait: settings.timer,
-      });
-    }
-  }
+    // == UnionMangas =================================================================================
+    var unionmangas = {
+        name: 'UnionMangas',
+        url: /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/,
+        homepage: 'https://unionleitor.top/',
+        language: ['Portuguese'],
+        category: 'manga',
+        run() {
+            const chapter = document.querySelector('#capitulo_trocar option:checked');
+            const images = [...document.querySelectorAll('.img-manga')];
+            return {
+                title: document.querySelector('.titulo-leitura')?.textContent?.trim(),
+                series: document.querySelector('.breadcrumbs a:nth-child(3)')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapter?.previousElementSibling?.getAttribute('value'),
+                next: chapter?.nextElementSibling?.getAttribute('value'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
 
-  const scheme = new ColorScheme().scheme('mono').variation('default');
-  function addTheme(theme) {
-    return "<style type='text/css' name='"
-      .concat(theme[0], "'> .")
-      .concat(theme[0], ' .controlLabel, .')
-      .concat(theme[0], ' .ViewerTitle, .')
-      .concat(theme[0], ', .PageFunctions a.visible, .')
-      .concat(theme[0], ' a, .')
-      .concat(theme[0], ' a:link, .')
-      .concat(theme[0], ' a:visited, .')
-      .concat(theme[0], ' a:active, .')
-      .concat(theme[0], ' a:focus{ text-decoration:none; color: ')
-      .concat(theme[2], ';} .')
-      .concat(
-        theme[0],
-        ' {background-repeat: repeat;background-position: 0 0;background-image: none;background-color: ',
-      )
-      .concat(theme[1], ';background-attachment: scroll;} .')
-      .concat(
-        theme[0],
-        ' #ImageOptions #menu .menuOuterArrow {border-left-width: 10px;border-left-style: solid;border-left-color: ',
-      )
-      .concat(theme[4], ';} .')
-      .concat(
-        theme[0],
-        ' #ImageOptions #menu .menuInnerArrow {border-left-width: 5px;border-left-style: solid;border-left-color: ',
-      )
-      .concat(theme[1], ';} .')
-      .concat(theme[0], ' .PageFunctions { border: 1px solid ')
-      .concat(
-        theme[3],
-        '; border-bottom: medium none; border-left: medium none; border-right: medium none;} /*.',
-      )
-      .concat(theme[0], ' #Chapter { border: 1px solid ')
-      .concat(
-        theme[3],
-        '; border-top: medium none; border-left: medium none; border-right: medium none;}*/ .',
-      )
-      .concat(theme[0], ' .PageFunctions > span, .')
-      .concat(theme[0], ' .Thumbnail span {background: none repeat scroll 0 0 ')
-      .concat(theme[4], ';} .')
-      .concat(theme[0], ' .panel {background: none repeat scroll 0 0 ')
-      .concat(theme[4], '; border: thin solid ')
-      .concat(theme[3], ';} .')
-      .concat(theme[0], ' .PageContent, .')
-      .concat(theme[0], ' .Thumbnail img { outline: 2px solid ')
-      .concat(theme[3], '; background: none repeat scroll 0 0 ')
-      .concat(theme[4], ';} .')
-      .concat(theme[0], ' .ChapterControl a { border: 1px solid ')
-      .concat(theme[3], '; background-color: ')
-      .concat(theme[5], '; </style>');
-  }
-  function addCustomTheme(color) {
-    const bg = scheme.from_hex(color.replace('#', '')).colors();
-    return (
-      addTheme([
-        'Custom_Dark',
-        '#000000',
-        '#'.concat(bg[2]),
-        '#'.concat(bg[3]),
-        '#'.concat(bg[0]),
-        '#'.concat(bg[1]),
-      ]) +
-      addTheme([
-        'Custom_Light',
-        '#eeeeec',
-        '#'.concat(bg[3]),
-        '#'.concat(bg[2]),
-        '#'.concat(bg[0]),
-        '#'.concat(bg[1]),
-      ])
-    );
-  }
-  function addFullCustomTheme(body, text, lines, panel, buttons) {
-    return addTheme(['Full_Custom', body, text, lines, panel, buttons]);
-  }
-  function loadThemes() {
-    const bg = scheme.from_hex(settings.CustomTheme.replace('#', '')).colors();
-    return [
-      ['Dark', '#000000', '#ffffff', '#666666', '#333333', '#282828'],
-      ['Light', '#eeeeec', '#2e3436', '#888a85', '#babdb6', '#c8cec2'],
-      ['Clear', '#ffffff', '#2e3436', '#888a85', '#eeeeec', '#d3d7cf'],
-      ['Dark_Blue', '#000000', '#91a0b0', '#586980', '#3e4b5b', '#222c3b'],
-      ['Tango_Blue', '#000000', '#82a0bf', '#3d669b', '#304c77', '#102747'],
-      ['Lime', '#000000', '#8abd59', '#608d34', '#38531f', '#233413'],
-      ['Plum', '#000000', '#ad7fa8', '#75507b', '#49324d', '#311b37'],
-      ['Light_Plum', '#eeeeec', '#5c3566', '#9b71a2', '#ad7fa8', '#d2b8ce'],
-      ['Earthy', '#000000', '#ffffff', '#693d3d', '#46211a', '#683327'],
-      ['Cool_Blues', '#000000', '#c4dfe6', '#66a5ad', '#07575b', '#003b46'],
-      [
-        'Custom_Dark',
-        '#000000',
-        '#'.concat(bg[2]),
-        '#'.concat(bg[3]),
-        '#'.concat(bg[0]),
-        '#'.concat(bg[1]),
-      ],
-      [
-        'Custom_Light',
-        '#eeeeec',
-        '#'.concat(bg[3]),
-        '#'.concat(bg[2]),
-        '#'.concat(bg[0]),
-        '#'.concat(bg[1]),
-      ],
-      [
-        'Full_Custom',
-        settings.CustomThemeBody,
-        settings.CustomThemeText,
-        settings.CustomThemeLines,
-        settings.CustomThemePanel,
-        settings.CustomThemeButton,
-      ],
+    // == WebToons =====================================================================================
+    var webtoons = {
+        name: 'WebToons',
+        url: /https?:\/\/(www.)?webtoons.com\/.+viewer.+/,
+        homepage: 'https://www.webtoons.com/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('#_imageList img')];
+            return {
+                title: document.querySelector('.subj_info')?.textContent?.trim(),
+                series: document.querySelector('.subj_info a')?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('._prevEpisode')?.getAttribute('href'),
+                next: document.querySelector('._nextEpisode')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('data-src') || img.getAttribute('src')),
+            };
+        },
+    };
+
+    // == WPManga ======================================================================================
+    var wpmanga = {
+        name: ['Manga33'],
+        url: /https?:\/\/(www.)?(manga33).com\/manga\/.+/,
+        homepage: ['https://manga33.com/'],
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('.chapter-content img')];
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.navbar-brand')?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('a.prev')?.getAttribute('href'),
+                next: document.querySelector('a.next')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('src')),
+                before() {
+                    if (window.location.pathname.match(/all.html$/))
+                        return;
+                    if (window.location.pathname.match(/\d+-\d+.html$/))
+                        window.location.pathname = window.location.pathname.replace(/-\d+.html$/, '-all.html');
+                },
+            };
+        },
+    };
+
+    // == ZeroScans ====================================================================================
+    var zeroscans = {
+        name: 'ZeroScans',
+        url: /https?:\/\/(www.)?zeroscans.com\/comics\/.+/,
+        homepage: 'https://zeroscans.com/',
+        language: ['English'],
+        category: 'manga',
+        waitVar: '__ZEROSCANS__',
+        run() {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            // eslint-disable-next-line no-underscore-dangle
+            const images = W.__ZEROSCANS__.data.at(0).current_chapter.high_quality;
+            const chapters = document.querySelectorAll('.v-btn--router');
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.v-breadcrumbs li:nth-child(2) + a')?.getAttribute('href'),
+                pages: images.length,
+                prev: chapters[0]?.getAttribute('href'),
+                next: chapters[1]?.getAttribute('href'),
+                listImages: images,
+            };
+        },
+    };
+
+    /* eslint-disable no-unused-vars,@typescript-eslint/no-unused-vars */
+    const sites = [
+        asurasflamecans,
+        batoto,
+        comicastle,
+        dysnatyscans,
+        inmanga,
+        klmanga,
+        leitor,
+        lhtranslation,
+        mangabuddy,
+        mangadex,
+        mangafox,
+        mangafreak,
+        mangago,
+        mangahosted,
+        mangahub,
+        mangakakalot,
+        mangapark,
+        mangaraw,
+        mangareader,
+        mangasee,
+        mangatigre,
+        mangatown,
+        manhuascan,
+        ninemanga,
+        pandamanga,
+        rawdevart,
+        readcomicsonline,
+        readmangatoday,
+        senmanga,
+        shimadascans,
+        tenmanga,
+        tmofans,
+        tmofans2,
+        unionmangas,
+        webtoons,
+        wpmanga,
+        zeroscans,
+        foolslide,
+        madarawp, // Must be at the end because is a generic check
     ];
-  }
-  const themes = loadThemes();
-  const themesSelector = themes.map((theme) =>
-    "<option value='"
-      .concat(theme[0], "' ")
-      .concat(settings.Theme === theme[0] ? 'selected' : '', '>')
-      .concat(theme[0].replace('_', ' '), '</option>'),
-  );
-  const themesCSS = themes.map(addTheme).join('');
 
-  function scrollToElement(ele) {
-    $(W).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
-  }
-  function setKeyDownEvents() {
-    try {
-      $(document).off('keyup');
-      $(document).off('keydown');
-      $(document).off('keypress');
-      $(document).off('onload');
-      $(W).off('keyup');
-      $(W).off('keydown');
-      $(W).off('keypress');
-      $(W).off('onload');
-      document.onkeydown = null;
-      document.onkeypress = null;
-      W.onkeydown = null;
-      W.onkeypress = null;
-      W.onload = null;
-      document.body.onload = null;
-    } catch (e) {
-      logScript('Keybinds error: '.concat(e));
+    /* eslint-disable camelcase */
+    function logScript(...text) {
+        // eslint-disable-next-line no-console
+        console.log('MangaOnlineViewer: ', ...text);
+        return text;
     }
-    function processKey(e) {
-      const a = e.originalEvent.code;
-      if (
-        !e.originalEvent.ctrlKey &&
-        !e.originalEvent.altKey &&
-        !e.originalEvent.shiftKey &&
-        !e.originalEvent.metaKey &&
-        $.inArray(a, [
-          'KeyW',
-          'Numpad8',
-          'KeyS',
-          'Numpad2',
-          'ArrowRight',
-          'Period',
-          'KeyD',
-          'Numpad6',
-          'ArrowLeft',
-          'Comma',
-          'KeyA',
-          'Numpad4',
-          'Equal',
-          'NumpadAdd',
-          'KeyE',
-          'Minus',
-          'NumpadSubtract',
-          'KeyQ',
-          'Digit9',
-          'NumpadDivide',
-          'KeyR',
-          'Digit0',
-          'NumpadMultiply',
-          'KeyF',
-          'Slash',
-          'Numpad5',
-          'KeyX',
-          'KeyC',
-          'KeyV',
-          'KeyB',
-          'KeyN',
-        ]) !== -1
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        switch (a) {
-          case 'ArrowUp':
-          case 'KeyW':
-          case 'Numpad8':
-            if (settings.Zoom === -1000) {
-              const next = $('.MangaPage')
-                .get()
-                .map((item) => $(item).offset().top - $(window).scrollTop())
-                .findIndex((element) => element > 10);
-              scrollToElement($('.MangaPage').eq(next - 2));
-            } else {
-              window.scrollBy({
-                top: -$(window).height() / 2,
-                behavior: 'smooth',
-              });
-            }
-            break;
-          case 'ArrowDown':
-          case 'KeyS':
-          case 'Numpad2':
-            if (settings.Zoom === -1000) {
-              const next = $('.MangaPage')
-                .get()
-                .map((item) => $(item).offset().top - $(window).scrollTop())
-                .findIndex((element) => element > 10);
-              scrollToElement($('.MangaPage').eq(next));
-            } else {
-              window.scrollBy({
-                top: $(window).height() / 2,
-                behavior: 'smooth',
-              });
-            }
-            break;
-          case 'ArrowRight':
-          case 'Period':
-          case 'KeyD':
-          case 'Numpad6':
-            $('.ChapterControl:first .next')[0].click();
-            break;
-          case 'ArrowLeft':
-          case 'Comma':
-          case 'KeyA':
-          case 'Numpad4':
-            $('.ChapterControl:first .prev')[0].click();
-            break;
-          case 'Equal':
-          case 'NumpadAdd':
-          case 'KeyE':
-            $('#enlarge').click();
-            break;
-          case 'Minus':
-          case 'NumpadSubtract':
-          case 'KeyQ':
-            $('#reduce').click();
-            break;
-          case 'Digit9':
-          case 'NumpadDivide':
-          case 'KeyR':
-            $('#restore').click();
-            break;
-          case 'Digit0':
-          case 'NumpadMultiply':
-          case 'KeyF':
-            $('#fitWidth').click();
-            break;
-          case 'Slash':
-          case 'Numpad5':
-          case 'KeyX':
-            $('#settings').click();
-            break;
-          case 'KeyC':
-            $('#webComic').click();
-            break;
-          case 'KeyV':
-            $('#verticalMode').click();
-            break;
-          case 'KeyN':
-            $('#rtlMode').click();
-            break;
-          case 'KeyB':
-            $('#ltrMode').click();
-            break;
+    // Replacement function for GM_listValues allowing for debugging in console
+    function getListGM() {
+        return typeof GM_listValues !== 'undefined' ? GM_listValues() : [];
+    }
+    // Replacement function for GM_listValues allowing for debugging in console
+    function removeValueGM(name) {
+        return typeof GM_deleteValue !== 'undefined'
+            ? GM_deleteValue(name)
+            : logScript('Removing: ', name);
+    }
+    // Replacement function for GM_info allowing for debugging in console
+    const getInfoGM = typeof GM_info !== 'undefined'
+        ? GM_info
+        : {
+            scriptHandler: 'Console',
+            script: {
+                name: 'Debug',
+                version: 'Testing',
+            },
+        };
+    // Replacement function for GM_getValue allowing for debugging in console
+    function getValueGM(name, defaultValue = null) {
+        if (typeof GM_getValue !== 'undefined') {
+            // logScript('Getting: ', name, ' = ', defaultValue);
+            return GM_getValue(name, defaultValue);
         }
-        return false;
-      }
-      return true;
+        logScript('Fake Getting: ', name, ' = ', defaultValue);
+        return defaultValue;
     }
-    $(document).keydown(processKey);
-  }
-  function controls$1() {
-    $('#enlarge').click(() => {
-      settings.Zoom += settings.zoomStep;
-      $('#Zoom b').html(settings.Zoom);
-      applyZoom();
-    });
-    $('#reduce').click(() => {
-      settings.Zoom -= settings.zoomStep;
-      $('#Zoom b').html(settings.Zoom);
-      applyZoom();
-    });
-    $('#restore').click(() => {
-      settings.Zoom = 100;
-      $('#Zoom b').html(settings.Zoom);
-      applyZoom();
-    });
-    $('#fitWidth').click(() => {
-      settings.Zoom = 1000;
-      $('#Zoom b').html(settings.Zoom);
-      applyZoom();
-    });
-    $('#fitHeight').click(() => {
-      settings.Zoom = -1000;
-      $('#Zoom b').html(settings.Zoom);
-      applyZoom();
-    });
-    $('#zoomStep').change((event) => {
-      const step = $(event.target).val();
-      setValueGM('MangaZoomStep', parseInt(step, 10));
-      logScript('zoomStep: '.concat(getValueGM('MangaZoomStep')));
-    });
-    $('#webComic').click(() => {
-      $('#Chapter').addClass('WebComic').removeClass('FluidLTR').removeClass('FluidRTL');
-      applyZoom();
-    });
-    $('#ltrMode').click(() => {
-      $('#Chapter').removeClass('WebComic').addClass('FluidLTR').removeClass('FluidRTL');
-      applyZoom();
-    });
-    $('#rtlMode').click(() => {
-      $('#Chapter').removeClass('WebComic').removeClass('FluidLTR').addClass('FluidRTL');
-      applyZoom();
-    });
-    $('#verticalMode').click(() => {
-      $('#Chapter').removeClass('WebComic').removeClass('FluidLTR').removeClass('FluidRTL');
-      applyZoom();
-    });
-    $('#fitIfOversized').change((event) => {
-      $('#Chapter').toggleClass('fitWidthIfOversized');
-      if ($(event.target).is(':checked')) {
-        setValueGM('MangaFitWidthIfOversized', true);
-      } else {
-        setValueGM('MangaFitWidthIfOversized', false);
-      }
-      logScript('fitIfOversized: '.concat(getValueGM('MangaFitWidthIfOversized')));
-    });
-    $('#viewMode').change((event) => {
-      const mode = $(event.target).val();
-      $('#Chapter')
-        .removeClass('WebComic')
-        .removeClass('FluidLTR')
-        .removeClass('FluidRTL')
-        .addClass(mode);
-      setValueGM('MangaViewMode', mode);
-      logScript('ViewMode: '.concat(getValueGM('MangaViewMode')));
-      applyZoom();
-    });
-    $('#loadMode').change((event) => {
-      const mode = $(event.target).val();
-      setValueGM('MangaLoadMode', mode);
-      logScript('MangaLoadMode: '.concat(getValueGM('MangaLoadMode')));
-    });
-    $('#showThumbnails').change((event) => {
-      $('#Navigation').toggleClass('disabled');
-      if ($(event.target).is(':checked')) {
-        setValueGM('MangaShowThumbnails', true);
-      } else {
-        setValueGM('MangaShowThumbnails', false);
-      }
-      logScript('MangaShowThumbnails: '.concat(getValueGM('MangaShowThumbnails')));
-      applyZoom();
-    });
-    $('#downloadZip').change((event) => {
-      if ($(event.target).is(':checked')) {
-        setValueGM('MangaDownloadZip', true);
-        Swal.fire({
-          title: 'Attention',
-          text: 'Next time a chapter finish loading you will be prompted to save automatically',
-          timer: 10000,
-          icon: 'info',
-        });
-      } else {
-        setValueGM('MangaDownloadZip', false);
-      }
-      logScript('MangaDownloadZip: '.concat(getValueGM('MangaDownloadZip')));
-    });
-    $('#blob').one('click', generateZip);
-    $('.download').click(() => {
-      logScript('Downloading Chapter');
-      $('#blob')[0].click();
-    });
-    $('#lazyLoadImages').change((event) => {
-      if ($(event.target).is(':checked')) {
-        setValueGM('MangaLazyLoadImages', true);
-        Swal.fire({
-          title: 'Warning',
-          html: 'Lazy load is incompatible with zip download, you will not be able to download with this setting ON.<br/> Suggestion: <span style="color:red;font:bold">Disable Thumbnails</span> to save Bandwidth/Memory.',
-          icon: 'warning',
-        });
-      } else {
-        setValueGM('MangaLazyLoadImages', false);
-      }
-      logScript('MangaLazyLoadImages: '.concat(getValueGM('MangaLazyLoadImages')));
-    });
-    $('#lazyStart').change((event) => {
-      const start = $(event.target).val();
-      setValueGM('MangaLazyStart', start);
-      logScript('lazyStart: '.concat(getValueGM('MangaLazyStart')));
-    });
-    $('#PagesPerSecond').change((event) => {
-      setValueGM('MangaTimer', parseInt($(event.target).val(), 10));
-      logScript('MangaTimer: '.concat(getValueGM('MangaTimer')));
-    });
-    $('#DefaultZoom').change((event) => {
-      settings.Zoom = parseInt($(event.target).val(), 10);
-      $('#Zoom b').html(settings.Zoom);
-      setValueGM('MangaZoom', parseInt(settings.Zoom, 10));
-      logScript('MangaZoom: '.concat(getValueGM('MangaZoom')));
-      applyZoom();
-    });
-    $('#pageControls').click(() => {
-      $('#MangaOnlineViewer').toggleClass('hideControls');
-    });
-    $('#hidePageControls').change((event) => {
-      $('#MangaOnlineViewer').toggleClass('hideControls');
-      if ($(event.target).is(':checked')) {
-        setValueGM('MangaHidePageControls', true);
-      } else {
-        setValueGM('MangaHidePageControls', false);
-      }
-      logScript('MangaHidePageControls: '.concat(getValueGM('MangaHidePageControls')));
-    });
-    $('#ThemeSelector').change((event) => {
-      const target = $(event.target);
-      $('#MangaOnlineViewer , body').removeClass().addClass(target.val());
-      logScript('MangaTheme', target.val());
-      setValueGM('MangaTheme', target.val());
-      if (target.val() === 'Custom_Dark' || target.val() === 'Custom_Light') {
-        $('.CustomTheme').show();
-      } else {
-        $('.CustomTheme').hide();
-      }
-      if (target.val() === 'Full_Custom') {
-        $('.FullCustom').show();
-      } else {
-        $('.FullCustom').hide();
-      }
-    });
-    $('INPUT.colorpicker').minicolors();
-    $('#CustomThemeHue').change((event) => {
-      const target = $(event.target).val();
-      logScript('CustomTheme: '.concat(target));
-      $('style[title="Custom_Light"], style[title="Custom_Dark"]').remove();
-      $('head').append(addCustomTheme(target));
-      setValueGM('MangaCustomTheme', target);
-      logScript('MangaCustomTheme: '.concat(getValueGM('MangaCustomTheme')));
-    });
-    $('.FullCustom').change(() => {
-      logScript(
-        'FullCustomTheme: ',
-        $('#CustomThemeHueBody').val(),
-        $('#CustomThemeHueText').val(),
-        $('#CustomThemeHueLines').val(),
-        $('#CustomThemeHuePanel').val(),
-        $('#CustomThemeHueButton').val(),
-      );
-      $('style[title="Full_Custom"]').remove();
-      $('head').append(
-        addFullCustomTheme(
-          $('#CustomThemeHueBody').val(),
-          $('#CustomThemeHueText').val(),
-          $('#CustomThemeHueLines').val(),
-          $('#CustomThemeHuePanel').val(),
-          $('#CustomThemeHueButton').val(),
-        ),
-      );
-      setValueGM('MangaCustomThemeBody', $('#CustomThemeHueBody').val());
-      setValueGM('MangaCustomThemeText', $('#CustomThemeHueText').val());
-      setValueGM('MangaCustomThemeLines', $('#CustomThemeHueLines').val());
-      setValueGM('MangaCustomThemePanel', $('#CustomThemeHuePanel').val());
-      setValueGM('MangaCustomThemebutton', $('#CustomThemeHueButton').val());
-    });
-    $('#gotoPage').bind('change', (event) => {
-      applyZoom();
-      scrollToElement($('#Page'.concat($(event.target).val())));
-    });
-    $('.Thumbnail').bind('click', (event) => {
-      applyZoom();
-      scrollToElement($('#Page'.concat($(event.currentTarget).find('span').html())));
-    });
-    $('#settings').click(() => {
-      $('#ViewerControls').slideToggle();
-      $('#ViewerShortcuts').slideToggle();
-      $('#ImageOptions').toggleClass('settingsOpen');
-      $('#Navigation').toggleClass('visible');
-    });
-    $('.Bookmark').click((event) => {
-      const num = parseInt(
-        $(event.target).parents('.MangaPage').find('.PageFunctions span').text(),
-        10,
-      );
-      const mark = {
-        url: W.location.href,
-        page: num,
-        date: Date.now(),
-      };
-      const found = settings.bookmarks.filter((el) => el.url === mark.url).length > 0;
-      settings.bookmarks = settings.bookmarks.filter((el) => el.url !== mark.url);
-      if (found) {
-        Swal.fire({
-          title: 'Bookmark Removed',
-          timer: 10000,
-          icon: 'error',
-        });
-      } else {
-        settings.bookmarks.push(mark);
-        Swal.fire({
-          title: 'Saved Bookmark',
-          html: 'Next time you open this chapter it will resume from:<h4>Page '.concat(
-            num,
-            '</h4>(Only <i>ONCE</i> per Bookmark, will be removed after a year unused)',
-          ),
-          icon: 'success',
-        });
-      }
-      setValueGM('MangaBookmarks', JSON.stringify(settings.bookmarks));
-      logScript('MangaBookmarks: '.concat(getValueGM('MangaBookmarks')));
-    });
-    $('.Reload').click((event) => {
-      reloadImage($(event.target).parents('.MangaPage').find('.PageContent img'));
-    });
-    $('.ZoomIn').click((event) => {
-      const img = $(event.target).parents('.MangaPage').find('.PageContent img');
-      const ratio = (img.width() / img.prop('naturalWidth')) * (100 + settings.zoomStep);
-      applyZoom(img, ratio);
-    });
-    $('.ZoomOut').click((event) => {
-      const img = $(event.target).parents('.MangaPage').find('.PageContent img');
-      const ratio = (img.width() / img.prop('naturalWidth')) * (100 - settings.zoomStep);
-      applyZoom(img, ratio);
-    });
-    $('.ZoomRestore').click(() => {
-      $('.PageContent img').removeAttr('width');
-    });
-    $('.ZoomWidth').click((event) => {
-      const img = $(event.target).parents('.MangaPage').find('.PageContent img');
-      applyZoom(img, 1000);
-    });
-    $('.ZoomHeight').click((event) => {
-      const img = $(event.target).parents('.MangaPage').find('.PageContent img');
-      applyZoom(img, -1000);
-    });
-    $('.Hide').click((event) => {
-      const img = $(event.target).parents('.MangaPage').find('.PageContent');
-      img.slideToggle('slow');
-    });
-  }
-
-  var htmlKeybinds =
-    '<div id="ViewerShortcuts" class="panel" style="display:none"> <kbd class="dark">Numpad 5</kbd>/<kbd class="dark">/</kbd>: Open Settings<br> <kbd class="dark">Numpad +</kbd>/<kbd class="dark">=</kbd>: Global Zoom in pages (enlarge)<br> <kbd class="dark">Numpad -</kbd>/<kbd class="dark">-</kbd>: Global Zoom out pages (reduce)<br> <kbd class="dark">Numpad /</kbd>/<kbd class="dark">9</kbd>: Global Restore pages to original<br> <kbd class="dark">Numpad *</kbd>/<kbd class="dark">0</kbd>: Global Fit window width<br> <kbd class="dark">V</kbd>: Vertical Mode<br> <kbd class="dark">C</kbd>: WebComic Mode<br> <kbd class="dark">N</kbd>: Right to Left Mode<br> <kbd class="dark">B</kbd>: Left to Right Mode<br> <kbd class="dark">→</kbd>/<kbd class="dark">D</kbd>/<kbd class="dark">Numpad 6</kbd>/<kbd class="dark">.</kbd> : Next Chapter<br> <kbd class="dark">←</kbd>/<kbd class="dark">A</kbd>/<kbd class="dark">Numpad 4</kbd>/<kbd class="dark">,</kbd> : Previous Chapter<br> <kbd class="dark">↑</kbd>/<kbd class="dark">W</kbd>/<kbd class="dark">Numpad 8</kbd>: Scroll Up<br> <kbd class="dark">↓</kbd>/<kbd class="dark">S</kbd>/<kbd class="dark">Numpad 2</kbd>: Scroll Down<br> </div> ';
-
-  var cssStyles =
-    "html { font-size: 100%; } body { margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #333; background-color: #fff; padding: 0; } a { color: #08c; text-decoration: none; } img { height: auto; max-width: 100%; vertical-align: middle; border: 0 none; } #nprogress .bar { background: #29d; position: fixed; z-index: 1031; top: 0; left: 0; width: 100%; height: 4px; } #MangaOnlineViewer { width: 100%; height: 100%; padding-bottom: 100px; min-height: 1080px; } #MangaOnlineViewer #Chapter { text-align: center; margin: 25px auto 0; display: block; } #MangaOnlineViewer #Chapter.WebComic .PageFunctions { position: relative; margin-bottom: -23px; } #MangaOnlineViewer #Chapter.WebComic .PageContent { margin-bottom: 0; line-height: 0; } #MangaOnlineViewer #Chapter.FluidLTR .MangaPage { width: auto; } #MangaOnlineViewer #Chapter.FluidRTL .MangaPage { width: auto; } #MangaOnlineViewer #Chapter.FluidLTR { direction: ltr; } #MangaOnlineViewer #Chapter.FluidRTL { direction: rtl; } #MangaOnlineViewer #ViewerControls { padding: 8px; position: fixed; top: 0; left: 405px; width: auto; display: none; } #MangaOnlineViewer #ViewerShortcuts { padding: 8px; position: fixed; top: 65px; left: 0; } #MangaOnlineViewer #ViewerControls .controlLabel { display: list-item; list-style: none; } #MangaOnlineViewer select { height: 20px; padding: 0; margin-bottom: 5px; } #MangaOnlineViewer .controlButton { cursor: pointer; border: 0 none; } #MangaOnlineViewer #ImageOptions { left: 0; position: absolute; top: 0; width: 405px; } #MangaOnlineViewer #ImageOptions .panel { padding: 5px; position: inherit; } #MangaOnlineViewer #ImageOptions:hover { position: fixed; } #MangaOnlineViewer #ImageOptions.settingsOpen { position: fixed; } #MangaOnlineViewer #ImageOptions #menu { position: fixed; height: 64px; width: 200px; top: 0; } #MangaOnlineViewer #ImageOptions #Zoom { position: absolute; left: 18px; bottom: -65px; } #MangaOnlineViewer .MangaPage { width: 100%; display: inline-block; text-align: center; transform: translate3d(0, 0, 0); backface-visibility: hidden; perspective: 1000px; } #MangaOnlineViewer .PageContent { margin: 0 0 15px; text-align: center; display: inline-block; } #MangaOnlineViewer .PageContent img[src=''], #MangaOnlineViewer .PageContent img:not([src]) { width: 500px; height: 750px; display: inline-block; } #MangaOnlineViewer #gotoPage { width: 35px; } #MangaOnlineViewer #ThemeSelector { width: 110px; } #MangaOnlineViewer .ChapterControl { margin-right: 120px; margin-top: 1px; float: right; } #MangaOnlineViewer .ChapterControl a { display: inline-block; width: 80px; height: 25px; text-align: center; margin-left: 3px; margin-bottom: -1px; } #MangaOnlineViewer .ChapterControl a[href='#'], #MangaOnlineViewer .ChapterControl a[href=''] { visibility: hidden; } #MangaOnlineViewer .ViewerTitle { display: block; text-align: center; height: 35px; } #MangaOnlineViewer #Counters { position: absolute; right: 10px; top: 10px; } #MangaOnlineViewer .PageFunctions { font-family: monospace; font-size: 10pt; padding-right: 120px; text-align: right; } #MangaOnlineViewer .PageFunctions > span { min-width: 20px; text-align: center; display: inline-block; padding: 2px 10px; } #MangaOnlineViewer .PageFunctions > a { height: 16px; width: 16px; padding: 10px; } #MangaOnlineViewer .PageFunctions a { opacity: 0.2; } #MangaOnlineViewer .PageFunctions:hover a { opacity: 1; } #MangaOnlineViewer.hideControls .PageFunctions { display: none; visibility: hidden; } #MangaOnlineViewer #NavigationCounters { margin-top: 5px; width: 100%; } #MangaOnlineViewer #Navigation { bottom: -180px; height: 190px; overflow-x: hidden; overflow-y: hidden; padding-bottom: 20px; position: fixed; white-space: nowrap; width: 100%; text-align: center; } #MangaOnlineViewer #Navigation #Thumbnails { overflow-x: auto; overflow-y: hidden; } #MangaOnlineViewer #Navigation:hover { bottom: 0; } #MangaOnlineViewer #Navigation.disabled { display: none; } #MangaOnlineViewer #Navigation.visible { bottom: 0; } #MangaOnlineViewer #Navigation .Thumbnail { display: inline-block; height: 150px; margin: 0 5px; position: relative; } #MangaOnlineViewer #Navigation .Thumbnail span { display: block; opacity: 0.8; position: relative; top: -30px; width: 100%; } #MangaOnlineViewer #Navigation .Thumbnail img { align-content: center; cursor: pointer; display: inline-block; margin-bottom: -10px; margin-top: 10px; max-height: 150px; min-height: 150px; min-width: 80px; max-width: 160px; } #MangaOnlineViewer #Navigation .nav { transform: rotate(-90deg); } #MangaOnlineViewer #ImageOptions .menuOuterArrow { width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 10px solid blue; display: inline-block; position: absolute; bottom: 0; } #MangaOnlineViewer #ImageOptions .menuInnerArrow { width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 5px solid white; left: -10px; position: absolute; top: -5px; display: inline-block; } #MangaOnlineViewer.mobile * { float: none !important; } #MangaOnlineViewer.mobile #Navigation { display: none; } #MangaOnlineViewer.mobile .PageFunctions { padding: 0; } #MangaOnlineViewer.mobile .PageFunctions a:not(.Bookmark) { display: none; } #MangaOnlineViewer.mobile .PageFunctions a.Bookmark { opacity: 1; } #MangaOnlineViewer.mobile .PageFunctions span { right: 0; position: inherit; text-align: center; } #MangaOnlineViewer.mobile .PageContent { margin: 0; width: 100%; } #MangaOnlineViewer.mobile .PageContent img { width: 100% !important; } #MangaOnlineViewer.mobile .fitWidthIfOversized .PageContent img { max-width: 100%; } #MangaOnlineViewer.mobile #ImageOptions img:not(#settings) { display: none; } #MangaOnlineViewer.mobile #ViewerShortcuts { display: none !important; } #MangaOnlineViewer.mobile #ViewerControls { padding: 8px; position: fixed; top: 0; left: 45px; width: auto; } #MangaOnlineViewer.mobile #ViewerControls span.DefaultZoom, #MangaOnlineViewer.mobile #ViewerControls span.viewMode, #MangaOnlineViewer.mobile #ViewerControls span.fitIfOversized, #MangaOnlineViewer.mobile #ViewerControls span.showThumbnails, #MangaOnlineViewer.mobile #ViewerControls span.lazyLoadImages, #MangaOnlineViewer.mobile #ViewerControls span.downloadZip { display: none; } #MangaOnlineViewer.mobile #ViewerControls { padding: 8px; position: fixed; top: 0; left: 45px; width: auto; } #MangaOnlineViewer.mobile #ImageOptions #menu { display: none; } #MangaOnlineViewer.mobile #ImageOptions #Zoom { display: none; } #MangaOnlineViewer.mobile .ViewerTitle { height: auto; } #MangaOnlineViewer.mobile .ChapterControl { margin: 10px; display: block; text-align: center; } #MangaOnlineViewer.mobile .ChapterControl .download { display: none; } #MangaOnlineViewer.mobile #Counters { position: inherit; text-align: center; margin: 10px; } #MangaOnlineViewer.mobile #Chapter { margin: 5px auto 0; } #MangaOnlineViewer .fitWidthIfOversized .PageContent img { max-width: 100%; } #MangaOnlineViewer .minicolors-theme-default .minicolors-swatch { top: 2px; left: 2px; } ";
-
-  const externalScripts = [
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>',
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js" integrity="sha512-amNoSoOK3jIKx6qlDrv36P4M/h7vc6CHwiBU3XG9/1LW0ZSNe8E3iZL1tPG/VnfCrVrZc2Zv47FIJ7fyDX4DMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>',
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" integrity="sha256-XWzSUJ+FIQ38dqC06/48sNRwU1Qh3/afjmJ080SneA8=" crossorigin="anonymous"></script>',
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.10/sweetalert2.min.js" integrity="sha512-OgIASmUioEN3o3gYIAxYUeW4G5FWdhORLq0p7UhTM6Xrm5XGY4IrSDM3uYTCNh4ik4V8BX0NaX9/Z/VMqigCzg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>',
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/color-scheme/1.0.1/color-scheme.min.js" integrity="sha256-7IUC8vhyoPLh1tuQJnffPB5VO6HpR4VWK4Y1ciOOoBY=" crossorigin="anonymous"></script>',
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/unveil2/2.0.8/jquery.unveil2.min.js" integrity="sha256-B00tEEtJRbA9gas0viRdqVPI81EuZG+kYU978/alKt8=" crossorigin="anonymous"></script>',
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js" integrity="sha512-kfs3Dt9u9YcOiIt4rNcPUzdyNNO9sVGQPiZsub7ywg6lRW5KuK1m145ImrFHe3LMWXHndoKo2YRXWy8rnOcSKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>',
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.6/jquery.minicolors.min.js" integrity="sha512-vBqPkpOdZM0O7YezzE8xaoUdyt4Z2d+gLrY0AMvmNPLdLuNzvreTopyuaM9/FiRzHs1bwWzYDJgH6STcuNXpqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>',
-  ];
-  externalScripts.map((script) => script.match(/src="(.+?)"/)[1]);
-  const externalCSS = [
-    '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />',
-    '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" integrity="sha256-pMhcV6/TBDtqH9E9PWKgS+P32PVguLG8IipkPyqMtfY=" crossorigin="anonymous" />',
-    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gerhobbelt/keyscss@1.1.3-6/keys.css" integrity="sha256-a/1ebfXeoX0xLUcQCJLQsm6APQNBwrm03/XFcvW7xAI=" crossorigin="anonymous">',
-    '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.10/sweetalert2.min.css" integrity="sha512-R9EM3xazxo9xyo8pz3IMTw7SIO1qKnG1Vs3yJnVApYhqDwemdSJJbcd5KROicK87kRiFksOhhtW/s2c4Mdjrwg==" crossorigin="anonymous" referrerpolicy="no-referrer" />',
-    '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.6/jquery.minicolors.min.css" integrity="sha512-BVeRnUOL0G7d4gXmj+0VxpoiQuEibKQtlkclADKvCdNrESs0LA6+H8s1lU455VqWFtHBfF/pKDGw/CMat2hqOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />',
-  ];
-
-  const panel =
-    "<div id='ImageOptions'> <div id='menu'> <span class='menuOuterArrow'><span class='menuInnerArrow'></span></span> </div> <div class='panel'> <img id='enlarge' alt='Enlarge' title='Enlarge' src='"
-      .concat(
-        icon.enlarge,
-        "' class='controlButton' /> <img id='restore' alt='Restore' title='Restore' src='",
-      )
-      .concat(
-        icon.restore,
-        "' class='controlButton' /> <img id='reduce' alt='Reduce' title='Reduce' src='",
-      )
-      .concat(
-        icon.reduce,
-        "' class='controlButton' /> <img id='fitWidth' alt='Fit Width' title='Fit Width' src='",
-      )
-      .concat(
-        icon.fitWidth,
-        "' class='controlButton' /> <img id='fitHeight' alt='Fit Height' title='Fit Height' src='",
-      )
-      .concat(
-        icon.fitHeight,
-        "' class='controlButton' /> <img id='webComic' alt='Web Comic Mode' title='Web Comic Mode' src='",
-      )
-      .concat(
-        icon.webComic,
-        "' class='controlButton' /> <img id='ltrMode' alt='Left to Right Mode' title='Left to Right Mode' src='",
-      )
-      .concat(
-        icon.pictureLeft,
-        "' class='controlButton'/> <img id='verticalMode' alt='Vertical Mode' title='Vertical Mode' src='",
-      )
-      .concat(
-        icon.pictureDown,
-        "' class='controlButton'/> <img id='rtlMode' alt='Right to Left Mode' title='Right to Left Mode' src='",
-      )
-      .concat(
-        icon.pictureRight,
-        "' class='controlButton'/> <img id='pageControls' alt='Toggle Page Controls' title='Toggle Page Controls' src='",
-      )
-      .concat(
-        icon.controls,
-        "' class='controlButton'/> <img id='settings' alt='settings' title='settings' src='",
-      )
-      .concat(
-        icon.settings,
-        "' class='controlButton' /> </div> <div id='Zoom' class='controlLabel'>Zoom: <b>",
-      )
-      .concat(settings.Zoom, '</b> %</div></div>');
-  const controls =
-    "<div id='ViewerControls' class='panel'> <span class='controlLabel ThemeSelector'>Theme: <select id='ThemeSelector'> "
-      .concat(themesSelector, " </select> <span class='CustomTheme' ")
-      .concat(
-        settings.Theme !== 'Custom_Dark' && settings.Theme !== 'Custom_Light'
-          ? 'style="display: none;"'
-          : '',
-        "><br/>-Base:<input id='CustomThemeHue' value='",
-      )
-      .concat(
-        settings.CustomTheme,
-        "' class='colorpicker CustomTheme'></span> <span class='FullCustom' ",
-      )
-      .concat(
-        settings.Theme !== 'Full_Custom' ? 'style="display: none;"' : '',
-        "><br/>-Body:<input id='CustomThemeHueBody' value='",
-      )
-      .concat(
-        settings.CustomThemeBody,
-        "' class='colorpicker FullCustom'></span> <span class='FullCustom' ",
-      )
-      .concat(
-        settings.Theme !== 'Full_Custom' ? 'style="display: none;"' : '',
-        "><br/>-Text:<input id='CustomThemeHueText' value=",
-      )
-      .concat(
-        settings.CustomThemeText,
-        "' class='colorpicker FullCustom'></span> <span class='FullCustom' ",
-      )
-      .concat(
-        settings.Theme !== 'Full_Custom' ? 'style="display: none;"' : '',
-        "><br/>-Lines:<input id='CustomThemeHueLines' value='",
-      )
-      .concat(
-        settings.CustomThemeLines,
-        "' class='colorpicker FullCustom'></span> <span class='FullCustom' ",
-      )
-      .concat(
-        settings.Theme !== 'Full_Custom' ? 'style="display: none;"' : '',
-        "><br/>-Painels:<input id='CustomThemeHuePanel' value='",
-      )
-      .concat(
-        settings.CustomThemePanel,
-        "' class='colorpicker FullCustom'></span> <span class='FullCustom' ",
-      )
-      .concat(
-        settings.Theme !== 'Full_Custom' ? 'style="display: none;"' : '',
-        "><br/>-Buttons:<input id='CustomThemeHueButton' value='",
-      )
-      .concat(
-        settings.CustomThemeButton,
-        "' class='colorpicker FullCustom'></span> </span> <span class='controlLabel loadMode'>Default Load Mode: <select id='loadMode'> <option value='normal' ",
-      )
-      .concat(
-        settings.loadMode === 'normal' ? 'selected' : '',
-        ">Normal(Wait 3 sec)</option> <option value='always' ",
-      )
-      .concat(
-        settings.loadMode === 'always' ? 'selected' : '',
-        ">Always(Immediately)</option> <option value='never' ",
-      )
-      .concat(
-        settings.loadMode === 'never' ? 'selected' : '',
-        ">Never(Manually)</option> </select> </span> <span class='controlLabel PagesPerSecond'>Pages/Second: <select id='PagesPerSecond'> <option value='3000' ",
-      )
-      .concat(
-        settings.Timer === 3000 ? 'selected' : '',
-        ">0.3(Slow)</option> <option value='2000' ",
-      )
-      .concat(settings.Timer === 2000 ? 'selected' : '', ">0.5</option> <option value='1000' ")
-      .concat(
-        settings.Timer === 1000 ? 'selected' : '',
-        ">01(Normal)</option> <option value='500' ",
-      )
-      .concat(settings.Timer === 500 ? 'selected' : '', ">02</option> <option value='250' ")
-      .concat(settings.Timer === 250 ? 'selected' : '', ">04(Fast)</option> <option value='125' ")
-      .concat(settings.Timer === 125 ? 'selected' : '', ">08</option> <option value='100' ")
-      .concat(
-        settings.Timer === 100 ? 'selected' : '',
-        ">10(Extreme)</option> </select> </span> <span class='controlLabel DefaultZoom'>Default Zoom: <select id='DefaultZoom'> <option value='50' ",
-      )
-      .concat(settings.Zoom === 50 ? 'selected' : '', ">50%</option> <option value='75' ")
-      .concat(settings.Zoom === 75 ? 'selected' : '', ">75%</option> <option value='100' ")
-      .concat(settings.Zoom === 100 ? 'selected' : '', ">100%</option> <option value='125' ")
-      .concat(settings.Zoom === 125 ? 'selected' : '', ">125%</option> <option value='150' ")
-      .concat(settings.Zoom === 150 ? 'selected' : '', ">150%</option> <option value='175' ")
-      .concat(settings.Zoom === 175 ? 'selected' : '', ">175%</option> <option value='200' ")
-      .concat(settings.Zoom === 200 ? 'selected' : '', ">200%</option> <option value='1000' ")
-      .concat(
-        settings.Zoom === 1000 ? 'selected' : '',
-        ">Fit Width</option> <option value='-1000' ",
-      )
-      .concat(
-        settings.Zoom === -1000 ? 'selected' : '',
-        ">Fit Height</option> </select> </span> <span class='controlLabel zoomStep'>Zoom Change Step (between 5 and 50): <br/> <input type='range' value='",
-      )
-      .concat(
-        settings.zoomStep,
-        "' name='zoomStep' id='zoomStep' min='5' max='50' step='5' oninput=\"zoomStepVal.value = this.value\"> <output id=\"zoomStepVal\">",
-      )
-      .concat(
-        settings.zoomStep,
-        "</output> </span> <span class='controlLabel viewMode'>Default View Mode: <select id='viewMode'> <option value='' ",
-      )
-      .concat(
-        settings.viewMode === '' ? 'selected' : '',
-        ">Vertical</option> <option value='WebComic' ",
-      )
-      .concat(
-        settings.viewMode === 'WebComic' ? 'selected' : '',
-        ">WebComic</option> <option value='FluidLTR' ",
-      )
-      .concat(
-        settings.viewMode === 'FluidLTR' ? 'selected' : '',
-        ">Left to Right</option> <option value='FluidRTL' ",
-      )
-      .concat(
-        settings.viewMode === 'FluidRTL' ? 'selected' : '',
-        ">Right to Left</option> </select> </span> <span class='controlLabel fitIfOversized'>Fit Width if Oversized: <input type='checkbox' value='true' name='fitIfOversized' id='fitIfOversized' ",
-      )
-      .concat(
-        settings.FitWidthIfOversized ? 'checked' : '',
-        "> </span> <span class='controlLabel showThumbnails'>Show Thumbnails: <input type='checkbox' value='true' name='showThumbnails' id='showThumbnails' ",
-      )
-      .concat(
-        settings.ShowThumbnails ? 'checked' : '',
-        "> </span> <span class='controlLabel lazyLoadImages'>Lazy Load Images: <input type='checkbox' value='true' name='lazyLoadImages' id='lazyLoadImages' ",
-      )
-      .concat(
-        settings.lazyLoadImages ? 'checked' : '',
-        "> </span> <span class='controlLabel lazyStart'>Lazy Start From Page (between 5 and 100):<br/> <input type='range' value='",
-      )
-      .concat(
-        settings.lazyStart,
-        "' name='lazyStart' id='lazyStart' min='5' max='100' step='5' oninput=\"lazyStartVal.value = this.value\"> <output id=\"lazyStartVal\">",
-      )
-      .concat(
-        settings.lazyStart,
-        "</output> </span> <span class='controlLabel downloadZip'>Download Images as Zip Automatically: <input type='checkbox' value='false' name='downloadZip' id='downloadZip' ",
-      )
-      .concat(
-        settings.DownloadZip ? 'checked' : '',
-        "> </span> <span class='controlLabel hidePageControls'>Always Hide Page Controls: <input type='checkbox' value='false' name='hidePageControls' id='hidePageControls' ",
-      )
-      .concat(settings.hidePageControls ? 'checked' : '', '> </span></div>');
-  const chapterControl = (id) => (manga) =>
-    "<div id='"
-      .concat(
-        id,
-        "' class='ChapterControl'> <a href='#' class='download'>Download</a> <a class='prev' id='prev' href='",
-      )
-      .concat(manga.prev || '', "' onclick='W.location=\"")
-      .concat(
-        manga.prev || '',
-        "\";W.location.reload();'>Previous</a> <a class='next' id='next' href='",
-      )
-      .concat(manga.next || '', "' onclick='W.location=\"")
-      .concat(manga.next || '', '";W.location.reload();\'>Next</a></div>');
-  const chapterControlTop = chapterControl('ChapterControlTop');
-  const chapterControlBottom = chapterControl('ChapterControlBottom');
-  const title = (manga) =>
-    "<div class='ViewerTitle'><br/><a id='series' href='"
-      .concat(manga.series, "'><i>")
-      .concat(manga.title, '</i><br/>(Return to Chapter List)</a></div>');
-  const listPages = (times) =>
-    [...Array(times).keys()].map((index) =>
-      "<div id='Page"
-        .concat(
-          index + 1,
-          "' class='MangaPage'> <div class='PageFunctions'> <a class='Bookmark controlButton' title='Bookmark'></a> <a class='ZoomIn controlButton' title='Zoom In'></a> <a class='ZoomRestore controlButton' title='Zoom Restore'></a> <a class='ZoomOut controlButton' title='Zoom Out'></a> <a class='ZoomWidth controlButton' title='Zoom to Width'></a> <a class='ZoomHeight controlButton' title='Zoom to Height'></a> <a class='Hide controlButton' title='Hide'></a> <a class='Reload controlButton' title='Reload'></a> <span>",
-        )
-        .concat(index + 1, "</span> </div> <div class='PageContent'> <img id='PageImg")
-        .concat(index + 1, "' alt='PageImg")
-        .concat(index + 1, "' /> </div></div>"),
-    );
-  const listOptions = (times) =>
-    [...Array(times).keys()].map((index) =>
-      "<option value='".concat(index + 1, "'>").concat(index + 1, '</option>'),
-    );
-  const listThumbnails = (times) =>
-    [...Array(times).keys()].map((index) =>
-      "<div id='Thumbnail"
-        .concat(index + 1, "' class='Thumbnail'><img id='ThumbnailImg")
-        .concat(index + 1, "' alt='ThumbnailImg")
-        .concat(index + 1, "' src=''/><span>")
-        .concat(index + 1, '</span></div>'),
-    );
-  const body = (manga, begin = 0) =>
-    "<div id='MangaOnlineViewer' class='"
-      .concat(settings.Theme, ' ')
-      .concat(isMobile ? 'mobile' : '', ' ')
-      .concat(settings.hidePageControls ? 'hideControls' : '', "'> ")
-      .concat(title(manga), " <div id='Counters' class='controlLabel'> <i>0</i> of <b>")
-      .concat(
-        manga.quant,
-        "</b> Pages Loaded <span class='controlLabel'>Go to Page:</span> <select id='gotoPage'> <option selected>#</option> ",
-      )
-      .concat(listOptions(manga.quant).slice(begin).join(''), ' </select> </div> ')
-      .concat(chapterControlTop(manga), " <div id='Chapter' class='")
-      .concat(settings.FitWidthIfOversized === true ? 'fitWidthIfOversized' : '', ' ')
-      .concat(settings.viewMode, "'> ")
-      .concat(listPages(manga.quant).slice(begin).join(''), ' </div> ')
-      .concat(title(manga), ' ')
-      .concat(chapterControlBottom(manga), ' ')
-      .concat(panel, ' ')
-      .concat(controls, ' ')
-      .concat(htmlKeybinds, " <div id='Navigation' class='panel ")
-      .concat(
-        settings.ShowThumbnails ? '' : 'disabled',
-        "'> <div id='NavigationCounters' class='controlLabel'> <img alt='Thumbnails' title='Thumbnails' src='",
-      )
-      .concat(icon.menu, "' class='nav' /><i>0</i> of <b>")
-      .concat(manga.quant, "</b> Pages Loaded </div> <div id='Thumbnails'> ")
-      .concat(
-        listThumbnails(manga.quant).slice(begin).join(''),
-        " </div> </div> <a href='#' id='blob' style='display: none;'>Download</a></div>",
-      );
-  const readerCSS = "<style type='text/css'>"
-    .concat(cssStyles, "#MangaOnlineViewer .PageFunctions .Bookmark {background: url('")
-    .concat(
-      icon.bookmark,
-      "') no-repeat scroll center center transparent;}#MangaOnlineViewer .PageFunctions .Reload {background: url('",
-    )
-    .concat(
-      icon.reload,
-      "') no-repeat scroll center center transparent;}#MangaOnlineViewer .PageFunctions .Hide {background: url('",
-    )
-    .concat(
-      icon.hide,
-      "') no-repeat scroll center center transparent;}#MangaOnlineViewer .PageFunctions .ZoomIn {background: url('",
-    )
-    .concat(
-      icon.zoomIn,
-      "') no-repeat scroll center center transparent;}#MangaOnlineViewer .PageFunctions .ZoomOut {background: url('",
-    )
-    .concat(
-      icon.zoomOut,
-      "') no-repeat scroll center center transparent;}#MangaOnlineViewer .PageFunctions .ZoomRestore {background: url('",
-    )
-    .concat(
-      icon.zoomRestore,
-      "') no-repeat scroll center center transparent;}#MangaOnlineViewer .PageFunctions .ZoomWidth {background: url('",
-    )
-    .concat(
-      icon.zoomWidth,
-      "') no-repeat scroll center center transparent;}#MangaOnlineViewer .PageFunctions .ZoomHeight {background: url('",
-    )
-    .concat(icon.zoomWidth, "') no-repeat scroll center center transparent;}</style>");
-  function reader(manga, begin = 0) {
-    return '<head> <title>'
-      .concat(manga.title, '</title> <meta charset="UTF-8"> ')
-      .concat(externalScripts.join('\n'), ' ')
-      .concat(externalCSS.join('\n'), ' ')
-      .concat(readerCSS, ' ')
-      .concat(themesCSS, "</head><body class='")
-      .concat(settings.Theme, "'> ")
-      .concat(body(manga, begin > 0 ? begin - 1 : 0), '</body>');
-  }
-
-  function formatPage(manga, begin) {
-    W.stop();
-    if (manga.before !== undefined) {
-      manga.before();
+    // Replacement function for GM_setValue allowing for debugging in console
+    function setValueGM(name, value) {
+        try {
+            GM_setValue(name, value);
+            // logScript('Setting: ', name, ' = ', value as any);
+            return value.toString();
+        }
+        catch (e) {
+            logScript('Fake Setting: ', name, ' = ', value);
+            return String(value);
+        }
     }
-    document.documentElement.innerHTML = reader(manga, begin);
-    logScript('Rebuilding Site');
-    setTimeout(() => {
-      try {
-        controls$1(manga);
-        setKeyDownEvents(manga);
+    // See https://stackoverflow.com/a/2401861/331508 for optional browser sniffing code.
+    function getBrowser() {
+        const ua = navigator.userAgent;
+        let tem;
+        let M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        if (/trident/i.test(M[1])) {
+            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return `IE ${tem[1] || ''}`;
+        }
+        if (M[1] === 'Chrome') {
+            tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+            if (tem !== null) {
+                return tem.slice(1).join(' ').replace('OPR', 'Opera');
+            }
+        }
+        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+        tem = ua.match(/version\/(\d+)/i);
+        if (tem !== null) {
+            M.splice(1, 1, tem[1]);
+        }
+        return M.join(' ');
+    }
+    // See
+    // https://stackoverflow.com/questions/27487828/how-to-detect-if-a-userscript-is-installed-from-the-chrome-store
+    function getEngine() {
+        return getInfoGM.scriptHandler || 'Greasemonkey';
+    }
+    const isMobile = window.matchMedia('screen and (max-width: 768px)').matches;
+
+    /**
+     * Checks if a JavaScript value is empty
+     * @example
+     * isEmpty(null) // true
+     * isEmpty(undefined) // true
+     * isEmpty([]) // true
+     * isEmpty({}) // true
+     * isEmpty("") // true
+     * isEmpty(false) // false
+     * isEmpty(0) // false
+     * isEmpty([{},{"0":false},{"":0},{"0":0}]) // false
+     * isEmpty(42) // false
+     * isEmpty([{"":1},{"0":1}]) // false
+     * @param {any} value - item to test
+     * @returns {boolean} true if empty, otherwise false
+     */
+    function isEmpty(value) {
+        return (value === null || // check for null
+            typeof value === 'undefined' ||
+            value === undefined || // check for undefined
+            (typeof value === 'string' && value === '') || // check for empty string
+            (Array.isArray(value) && value.length === 0) || // check for empty array
+            (typeof value === 'object' && Object.keys(value).length === 0));
+    }
+    /**
+     * Checks if value is nothing. Deep-checks arrays and objects
+     * @example
+     * isNothing(null) // true
+     * isNothing(undefined) // true
+     * isNothing([]) // true
+     * isNothing({}) // true
+     * isNothing("") // true
+     * isNothing(false) // true
+     * isNothing(0) // true
+     * isNothing([{},{"0":false},{"":0},{"0":0}]) // true
+     * isNothing(42) // false
+     * isNothing([{"":1},{"0":1}]) // false
+     * @param {any} value - item to test
+     * @returns {boolean} true if nothing, otherwise false
+     */
+    function isNothing(value) {
+        const isEmptyObject = (a) => {
+            if (!Array.isArray(a)) {
+                // it's an Object, not an Array
+                const hasNonempty = Object.keys(a).some((element) => !isNothing(a[element]));
+                return hasNonempty ? false : isEmptyObject(Object.keys(a));
+            }
+            // check if array is really not empty as JS thinks at least one element should be non-empty
+            return !a.some((element) => !isNothing(element));
+        };
+        return (
+        // eslint-disable-next-line eqeqeq
+        value == false ||
+            value === 0 ||
+            isEmpty(value) ||
+            (typeof value === 'object' && isEmptyObject(value)));
+    }
+
+    const colors = {
+        dark: {
+            name: 'dark',
+            50: '#C1C2C5',
+            100: '#A6A7AB',
+            200: '#909296',
+            300: '#5c5f66',
+            400: '#373A40',
+            500: '#2C2E33',
+            600: '#25262b',
+            700: '#1A1B1E',
+            800: '#141517',
+            900: '#101113',
+        },
+        gray: {
+            name: 'gray',
+            50: '#f8f9fa',
+            100: '#f1f3f5',
+            200: '#e9ecef',
+            300: '#dee2e6',
+            400: '#ced4da',
+            500: '#adb5bd',
+            600: '#868e96',
+            700: '#495057',
+            800: '#343a40',
+            900: '#212529',
+        },
+        red: {
+            name: 'red',
+            50: '#fff5f5',
+            100: '#ffe3e3',
+            200: '#ffc9c9',
+            300: '#ffa8a8',
+            400: '#ff8787',
+            500: '#ff6b6b',
+            600: '#fa5252',
+            700: '#f03e3e',
+            800: '#e03131',
+            900: '#c92a2a',
+        },
+        pink: {
+            name: 'pink',
+            50: '#fff0f6',
+            100: '#ffdeeb',
+            200: '#fcc2d7',
+            300: '#faa2c1',
+            400: '#f783ac',
+            500: '#f06595',
+            600: '#e64980',
+            700: '#d6336c',
+            800: '#c2255c',
+            900: '#a61e4d',
+        },
+        grape: {
+            name: 'grape',
+            50: '#f8f0fc',
+            100: '#f3d9fa',
+            200: '#eebefa',
+            300: '#e599f7',
+            400: '#da77f2',
+            500: '#cc5de8',
+            600: '#be4bdb',
+            700: '#ae3ec9',
+            800: '#9c36b5',
+            900: '#862e9c',
+        },
+        violet: {
+            name: 'violet',
+            50: '#f3f0ff',
+            100: '#e5dbff',
+            200: '#d0bfff',
+            300: '#b197fc',
+            400: '#9775fa',
+            500: '#845ef7',
+            600: '#7950f2',
+            700: '#7048e8',
+            800: '#6741d9',
+            900: '#5f3dc4',
+        },
+        indigo: {
+            name: 'purple',
+            50: '#edf2ff',
+            100: '#dbe4ff',
+            200: '#bac8ff',
+            300: '#91a7ff',
+            400: '#748ffc',
+            500: '#5c7cfa',
+            600: '#4c6ef5',
+            700: '#4263eb',
+            800: '#3b5bdb',
+            900: '#364fc7',
+        },
+        blue: {
+            name: 'blue',
+            50: '#e7f5ff',
+            100: '#d0ebff',
+            200: '#a5d8ff',
+            300: '#74c0fc',
+            400: '#4dabf7',
+            500: '#339af0',
+            600: '#228be6',
+            700: '#1c7ed6',
+            800: '#1971c2',
+            900: '#1864ab',
+        },
+        cyan: {
+            name: 'cyan',
+            50: '#e3fafc',
+            100: '#c5f6fa',
+            200: '#99e9f2',
+            300: '#66d9e8',
+            400: '#3bc9db',
+            500: '#22b8cf',
+            600: '#15aabf',
+            700: '#1098ad',
+            800: '#0c8599',
+            900: '#0b7285',
+        },
+        teal: {
+            name: 'teal',
+            50: '#e6fcf5',
+            100: '#c3fae8',
+            200: '#96f2d7',
+            300: '#63e6be',
+            400: '#38d9a9',
+            500: '#20c997',
+            600: '#12b886',
+            700: '#0ca678',
+            800: '#099268',
+            900: '#087f5b',
+        },
+        green: {
+            name: 'green',
+            50: '#ebfbee',
+            100: '#d3f9d8',
+            200: '#b2f2bb',
+            300: '#8ce99a',
+            400: '#69db7c',
+            500: '#51cf66',
+            600: '#40c057',
+            700: '#37b24d',
+            800: '#2f9e44',
+            900: '#2b8a3e',
+        },
+        lime: {
+            name: 'lime',
+            50: '#f4fce3',
+            100: '#e9fac8',
+            200: '#d8f5a2',
+            300: '#c0eb75',
+            400: '#a9e34b',
+            500: '#94d82d',
+            600: '#82c91e',
+            700: '#74b816',
+            800: '#66a80f',
+            900: '#5c940d',
+        },
+        yellow: {
+            name: 'yellow',
+            50: '#fff9db',
+            100: '#fff3bf',
+            200: '#ffec99',
+            300: '#ffe066',
+            400: '#ffd43b',
+            500: '#fcc419',
+            600: '#fab005',
+            700: '#f59f00',
+            800: '#f08c00',
+            900: '#e67700',
+        },
+        orange: {
+            name: 'orange',
+            50: '#fff4e6',
+            100: '#ffe8cc',
+            200: '#ffd8a8',
+            300: '#ffc078',
+            400: '#ffa94d',
+            500: '#ff922b',
+            600: '#fd7e14',
+            700: '#f76707',
+            800: '#e8590c',
+            900: '#d9480f',
+        },
+        darkblue: {
+            name: 'darkblue',
+            50: '#E8F4F9',
+            100: '#D9DEE9',
+            200: '#B7C2DA',
+            300: '#6482C0',
+            400: '#4267B2',
+            500: '#385898',
+            600: '#314E89',
+            700: '#29487D',
+            800: '#223B67',
+            900: '#1E355B',
+        },
+    };
+    const darkest = 10;
+    const lightest = 95;
+    function setLightness(hsl, lightness) {
+        hsl.l = lightness;
+        return tinycolor(hsl).toHexString();
+    }
+    function getTextColor(hex) {
+        const color = tinycolor(hex);
+        const hsl = color.toHsl();
+        return setLightness(hsl, color.isDark() ? lightest : darkest);
+    }
+
+    function svgToUrl(str) {
+        const cleaned = str
+            .replace(/[\t\n\r]/gim, '') // Strip newlines and tabs
+            .replace(/\s\s+/g, ' ') // Condense multiple spaces
+            .replace(/'/gim, '\\i'); // Normalize quotes
+        const encoded = encodeURIComponent(cleaned)
+            .replace(/\(/g, '%28') // Encode brackets
+            .replace(/\)/g, '%29');
+        return `data:image/svg+xml;charset=UTF-8,${encoded}`;
+    }
+    Object.values(colors).map((i) => i['900']);
+
+    // Icons from https://tabler-icons.io/
+    // Icons for Navigation
+    const IconArrowBigRight = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-big-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" />
+</svg>`;
+    const IconArrowBigLeft = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-big-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M20 15h-8v3.586a1 1 0 0 1 -1.707 .707l-6.586 -6.586a1 1 0 0 1 0 -1.414l6.586 -6.586a1 1 0 0 1 1.707 .707v3.586h8a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1z"></path>
+</svg>`;
+    const IconFileDownload = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+   <path color="gold" d="M12 17v-6"></path>
+   <path color="gold" d="M9.5 14.5l2.5 2.5l2.5 -2.5"></path>
+</svg>`;
+    const IconLoader2 = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2 inverse animate-spin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3a9 9 0 1 0 9 9"></path>
+</svg>`;
+    const IconCategory = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4h6v6h-6z"></path>
+   <path d="M14 4h6v6h-6z"></path>
+   <path d="M4 14h6v6h-6z"></path>
+   <circle cx="17" cy="17" r="3"></circle>
+</svg>`;
+    // Icons for Global Controls
+    const IconX = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <line x1="18" y1="6" x2="6" y2="18"></line>
+   <line x1="6" y1="6" x2="18" y2="18"></line>
+</svg>`;
+    const IconMenu2 = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <line x1="4" y1="6" x2="20" y2="6"></line>
+   <line x1="4" y1="12" x2="20" y2="12"></line>
+   <line x1="4" y1="18" x2="20" y2="18"></line>
+</svg>`;
+    const IconArrowAutofitWidth = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-width" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 12v-6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6"></path>
+   <path color="yellow" d="M10 18h-7"></path>
+   <path color="yellow" d="M21 18h-7"></path>
+   <path color="yellow" d="M6 15l-3 3l3 3"></path>
+   <path color="yellow" d="M18 15l3 3l-3 3"></path>
+</svg>`;
+    const IconArrowAutofitHeight = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-height" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6"></path>
+   <path color="yellow" d="M18 14v7"></path>
+   <path color="yellow" d="M18 3v7"></path>
+   <path color="yellow" d="M15 18l3 3l3 -3"></path>
+   <path color="yellow" d="M15 6l3 -3l3 3"></path>
+</svg>`;
+    const IconZoomInArea = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-zoom-in-area" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path color="lime" d="M15 13v4"></path>
+   <path color="lime" d="M13 15h4"></path>
+   <circle cx="15" cy="15" r="5"></circle>
+   <path d="M22 22l-3 -3"></path>
+   <path d="M6 18h-1a2 2 0 0 1 -2 -2v-1"></path>
+   <path d="M3 11v-1"></path>
+   <path d="M3 6v-1a2 2 0 0 1 2 -2h1"></path>
+   <path d="M10 3h1"></path>
+   <path d="M15 3h1a2 2 0 0 1 2 2v1"></path>
+</svg>`;
+    const IconZoomOutArea = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-zoom-out-area" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path color="red" d="M13 15h4"></path>
+   <circle cx="15" cy="15" r="5"></circle>
+   <path d="M22 22l-3 -3"></path>
+   <path d="M6 18h-1a2 2 0 0 1 -2 -2v-1"></path>
+   <path d="M3 11v-1"></path>
+   <path d="M3 6v-1a2 2 0 0 1 2 -2h1"></path>
+   <path d="M10 3h1"></path>
+   <path d="M15 3h1a2 2 0 0 1 2 2v1"></path>
+</svg>`;
+    const IconZoomPan = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-zoom-pan" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <circle cx="12" cy="12" r="3"></circle>
+   <path d="M17 17l-2.5 -2.5"></path>
+   <path color="#9966FF" d="M10 5l2 -2l2 2"></path>
+   <path color="#9966FF" d="M19 10l2 2l-2 2"></path>
+   <path color="#9966FF" d="M5 10l-2 2l2 2"></path>
+   <path color="#9966FF" d="M10 19l2 2l2 -2"></path>
+</svg>`;
+    const IconArrowAutofitDown = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8"></path>
+   <path color="#28FFBF" d="M18 4v17"></path>
+   <path color="#28FFBF" d="M15 18l3 3l3 -3"></path>
+</svg>`;
+    const IconArrowAutofitLeft = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 12v-6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v8"></path>
+   <path color="#28FFBF" d="M20 18h-17"></path>
+   <path color="#28FFBF" d="M6 15l-3 3l3 3"></path>
+</svg>`;
+    const IconArrowAutofitRight = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M20 12v-6a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v8"></path>
+   <path color="#28FFBF" d="M4 18h17"></path>
+   <path color="#28FFBF" d="M18 15l3 3l-3 3"></path>
+</svg>`;
+    const IconSettings = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
+   <circle cx="12" cy="12" r="3"></circle>
+</svg>`;
+    const IconKeyboard = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-keyboard" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+   <line x1="6" y1="10" x2="6" y2="10"></line>
+   <line x1="10" y1="10" x2="10" y2="10"></line>
+   <line x1="14" y1="10" x2="14" y2="10"></line>
+   <line x1="18" y1="10" x2="18" y2="10"></line>
+   <line x1="6" y1="14" x2="6" y2="14.01"></line>
+   <line x1="18" y1="14" x2="18" y2="14.01"></line>
+   <line x1="10" y1="14" x2="14" y2="14"></line>
+</svg>`;
+    const IconListNumbers = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-numbers" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M11 6h9"></path>
+   <path d="M11 12h9"></path>
+   <path d="M12 18h8"></path>
+   <path color="#E48900" d="M4 16a2 2 0 1 1 4 0c0 .591 -.5 1 -1 1.5l-3 2.5h4"></path>
+   <path color="#E48900" d="M6 10v-6l-2 2"></path>
+</svg>`;
+    const IconBookmarks = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bookmarks" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path color="orange" d="M13 7a2 2 0 0 1 2 2v12l-5 -3l-5 3v-12a2 2 0 0 1 2 -2h6z"></path>
+   <path color="orange" d="M9.265 4a2 2 0 0 1 1.735 -1h6a2 2 0 0 1 2 2v12l-1 -.6"></path>
+</svg>`;
+    const IconExternalLink = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"></path>
+   <line x1="10" y1="14" x2="20" y2="4"></line>
+   <polyline points="15 4 20 4 20 9"></polyline>
+</svg>`;
+    const IconTrash = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <line x1="4" y1="7" x2="20" y2="7"></line>
+   <line x1="10" y1="11" x2="10" y2="17"></line>
+   <line x1="14" y1="11" x2="14" y2="17"></line>
+   <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+   <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+</svg>`;
+    const IconSun = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <circle cx="12" cy="12" r="4"></circle>
+   <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+</svg>`;
+    const IconMoon = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon inverse" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+</svg>`;
+    const IconCheck = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 12l5 5l10 -10"></path>
+</svg>`;
+    const IconPalette = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-palette" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 21a9 9 0 1 1 0 -18a9 8 0 0 1 9 8a4.5 4 0 0 1 -4.5 4h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"></path>
+   <circle cx="7.5" cy="10.5" r=".5" fill="currentColor"></circle>
+   <circle cx="12" cy="7.5" r=".5" fill="currentColor"></circle>
+   <circle cx="16.5" cy="10.5" r=".5" fill="currentColor"></circle>
+</svg>`;
+    // Icons for Page Controls
+    const IconBookmark = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bookmark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path color="orange" stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path color="orange" d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2"></path>
+</svg>`;
+    const IconBookmarkOff = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bookmark-off inverse" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path color="orange" stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <line color="red" x1="3" y1="3" x2="21" y2="21"></line>
+   <path color="orange" d="M17 17v3l-5 -3l-5 3v-13m1.178 -2.818c.252 -.113 .53 -.176 .822 -.176h6a2 2 0 0 1 2 2v7"></path>
+</svg>`;
+    const IconEye = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <circle cx="12" cy="12" r="2"></circle>
+   <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
+</svg>`;
+    const IconEyeOff = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-off inverse" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <line color="red" x1="3" y1="3" x2="21" y2="21"></line>
+   <path d="M10.584 10.587a2 2 0 0 0 2.828 2.83"></path>
+   <path d="M9.363 5.365a9.466 9.466 0 0 1 2.637 -.365c4 0 7.333 2.333 10 7c-.778 1.361 -1.612 2.524 -2.503 3.488m-2.14 1.861c-1.631 1.1 -3.415 1.651 -5.357 1.651c-4 0 -7.333 -2.333 -10 -7c1.369 -2.395 2.913 -4.175 4.632 -5.341"></path>
+</svg>`;
+    const IconZoomCancel = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-zoom-cancel" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <circle cx="10" cy="10" r="7"></circle>
+   <line color="#9966FF" x1="8" y1="8" x2="12" y2="12"></line>
+   <line color="#9966FF" x1="12" y1="8" x2="8" y2="12"></line>
+   <line x1="21" y1="21" x2="15" y2="15"></line>
+</svg>`;
+    const IconZoomIn = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-zoom-in" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <circle cx="10" cy="10" r="7"></circle>
+   <line color="lime" x1="7" y1="10" x2="13" y2="10"></line>
+   <line color="lime" x1="10" y1="7" x2="10" y2="13"></line>
+   <line x1="21" y1="21" x2="15" y2="15"></line>
+</svg>`;
+    const IconZoomOut = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-zoom-out" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <circle cx="10" cy="10" r="7"></circle>
+   <line color="red" x1="7" y1="10" x2="13" y2="10"></line>
+   <line x1="21" y1="21" x2="15" y2="15"></line>
+</svg>`;
+    const IconRefresh = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path color='cyan' d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path>
+   <path color='cyan' d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path>
+</svg>`;
+    const IconPhoto = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path color="silver" stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <line color="silver" x1="15" y1="8" x2="15.01" y2="8"></line>
+   <rect color="silver" x="4" y="4" width="16" height="16" rx="3"></rect>
+   <path color="silver" d="M4 15l4 -4a3 5 0 0 1 3 0l5 5"></path>
+   <path color="silver" d="M14 14l1 -1a3 5 0 0 1 3 0l2 2"></path>
+</svg>`;
+    const IconPhotoOff = `
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path color="silver" stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <line color="silver" x1="15" y1="8" x2="15.01" y2="8"></line>
+   <path color="silver" d="M19.121 19.122a3 3 0 0 1 -2.121 .878h-10a3 3 0 0 1 -3 -3v-10c0 -.833 .34 -1.587 .888 -2.131m3.112 -.869h9a3 3 0 0 1 3 3v9"></path>
+   <path color="silver" d="M4 15l4 -4c.928 -.893 2.072 -.893 3 0l5 5"></path>
+   <line color="orange" x1="3" y1="3" x2="21" y2="21"></line>
+   <path color="silver" d="M16.32 12.34c.577 -.059 1.162 .162 1.68 .66l2 2"></path>
+</svg>`;
+
+    // language=CSS
+    var cssStyles = `
+:root,
+.dark,
+.dark .default,
+[data-theme='dark'] {
+  --theme-body-background: ${colors.dark['600']};
+  --theme-body-text-color: ${colors.dark['50']};
+  --theme-text-color: ${colors.dark['50']};
+  --theme-primary-color: ${colors.dark['700']};
+  --theme-primary-text-color: ${colors.dark['50']};
+  --theme-background-color: ${colors.dark['600']};
+  --theme-hightlight-color: ${colors.dark['500']};
+  --theme-border-color: ${colors.dark['400']};
+}
+.light,
+.light .default,
+[data-theme='light'] {
+  --theme-body-background: ${colors.gray['50']};
+  --theme-body-text-color: ${colors.gray['900']};
+  --theme-text-color: ${colors.gray['900']};
+  --theme-primary-color: ${colors.gray['300']};
+  --theme-primary-text-color: ${colors.gray['900']};
+  --theme-background-color: ${colors.gray['50']};
+  --theme-hightlight-color: ${colors.gray['500']};
+  --theme-border-color: ${colors.gray['100']};
+}
+/*  Simple Normalizer */
+html {
+  font-size: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  background-color: #fff;
+  padding: 0;
+}
+a,
+a:link,
+a:visited,
+a:active,
+a:focus {
+  color: var(--theme-body-text-color);
+  text-decoration: none;
+}
+img {
+  height: auto;
+  vertical-align: middle;
+  border: 0 none;
+}
+
+.icon-tabler {
+  height: 1rem;
+  width: 1rem;
+  align-self: center;
+  vertical-align: sub;
+}
+
+#nprogress .bar {
+  background: #29d;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+#MangaOnlineViewer {
+  padding-bottom: 40px;
+  min-height: 760px;
+  min-width: 360px;
+  width:100%;
+  height:100%;
+  text-decoration:none;
+  color: var(--theme-body-text-color);
+  background-color: var(--theme-body-background);
+}
+
+#MangaOnlineViewer #Chapter {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  min-width: 225px;
+}
+
+#MangaOnlineViewer #Chapter.DoublePage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#MangaOnlineViewer #Chapter.DoublePage .PageImg {
+  min-width: unset;
+}
+
+#MangaOnlineViewer #Chapter.DoublePage .MangaPage.DoublePage {
+  grid-column: span 2;
+}
+
+#MangaOnlineViewer #Chapter.DoublePage .MangaPage:not(.DoublePage):nth-child(2n) {
+  justify-self: flex-start;
+}
+
+#MangaOnlineViewer #Chapter.DoublePage .MangaPage:not(.DoublePage):nth-child(2n-1) {
+  justify-self: flex-end;
+}
+
+#MangaOnlineViewer #Chapter.FluidLTR .MangaPage,
+#MangaOnlineViewer #Chapter.FluidRTL .MangaPage {
+  width: auto;
+}
+
+#MangaOnlineViewer #Chapter.FluidLTR {
+  direction: ltr;
+}
+
+#MangaOnlineViewer #Chapter.FluidRTL {
+  direction: rtl;
+}
+
+#MangaOnlineViewer #Chapter.FluidLTR .ZoomWidth .icon-tabler,
+#MangaOnlineViewer #Chapter.FluidRTL .ZoomWidth .icon-tabler {
+  color: red;
+}
+
+#MangaOnlineViewer #SettingsPanel {
+  color: var(--theme-text-color);
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease-in, background-color 0.3s linear;
+  transform: translateX(-100%);
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  height: 100%;
+  max-width: 100vw;
+  width: 305px;
+}
+
+#MangaOnlineViewer #SettingsPanel.visible {
+  transform: translateX(0);
+}
+
+#MangaOnlineViewer #SettingsPanel .ControlLabel {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#MangaOnlineViewer #SettingsPanel .ControlLabelItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#MangaOnlineViewer #SettingsPanel .ControlLabelItem:not(.show) {
+  display: none;
+}
+
+#MangaOnlineViewer #ThemeSection{
+  border: 1px solid var(--theme-body-text-color);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#MangaOnlineViewer .closeButton {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#MangaOnlineViewer .overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 950;
+  cursor: pointer;
+}
+#MangaOnlineViewer .overlay.visible {
+  display: block;
+}
+
+#MangaOnlineViewer .ThemeRadio {
+  border: 1px solid var(--theme-text-color);
+  color: var(--theme-primary-text-color);
+  background-color: var(--theme-primary-color);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  padding: 1px;
+  margin: 2px 5px;
+  position: relative;
+}
+
+#MangaOnlineViewer .ThemeRadio svg{
+  position: absolute;
+  top: 15%;
+  right: 15%;
+}
+
+#MangaOnlineViewer .ThemeRadio.custom{
+  /*background-image: url("${svgToUrl(IconPalette)}");*/
+  /*background-position: center;*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: 80%;*/
+}
+
+#MangaOnlineViewer .ThemeRadio.selected .icon-tabler-check {
+  display: inline;
+}
+
+#MangaOnlineViewer .ThemeRadio:not(.selected) .icon-tabler-check {
+  display: none;
+}
+
+#MangaOnlineViewer #KeybindingsPanel {
+  padding: 8px;
+  position: fixed;
+  top: 65px;
+  right: 0;
+  transition: transform 0.3s ease-in-out;;
+  transform: translateX(100%);
+  /*display: none;*/
+  line-height: 1.5em;
+}
+
+#MangaOnlineViewer #KeybindingsPanel.visible {
+  transform: translateX(0);
+  display: block;
+}
+
+#MangaOnlineViewer #BookmarksPanel {
+  position: fixed;
+  top: 10%;
+  width: 50%;
+  left: 25%;
+  right: 25%;
+  text-align: center;
+  max-height: 70%;
+  transition: transform 0.3s ease-in-out;;
+  transform: scaleY(0%);
+  z-index: 1000;
+}
+
+#MangaOnlineViewer #BookmarksPanel.visible {
+  transform: scaleY(100%);
+  display: block;
+}
+
+#MangaOnlineViewer #BookmarksList {
+  padding: 0 15px;
+  overflow: auto;
+  max-height: 60vh;
+}
+
+#MangaOnlineViewer #BookmarksList .BookmarkItem {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+}
+
+#MangaOnlineViewer #BookmarksList .bookmarkData {
+  flex-basis: 15%;
+}
+
+#MangaOnlineViewer #BookmarksList .bookmarkURl {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-basis: 55%;
+}
+
+
+#MangaOnlineViewer select {
+  height: 20px;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+#MangaOnlineViewer .ControlButton {
+  cursor: pointer;
+  border-radius: 5px;
+  border-width: 1px;
+  padding: 2px;
+  min-height: 32px;
+  color: var(--theme-primary-text-color);
+  background-color: var(--theme-primary-color);
+  border-color: var(--theme-border-color);
+}
+
+#MangaOnlineViewer .ControlButton:hover {
+  opacity: 0.8;
+}
+
+#MangaOnlineViewer .panel {
+  padding: 5px;
+  position: inherit;
+  border-radius: 5px;
+  background-color: var(--theme-background-color);
+}
+
+#MangaOnlineViewer .MangaPage {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  /*transform: translate3d(0, 0, 0);*/
+  /*backface-visibility: hidden;*/
+  /*perspective: 1000px;*/
+  line-height: 0;
+  min-height: 22px;
+  min-width: 100%;
+}
+
+#MangaOnlineViewer .PageContent {
+  text-align: center;
+  display: inline-block;
+  overflow-x: auto;
+  max-width: 100%;
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+#MangaOnlineViewer .MangaPage.hide .PageContent {
+  /*display: none;*/
+  height: 0;
+}
+
+#MangaOnlineViewer .MangaPage.hide .PageFunctions {
+  /*position:relative;*/
+}
+
+#MangaOnlineViewer .PageContent .PageImg[src=""],
+#MangaOnlineViewer .PageContent .PageImg:not([src]) {
+  width: 40vw;
+  height: 80vh;
+  display: inline-block;
+  background-image: url("${svgToUrl(IconPhoto)}");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-color: var(--theme-hightlight-color);
+}
+
+#MangaOnlineViewer .PageContent .PageImg.imgBroken {
+  width: 40vw;
+  height: 80vh;
+  display: inline-block;
+  background-image: url("${svgToUrl(IconPhotoOff)}");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-color: var(--theme-hightlight-color);
+}
+
+#MangaOnlineViewer .Thumbnail .ThumbnailImg[src=""],
+#MangaOnlineViewer .Thumbnail .ThumbnailImg:not([src]) {
+  width: 100px;
+  height: 150px;
+  display: inline-block;
+  background-image: url("${svgToUrl(IconPhoto)}");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20%;
+}
+
+#MangaOnlineViewer .fitWidthIfOversize .PageContent .PageImg {
+  max-width: 100%;
+}
+
+#MangaOnlineViewer #gotoPage {
+  min-width: 35px;
+}
+
+#MangaOnlineViewer #ThemeSelector {
+  width: 110px;
+}
+
+#MangaOnlineViewer #Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+  transition: transform 0.3s ease-in;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: inherit;
+  z-index: 900;
+}
+
+#MangaOnlineViewer #Header.scroll-hide {
+  transform: translateY(-100%);
+}
+
+#MangaOnlineViewer #Header.scroll-show {
+  transform: translateY(-1%);
+}
+
+#MangaOnlineViewer #Header.mouseOverMenu {
+  position: static;
+  transform: none;
+}
+
+#MangaOnlineViewer #Header.scroll-end,
+#MangaOnlineViewer #Header.visible {
+  transform: translateY(-1%);
+  position: sticky;
+}
+
+#MangaOnlineViewer #Header.mouseOverMenu:hover {
+  position: sticky;
+}
+
+#MangaOnlineViewer #Header:not(.mouseOverMenu) #menu,
+#MangaOnlineViewer #Header.mouseOverMenu:hover #menu {
+  display: none;
+}
+
+#MangaOnlineViewer #menu {
+  position: fixed;
+  min-height: 70px;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  color: var(--theme-body-text-color);
+}
+
+#MangaOnlineViewer #MangaTitle {
+  padding: 2px;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+#MangaOnlineViewer #GlobalFunctions{
+  display: flex;
+  gap: 3px;
+  padding-left:10px;
+  flex-wrap: wrap;
+  width: 300px;
+  z-index: 100;
+}
+
+#MangaOnlineViewer #GlobalFunctions .icon-tabler{
+  width: 25px;
+  height: 25px;
+}
+
+#MangaOnlineViewer #ChapterNavigation {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: end;
+  padding-right: 10px;
+  width: 300px;
+}
+
+#MangaOnlineViewer .ChapterControl {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#MangaOnlineViewer .ChapterControl .NavigationControlButton {
+  display: inline-flex;
+  margin-left: 3px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 0.5em;
+}
+
+#MangaOnlineViewer .ChapterControl .NavigationControlButton .icon-tabler {
+  flex-shrink: 0;
+  align-self: center;
+  width: 1rem;
+  height: 1rem;
+}
+
+#MangaOnlineViewer .ChapterControl .NavigationControlButton[onclick="window.location.href='#';"],
+#MangaOnlineViewer .ChapterControl .NavigationControlButton[onclick="window.location.href='';"],
+#MangaOnlineViewer .ChapterControl .NavigationControlButton[onclick="window.location.href='undefined';"] {
+  visibility: hidden;
+}
+
+#MangaOnlineViewer .ChapterControl .download.loading{
+  cursor: not-allowed;
+}
+
+#MangaOnlineViewer .ViewerTitle {
+  text-align: center;
+  min-height: 60px;
+  /*max-width: 500px;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
+  flex-basis: 60%;
+}
+
+#MangaOnlineViewer #Counters {
+}
+
+#MangaOnlineViewer .PageFunctions {
+  font-family: monospace;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 3px;
+  position: absolute;
+  right: 0;
+  direction: ltr;
+}
+
+#MangaOnlineViewer .PageFunctions > .PageIndex {
+  background-color: var(--theme-primary-color);
+  color: var(--theme-primary-text-color);
+  min-width: 20px;
+  text-align: center;
+  display: inline-block;
+  padding: 3px 5px;
+  line-height: 1rem;
+  border-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-right-radius: 0;
+}
+
+#MangaOnlineViewer .PageFunctions .ControlButton {
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border-width: 0;
+  min-height: auto;
+  opacity: 0.5;
+}
+
+#MangaOnlineViewer .PageFunctions:hover .ControlButton {
+  opacity: 1;
+}
+
+#MangaOnlineViewer .PageFunctions .ControlButton:hover {
+  opacity: 0.9;
+}
+
+#MangaOnlineViewer.light #ColorScheme > :not(.inverse),
+#MangaOnlineViewer:not(.light) #ColorScheme > .inverse,
+#MangaOnlineViewer .ChapterControl .download.loading > :not(.inverse),
+#MangaOnlineViewer .ChapterControl .download:not(.loading) > .inverse,
+#MangaOnlineViewer .MangaPage.hide .ControlButton.Hide  > .inverse,
+#MangaOnlineViewer .MangaPage:not(.hide) .ControlButton.Hide  > :not(.inverse),
+#MangaOnlineViewer.bookmarked .ControlButton.Bookmark  > :not(.inverse),
+#MangaOnlineViewer:not(.bookmarked) .ControlButton.Bookmark  > .inverse {
+  display: none;
+}
+
+#MangaOnlineViewer.hideControls .PageFunctions {
+  visibility: hidden;
+}
+
+#MangaOnlineViewer #NavigationCounters {
+  margin: 5px;
+  width: 100%;
+  line-height: 1rem;
+}
+
+#MangaOnlineViewer #Navigation {
+  color: var(--theme-text-color);
+  background-color: var(--theme-hightlight-color);
+  bottom: -180px;
+  height: 185px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-bottom: 20px;
+  position: fixed;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease-in, background-color 0.3s linear;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  line-height: 0rem;
+}
+
+#MangaOnlineViewer #Navigation #Thumbnails {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-right: 10px;
+}
+
+#MangaOnlineViewer #Navigation:hover {
+  transform: translateY(-180px);
+}
+
+#MangaOnlineViewer #Navigation.disabled {
+  display: none;
+}
+
+#MangaOnlineViewer #Navigation.visible {
+  transform: translateY(-180px);
+}
+
+#MangaOnlineViewer #Navigation .Thumbnail {
+  display: inline-block;
+  height: 150px;
+  margin: 0 5px;
+  border: 1px solid var(--theme-primary-color);
+}
+
+#MangaOnlineViewer #Navigation .Thumbnail .ThumbnailIndex {
+  color: var(--theme-text-color);
+  background-color: var(--theme-hightlight-color);
+  display: block;
+  opacity: 0.8;
+  position: relative;
+  bottom: 25%;
+  width: 100%;
+  line-height: 1rem;
+}
+
+#MangaOnlineViewer #Navigation .Thumbnail .ThumbnailImg {
+  cursor: pointer;
+  display: inline-block;
+  max-height: 150px;
+  min-height: 150px;
+  min-width: 80px;
+  max-width: 160px;
+}
+
+#MangaOnlineViewer #menu .icon-tabler {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  height: 32px;
+  width: 32px;
+}
+
+@media (max-width: 992px) {
+  #MangaOnlineViewer #Header {
+      flex-direction: column;
+  }
+
+  #MangaOnlineViewer #Header.mouseOverMenu {
+    position: sticky;
+    transition: transform 0.3s ease-in;
+  }
+
+  #MangaOnlineViewer #Header.scroll-show {
+    transform: translateY(-1%);
+  }
+
+  #MangaOnlineViewer #Header.scroll-hide {
+    transform: translateY(-100%);
+  }
+
+  #MangaOnlineViewer .PageContent .PageImg {
+    max-width: 100%;
+  }
+
+  #MangaOnlineViewer .ViewerTitle {
+    order: 1;
+    min-height: auto;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #MangaOnlineViewer #GlobalFunctions {
+    flex-wrap: nowrap;
+    padding: 0;
+    width: auto;
+    order: 3;
+    padding: 5px;
+  }
+
+  #MangaOnlineViewer #ChapterNavigation {
+    order: 2;
+  }
+
+  #MangaOnlineViewer #menu {
+    display: none;
+  }
+}
+/* Small devices (landscape phones) */
+@media (max-width: 600px) {
+  #MangaOnlineViewer #Header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #MangaOnlineViewer #Header.mouseOverMenu {
+    position: sticky;
+    transition: transform 0.3s ease-in;
+  }
+
+  #MangaOnlineViewer #Header.scroll-show {
+    transform: translateY(-1%);
+  }
+
+  #MangaOnlineViewer #Header.scroll-hide {
+    transform: translateY(-100%);
+  }
+
+  #MangaOnlineViewer .ViewerTitle {
+    order: 1;
+    flex-basis: 100%;
+    margin-top: 0px;
+  }
+
+  #MangaOnlineViewer #GlobalFunctions {
+    order: 2;
+    padding: 0;
+  }
+
+  #MangaOnlineViewer #ChapterNavigation {
+    order: 3;
+    width: auto;
+  }
+
+  #MangaOnlineViewer #Navigation {
+    display: none;
+  }
+
+  #MangaOnlineViewer .PageFunctions {
+    padding: 0;
+  }
+
+  #MangaOnlineViewer .PageFunctions .ControlButton:not(.Bookmark) {
+    display: none;
+  }
+
+  #MangaOnlineViewer .PageFunctions .ControlButton.Bookmark {
+    opacity: 1;
+  }
+
+  #MangaOnlineViewer .PageContent {
+    margin: 0;
+    width: 100%;
+  }
+
+  #MangaOnlineViewer .PageContent .PageImg {
+    max-width: 100%;
+  }
+
+  #MangaOnlineViewer #GlobalFunctions .ControlButton:not(#settings) {
+    display: none;
+  }
+
+  #MangaOnlineViewer #GlobalFunctions {
+    min-width: auto;
+  }
+
+  #MangaOnlineViewer #SettingsPanel .DefaultZoom,
+  #MangaOnlineViewer #SettingsPanel .viewMode,
+  #MangaOnlineViewer #SettingsPanel .fitIfOversize,
+  #MangaOnlineViewer #SettingsPanel .showThumbnails,
+  #MangaOnlineViewer #SettingsPanel .lazyLoadImages,
+  #MangaOnlineViewer #SettingsPanel .downloadZip,
+  #MangaOnlineViewer #SettingsPanel .minZoom,
+  #MangaOnlineViewer #SettingsPanel .zoomStep,
+  #MangaOnlineViewer #SettingsPanel .mouseOverMenu {
+    display: none;
+  }
+
+  #MangaOnlineViewer #KeybindingsPanel {
+    display: none;
+  }
+
+  #MangaOnlineViewer #menu {
+    display: none;
+  }
+
+  #MangaOnlineViewer .ViewerTitle {
+    height: auto;
+    padding: 0;
+  }
+
+  #MangaOnlineViewer .ChapterControl {
+  }
+
+  #MangaOnlineViewer .ChapterControl .download {
+    display: none;
+  }
+
+  #MangaOnlineViewer #Counters {
+    display: none;
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    transform:rotate(360deg)
+  }
+}
+@keyframes spin {
+  to {
+    transform:rotate(360deg)
+  }
+}
+.animate-spin {
+  -webkit-animation:spin 1s linear infinite;
+  animation:spin 1s linear infinite
+}
+@-webkit-keyframes spin-reverse {
+  0% {
+    transform:rotate(360deg)
+  }
+  to {
+    transform:rotate(0)
+  }
+}
+@keyframes spin-reverse {
+  0% {
+    transform:rotate(360deg)
+  }
+  to {
+    transform:rotate(0)
+  }
+}
+.animate-spin-reverse {
+  -webkit-animation:spin-reverse 1s linear infinite;
+  animation:spin-reverse 1s linear infinite
+}
+`;
+
+    // Configuration
+    const settings$1 = {
+        theme: getValueGM('Theme', 'darkblue'),
+        customTheme: getValueGM('CustomTheme', '#263e3a'),
+        themeShade: getValueGM('ThemeShade', 600),
+        colorScheme: getValueGM('ColorScheme', 'dark'),
+        fitWidthIfOversize: getValueGM('FitWidthIfOversize', true),
+        showThumbnails: getValueGM('ShowThumbnails', true),
+        downloadZip: getValueGM('DownloadZip', false),
+        throttlePageLoad: getValueGM('Timer', 1000),
+        zoom: getValueGM('Zoom', 100),
+        zoomStep: getValueGM('ZoomStep', 25),
+        minZoom: getValueGM('MinZoom', 50),
+        loadMode: getValueGM('LoadMode', 'wait'),
+        viewMode: getValueGM('ViewMode', ''),
+        bookmarks: JSON.parse(getValueGM('Bookmarks', '[]')),
+        lazyLoadImages: getValueGM('LazyLoadImages', false),
+        lazyStart: getValueGM('LazyStart', 50),
+        hidePageControls: getValueGM('HidePageControls', false),
+        mouseOverMenu: getValueGM('MouseOverMenu', true),
+    };
+    // Force Settings for mobile
+    if (isMobile) {
+        settings$1.lazyLoadImages = true;
+        settings$1.lazyStart = 5;
+        settings$1.fitWidthIfOversize = true;
+        settings$1.showThumbnails = false;
+        settings$1.viewMode = '';
+    }
+    // Clear old Bookmarks
+    const bookmarkTimeLimit = 1000 * 60 * 60 * 24 * 30 * 12; // year
+    settings$1.bookmarks = settings$1.bookmarks.filter((el) => Date.now() - el.date < bookmarkTimeLimit);
+    setValueGM('Bookmarks', JSON.stringify(settings$1.bookmarks));
+
+    // Creates the style element
+    function createStyleElement(id, content) {
+        const style = document.createElement('style');
+        style.id = id;
+        style.appendChild(document.createTextNode(content));
+        return style;
+    }
+    // Appends CSS content to the head of the site
+    function appendStyleSheet(id, content) {
+        if (!document.querySelector(`#${id}`)) {
+            const head = document.head || document.querySelector('head');
+            head.appendChild(createStyleElement(id, content));
+        }
+    }
+    function removeStyleSheet(id) {
+        document.querySelectorAll(`style[id="${id}"]`).forEach((elem) => elem.remove());
+    }
+    function replaceStyleSheet(id, content) {
+        removeStyleSheet(id);
+        appendStyleSheet(id, content);
+    }
+    function wrapStyle(id, css) {
+        return `<style type='text/css' id='${id}'>${css}</style>`;
+    }
+
+    function generateThemeCSS(name, primary, text) {
+        // language=CSS
+        return `
+.${name},
+[data-theme='${name}'] {
+  --theme-primary-color: ${primary};
+  --theme-primary-text-color: ${text};
+}
+`;
+    }
+    function getNormalThemeCSS(theme) {
+        return generateThemeCSS(theme.name, theme[settings$1.themeShade], settings$1.themeShade < 500 ? theme['900'] : theme['50']);
+    }
+    function getCustomThemeCSS(hex) {
+        return generateThemeCSS('custom', hex, getTextColor(hex));
+    }
+    // Add custom Themes to the page
+    function addTheme(theme) {
+        return wrapStyle(theme.name, getNormalThemeCSS(theme));
+    }
+    function addCustomTheme(hex) {
+        replaceStyleSheet('custom', getCustomThemeCSS(hex));
+    }
+    const themes = () => Object.values(colors);
+    // Object.values({ ...colors, custom: customColor(settings.customTheme) });
+    const themesSelector = [...Object.keys(colors).map((color) => colors[color].name)].map((theme) => `
+<span class='${theme} ThemeRadio ${settings$1.theme === theme ? 'selected' : ''}'
+      title='${theme}'
+>
+${IconCheck}
+</span>
+`);
+    function refreshThemes() {
+        themes().forEach((theme) => replaceStyleSheet(theme.name, getNormalThemeCSS(theme)));
+        replaceStyleSheet('custom', getCustomThemeCSS(settings$1.customTheme));
+    }
+    const themesCSS = themes().map(addTheme).join('') + wrapStyle('custom', getCustomThemeCSS(settings$1.customTheme));
+
+    // https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.20/sweetalert2.css
+    // .swal2-title -> #swal2-title
+    // language=CSS
+    const sweetalert = `.swal2-popup.swal2-toast{box-sizing:border-box;grid-column:1/4!important;grid-row:1/4!important;grid-template-columns:1fr 99fr 1fr;padding:1em;overflow-y:hidden;background:#fff;box-shadow:0 0 1px hsla(0deg,0%,0%,.075),0 1px 2px hsla(0deg,0%,0%,.075),1px 2px 4px hsla(0deg,0%,0%,.075),1px 3px 8px hsla(0deg,0%,0%,.075),2px 4px 16px hsla(0deg,0%,0%,.075);pointer-events:all}.swal2-popup.swal2-toast>*{grid-column:2}.swal2-popup.swal2-toast #swal2-title{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-loading{justify-content:center}.swal2-popup.swal2-toast .swal2-input{height:2em;margin:.5em;font-size:1em}.swal2-popup.swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-popup.swal2-toast .swal2-html-container{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-html-container:empty{padding:0}.swal2-popup.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-popup.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-popup.swal2-toast .swal2-styled{margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:grid;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;box-sizing:border-box;grid-template-areas:"top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";grid-template-rows:minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto);grid-template-rows:minmax(min-content,auto) minmax(min-content,auto) minmax(min-content,auto);height:100%;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-bottom-start,.swal2-container.swal2-center-start,.swal2-container.swal2-top-start{grid-template-columns:minmax(0,1fr) auto auto}.swal2-container.swal2-bottom,.swal2-container.swal2-center,.swal2-container.swal2-top{grid-template-columns:auto minmax(0,1fr) auto}.swal2-container.swal2-bottom-end,.swal2-container.swal2-center-end,.swal2-container.swal2-top-end{grid-template-columns:auto auto minmax(0,1fr)}.swal2-container.swal2-top-start>.swal2-popup{align-self:start}.swal2-container.swal2-top>.swal2-popup{grid-column:2;align-self:start;justify-self:center}.swal2-container.swal2-top-end>.swal2-popup,.swal2-container.swal2-top-right>.swal2-popup{grid-column:3;align-self:start;justify-self:end}.swal2-container.swal2-center-left>.swal2-popup,.swal2-container.swal2-center-start>.swal2-popup{grid-row:2;align-self:center}.swal2-container.swal2-center>.swal2-popup{grid-column:2;grid-row:2;align-self:center;justify-self:center}.swal2-container.swal2-center-end>.swal2-popup,.swal2-container.swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;align-self:center;justify-self:end}.swal2-container.swal2-bottom-left>.swal2-popup,.swal2-container.swal2-bottom-start>.swal2-popup{grid-column:1;grid-row:3;align-self:end}.swal2-container.swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;justify-self:center;align-self:end}.swal2-container.swal2-bottom-end>.swal2-popup,.swal2-container.swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;align-self:end;justify-self:end}.swal2-container.swal2-grow-fullscreen>.swal2-popup,.swal2-container.swal2-grow-row>.swal2-popup{grid-column:1/4;width:100%}.swal2-container.swal2-grow-column>.swal2-popup,.swal2-container.swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}.swal2-container.swal2-no-transition{transition:none!important}.swal2-popup{display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0,100%);width:32em;max-width:100%;padding:0 0 1.25em;border:none;border-radius:5px;background:#fff;color:#545454;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}#swal2-title{position:relative;max-width:100%;margin:0;padding:.8em 1em 0;color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:center;width:auto;margin:1.25em auto 0;padding:0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-loader{display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 transparent #2778c4 transparent}.swal2-styled{margin:.3125em;padding:.625em 1.1em;transition:box-shadow .1s;box-shadow:0 0 0 3px transparent;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#7066e0;color:#fff;font-size:1em}.swal2-styled.swal2-confirm:focus{box-shadow:0 0 0 3px rgba(112,102,224,.5)}.swal2-styled.swal2-deny{border:0;border-radius:.25em;background:initial;background-color:#dc3741;color:#fff;font-size:1em}.swal2-styled.swal2-deny:focus{box-shadow:0 0 0 3px rgba(220,55,65,.5)}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#6e7881;color:#fff;font-size:1em}.swal2-styled.swal2-cancel:focus{box-shadow:0 0 0 3px rgba(110,120,129,.5)}.swal2-styled.swal2-default-outline:focus{box-shadow:0 0 0 3px rgba(100,150,200,.5)}.swal2-styled:focus{outline:0}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1em 0 0;padding:1em 1em 0;border-top:1px solid #eee;color:inherit;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto!important;overflow:hidden;border-bottom-right-radius:5px;border-bottom-left-radius:5px}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:2em auto 1em}.swal2-close{z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:color .1s,box-shadow .1s;border:none;border-radius:5px;background:0 0;color:#ccc;font-family:serif;font-family:monospace;font-size:2.5em;cursor:pointer;justify-self:end}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close:focus{outline:0;box-shadow:inset 0 0 0 3px rgba(100,150,200,.5)}.swal2-close::-moz-focus-inner{border:0}.swal2-html-container{z-index:1;justify-content:center;margin:1em 1.6em .3em;padding:0;overflow:auto;color:inherit;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word;word-break:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em 2em 3px}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:auto;transition:border-color .1s,box-shadow .1s;border:1px solid #d9d9d9;border-radius:.1875em;background:0 0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px transparent;color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(100,150,200,.5)}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em 2em 3px;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-file{width:75%;margin-right:auto;margin-left:auto;background:0 0;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:0 0;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{flex-shrink:0;margin:0 .4em}.swal2-input-label{display:flex;justify-content:center;margin:1em auto 0}.swal2-validation-message{align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;border:.25em solid transparent;border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-warning.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .5s;animation:swal2-animate-i-mark .5s}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .8s;animation:swal2-animate-i-mark .8s}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-question-mark .8s;animation:swal2-animate-question-mark .8s}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:0 0;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}.leave-russia-now-and-apply-your-skills-to-the-world{display:flex;position:fixed;z-index:1939;top:0;right:0;bottom:0;left:0;flex-direction:column;align-items:center;justify-content:center;padding:25px 0 20px;background:#20232a;color:#fff;text-align:center}.leave-russia-now-and-apply-your-skills-to-the-world div{max-width:560px;margin:10px;line-height:146%}.leave-russia-now-and-apply-your-skills-to-the-world iframe{max-width:100%;max-height:55.5555555556vmin;margin:16px auto}.leave-russia-now-and-apply-your-skills-to-the-world strong{border-bottom:2px dashed #fff}.leave-russia-now-and-apply-your-skills-to-the-world button{display:flex;position:fixed;z-index:1940;top:0;right:0;align-items:center;justify-content:center;width:48px;height:48px;margin-right:10px;margin-bottom:-10px;border:none;background:0 0;color:#aaa;font-size:48px;font-weight:700;cursor:pointer}.leave-russia-now-and-apply-your-skills-to-the-world button:hover{color:#fff}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-webkit-keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@-webkit-keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{background-color:transparent!important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:transparent;pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}`;
+    // https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css
+    // language=CSS
+    const normalize = `/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}`;
+    // https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css
+    // language=CSS
+    const nprogress = `#nprogress{pointer-events:none}#nprogress .bar{background:#29d;position:fixed;z-index:1031;top:0;left:0;width:100%;height:2px}#nprogress .peg{display:block;position:absolute;right:0;width:100px;height:100%;box-shadow:0 0 10px #29d,0 0 5px #29d;opacity:1;-webkit-transform:rotate(3deg) translate(0,-4px);-ms-transform:rotate(3deg) translate(0,-4px);transform:rotate(3deg) translate(0,-4px)}#nprogress .spinner{display:block;position:fixed;z-index:1031;top:15px;right:15px}#nprogress .spinner-icon{width:18px;height:18px;box-sizing:border-box;border:2px solid transparent;border-top-color:#29d;border-left-color:#29d;border-radius:50%;-webkit-animation:nprogress-spinner 400ms linear infinite;animation:nprogress-spinner 400ms linear infinite}.nprogress-custom-parent{overflow:hidden;position:relative}.nprogress-custom-parent #nprogress .bar,.nprogress-custom-parent #nprogress .spinner{position:absolute}@-webkit-keyframes nprogress-spinner{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@keyframes nprogress-spinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}`;
+    // https://cdn.jsdelivr.net/npm/@gerhobbelt/keyscss@1.1.3-6/keys.css
+    // language=CSS
+    const keycss = `.key,kbd{display:inline;display:inline-block;white-space:nowrap;min-width:1em;padding:0.3em 0.4em 0.2em 0.3em;font-style:normal;font-family:"Lucida Grande", Lucida, Arial, sans-serif;text-align:center;text-decoration:none;border-radius:0.3em;border:none;background-color:#505050;background-color:gradient(linear, left top, left bottom, from(#3c3c3c), to(#505050));color:#fafafa;text-shadow:-1px -1px 0 #464646;-webkit-box-shadow:inset 0 0 1px #969696, inset 0 -0.05em 0.4em #505050, 0 0.1em 0 #1e1e1e, 0 0.1em 0.1em rgba(0, 0, 0, 0.3);box-shadow:inset 0 0 1px #969696, inset 0 -0.05em 0.4em #505050, 0 0.1em 0 #1e1e1e, 0 0.1em 0.1em rgba(0, 0, 0, 0.3);font-size:0.85em;line-height:1;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.key[title],kbd[title]{cursor:help}.dark-keys .key,.dark-keys kbd,.key.dark,kbd.dark{display:inline;display:inline-block;white-space:nowrap;min-width:1em;padding:0.3em 0.4em 0.2em 0.3em;font-style:normal;font-family:"Lucida Grande", Lucida, Arial, sans-serif;text-align:center;text-decoration:none;border-radius:0.3em;border:none;background-color:#505050;background-color:gradient(linear, left top, left bottom, from(#3c3c3c), to(#505050));color:#fafafa;text-shadow:-1px -1px 0 #464646;-webkit-box-shadow:inset 0 0 1px #969696, inset 0 -0.05em 0.4em #505050, 0 0.1em 0 #1e1e1e, 0 0.1em 0.1em rgba(0, 0, 0, 0.3);box-shadow:inset 0 0 1px #969696, inset 0 -0.05em 0.4em #505050, 0 0.1em 0 #1e1e1e, 0 0.1em 0.1em rgba(0, 0, 0, 0.3)}.key.light,.light-keys .key,.light-keys kbd,kbd.light{display:inline;display:inline-block;white-space:nowrap;min-width:1em;padding:0.3em 0.4em 0.2em 0.3em;font-style:normal;font-family:"Lucida Grande", Lucida, Arial, sans-serif;text-align:center;text-decoration:none;border-radius:0.3em;border:none;background-color:#fafafa;background-color:gradient(linear, left top, left bottom, from(#d2d2d2), to(#ffffff));color:#323232;text-shadow:0 0 2px #ffffff;-webkit-box-shadow:inset 0 0 1px #ffffff, inset 0 0 0.4em #c8c8c8, 0 0.1em 0 #828282, 0 0.11em 0 rgba(0, 0, 0, 0.4), 0 0.1em 0.11em rgba(0, 0, 0, 0.9);box-shadow:inset 0 0 1px #ffffff, inset 0 0 0.4em #c8c8c8, 0 0.1em 0 #828282, 0 0.11em 0 rgba(0, 0, 0, 0.4), 0 0.1em 0.11em rgba(0, 0, 0, 0.9)}.key.so,.so-keys .key,.so-keys kbd,kbd.so{display:inline;display:inline-block;white-space:nowrap;min-width:1em;padding:0.3em 0.4em 0.2em 0.3em;font-style:normal;font-family:"Lucida Grande", Lucida, Arial, sans-serif;text-align:center;text-decoration:none;border-radius:0.3em;border:none;margin:0 0.1em;padding:0.1em 0.6em;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:1.4;color:#242729;text-shadow:0 1px 0 #FFF;background-color:#e1e3e5;border:1px solid #adb3b9;border-radius:0.27272727em;-webkit-box-shadow:0 1px 0 rgba(12, 13, 14, 0.2), 0 0 0 2px #FFF inset;box-shadow:0 1px 0 rgba(12, 13, 14, 0.2), 0 0 0 2px #FFF inset}.github-keys .key,.github-keys kbd,.key.github,kbd.github{display:inline;display:inline-block;white-space:nowrap;min-width:1em;padding:0.3em 0.4em 0.2em 0.3em;font-style:normal;font-family:"Lucida Grande", Lucida, Arial, sans-serif;text-align:center;text-decoration:none;border-radius:0.3em;border:none;padding:0.27272727em 0.45454545em;font-size:68.75%;line-height:0.90909091;color:#444d56;vertical-align:middle;background-color:#fafbfc;border:solid 1px #c6cbd1;border-bottom-color:#959da5;border-radius:0.27272727em;-webkit-box-shadow:inset 0 -1px 0 #959da5;box-shadow:inset 0 -1px 0 #959da5;font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;-webkit-box-sizing:border-box;box-sizing:border-box;text-shadow:none}`;
+    var sweetalertStyle = [normalize, sweetalert, nprogress, keycss].join('\n');
+
+    function head(manga) {
+        return `
+<head>
+  <title>${manga.title}</title>
+  <meta charset='UTF-8'>
+  ${wrapStyle('externals', sweetalertStyle)}
+  ${wrapStyle('reader', cssStyles)}
+  ${themesCSS}
+  ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${settings$1.minZoom}vw;}`)}
+</head>
+`;
+    }
+
+    function indexList(repeat, begin = 1) {
+        return Array(repeat)
+            .fill(0)
+            .map((_, i) => i + 1)
+            .filter((i) => i >= begin);
+    }
+
+    const listPages = (times, begin) => indexList(times, begin).map((index) => `
+<div id='Page${index}' class='MangaPage'>
+  <div class='PageFunctions'>
+    <button class='Bookmark ControlButton' title='Bookmark'>
+      ${IconBookmark}
+      ${IconBookmarkOff}
+    </button>
+    <button class='ZoomIn ControlButton' title='Zoom In'>
+      ${IconZoomIn}
+    </button>
+    <button class='ZoomRestore ControlButton' title='Zoom Restore'>
+      ${IconZoomCancel}
+    </button>
+    <button class='ZoomOut ControlButton' title='Zoom Out'>
+      ${IconZoomOut}
+    </button>
+    <button class='ZoomWidth ControlButton' title='Zoom to Width'>
+      ${IconArrowAutofitWidth}
+    </button>
+    <button class='ZoomHeight ControlButton' title='Zoom to Height'>
+      ${IconArrowAutofitHeight}
+    </button>
+    <button class='Hide ControlButton' title='Hide'>
+      ${IconEye}
+      ${IconEyeOff}
+    </button>
+    <button class='Reload ControlButton' title='Reload'>
+      ${IconRefresh}
+    </button>
+    <span class='PageIndex'>${index}</span>
+  </div>
+  <div class='PageContent'>
+    <img id='PageImg${index}' alt='' class='PageImg' />
+  </div>
+</div>`);
+
+    // language=html
+    const SettingsPanel = `
+<div id='SettingsOverlay' class='overlay'></div>
+<div id='SettingsPanel' class='panel'>
+  <h2>Settings</h2>
+  <button id='CloseSettings' class='closeButton'>${IconX}</button>
+  <button id='ResetSettings' class='simpleButton'>Reset Settings</button>
+  <div id='ThemeSection'>
+    <div class='ControlLabel ColorSchemeSelector'>Color Scheme:
+      <button id='ColorScheme' class='simpleButton'>
+        ${IconSun}
+        ${IconMoon}
+      </button>
+    </div>
+<!-- =========================================================================================== -->
+    <div class='ControlLabel ThemeSelector'>Theme:
+      <span class='custom ThemeRadio
+            ${settings$1.theme === 'custom' ? 'selected' : ''}'
+            title='custom'>
+        ${IconPalette}
+        ${IconCheck}
+      </span>
+      ${themesSelector.join('')}
+    </div>
+<!-- =========================================================================================== -->
+    <div id='Hue' class='ControlLabel CustomTheme ControlLabelItem
+          ${settings$1.theme.startsWith('custom') ? 'show' : ''}'>
+          Theme Primary Color Hue:<input id='CustomThemeHue' type='color' value='${settings$1.customTheme}' class='colorpicker CustomTheme'/>
+    </div>
+<!-- =========================================================================================== -->
+    <div id='Shade' class='ControlLabel CustomTheme ControlLabelItem
+          ${settings$1.theme.startsWith('custom') ? '' : 'show'}'>
+      <span>
+        Theme Primary Color Shade:
+        <output id='themeShadeVal' for='themeShade'>${settings$1.themeShade}</output>
+      </span>
+      <input type='range'
+            value='${settings$1.themeShade}'
+            name='ThemeShade'
+            id='ThemeShade'
+            min='100'
+            max='900'
+            step='100'
+            oninput='themeShadeVal.value = this.value'
+      />
+    </div>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel loadMode'>Default Load Mode:
+    <select id='loadMode'>
+      <option value='wait' ${settings$1.loadMode === 'wait' ? 'selected' : ''}>Normal(Wait 3 sec)</option>
+      <option value='always' ${settings$1.loadMode === 'always' ? 'selected' : ''}>Always(Immediately)</option>
+      <option value='never' ${settings$1.loadMode === 'never' ? 'selected' : ''}>Never(Manually)</option>
+    </select>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel PagesPerSecond'>Pages/Second:
+    <select id='PagesPerSecond'>
+      <option value='3000' ${settings$1.throttlePageLoad === 3000 ? 'selected' : ''}>0.3(Slow)</option>
+      <option value='2000' ${settings$1.throttlePageLoad === 2000 ? 'selected' : ''}>0.5</option>
+      <option value='1000' ${settings$1.throttlePageLoad === 1000 ? 'selected' : ''}>01(Normal)</option>
+      <option value='500' ${settings$1.throttlePageLoad === 500 ? 'selected' : ''}>02</option>
+      <option value='250' ${settings$1.throttlePageLoad === 250 ? 'selected' : ''}>04(Fast)</option>
+      <option value='125' ${settings$1.throttlePageLoad === 125 ? 'selected' : ''}>08</option>
+      <option value='100' ${settings$1.throttlePageLoad === 100 ? 'selected' : ''}>10(Extreme)</option>
+    </select>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel DefaultZoom'>Default Zoom:
+    <select id='DefaultZoom'>
+      <option value='50' ${settings$1.zoom === 50 ? 'selected' : ''}>50%</option>
+      <option value='75' ${settings$1.zoom === 75 ? 'selected' : ''}>75%</option>
+      <option value='100' ${settings$1.zoom === 100 ? 'selected' : ''}>100%</option>
+      <option value='125' ${settings$1.zoom === 125 ? 'selected' : ''}>125%</option>
+      <option value='150' ${settings$1.zoom === 150 ? 'selected' : ''}>150%</option>
+      <option value='175' ${settings$1.zoom === 175 ? 'selected' : ''}>175%</option>
+      <option value='200' ${settings$1.zoom === 200 ? 'selected' : ''}>200%</option>
+      <option value='1000' ${settings$1.zoom === 1000 ? 'selected' : ''}>Fit Width</option>
+      <option value='-1000' ${settings$1.zoom === -1000 ? 'selected' : ''}>Fit Height</option>
+    </select>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel minZoom'>
+    <span>
+      Minimun Zoom relative to the width of screen (between 30 and 100):
+      <output id='minZoomVal' for='minZoom'>${settings$1.minZoom}</output>
+    </span>
+    <input type='range'
+          value='${settings$1.minZoom}'
+          name='minZoom'
+          id='minZoom'
+          min='30'
+          max='100'
+          step='10'
+          oninput='minZoomVal.value = this.value'
+    />
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel zoomStep'>
+    <span>
+      Zoom Change Step (between 5 and 50):
+      <output id='zoomStepVal' for='zoomStep'>${settings$1.zoomStep}</output>
+    </span>
+    <input type='range'
+          value='${settings$1.zoomStep}'
+          name='zoomStep'
+          id='zoomStep'
+          min='5'
+          max='50'
+          step='5'
+          oninput='zoomStepVal.value = this.value'
+    />
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel viewMode'>Default View Mode:
+    <select id='viewMode'>
+      <option value='' ${settings$1.viewMode !== 'FluidLTR' && settings$1.viewMode !== 'FluidRTL' ? 'selected' : ''}>
+      Vertical
+      </option>
+      <option value='FluidLTR' ${settings$1.viewMode === 'FluidLTR' ? 'selected' : ''}>
+      Left to Right
+      </option>
+      <option value='FluidRTL' ${settings$1.viewMode === 'FluidRTL' ? 'selected' : ''}>
+      Right to Left
+      </option>
+    </select>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel fitIfOversize'>Fit Width if Oversize:
+    <input type='checkbox' value='true' name='fitIfOversize' id='fitIfOversize' ${settings$1.fitWidthIfOversize ? 'checked' : ''}/>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel showThumbnails'>Show Thumbnails:
+    <input type='checkbox' value='true' name='showThumbnails' id='showThumbnails' ${settings$1.showThumbnails ? 'checked' : ''}/>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel lazyLoadImages'>Lazy Load Images:
+    <input type='checkbox' value='true' name='lazyLoadImages' id='lazyLoadImages' ${settings$1.lazyLoadImages ? 'checked' : ''}/>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel lazyStart'>
+    <span>
+      Lazy Start From Page (between 5 and 100):
+      <output id='lazyStartVal' for='lazyStart'>${settings$1.lazyStart}</output>
+    </span>
+    <input type='range' value='${settings$1.lazyStart}' name='lazyStart' id='lazyStart' min='5' max='100' step='5' oninput='lazyStartVal.value = this.value'/>
+
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel downloadZip'>Download Images as Zip Automatically:
+    <input type='checkbox' value='false' name='downloadZip' id='downloadZip' ${settings$1.downloadZip ? 'checked' : ''}/>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel hidePageControls'>Always Hide Page Controls:
+    <input type='checkbox' value='false' name='hidePageControls' id='hidePageControls' ${settings$1.hidePageControls ? 'checked' : ''}/>
+  </div>
+<!-- =========================================================================================== -->
+  <div class='ControlLabel mouseOverMenu'>Toggle Sticky Header / MouseOverMenu:
+    <input type='checkbox' value='false' name='mouseOverMenu' id='mouseOverMenu' ${settings$1.mouseOverMenu ? 'checked' : ''}/>
+  </div>
+</div>
+`;
+
+    const KeybindingsPanel = `
+<div id='KeybindingsPanel' class='panel'>
+    <h2>Keybindings</h2>
+    <button id='CloseKeybindings' class='closeButton'>${IconX}</button>
+    <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>
+    <kbd class='dark'>Numpad +</kbd>/<kbd class='dark'>=</kbd>: Global Zoom in pages (enlarge)<br/>
+    <kbd class='dark'>Numpad -</kbd>/<kbd class='dark'>-</kbd>: Global Zoom out pages (reduce)<br/>
+    <kbd class='dark'>Numpad /</kbd>/<kbd class='dark'>9</kbd>: Global Restore pages to original<br/>
+    <kbd class='dark'>Numpad *</kbd>/<kbd class='dark'>0</kbd>: Global Fit window width<br/>
+    <kbd class='dark'>V</kbd>: Vertical Mode<br/>
+    <kbd class='dark'>C</kbd>: WebComic Mode<br/>
+    <kbd class='dark'>N</kbd>: Right to Left Mode<br/>
+    <kbd class='dark'>B</kbd>: Left to Right Mode<br/>
+    <kbd class='dark'>→</kbd>/<kbd class='dark'>D</kbd>/<kbd class='dark'>Numpad 6</kbd>/<kbd class='dark'>.</kbd> : Next Chapter<br/>
+    <kbd class='dark'>←</kbd>/<kbd class='dark'>A</kbd>/<kbd class='dark'>Numpad 4</kbd>/<kbd class='dark'>,</kbd> : Previous Chapter<br/>
+    <kbd class='dark'>↑</kbd>/<kbd class='dark'>W</kbd>/<kbd class='dark'>Numpad 8</kbd>: Scroll Up<br/>
+    <kbd class='dark'>↓</kbd>/<kbd class='dark'>S</kbd>/<kbd class='dark'>Numpad 2</kbd>: Scroll Down<br/>
+</div>`;
+
+    const ThumbnailsPanel = (times, begin) => indexList(times, begin).map((index) => `
+<div id='Thumbnail${index}' class='Thumbnail'>
+  <img id='ThumbnailImg${index}' alt='' class='ThumbnailImg' src=''/>
+  <span class='ThumbnailIndex'>${index}</span>
+</div>`);
+
+    const listBookmarks = () => {
+        if (isEmpty(settings$1.bookmarks))
+            return ['List Empty'];
+        return settings$1.bookmarks.map((mark, index) => `
+<div id='Bookmark${index + 1}' class='BookmarkItem'>
+  <span class='bookmarkData bookmarkDate'>
+    ${new Date(mark.date).toLocaleDateString()}
+  </span>
+  <span class='bookmarkData bookmarkURl'
+    title='${mark.url}'>
+    ${mark.url}
+  </span>
+  <span class='bookmarkData bookmarkPage'>Page: ${mark.page}</span>
+  <span class='bookmarkData bookmarkFunctions'>
+    <button class='ControlButton open' title='Open Bookmark' type='button'
+    onclick="window.open('${mark.url}','_blank')">
+      ${IconExternalLink}
+    </button>
+    <button class='ControlButton erase' title='Delete Bookmark' type='button'
+    value='${mark.url}'>
+      ${IconTrash}
+    </button>
+  </pan>
+</div>`);
+    };
+    const BookmarkPanel = `
+<div id='BookmarksOverlay' class='overlay'></div>
+<div id='BookmarksPanel' class='panel'>
+  <button id='CloseBookmarks' class='closeButton'>${IconX}</button>
+  <h2>Bookmarks</h2>
+  <div id='BookmarksList'>
+    ${listBookmarks().join('')}
+  </div>
+</div>
+`;
+    function reloadBookmarks() {
+        const list = document.getElementById('BookmarksList');
+        if (list) {
+            list.innerHTML = listBookmarks().join('');
+        }
+    }
+
+    const listOptions = (times, begin) => indexList(times, begin).map((index) => `<option value='${index}'>${index}</option>`);
+    const body = (manga, begin = 1) => `
+<div id='MangaOnlineViewer'
+  class="${settings$1.colorScheme} ${settings$1.hidePageControls ? 'hideControls' : ''}"
+  data-theme='${settings$1.theme}'>
+  <header id="Header" class="${settings$1.mouseOverMenu ? 'mouseOverMenu' : ''}">
+    <div id='menu'>
+      ${IconMenu2}
+    </div>
+    <aside id='GlobalFunctions'>
+      <span>
+        <button id='enlarge' title='Enlarge' class='ControlButton'>${IconZoomInArea}</button>
+        <button id='restore' title='Restore' class='ControlButton'>${IconZoomPan}</button>
+        <button id='reduce' title='Reduce' class='ControlButton'>${IconZoomOutArea}</button>
+        <button id='fitWidth' title='Fit Width' class='ControlButton'>${IconArrowAutofitWidth}</button>
+        <button id='fitHeight' title='Fit Height' class='ControlButton'>${IconArrowAutofitHeight}</button>
+        <button id='keybindings' title='Keybindings' class='ControlButton'>${IconKeyboard}</button>
+      </span>
+      <span>
+        <button id='ltrMode' title='Left to Right Mode' class='ControlButton'>${IconArrowAutofitRight}</button>
+        <button id='verticalMode' title='Vertical Mode' class='ControlButton'>${IconArrowAutofitDown}</button>
+        <button id='rtlMode' title='Right to Left Mode' class='ControlButton'>${IconArrowAutofitLeft}</button>
+        <button id='pageControls' title='Toggle Page Controls' class='ControlButton'>${IconListNumbers}</button>
+        <button id='bookmarks' title='List Bookmarks' class='ControlButton'>${IconBookmarks}</button>
+        <button id='settings' title='Settings' class='ControlButton'>${IconSettings}</button>
+      </span>
+    </aside>
+    <div class='ViewerTitle'>
+      <h1 id='MangaTitle'>${manga.title}</h1>
+      <a id='series' href='${manga.series}'>(Return to Chapter List)</a>
+    </div>
+    <nav id='ChapterNavigation'>
+      <div id='Counters' class='ControlLabel'>
+        <i>0</i> of <b>${begin > 1 ? manga.pages - (begin - 1) : manga.pages}</b> Pages Loaded,
+        <span class='ControlLabel'>Go to Page:</span>
+        <select id='gotoPage'>
+          <option selected>#</option>
+          ${listOptions(manga.pages, begin).join('')}
+        </select>
+      </div>
+      <div id='ChapterControl' class='ChapterControl'>
+        <button class='download NavigationControlButton ControlButton' title='Donwload Images Zip' type='button'>
+          ${IconFileDownload}
+          ${IconLoader2}
+          Download
+        </button>
+        <button id='prev' class='prev NavigationControlButton ControlButton' title='Previos Chapter' type='button'
+        onclick="window.location.href='${manga.prev || ''}';">
+          ${IconArrowBigLeft}
+          Previous
+        </button>
+        <button id='next' class='next NavigationControlButton ControlButton' title='Next Chapter' type='button'
+        onclick="window.location.href='${manga.next || ''}';">
+          Next
+          ${IconArrowBigRight}
+        </button>
+      </div>
+    </nav>
+  </header>
+  <main id='Chapter' class='${settings$1.fitWidthIfOversize === true ? 'fitWidthIfOversize' : ''} ${settings$1.viewMode}'>
+    ${listPages(manga.pages, begin).join('')}
+  </main>
+  <nav id='Navigation' class='panel ${settings$1.showThumbnails ? '' : 'disabled'}'>
+    <div id='NavigationCounters' class='ControlLabel'>
+      ${IconCategory}
+      <i>0</i> of <b>${begin > 1 ? manga.pages - (begin - 1) : manga.pages}</b> Pages Loaded
+    </div>
+    <div id='Thumbnails'>
+      ${ThumbnailsPanel(manga.pages, begin).join('')}
+    </div>
+  </nav>
+  ${SettingsPanel}
+  ${KeybindingsPanel}
+  ${BookmarkPanel}
+</div>`;
+
+    const cache = {
+        zip: new JSZip(),
+        downloadFiles: 0,
+        Data: {},
+    };
+    const getExtension = (mimeType) => ((/image\/(?<ext>jpe?g|png|webp)/.exec(mimeType) || {}).groups || {}).ext || '' || 'png';
+    const getFilename = (name, index, total, ext) => `${name}${(index + 1).toString().padStart(Math.floor(Math.log10(total)) + 1, '0')}.${ext.replace('jpeg', 'jpg')}`;
+    // Generate Zip File for download
+    function generateZip() {
+        // Source:
+        // http://stackoverflow.com/questions/8778863/downloading-an-image-using-xmlhttprequest-in-a-userscript/8781262#8781262
+        if (cache.downloadFiles === 0) {
+            const filenameRegex = /^(?<name>.*?)(?<index>\d+)\.(?<ext>\w+)$/;
+            const images = [...document.querySelectorAll('.PageImg')];
+            const filenames = (() => {
+                const result = [];
+                for (let i = 0; i < images.length; i += 1) {
+                    const $img = images[i];
+                    const filename = $img.getAttribute('src')?.split(/[?#]/)[0].split('/').pop() ?? '';
+                    const match = filenameRegex.exec(filename);
+                    if (!match || !match.groups)
+                        break;
+                    const fixedFilename = getFilename(match.groups.name, parseInt(match.groups.index, 10), images.length, match.groups?.ext);
+                    if (result.length > 0 && fixedFilename <= result[result.length - 1])
+                        break;
+                    result.push(fixedFilename);
+                }
+                if (result.length < images.length)
+                    return [];
+                return result;
+            })();
+            images.forEach((img, index) => {
+                const src = img.getAttribute('src') ?? '';
+                const base64 = /^data:(?<mimeType>image\/\w+);base64,+(?<data>.+)/.exec(src);
+                if (base64 && base64.groups) {
+                    const filename = getFilename('Page ', index, images.length, getExtension(base64.groups?.mimeType));
+                    cache.zip.file(filename, base64.groups.data, {
+                        base64: true,
+                        createFolders: true,
+                    });
+                    logScript(`${filename} Added to Zip from Base64 Image, From: ${src}`);
+                    cache.downloadFiles += 1;
+                }
+                else {
+                    try {
+                        GM_xmlhttpRequest({
+                            method: 'GET',
+                            url: src,
+                            headers: { referer: src, origin: src },
+                            responseType: 'blob',
+                            onload(request) {
+                                const filename = filenames[index] ||
+                                    getFilename('Page ', index, images.length, getExtension(request.response.type));
+                                cache.zip.file(filename, request.response, {
+                                    base64: true,
+                                    createFolders: true,
+                                    compression: 'DEFLATE',
+                                });
+                                logScript(`${filename} Added to Zip as Base64 Image, From: ${src}, Data:`, request.response);
+                                cache.downloadFiles += 1;
+                            },
+                        });
+                    }
+                    catch (e) {
+                        logScript(e);
+                    }
+                }
+            });
+        }
+        const total = document.querySelectorAll('.PageImg').length;
+        if (cache.downloadFiles < total) {
+            logScript(`Waiting for Files to Download ${cache.downloadFiles} of ${total}`);
+            setTimeout(generateZip, 2000);
+        }
+        else {
+            try {
+                logScript('Generating Zip');
+                cache.zip
+                    .generateAsync({
+                    type: 'blob',
+                })
+                    .then((content) => {
+                    logScript('Download Ready');
+                    const zipName = `${document.querySelector('#MangaTitle')?.textContent?.trim()}.zip`;
+                    saveAs(content, zipName);
+                    const button = document.querySelector('.download');
+                    button.disabled = false;
+                    button.classList.remove('loading');
+                })
+                    .catch(logScript);
+            }
+            catch (e) {
+                logScript(e);
+            }
+        }
+    }
+
+    function isImagesManga(manga) {
+        return 'listImages' in manga && !isNothing(manga.listImages);
+    }
+    function isPagesManga(manga) {
+        return 'listPages' in manga && !isNothing(manga.listPages);
+    }
+    function isBruteforceManga(manga) {
+        return 'bruteForce' in manga && !isNothing(manga.bruteForce);
+    }
+
+    var Language;
+    (function (Language) {
+        Language["ENGLISH"] = "English";
+        Language["SPANISH"] = "Spanish";
+        Language["PORTUGUESE"] = "Portuguese";
+        Language["RAW"] = "Raw";
+    })(Language || (Language = {}));
+    var Category;
+    (function (Category) {
+        Category["MANGA"] = "manga";
+        Category["COMIC"] = "comic";
+        Category["HENTAI"] = "hentai";
+    })(Category || (Category = {}));
+
+    function fetchText(url, format) {
+        return new Promise((resolve) => {
+            logScript('Fetching page: ', url);
+            fetch(url)
+                .then((response) =>
+            // When the page is loaded convert it to text
+            response.text())
+                .then((html) => {
+                // Initialize the DOM parser
+                const parser = new DOMParser();
+                // Parse the text
+                const doc = parser.parseFromString(html, format);
+                // You can now even select part of that html as you would in the regular DOM
+                // Example:
+                // var docArticle = doc.querySelector('article').innerHTML;
+                // console.log(doc);
+                resolve(doc);
+            })
+                .catch((err) => {
+                logScript('Failed to fetch page: ', err);
+            });
+        });
+    }
+    function fetchHtml(url) {
+        return fetchText(url, 'text/html');
+    }
+    function getElementAttribute(url, selector, attribute) {
+        return fetchHtml(url).then((doc) => doc.querySelector(selector)?.getAttribute(attribute));
+    }
+
+    /**
+     * Settings the lazy load will obey
+     */
+    const settings = {
+        threshold: 2000,
+        throttle: 500,
+        lazyAttribute: 'data-src',
+        targetAttribute: 'src',
+    };
+    /**
+     * List of elements that will be lazy loaded
+     */
+    let listElements = [];
+    /**
+     * Check if the image ins nearing the viewport, so it needs to load.
+     * @param value
+     */
+    function filterInView(value) {
+        const { element } = value;
+        const rect = element.getBoundingClientRect();
+        const viewport = {
+            top: 0 - settings.threshold,
+            bottom: window.scrollY + window.innerHeight + settings.threshold,
+        };
+        return rect.bottom >= viewport.top && rect.top <= viewport.bottom;
+    }
+    /**
+     * Execute the loading of the image
+     * @param item
+     */
+    function showElement(item) {
+        const value = item.element.getAttribute(settings.lazyAttribute);
+        if (value)
+            item.element.setAttribute(settings.targetAttribute, value);
+        item.callback(item.element);
+    }
+    /**
+     * Lookup images that should be loaded, and update the current list
+     */
+    function executeCheck() {
+        const inView = listElements.filter(filterInView);
+        listElements = listElements.filter((item) => !filterInView(item));
+        inView.forEach(showElement);
+    }
+    /**
+     * Throttle controller
+     */
+    let wait = false;
+    /**
+     * Function responsible for observing the screen move/change
+     */
+    function observerEvent() {
+        if (listElements.length === 0) {
+            window.removeEventListener('scroll', observerEvent);
+            window.removeEventListener('touchmove', observerEvent);
+            window.removeEventListener('resize', observerEvent);
+            // console.info('All items lazy loaded');
+            return;
+        }
+        if (wait) {
+            return;
+        }
+        executeCheck();
+        wait = true;
         setTimeout(() => {
-          $(window).scrollTop(0);
-          loadManga(manga, begin);
-        }, 50);
-        if (!isNothing(settings.bookmarks.filter((el) => el.url === W.location.href))) {
-          logScript('Bookmark Removed '.concat(W.location.href));
-          settings.bookmarks = settings.bookmarks.filter((el) => el.url !== W.location.href);
-          setValueGM('MangaBookmarks', JSON.stringify(settings.bookmarks));
-        }
-      } catch (e) {
-        logScript(e);
-      }
-    }, 50);
-    if (manga.after !== undefined) {
-      manga.after();
+            wait = false;
+        }, settings.throttle);
     }
-  }
-  function lateStart(site, begin = 1) {
-    const manga = site.run();
-    logScript('LateStart');
-    Swal.fire({
-      title: 'Starting<br>MangaOnlineViewer',
-      input: 'range',
-      inputAttributes: {
-        min: 1,
-        max: manga.quant,
-        step: 1,
-      },
-      inputValue: begin,
-      text: 'Choose the Page to start from:',
-      showCancelButton: true,
-      cancelButtonColor: '#d33',
-      reverseButtons: true,
-      icon: 'question',
-    }).then((result) => {
-      if (result.value) {
-        logScript('Choice: '.concat(result.value));
-        formatPage(manga, result.value);
-      } else {
-        logScript(result.dismiss);
-      }
-    });
-  }
-  function preparePage(site, manga, begin = 0) {
-    logScript('Found '.concat(manga.quant, ' pages'));
-    if (manga.quant > 0) {
-      let beginning = begin;
-      if (beginning === 0) {
-        beginning =
-          settings.bookmarks.filter((x) => x.url === W.location.href).map((x) => x.page)[0] || 0;
-      }
-      $('head').append(
-        '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />',
-        '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.9.0/dist/sweetalert2.min.js" integrity="sha256-uvgSxlcEyGRDRvqW8sxcM/sPEBYiIeL+EW8XKL96iQ4=" crossorigin="anonymous"></script>',
-        '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.9.0/dist/sweetalert2.min.css" integrity="sha256-Ow4lbGxscUvJwGnorLyGwVYv0KkeIG6+5CAmR8zuRJw=" crossorigin="anonymous">',
-        '<style type="text/css">#mov {position: fixed;left: 50%;transform: translateX(-50%);top: 0;z-index: 1000000;border-radius: .25em;font-size: 1.5em;cursor: pointer;display: inline-block;margin: .3125em;padding: .625em 2em;box-shadow: none;font-weight: 500;color: #FFF;background: rgb(102, 83, 146);border: 1px #FFF;}</style>',
-      );
-      W.mov = (b) => lateStart(site, b || beginning);
-      switch (site.start || settings.loadMode) {
-        case 'never':
-          $('body').append('<button id="mov" onclick=mov()>Start MangaOnlineViewer</button>');
-          break;
-        case 'always':
-          formatPage(manga, 0);
-          break;
-        case 'normal':
-        default:
-          Swal.fire({
+    /**
+     * Simple lazy loading for images.
+     * Add an image element to a list, wait for it to be close to appearing on screen then load its 'src' from 'data-src'
+     * then call a callback function.
+     * @param element
+     * @param callback
+     */
+    function lazyLoad(element, callback) {
+        if (listElements.length === 0) {
+            // console.info('Initializing lazy load');
+            window.addEventListener('scroll', observerEvent, {
+                passive: true,
+            });
+            window.addEventListener('touchmove', observerEvent, {
+                passive: true,
+            });
+            window.addEventListener('resize', observerEvent, {
+                passive: true,
+            });
+        }
+        listElements.push({ element, callback });
+        observerEvent();
+    }
+
+    // After pages load apply default Zoom
+    function applyZoom(pages = '.PageContent img', zoom = settings$1.zoom) {
+        const pg = [...document.querySelectorAll(pages)];
+        pg.forEach((value) => {
+            const img = value;
+            img.removeAttribute('width');
+            img.removeAttribute('height');
+            img.removeAttribute('style');
+            if (zoom === 1000) {
+                img.style.width = `${window.innerWidth}px`;
+            }
+            else if (zoom === -1000) {
+                const nav = document.querySelector('#Navigation')?.classList.contains('disabled');
+                const chap = document.querySelector('#Chapter')?.classList.contains('WebComic');
+                const nextHeight = window.innerHeight + (nav ? 0 : -34) + (chap ? 0 : -35);
+                img.style.height = `${nextHeight}px`;
+            }
+            else {
+                img.style.width = `${img.naturalWidth * (zoom / 100)}px`;
+            }
+        });
+    }
+    // Force reload the image
+    function reloadImage(img) {
+        const src = img.getAttribute('src');
+        if (src) {
+            img.removeAttribute('src');
+            setTimeout(() => {
+                img.setAttribute('src', src);
+            }, 500);
+        }
+    }
+    function onImagesDone() {
+        logScript('Images Loading Complete');
+        if (!settings$1.lazyLoadImages) {
+            document.querySelector('.download')?.setAttribute('href', '#download');
+            logScript('Download Available');
+            if (settings$1.downloadZip) {
+                document.querySelector('#blob')?.dispatchEvent(new Event('click'));
+            }
+        }
+    }
+    function updateProgress() {
+        const total = document.querySelectorAll('.PageContent .PageImg').length;
+        const loaded = document.querySelectorAll('.PageContent .PageImg.imgLoaded').length;
+        const percentage = Math.floor((loaded / total) * 100);
+        const title = document.querySelector('title');
+        if (title) {
+            title.innerHTML = `(${percentage}%) ${document.querySelector('#MangaTitle')?.textContent}`;
+        }
+        document.querySelectorAll('#Counters i, #NavigationCounters i').forEach((ele) => {
+            ele.textContent = loaded.toString();
+        });
+        NProgress.configure({
+            showSpinner: false,
+        }).set(loaded / total);
+        logScript(`Progress: ${percentage}%`);
+        if (loaded === total)
+            onImagesDone();
+    }
+    // change class if the image is loaded or broken
+    function onImagesProgress(instance, image) {
+        if (image) {
+            if (image.isLoaded) {
+                image.img.classList.add('imgLoaded');
+                image.img.classList.remove('imgBroken');
+                image.img.getAttribute('id');
+                const thumbId = image.img.getAttribute('id').replace('PageImg', 'ThumbnailImg');
+                const thumb = document.getElementById(thumbId);
+                if (thumb) {
+                    thumb.onload = () => applyZoom(`#${image.img.getAttribute('id')}`);
+                    thumb.setAttribute('src', image.img.getAttribute('src'));
+                }
+            }
+            else {
+                image.img.classList.add('imgBroken');
+                reloadImage(image.img);
+                const imgLoad = imagesLoaded(image.img.parentElement);
+                imgLoad.on('progress', onImagesProgress);
+            }
+        }
+        updateProgress();
+    }
+    // Corrects urls
+    function normalizeUrl(url = '') {
+        let uri = url.trim();
+        if (uri.startsWith('//')) {
+            uri = `https:${uri}`;
+        }
+        return uri;
+    }
+    // Adds an image to the place-holder div
+    function addImg(manga, index, imageSrc, position) {
+        const src = normalizeUrl(imageSrc);
+        const img = document.querySelector(`#PageImg${index}`);
+        if (img) {
+            if (!settings$1.lazyLoadImages || position <= settings$1.lazyStart) {
+                setTimeout(() => {
+                    img.setAttribute('src', src);
+                    const imgLoad = imagesLoaded(img.parentElement);
+                    imgLoad.on('progress', onImagesProgress);
+                    logScript('Loaded Image:', index, 'Source:', src);
+                }, (manga.timer || settings$1.throttlePageLoad) * position);
+            }
+            else {
+                img.setAttribute('data-src', src);
+                lazyLoad(img, () => {
+                    const imgLoad = imagesLoaded(img.parentElement);
+                    imgLoad.on('progress', onImagesProgress);
+                    logScript('Lazy Image: ', index, ' Source: ', img.getAttribute('src'));
+                });
+            }
+        }
+    }
+    function findPage(manga, index, pageUrl, lazy) {
+        return async () => {
+            const src = await getElementAttribute(pageUrl, manga.img, manga.lazyAttr ?? 'src');
+            const img = document.querySelector(`#PageImg${index}`);
+            if (src && img) {
+                img.setAttribute('src', src);
+                img.style.width = 'auto';
+                const imgLoad = imagesLoaded(img.parentElement);
+                imgLoad.on('progress', onImagesProgress);
+                logScript(`${lazy && 'Lazy '}Page: `, index, ' Source: ', img.getAttribute('src'));
+            }
+        };
+    }
+    // Adds a page to the place-holder div
+    async function addPage(manga, index, pageUrl, position) {
+        const img = document.querySelector(`#PageImg${index}`);
+        if (img) {
+            if (!settings$1.lazyLoadImages || position <= settings$1.lazyStart) {
+                setTimeout(() => {
+                    findPage(manga, index, pageUrl, false)();
+                }, (manga.timer || settings$1.throttlePageLoad) * position);
+            }
+            else {
+                img.setAttribute('data-src', 'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+                lazyLoad(img, findPage(manga, index, pageUrl, true));
+            }
+        }
+    }
+    // use a list of pages to fill the viewer
+    function loadMangaPages(begin, manga) {
+        indexList(manga.pages, begin).forEach((index, position) => addPage(manga, index, manga.listPages[index - 1], position));
+    }
+    // use a list of images to fill the viewer
+    function loadMangaImages(begin, manga) {
+        indexList(manga.pages, begin).forEach((index, position) => addImg(manga, index, manga.listImages[index - 1], position));
+    }
+    // Entry point for loading hte Manga pages
+    function loadManga(manga, begin = 1) {
+        settings$1.lazyLoadImages = manga.lazy || settings$1.lazyLoadImages;
+        logScript('Loading Images');
+        logScript(`Intervals: ${manga.timer || settings$1.throttlePageLoad || 'Default(1000)'}`);
+        logScript(`Lazy: ${settings$1.lazyLoadImages}, Starting from: ${settings$1.lazyStart}`);
+        if (settings$1.lazyLoadImages) {
+            logScript('Download may not work with Lazy Loading Images');
+        }
+        if (isImagesManga(manga)) {
+            logScript('Method: Images:', manga.listImages);
+            loadMangaImages(begin, manga);
+        }
+        else if (isPagesManga(manga)) {
+            logScript('Method: Pages:', manga.listPages);
+            loadMangaPages(begin, manga);
+        }
+        else if (isBruteforceManga(manga)) {
+            logScript('Method: Brute Force');
+            manga.bruteForce({
+                begin,
+                addImg,
+                loadImages: (list) => loadMangaImages(begin, { ...manga, listImages: list }),
+                loadPages: (list, img, lazyAttr) => loadMangaPages(begin, {
+                    ...manga,
+                    listPages: list,
+                    img,
+                    lazyAttr,
+                }),
+                wait: settings$1.throttlePageLoad,
+            });
+        }
+    }
+
+    // Goto Page and Thumbnails
+    function scrollToElement(ele) {
+        window.scroll(0, ele?.offsetTop || 0);
+    }
+    // Clean key press configurations and set some when specified
+    function setKeyDownEvents() {
+        try {
+            document.onkeydown = null;
+            document.onkeypress = null;
+            window.onkeydown = null;
+            window.onkeypress = null;
+            window.onload = null;
+            document.body.onload = null;
+        }
+        catch (e) {
+            logScript(`Keybinds error: ${e}`);
+        }
+        function processKey(e) {
+            const a = e.code;
+            const usedKeys = [
+                'KeyW',
+                'Numpad8',
+                'KeyS',
+                'Numpad2',
+                'ArrowRight',
+                'Period',
+                'KeyD',
+                'Numpad6',
+                'ArrowLeft',
+                'Comma',
+                'KeyA',
+                'Numpad4',
+                'Equal',
+                'NumpadAdd',
+                'KeyE',
+                'Minus',
+                'NumpadSubtract',
+                'KeyQ',
+                'Digit9',
+                'NumpadDivide',
+                'KeyR',
+                'Digit0',
+                'NumpadMultiply',
+                'KeyF',
+                'Slash',
+                'Numpad5',
+                'KeyX',
+                'KeyC',
+                'KeyV',
+                'KeyB',
+                'KeyN',
+            ];
+            if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey && usedKeys.some((i) => i === a)) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                logScript('Keyboard:', a, ' Event:', e);
+                switch (a) {
+                    case 'ArrowUp':
+                    case 'KeyW':
+                    case 'Numpad8':
+                        if (settings$1.zoom === -1000) {
+                            const next = [...document.querySelectorAll('.MangaPage')].find((element) => element.offsetTop - window.scrollY > 10);
+                            scrollToElement(next?.previousElementSibling);
+                        }
+                        else {
+                            window.scrollBy({
+                                top: -window.innerHeight / 2,
+                                behavior: 'smooth',
+                            });
+                        }
+                        break;
+                    case 'ArrowDown':
+                    case 'KeyS':
+                    case 'Numpad2':
+                        if (settings$1.zoom === -1000) {
+                            const next = [...document.querySelectorAll('.MangaPage')].find((element) => element.offsetTop - window.scrollY > 10);
+                            scrollToElement(next);
+                        }
+                        else {
+                            window.scrollBy({
+                                top: window.innerHeight / 2,
+                                behavior: 'smooth',
+                            });
+                        }
+                        break;
+                    case 'ArrowRight':
+                    case 'Period':
+                    case 'KeyD':
+                    case 'Numpad6':
+                        logScript('Click next');
+                        document.querySelector('#next')?.click();
+                        break;
+                    case 'ArrowLeft':
+                    case 'Comma':
+                    case 'KeyA':
+                    case 'Numpad4':
+                        document.querySelector('#prev')?.click();
+                        break;
+                    case 'Equal':
+                    case 'NumpadAdd':
+                    case 'KeyE':
+                        document.querySelector('#enlarge')?.dispatchEvent(new Event('click'));
+                        break;
+                    case 'Minus':
+                    case 'NumpadSubtract':
+                    case 'KeyQ':
+                        document.querySelector('#reduce')?.dispatchEvent(new Event('click'));
+                        break;
+                    case 'Digit9':
+                    case 'NumpadDivide':
+                    case 'KeyR':
+                        document.querySelector('#restore')?.dispatchEvent(new Event('click'));
+                        break;
+                    case 'Digit0':
+                    case 'NumpadMultiply':
+                    case 'KeyF':
+                        document.querySelector('#fitWidth')?.dispatchEvent(new Event('click'));
+                        break;
+                    case 'Slash':
+                    case 'Numpad5':
+                    case 'KeyX':
+                        document.querySelector('#settings')?.dispatchEvent(new Event('click'));
+                        break;
+                    case 'KeyV':
+                        document.querySelector('#verticalMode')?.dispatchEvent(new Event('click'));
+                        break;
+                    case 'KeyN':
+                        document.querySelector('#rtlMode')?.dispatchEvent(new Event('click'));
+                        break;
+                    case 'KeyB':
+                        document.querySelector('#ltrMode')?.dispatchEvent(new Event('click'));
+                        break;
+                }
+                return false;
+            }
+            return true;
+        }
+        document.addEventListener('keydown', processKey);
+    }
+    function updateZoomPercent(percent = settings$1.zoom) {
+        const zoom = document.querySelector('#ZoomPercent');
+        if (zoom) {
+            zoom.textContent = percent.toString();
+        }
+    }
+    // Controls for the extra features added to the sites
+    function controls() {
+        // Settings Control
+        function buttonSettings() {
+            document.querySelector('#SettingsPanel')?.classList.toggle('visible');
+            document.querySelector('#Navigation')?.classList.toggle('visible');
+            document.querySelector('#Header')?.classList.toggle('visible');
+            document.querySelector('#SettingsOverlay')?.classList.toggle('visible');
+        }
+        document.querySelector('#settings')?.addEventListener('click', buttonSettings);
+        document.querySelector('#CloseSettings')?.addEventListener('click', buttonSettings);
+        document.querySelector('#SettingsOverlay')?.addEventListener('click', buttonSettings);
+        // Keybindings list
+        function buttonKeybindings() {
+            document.querySelector('#KeybindingsPanel')?.classList.toggle('visible');
+        }
+        document.querySelector('#keybindings')?.addEventListener('click', buttonKeybindings);
+        document.querySelector('#CloseKeybindings')?.addEventListener('click', buttonKeybindings);
+        // List of Bookmarks
+        function buttonBookmarks() {
+            document.querySelector('#BookmarksPanel')?.classList.toggle('visible');
+            document.querySelector('#BookmarksOverlay')?.classList.toggle('visible');
+        }
+        document.querySelector('#bookmarks')?.addEventListener('click', buttonBookmarks);
+        document.querySelector('#CloseBookmarks')?.addEventListener('click', buttonBookmarks);
+        document.querySelector('#BookmarksOverlay')?.addEventListener('click', buttonBookmarks);
+        function eraseBookmarks(elem) {
+            elem.addEventListener('click', (event) => {
+                const target = event.currentTarget.value;
+                settings$1.bookmarks = settings$1.bookmarks.filter((el) => el.url !== target);
+                if (target === window.location.href) {
+                    document.querySelector('#MangaOnlineViewer')?.classList.toggle('bookmarked');
+                }
+                logScript(`Bookmark Removed ${target}`);
+                Swal.fire({
+                    title: 'Bookmark Removed',
+                    timer: 10000,
+                    icon: 'error',
+                });
+                setValueGM('Bookmarks', JSON.stringify(settings$1.bookmarks));
+                logScript(`MangaBookmarks: ${getValueGM('Bookmarks')}`);
+                reloadBookmarks();
+                document.querySelectorAll('.BookmarkItem .erase')?.forEach(eraseBookmarks);
+            });
+        }
+        document.querySelectorAll('.BookmarkItem .erase')?.forEach(eraseBookmarks);
+        // Size Controls
+        // Global Zoom In Button
+        function buttonGlobalZoomIn() {
+            settings$1.zoom += settings$1.zoomStep;
+            updateZoomPercent();
+            applyZoom();
+        }
+        document.querySelector('#enlarge')?.addEventListener('click', buttonGlobalZoomIn);
+        // Global Zoom Out Button
+        function buttonGlobalZoomOut() {
+            settings$1.zoom -= settings$1.zoomStep;
+            updateZoomPercent();
+            applyZoom();
+        }
+        document.querySelector('#reduce')?.addEventListener('click', buttonGlobalZoomOut);
+        // Global Zoom Restore Button
+        function buttonGlobalRestoreZoom() {
+            settings$1.zoom = 100;
+            updateZoomPercent();
+            applyZoom();
+        }
+        document.querySelector('#restore')?.addEventListener('click', buttonGlobalRestoreZoom);
+        // Global Fit Width Button
+        function buttonGlobalFitWidth() {
+            settings$1.zoom = 1000;
+            updateZoomPercent();
+            applyZoom();
+        }
+        document.querySelector('#fitWidth')?.addEventListener('click', buttonGlobalFitWidth);
+        // Global Fit height Button
+        function buttonGlobalFitHeight() {
+            settings$1.zoom = -1000;
+            updateZoomPercent();
+            applyZoom();
+        }
+        document.querySelector('#fitHeight')?.addEventListener('click', buttonGlobalFitHeight);
+        // Fluid LTR View Mode Button
+        function buttonLtrMode() {
+            document.querySelector('#Chapter')?.classList.add('FluidLTR');
+            document.querySelector('#Chapter')?.classList.remove('FluidRTL');
+            document.querySelector('#Chapter')?.classList.add('DoublePage');
+            applyZoom();
+        }
+        document.querySelector('#ltrMode')?.addEventListener('click', buttonLtrMode);
+        // Fluid RTL View Mode Button
+        function buttonRtlMode() {
+            document.querySelector('#Chapter')?.classList.remove('FluidLTR');
+            document.querySelector('#Chapter')?.classList.add('FluidRTL');
+            document.querySelector('#Chapter')?.classList.add('DoublePage');
+            applyZoom();
+        }
+        document.querySelector('#rtlMode')?.addEventListener('click', buttonRtlMode);
+        // Vertical View Mode Button
+        function buttonVerticalMode() {
+            document.querySelector('#Chapter')?.classList.remove('FluidLTR');
+            document.querySelector('#Chapter')?.classList.remove('FluidRTL');
+            document.querySelector('#Chapter')?.classList.remove('DoublePage');
+            applyZoom();
+        }
+        document.querySelector('#verticalMode')?.addEventListener('click', buttonVerticalMode);
+        // Image Fit width if Oversize Toggle
+        function checkFitWidthOversize(event) {
+            document.querySelector('#Chapter')?.classList.toggle('fitWidthIfOversize');
+            if (event.currentTarget.checked) {
+                setValueGM('FitWidthIfOversize', true);
+            }
+            else {
+                setValueGM('FitWidthIfOversize', false);
+            }
+            logScript(`fitIfOversize: ${getValueGM('FitWidthIfOversize')}`);
+        }
+        document.querySelector('#fitIfOversize')?.addEventListener('change', checkFitWidthOversize);
+        // Default View mode Selector
+        function changeViewMode(event) {
+            const mode = event.currentTarget.value;
+            document.querySelector('#Chapter')?.classList.remove('FluidLTR');
+            document.querySelector('#Chapter')?.classList.remove('FluidRTL');
+            document.querySelector('#Chapter')?.classList.add(mode);
+            setValueGM('ViewMode', mode);
+            logScript(`ViewMode: ${getValueGM('ViewMode')}`);
+            applyZoom();
+        }
+        document.querySelector('#viewMode')?.addEventListener('change', changeViewMode);
+        // Start/Load mode Selector
+        function changeLoadMode(event) {
+            const mode = event.currentTarget.value;
+            setValueGM('LoadMode', mode);
+            logScript(`MangaLoadMode: ${getValueGM('LoadMode')}`);
+        }
+        document.querySelector('#loadMode')?.addEventListener('change', changeLoadMode);
+        // Show Thumbnail Toggle
+        function checkShowThumbnails(event) {
+            document.querySelector('#Navigation')?.classList.toggle('disabled');
+            if (event.currentTarget.checked) {
+                setValueGM('ShowThumbnails', true);
+            }
+            else {
+                setValueGM('ShowThumbnails', false);
+            }
+            logScript(`MangaShowThumbnails: ${getValueGM('ShowThumbnails')}`);
+            applyZoom();
+        }
+        document.querySelector('#showThumbnails')?.addEventListener('change', checkShowThumbnails);
+        // Download auto start toggle
+        function changeAutoDownload(event) {
+            if (event.currentTarget.checked) {
+                setValueGM('DownloadZip', true);
+                Swal.fire({
+                    title: 'Attention',
+                    text: 'Next time a chapter finish loading you will be prompted to save automatically',
+                    timer: 10000,
+                    icon: 'info',
+                });
+            }
+            else {
+                setValueGM('DownloadZip', false);
+            }
+            logScript(`MangaDownloadZip: ${getValueGM('DownloadZip')}`);
+        }
+        document.querySelector('#downloadZip')?.addEventListener('change', changeAutoDownload);
+        // Download starter
+        document.querySelector('.download')?.addEventListener('click', (event) => {
+            const button = event.currentTarget;
+            logScript('Downloading Chapter');
+            button.disabled = true;
+            button.classList.add('loading');
+            generateZip();
+        });
+        // Lazy load Toggle
+        function checkLazyLoad(event) {
+            if (event.currentTarget.checked) {
+                setValueGM('LazyLoadImages', true);
+                Swal.fire({
+                    title: 'Warning',
+                    html: `Lazy load is incompatible with zip download, you will not be able to download with this setting ON.<br/>
+               Suggestion: <span style="color:red;font-weight:bold">Disable Thumbnails</span> to save Bandwidth/Memory.`,
+                    icon: 'warning',
+                });
+            }
+            else {
+                setValueGM('LazyLoadImages', false);
+            }
+            logScript(`MangaLazyLoadImages: ${getValueGM('LazyLoadImages')}`);
+        }
+        document.querySelector('#lazyLoadImages')?.addEventListener('change', checkLazyLoad);
+        // Lazy load starting point Slider
+        function changeLazyStart(event) {
+            const start = event.currentTarget.value;
+            setValueGM('LazyStart', start);
+            logScript(`lazyStart: ${getValueGM('LazyStart')}`);
+        }
+        document.querySelector('#lazyStart')?.addEventListener('change', changeLazyStart);
+        // Images load speed Selector
+        function changePagesPerSecond(event) {
+            setValueGM('Timer', parseInt(event.currentTarget.value, 10));
+            logScript(`MangaTimer: ${getValueGM('Timer')}`);
+        }
+        document.querySelector('#PagesPerSecond')?.addEventListener('change', changePagesPerSecond);
+        // Global Default Zoom Selector
+        function changeDefaultZoom(event) {
+            settings$1.zoom = parseInt(event.currentTarget.value, 10);
+            updateZoomPercent();
+            setValueGM('Zoom', parseInt(settings$1.zoom.toString(), 10));
+            logScript(`MangaZoom: ${getValueGM('Zoom')}`);
+            applyZoom();
+        }
+        document.querySelector('#DefaultZoom')?.addEventListener('change', changeDefaultZoom);
+        // Zoom Step Slider
+        function changeZoomStep(event) {
+            const step = event.currentTarget.value;
+            setValueGM('ZoomStep', parseInt(step, 10));
+            logScript(`ZoomStep: ${getValueGM('ZoomStep')}`);
+        }
+        document.querySelector('#zoomStep')?.addEventListener('change', changeZoomStep);
+        // Min Zoom Slider
+        function changeMinZoom(event) {
+            const min = event.currentTarget.value;
+            replaceStyleSheet('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${min}vw;}`);
+            setValueGM('MinZoom', parseInt(min, 10));
+            logScript(`MinZoom: ${getValueGM('MinZoom')}`);
+        }
+        document.querySelector('#minZoom')?.addEventListener('change', changeMinZoom);
+        // Show/hide Image Controls Button
+        function globalHideImageControls() {
+            document.querySelector('#MangaOnlineViewer')?.classList.toggle('hideControls');
+        }
+        document.querySelector('#pageControls')?.addEventListener('click', globalHideImageControls);
+        // Show/hide Image Controls Toggle
+        function checkHideImageControls(event) {
+            document.querySelector('#MangaOnlineViewer')?.classList.toggle('hideControls');
+            if (event.currentTarget.checked) {
+                setValueGM('HidePageControls', true);
+            }
+            else {
+                setValueGM('HidePageControls', false);
+            }
+            logScript(`MangaHidePageControls: ${getValueGM('HidePageControls')}`);
+        }
+        document.querySelector('#hidePageControls')?.addEventListener('change', checkHideImageControls);
+        // Sticky Header or MouseOverMenu Toggle
+        function checkMouseOverMenu(event) {
+            document.querySelector('#Header')?.classList.toggle('mouseOverMenu');
+            if (event.currentTarget.checked) {
+                setValueGM('MouseOverMenu', true);
+            }
+            else {
+                setValueGM('MouseOverMenu', false);
+            }
+            logScript(`MangaHidePageControls: ${getValueGM('MouseOverMenu')}`);
+        }
+        document.querySelector('#mouseOverMenu')?.addEventListener('change', checkMouseOverMenu);
+        // ColorScheme Selector
+        function changeColorScheme() {
+            const isDark = settings$1.colorScheme === 'dark';
+            settings$1.colorScheme = isDark ? 'light' : 'dark';
+            setValueGM('ColorScheme', settings$1.colorScheme);
+            [...document.querySelectorAll('#MangaOnlineViewer , body')].forEach((elem) => {
+                elem.classList.remove(isDark ? 'dark' : 'light');
+                elem.classList.add(settings$1.colorScheme);
+            });
+            logScript('ColorScheme', getValueGM('ColorScheme'));
+        }
+        document.querySelector('#ColorScheme')?.addEventListener('click', changeColorScheme);
+        // Theme Control Selector
+        function changeTheme(event) {
+            const target = event.currentTarget;
+            [...document.querySelectorAll('.ThemeRadio')].forEach((elem) => elem.classList.remove('selected'));
+            target.classList.add('selected');
+            [...document.querySelectorAll('#MangaOnlineViewer , body')].forEach((elem) => {
+                elem.setAttribute('data-theme', target.title);
+            });
+            setValueGM('Theme', target.title);
+            logScript('Theme', getValueGM('Theme'));
+            const hue = document.querySelector('#Hue');
+            const shade = document.querySelector('#Shade');
+            if (target.title.startsWith('custom')) {
+                hue?.classList.add('show');
+                shade?.classList.remove('show');
+            }
+            else {
+                hue?.classList.remove('show');
+                shade?.classList.add('show');
+            }
+        }
+        [...document.querySelectorAll('.ThemeRadio')].forEach((elem) => elem.addEventListener('click', changeTheme));
+        // Custom theme Color Input
+        function changeCustomTheme(event) {
+            const target = event.currentTarget.value;
+            logScript(`CustomTheme: ${target}`);
+            settings$1.customTheme = target;
+            addCustomTheme(target);
+            setValueGM('CustomTheme', target);
+            logScript(`CustomTheme: ${getValueGM('CustomTheme')}`);
+        }
+        document.querySelector('#CustomThemeHue')?.addEventListener('change', changeCustomTheme);
+        // Theme Shade Input
+        function changeThemeShade(event) {
+            const target = parseInt(event.currentTarget.value, 10);
+            logScript(`ThemeShade: ${target}`);
+            settings$1.themeShade = target;
+            refreshThemes();
+            setValueGM('ThemeShade', target);
+            logScript(`ThemeShade: ${getValueGM('ThemeShade')}`);
+        }
+        document.querySelector('#ThemeShade')?.addEventListener('change', changeThemeShade);
+        // Goto Navigation Selector
+        function selectGoToPage(event) {
+            const target = event.currentTarget.value;
+            applyZoom();
+            scrollToElement(document.querySelector(`#Page${target}`));
+        }
+        document.querySelector('#gotoPage')?.addEventListener('change', selectGoToPage);
+        // Thumbnail Navigation
+        function clickThumbnail(elem) {
+            return elem.addEventListener('click', (event) => {
+                applyZoom();
+                scrollToElement(document.querySelector(`#Page${event.currentTarget.querySelector('.ThumbnailIndex')?.textContent}`));
+            });
+        }
+        document.querySelectorAll('.Thumbnail')?.forEach(clickThumbnail);
+        // Individual Page functions
+        // Bookmark Page to resume reading
+        function buttonBookmark(elem) {
+            elem.addEventListener('click', (event) => {
+                document.querySelector('#MangaOnlineViewer')?.classList.toggle('bookmarked');
+                const num = parseInt(event.currentTarget.parentElement?.querySelector('.PageIndex')
+                    ?.textContent || '0', 10);
+                const mark = {
+                    url: window.location.href,
+                    page: num,
+                    date: Date.now(),
+                };
+                const found = settings$1.bookmarks.filter((el) => el.url === mark.url).length > 0;
+                if (found) {
+                    settings$1.bookmarks = settings$1.bookmarks.filter((el) => el.url !== mark.url);
+                    Swal.fire({
+                        title: 'Bookmark Removed',
+                        timer: 10000,
+                        icon: 'error',
+                    });
+                }
+                else {
+                    settings$1.bookmarks.push(mark);
+                    Swal.fire({
+                        title: 'Saved Bookmark',
+                        html: `Next time you open this chapter it will resume from:<h4>Page ${num}</h4>(Only <i>ONCE</i> per Bookmark, will be removed after a year unused)`,
+                        icon: 'success',
+                    });
+                }
+                setValueGM('Bookmarks', JSON.stringify(settings$1.bookmarks));
+                logScript(`MangaBookmarks: ${getValueGM('Bookmarks')}`);
+                reloadBookmarks();
+                document.querySelectorAll('.BookmarkItem .erase')?.forEach(eraseBookmarks);
+            });
+        }
+        document.querySelectorAll('.Bookmark')?.forEach(buttonBookmark);
+        // Reload Page
+        function buttonReloadPage(elem) {
+            return elem.addEventListener('click', (event) => {
+                const img = event.currentTarget.parentElement?.parentElement?.querySelector('.PageImg');
+                reloadImage(img);
+            });
+        }
+        document.querySelectorAll('.Reload')?.forEach(buttonReloadPage);
+        // ZoomIn
+        function buttonZoomIn(elem) {
+            return elem.addEventListener('click', (event) => {
+                const img = event.currentTarget.parentElement?.parentElement?.querySelector('.PageImg');
+                const ratio = (img.width / img.naturalWidth) * (100 + settings$1.zoomStep);
+                applyZoom(`#${img.getAttribute('id')}`, ratio);
+            });
+        }
+        document.querySelectorAll('.ZoomIn')?.forEach(buttonZoomIn);
+        // ZoomOut
+        function buttonZoomOut(elem) {
+            return elem.addEventListener('click', (event) => {
+                const img = event.currentTarget.parentElement?.parentElement?.querySelector('.PageImg');
+                const ratio = (img.width / img.naturalWidth) * (100 - settings$1.zoomStep);
+                applyZoom(`#${img.getAttribute('id')}`, ratio);
+            });
+        }
+        document.querySelectorAll('.ZoomOut')?.forEach(buttonZoomOut);
+        // ZoomRestore
+        function buttonRestoreZoom(elem) {
+            return elem.addEventListener('click', () => {
+                document.querySelector('.PageContent .PageImg')?.removeAttribute('width');
+            });
+        }
+        document.querySelectorAll('.ZoomRestore')?.forEach(buttonRestoreZoom);
+        // ZoomWidth
+        function buttonZoomWidth(elem) {
+            return elem.addEventListener('click', (event) => {
+                const page = event.currentTarget.parentElement?.parentElement;
+                const img = page?.querySelector('.PageImg');
+                applyZoom(`#${img.getAttribute('id')}`, 1000);
+                page?.classList.toggle('DoublePage');
+            });
+        }
+        document.querySelectorAll('.ZoomWidth')?.forEach(buttonZoomWidth);
+        // ZoomHeight
+        function buttonZoomHeight(elem) {
+            elem.addEventListener('click', (event) => {
+                const img = event.currentTarget.parentElement?.parentElement?.querySelector('.PageImg');
+                applyZoom(`#${img.getAttribute('id')}`, -1000);
+            });
+        }
+        document.querySelectorAll('.ZoomHeight')?.forEach(buttonZoomHeight);
+        // Hide
+        function buttonHidePage(elem) {
+            elem.addEventListener('click', (event) => {
+                const img = event.currentTarget.parentElement?.parentElement;
+                img.classList.toggle('hide');
+            });
+        }
+        document.querySelectorAll('.Hide')?.forEach(buttonHidePage);
+        // Reset Reader Settings
+        function buttonResetSettings() {
+            getListGM().forEach((setting) => removeValueGM(setting));
+            Swal.fire({
+                title: 'Attention',
+                text: 'Settings have been reset, reload the page to take effect',
+                timer: 10000,
+                icon: 'info',
+            });
+        }
+        document.querySelector('#ResetSettings')?.addEventListener('click', buttonResetSettings);
+        /**
+         * Changes header class when scrolling up or down to show/hide it
+         * @param showEnd [default 0]px from end of the screen to show header
+         */
+        function useScrollDirection(showEnd = 0) {
+            let prevOffset = 0;
+            const header = document.querySelector('#Header');
+            const setScrollDirection = (classSuffix) => {
+                header.classList.remove('scroll-end');
+                header.classList.remove('scroll-hide');
+                header.classList.remove('scroll-show');
+                if (classSuffix)
+                    header.classList.add(`scroll-${classSuffix}`);
+            };
+            function toggleScrollDirection() {
+                const { scrollY } = window;
+                if (showEnd && scrollY + window.innerHeight + showEnd > document.body.offsetHeight) {
+                    setScrollDirection('end');
+                }
+                else if (scrollY > prevOffset && scrollY > 50) {
+                    setScrollDirection('hide');
+                }
+                else if (scrollY < prevOffset && scrollY > 50) {
+                    setScrollDirection('show');
+                }
+                else {
+                    setScrollDirection('');
+                }
+                prevOffset = scrollY;
+            }
+            window.addEventListener('scroll', toggleScrollDirection);
+        }
+        useScrollDirection(100);
+    }
+
+    function display(manga, begin) {
+        window.stop();
+        if (manga.before !== undefined) {
+            manga.before();
+        }
+        document.head.innerHTML = head(manga);
+        document.body.innerHTML = body(manga, begin);
+        document.body.className = '';
+        document.body.removeAttribute('style');
+        // document.documentElement.innerHTML = reader(manga, begin);
+        logScript('Rebuilding Site');
+        setTimeout(() => {
+            try {
+                controls();
+                setKeyDownEvents();
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                    loadManga(manga, begin);
+                }, 50);
+                // Clear used Bookmarks
+                if (!isNothing(settings$1.bookmarks.filter((el) => el.url === window.location.href))) {
+                    logScript(`Bookmark Removed ${window.location.href}`);
+                    settings$1.bookmarks = settings$1.bookmarks.filter((el) => el.url !== window.location.href);
+                    setValueGM('Bookmarks', JSON.stringify(settings$1.bookmarks));
+                }
+            }
+            catch (e) {
+                logScript(e);
+            }
+        }, 50);
+        if (manga.after !== undefined) {
+            manga.after();
+        }
+    }
+
+    async function formatPage(manga, begin = 0) {
+        display(manga, begin);
+    }
+
+    async function lateStart(site, begin = 1) {
+        const manga = await site.run();
+        logScript('LateStart');
+        const options = {
             title: 'Starting<br>MangaOnlineViewer',
-            html: ''.concat(
-              beginning > 1 ? 'Resuming reading from Page '.concat(beginning, '.<br/>') : '',
-              'Please wait, 3 seconds...',
-            ),
+            input: 'range',
+            inputAttributes: {
+                min: '1',
+                max: manga.pages.toString(),
+                step: '1',
+            },
+            inputValue: begin || 1,
+            text: 'Choose the Page to start from:',
             showCancelButton: true,
             cancelButtonColor: '#d33',
             reverseButtons: true,
-            timer: 3000,
-          }).then((result) => {
-            if (result.value || result.dismiss === Swal.DismissReason.timer) {
-              formatPage(manga, beginning);
-            } else {
-              $('body').append('<button id="mov" onclick=mov()>Start MangaOnlineViewer</button>');
-              logScript(result.dismiss);
+            icon: 'question',
+        };
+        Swal.fire(options).then((result) => {
+            if (result.value) {
+                logScript(`Choice: ${result.value}`);
+                formatPage(manga, result.value);
             }
-          });
-          break;
-      }
+            else {
+                logScript(result.dismiss);
+            }
+        });
     }
-  }
-  function start(sites) {
-    logScript(
-      'Starting '
-        .concat(getInfoGM.script.name, ' ')
-        .concat(getInfoGM.script.version, ' on ')
-        .concat(getBrowser(), ' with ')
-        .concat(getEngine()),
-    );
-    W.InfoGM = getInfoGM;
-    logScript(''.concat(sites.length, ' Known Manga Sites'));
-    let waitElapsed = 0;
-    function waitExec(site) {
-      let wait = '';
-      if (site.waitMax !== undefined) {
-        if (waitElapsed >= site.waitMax) {
-          preparePage(site, site.run());
-          return;
-        }
-      }
-      if (site.waitAttr !== undefined) {
-        wait = $(site.waitAttr[0]).is('['.concat(site.waitAttr[1], ']'));
-        logScript(
-          'Wating for '
-            .concat(site.waitAttr[1], ' of ')
-            .concat(site.waitAttr[0], ' = ')
-            .concat(wait),
-        );
-        if (!wait) {
-          setTimeout(() => {
-            waitExec(site);
-          }, site.waitStep || 1000);
-          waitElapsed += site.waitStep || 1000;
-          return;
-        }
-      }
-      if (site.waitEle !== undefined) {
-        wait = $(site.waitEle).length;
-        logScript('Waiting for '.concat(site.waitEle, ' = ').concat(wait));
-        if (!wait) {
-          setTimeout(() => {
-            waitExec(site);
-          }, site.waitStep || 1000);
-          waitElapsed += site.waitStep || 1000;
-          return;
-        }
-      }
-      if (site.waitVar !== undefined) {
-        wait = W[site.waitVar];
-        logScript('Wating for '.concat(site.waitVar, ' = ').concat(wait));
-        if (isNothing(wait)) {
-          setTimeout(() => {
-            waitExec(site);
-          }, site.waitStep || 1000);
-          waitElapsed += site.waitStep || 1000;
-          return;
-        }
-      }
-      preparePage(site, site.run());
-    }
-    logScript('Looking for a match...');
-    const test = (s) =>
-      s
-        .filter((x) => x.url.test(W.location.href))
-        .map(logScriptC('Site Found:'))
-        .map(waitExec);
-    test(sites);
-  }
+    function createLateStartButton(site, beginning) {
+        const button = document.createElement('button');
+        button.innerText = 'Start MangaOnlineViewer';
+        button.id = 'StartMOV';
+        button.onclick = () => {
+            lateStart(site, beginning);
+        };
+        document.body.appendChild(button);
+        // language=CSS
+        const css = `
+#StartMOV {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    transition: all 0.4s ease-in-out;
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6b8dd6, #8e37d7);
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+}
 
-  start(sites);
+#StartMOV:hover {
+    background-position: 100% 0;
+    transition: all 0.4s ease-in-out;
+}
+
+#StartMOV:focus {
+    outline: none;
+}
+
+`;
+        const style = document.createElement('style');
+        style.appendChild(document.createTextNode(css));
+        document.head.appendChild(style);
+        logScript('Start Button added to page', button);
+    }
+    // Organize the site adding place-holders for the manga pages
+    function preparePage(site, manga, begin = 0) {
+        logScript(`Found Pages: ${manga.pages}`);
+        if (manga.pages > 0) {
+            let beginning = begin;
+            if (beginning <= 1) {
+                beginning = settings$1?.bookmarks?.find((b) => b.url === window.location.href)?.page || 1;
+            }
+            const style = document.createElement('style');
+            style.appendChild(document.createTextNode(sweetalertStyle));
+            document.body.appendChild(style);
+            // window.mov = (b: number) => lateStart(site, b || beginning);
+            switch (site.start || settings$1?.loadMode) {
+                case 'never':
+                    createLateStartButton(site, beginning);
+                    break;
+                case 'always':
+                    formatPage(manga, 0);
+                    break;
+                case 'wait':
+                default:
+                    Swal.fire({
+                        title: 'Starting<br>MangaOnlineViewer',
+                        html: `${beginning > 1 ? `Resuming reading from Page ${beginning}.<br/>` : ''}Please wait, 3 seconds...`,
+                        showCancelButton: true,
+                        cancelButtonColor: '#d33',
+                        reverseButtons: true,
+                        timer: 3000,
+                    }).then((result) => {
+                        if (result.value || result.dismiss === Swal.DismissReason.timer) {
+                            formatPage(manga, beginning);
+                        }
+                        else {
+                            createLateStartButton(site, beginning);
+                            logScript(result.dismiss);
+                        }
+                    });
+                    break;
+            }
+        }
+    }
+    // Wait for something on the site to be ready before executing the script
+    async function waitExec(site, waitElapsed = 0) {
+        if (waitElapsed >= (site.waitMax || 5000)) {
+            preparePage(site, await site.run());
+            return;
+        }
+        if (site.waitAttr !== undefined) {
+            const wait = document.querySelector(site.waitAttr[0])?.getAttribute(site.waitAttr[1]);
+            if (isNothing(wait)) {
+                logScript(`Waiting for Attribute ${site.waitAttr[1]} of ${site.waitAttr[0]} = ${wait}`);
+                setTimeout(() => {
+                    waitExec(site, waitElapsed + (site.waitStep || 1000));
+                }, site.waitStep || 1000);
+                return;
+            }
+            logScript(`Found Attribute ${site.waitAttr[1]} of ${site.waitAttr[0]} = ${wait}`);
+        }
+        if (site.waitEle !== undefined) {
+            const wait = document.querySelector(site.waitEle);
+            if (isNothing(wait?.tagName)) {
+                logScript(`Waiting for Element ${site.waitEle} = `, wait);
+                setTimeout(() => {
+                    waitExec(site, waitElapsed + (site.waitStep || 1000));
+                }, site.waitStep || 1000);
+                return;
+            }
+            logScript(`Found Element ${site.waitEle} = `, wait);
+        }
+        if (site.waitVar !== undefined) {
+            const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+            const wait = W[site.waitVar];
+            if (isNothing(wait)) {
+                logScript(`Waiting for Variable ${site.waitVar} = ${wait}`);
+                setTimeout(() => {
+                    waitExec(site, waitElapsed + (site.waitStep || 1000));
+                }, site.waitStep || 1000);
+                return;
+            }
+            logScript(`Found Variable ${site.waitVar} = ${wait}`);
+        }
+        preparePage(site, await site.run());
+    }
+    // Script Entry point
+    function start(sites) {
+        logScript(`Starting ${getInfoGM.script.name} ${getInfoGM.script.version} on ${getBrowser()} with ${getEngine()}`);
+        // window.InfoGM = getInfoGM;
+        logScript(`${sites.length} Known Manga Sites, Looking for a match...`);
+        const site = sites.find((s) => s.url.test(window.location.href));
+        if (site) {
+            logScript(`Found site: ${site.name}`);
+            waitExec(site);
+        }
+        else {
+            logScript(`Sorry, didnt find any valid site`);
+        }
+    }
+
+    start(sites);
+
 })();

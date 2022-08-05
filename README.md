@@ -18,11 +18,11 @@ Otros navegadores con otros complementos también pueden funcionar, pero no son 
 *La configuración no se puede guardar, es posible que deba solicitar una página de escritorio*:
 ###### Lector principal:
 ```
-javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.10/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/color-scheme/1.0.1/color-scheme.min.js", "https://cdnjs.cloudflare.com/ajax/libs/unveil2/2.0.8/jquery.unveil2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.6/jquery.minicolors.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
+javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.23/sweetalert2.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
 ```
 ###### Lector adulto:
 ```
-javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.10/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/color-scheme/1.0.1/color-scheme.min.js", "https://cdnjs.cloudflare.com/ajax/libs/unveil2/2.0.8/jquery.unveil2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.6/jquery.minicolors.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer_Adult.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
+javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.23/sweetalert2.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer_Adult.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
 ```
 
 ### Descripción
@@ -34,35 +34,41 @@ Intentaré mantener este script actualizado, sin embargo, casi nunca visito algu
 Permito que este script se publique o se use en cualquier lugar siempre que se me dé crédito y se me proporcione un enlace a este sitio.  Permito que partes de mi guión se usen libremente.
 
 ### Sitios de manga admitidos
-- [Asura Scans](https://www.asurascans.com/) / [Flame Scans](https://flamescans.org/) _[English]_
+- [Asura Scans](https://www.asurascans.com/) / [Flame Scans](https://flamescans.org/) / [Realm Scans](https://realmscans.com/) / [Alpha-scans](https://alpha-scans.org/) _[English]_
 - [Batoto](http://bato.to/) _[English]_
-- [DisasterScans](https://disasterscans.com/) _[English]_
 - [Dynasty-Scans](https://dynasty-scans.com/) _[English]_
-- [FoOlSlide]() _[English]_ **Obs: Any Scanlator site that uses FoOLSlide**
-- [Funmanga](http://funmanga.com/) _[English]_
-- [HatigarmScans](https://hatigarmscanz.net/home) _[English]_
-- [KomiRaw](https://komiraw.com/) _[English]_
+- [FoOlSlide](#) / [Kireicake](https://reader.kireicake.com) / [Yuri-ism](https://www.yuri-ism.net) / [Sense-Scans](https://sensescans.com/) _[English]_ **Obs: Any Site that uses FoOLSlide**
 - [LHTranslation](http://lhtranslation.net/) _[English]_
+- [MangaBuddy](https://mangabuddy.com/) _[English]_
 - [MangaDex](https://mangadex.org/) _[English]_
-- [MangaDoom](https://mngdoom.com/) _[English]_
-- [MangaFox](http://fanfox.net/) _[English]_
+- [MangaFox](https://fanfox.net/) / [MangaHere](https://www.mangahere.cc/) _[English]_
 - [MangaFreak](https://mangafreak.net/) _[English]_
-- [MangaHaus](https://manhuaus.com) / [Isekai Scan](https://isekaiscan.com/) / [Comic Kiba](https://comickiba.com/) / [Zinmanga](https://zinmanga.com/) / [mangatx](https://mangatx.com/) / [Toonily](https://toonily.net/) / [Mngazuki](https://mangazuki.me/) / [ReaperScans](https://reaperscans.com/) _[English]_ **Obs: Any Site that uses Madara Wordpress Plugin**
-- [MangaHere](http://www.mangahere.cc/) _[English]_
+- [Mangago](https://www.mangago.me/) _[English]_
 - [MangaHub](https://mangahub.io/) _[English]_
-- [MangaInn](http://www.mangainn.net/) _[English]_
-- [MangaKakalot](https://mangakakalot.com/page) / [MangaNelo](http://www.manganelo.com/) _[English]_
-- [MangaLyght](http://manga.lyght.net/) _[English]_
-- [MangaNato](http://www.manganato.com/) _[English]_
+- [MangaKakalot](https://mangakakalot.com/page) / [MangaNelo](https://www.manganelo.com/) / [MangaNato](https://www.manganato.com/) _[English]_
 - [MangaPark](http://mangapark.net/) _[English]_
+- [MangaRaw](https://www.manga-raw.club/) _[English]_
+- [Mangareader](https://mangareader.to) _[English]_ **Obs: Some galleries will not be usable**
 - [MangaSee](https://mangasee123.com/) / [Manga4life](https://manga4life.com/) _[English]_
 - [MangaTown](http://www.mangatown.com/) _[English]_
+- [ManhuaScan](https://manhuascan.io/) _[English]_
 - [NineManga](http://ninemanga.com/) _[English]_
-- [ReadManga Today](http://www.readmng.com/) _[English]_
-- [RawDevart](https://rawdevart.com) _[Original]_
-- [SenManga(Raw)](http://raw.senmanga.com/) _[Original]_
+- [PandaManga](https://www.pandamanga.com/) _[English]_
+- [ReadManga Today](https://www.readmng.com/) / [Funmanga](https://funmanga.com/) / [MangaDoom](https://mngdoom.com/) / [MangaInn](https://www.mangainn.net/) _[English]_
+- [ShimadaScans](https://shimadascans.com/) _[English]_
+- [TenManga](https://www.tenmanga.com/) _[English]_
+- [WebToons](https://www.webtoons.com/) _[English]_
+- [Manga33](https://manga33.com/) _[English]_
+- [ZeroScans](https://zeroscans.com/) _[English]_
+- [Madara WordPress Plugin](#) / [MangaHaus](https://manhuaus.com) / [Isekai Scan](https://isekaiscan.com/) / [Comic Kiba](https://comickiba.com/) / [Zinmanga](https://zinmanga.com/) / [mangatx](https://mangatx.com/) / [Toonily](https://toonily.net/) / [Mngazuki](https://mangazuki.me/) / [ReaperScans](https://reaperscans.com/) / [JaiminisBox](https://jaiminisbox.net) / [DisasterScans](https://disasterscans.com/) / [ManhuaPlus](https://manhuaplus.com/) _[English]_ **Obs: Any Site that uses Madara Wordpress Plugin**
 - [Leitor](https://leitor.net/) _[Portuguese]_
+- [mangahosted](https://mangahosted.com/) _[Portuguese]_
 - [UnionMangas](https://unionleitor.top/) _[Portuguese]_
+- [KLManga](https://klmanga.com/) _[Raw]_
+- [RawDevart](https://rawdevart.com) _[Raw]_
+- [SenManga(Raw)](https://raw.senmanga.com/) _[Raw]_
+- [InManga](https://inmanga.com//) _[Spanish]_
+- [MangaTigre](https://www.mangatigre.net/) _[Spanish]_
 - [TuMangaOnline](https://lectortmo.com/) _[Spanish]_
 
 ### Sitios de cómics compatibles
@@ -115,6 +121,12 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [Cookerready](https://lectortmo.com/) _[Spanish]_
 - [Anitoc](https://lectortmo.com/) _[Spanish]_
 - [Enginepassion](https://lectortmo.com/) _[Spanish]_
+- [Cooker2love](https://lectortmo.com/) _[Spanish]_
+- [Vsrecipes](https://lectortmo.com/) _[Spanish]_
+- [Recipesaniki](https://lectortmo.com/) _[Spanish]_
+- [Dariusmotor](https://lectortmo.com/) _[Spanish]_
+- [Vgmotor](https://lectortmo.com/) _[Spanish]_
+- [Mynewsrecipes](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
   <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>

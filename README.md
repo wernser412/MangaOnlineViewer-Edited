@@ -127,7 +127,8 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [Dariusmotor](https://lectortmo.com/) _[Spanish]_
 - [Vgmotor](https://lectortmo.com/) _[Spanish]_
 - [Mynewsrecipes](https://lectortmo.com/) _[Spanish]_
-- [animation2you](https://lectortmo.com/) _[Spanish]_
+- [Animation2you](https://lectortmo.com/) _[Spanish]_
+- [Infopetworld](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
   <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>

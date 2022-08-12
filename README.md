@@ -130,6 +130,7 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [Animation2you](https://lectortmo.com/) _[Spanish]_
 - [Infopetworld](https://lectortmo.com/) _[Spanish]_
 - [Almtechnews](https://lectortmo.com/) _[Spanish]_
+- [Mygamesinfo](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
   <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>

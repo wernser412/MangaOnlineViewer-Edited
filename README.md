@@ -136,6 +136,8 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [Recipesdo](https://lectortmo.com/) _[Spanish]_
 - [Motorpi](https://lectortmo.com/) _[Spanish]_
 - [Myotakuinfo](https://lectortmo.com/) _[Spanish]_
+- [Otakworld](https://lectortmo.com/) _[Spanish]_
+
 
 ### Teclas de acceso directo
   <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>

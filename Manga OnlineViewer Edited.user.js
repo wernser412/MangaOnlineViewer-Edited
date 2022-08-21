@@ -51,7 +51,7 @@
 // @include /https?:\/\/(www.)?shimadascans.com\/.+series.+/
 // @include /https?:\/\/(www.)?(tenmanga|gardenmanage).com\/(chapter|statuses)\/.+/
 // @include /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/
-// @include /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion|cooker2love|vsrecipes|recipesaniki|dariusmotor|vgmotor|mynewsrecipes|animation2you|infopetworld|almtechnews|mygamesinfo|infogames2you).com\/.+\/.+\/(paginated|cascade)/
+// @include /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion|cooker2love|vsrecipes|recipesaniki|dariusmotor|vgmotor|mynewsrecipes|animation2you|infopetworld|almtechnews|mygamesinfo|infogames2you|cookermania).com\/.+\/.+\/(paginated|cascade)/
 // @include /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/
 // @include /https?:\/\/(www.)?webtoons.com\/.+viewer.+/
 // @include /https?:\/\/(www.)?(manga33).com\/manga\/.+/
@@ -985,7 +985,7 @@
 
   var tmofans2 = {
     name: 'TuMangaOnline',
-    url: /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion|cooker2love|vsrecipes|recipesaniki|dariusmotor|vgmotor|mynewsrecipes|animation2you|infopetworld|almtechnews|mygamesinfo|infogames2you).com\/.+\/.+\/(paginated|cascade)/,
+    url: /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion|cooker2love|vsrecipes|recipesaniki|dariusmotor|vgmotor|mynewsrecipes|animation2you|infopetworld|almtechnews|mygamesinfo|infogames2you|cookermania).com\/.+\/.+\/(paginated|cascade)/,
     homepage: 'https://lectortmo.com/',
     language: ['Spanish'],
     category: 'manga',

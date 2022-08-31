@@ -4,7 +4,14 @@ No es un script originado por mi solo edito y traduzco el script.
 
 Script original por [TagoDR](https://github.com/TagoDR/MangaOnlineViewer)
 
-### Instalación
+## Descripción
+
+Carga todas las páginas de un capítulo en una vista agradable, lo que permite una lectura más rápida y cómoda, sin necesidad de esperar a que se carguen las páginas.
+
+
+:exclamation: **Atención**: Algunos sitios requieren que vuelva a cargar la página (F5) o abra el capítulo en una nueva pestaña para que se inicie el script.
+
+## Instalación
 
 ##### [Main Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
 ##### [Adult Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
@@ -14,26 +21,26 @@ Script original por [TagoDR](https://github.com/TagoDR/MangaOnlineViewer)
 Firefox y Chrome con [Tampermonkey](https://tampermonkey.net/) o [Violentmonkey](https://violentmonkey.github.io/).
 Otros navegadores con otros complementos también pueden funcionar, pero no son oficialmente compatibles.
 
-#### Marcador móvil
+### Marcador móvil
+
 *La configuración no se puede guardar, es posible que deba solicitar una página de escritorio*:
+
+Bookmarklet parece funcionar solo en Chrome, abra el capítulo y luego use la barra de búsqueda para activar su bookmarklet.
+
 ###### Lector principal:
+
+```JS
+javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.28/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
 ```
-javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.23/sweetalert2.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
-```
+
 ###### Lector adulto:
+
+```JS
+javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.28/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer_Adult.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
 ```
-javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.23/sweetalert2.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer_Adult.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
-```
-
-### Descripción
-MangaOnlineViewer ayuda a acelerar la lectura al cargar todas las páginas (imágenes) del capítulo actual del manga en una página en una estructura de tipo lista.
-Tenga en cuenta que en algunos sitios, MangaOnlineViewer puede utilizar más recursos.  Solo abra una pestaña para cada sitio a la vez y espere a que la página se cargue por completo.
-
-Intentaré mantener este script actualizado, sin embargo, casi nunca visito algunos de los sitios admitidos.  Si el script ya no funciona para un sitio, publique el problema en el área Problemas/Comentarios y tenga paciencia.
-
-Permito que este script se publique o se use en cualquier lugar siempre que se me dé crédito y se me proporcione un enlace a este sitio.  Permito que partes de mi guión se usen libremente.
 
 ### Sitios de manga admitidos
+
 - [Asura Scans](https://www.asurascans.com/) / [Flame Scans](https://flamescans.org/) / [Realm Scans](https://realmscans.com/) / [Alpha-scans](https://alpha-scans.org/) _[English]_
 - [Batoto](http://bato.to/) _[English]_
 - [Dynasty-Scans](https://dynasty-scans.com/) _[English]_
@@ -72,11 +79,14 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [TuMangaOnline](https://lectortmo.com/) _[Spanish]_
 
 ### Sitios de cómics compatibles
+
 - [ComiCastle](http://www.comicastle.org/) _[English]_
 - [ReadComicsOnline](http://readcomicsonline.ru/) _[English]_
 
 ### Sitios hentai admitidos
+
 > Adult Script available **_only_** on [Github](https://github.com/TagoDR/MangaOnlineViewer)
+
 - [8Muses](https://comics.8muses.com/) _[English]_
 - [9Hentai](https://9hentai.ru) _[English]_
 - [ASMHentai](https://asmhentai.com/) _[English]_
@@ -105,6 +115,7 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [vermangasporno](https://vermangasporno.com/) / [vercomicsporno](https://vercomicsporno.com/) _[Spanish]_
 
 ### Sitios Agregados por wernser412
+
 - [Wtechnews](https://lectortmo.com/) _[Spanish]_
 - [Otakuworldgames](https://lectortmo.com/) _[Spanish]_
 - [Animationforyou](https://lectortmo.com/) _[Spanish]_
@@ -140,6 +151,7 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - [Vgmotor](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
+
   <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>
   <kbd class='dark'>Numpad +</kbd>/<kbd class='dark'>=</kbd>: Global Zoom in pages (enlarge)<br/>
   <kbd class='dark'>Numpad -</kbd>/<kbd class='dark'>-</kbd>: Global Zoom out pages (reduce)<br/>
@@ -155,6 +167,7 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
   <kbd class='dark'>↓</kbd>/<kbd class='dark'>S</kbd>/<kbd class='dark'>Numpad 2</kbd>: Scroll  Down<br/>
 
 ### Características
+
 - Ver modos:
   - Vertical [Default]
   - WebComic
@@ -181,9 +194,15 @@ Permito que este script se publique o se use en cualquier lugar siempre que se m
 - Imágenes de carga diferida [Default off]
 
 ### Reglas para agregar nuevos sitios de Manga
+
 1. El sitio debe tener mangas raros/únicos (Significado: no está disponible en otros sitios, o es un mejor calidad)
 2. El sitio debe ser lo suficientemente fuerte o, de lo contrario, mi secuencia de comandos puede fallar.
 3. El sitio no debe ser exclusivo de un puñado de títulos de manga (Significado: no pequeños scanlators)
 
+## Permisos 
+
+Permito que este script se publique o se use en cualquier lugar siempre que se me dé crédito y se me proporcione un enlace a este sitio.  Permito que partes de mi guión se usen libremente.
+
 ### Descargo de responsabilidad
+
 En caso de que el propietario/administrador de uno de los sitios compatibles no quiera que mi script se ejecute en su sitio, lo desactivaré de forma predeterminada.  Obligar a los usuarios a activarlo manualmente.

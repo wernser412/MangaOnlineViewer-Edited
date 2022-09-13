@@ -5,7 +5,7 @@
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
 // @description Shows all pages at once in online view for these sites: Asura Scans, Flame Scans, Realm Scans, Alpha-scans, Batoto, ComiCastle, Dynasty-Scans, InManga, KLManga, Leitor, LHTranslation, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MangaPark, MangaRaw, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Yuri-ism, Sense-Scans, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, ReaperScans, JaiminisBox, DisasterScans, ManhuaPlus
-// @version 31.08.2022:V1
+// @version 13.09.2022:V1
 // @license MIT
 // @grant GM_getValue
 // @grant GM_setValue
@@ -18,7 +18,7 @@
 // @require https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js
-// @require https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.28/sweetalert2.min.js
+// @require https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.32/sweetalert2.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js
 // @include /https?:\/\/(www.)?(asurascans|flamescans|realmscans|alpha-scans).(com|org)\/.+/
 // @include /https?:\/\/(www.)?bato.to\/chapter.*/
@@ -1888,14 +1888,12 @@ img {
   vertical-align: middle;
   border: 0 none;
 }
-
 .icon-tabler {
   height: 1rem;
   width: 1rem;
   align-self: center;
   vertical-align: sub;
 }
-
 #nprogress .bar {
   background: #29d;
   position: fixed;
@@ -1905,7 +1903,6 @@ img {
   width: 100%;
   height: 4px;
 }
-
 #MangaOnlineViewer {
   padding-bottom: 40px;
   min-height: 760px;
@@ -1916,61 +1913,49 @@ img {
   color: var(--theme-body-text-color);
   background-color: var(--theme-body-background);
 }
-
 #MangaOnlineViewer #Chapter {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   min-width: 225px;
 }
-
 #MangaOnlineViewer #Chapter.FluidLTR {
   direction: ltr;
 }
-
 #MangaOnlineViewer #Chapter.FluidRTL {
   direction: rtl;
 }
-
 #MangaOnlineViewer #Chapter.FluidLTR,
 #MangaOnlineViewer #Chapter.FluidRTL {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-
 #MangaOnlineViewer #Chapter.FluidLTR .PageImg,
 #MangaOnlineViewer #Chapter.FluidRTL .PageImg {
   min-width: unset;
 }
-
 #MangaOnlineViewer #Chapter.FluidLTR .MangaPage.DoublePage,
 #MangaOnlineViewer #Chapter.FluidRTL .MangaPage.DoublePage {
   grid-column: span 2;
 }
-
 #MangaOnlineViewer #Chapter.FluidLTR .MangaPage:not(.DoublePage):nth-child(2n),
 #MangaOnlineViewer #Chapter.FluidRTL .MangaPage:not(.DoublePage):nth-child(2n) {
   justify-self: flex-start;
 }
-
 #MangaOnlineViewer #Chapter.FluidLTR .MangaPage:not(.DoublePage):nth-child(2n-1),
 #MangaOnlineViewer #Chapter.FluidRTL .MangaPage:not(.DoublePage):nth-child(2n-1) {
   justify-self: flex-end;
 }
-
 #MangaOnlineViewer #Chapter.Vertical .PageContent {
   margin-bottom: 15px;
 }
-
 #MangaOnlineViewer #Chapter.FluidLTR .MangaPage,
 #MangaOnlineViewer #Chapter.FluidRTL .MangaPage {
   width: auto;
 }
-
 #MangaOnlineViewer #Chapter.FluidLTR .ZoomWidth .icon-tabler,
 #MangaOnlineViewer #Chapter.FluidRTL .ZoomWidth .icon-tabler {
   color: red;
 }
-
 #MangaOnlineViewer #SettingsPanel {
   color: var(--theme-text-color);
   padding: 10px;
@@ -1988,34 +1973,28 @@ img {
   max-width: 100vw;
   width: 305px;
 }
-
 #MangaOnlineViewer #SettingsPanel.visible {
   transform: translateX(0);
 }
-
 #MangaOnlineViewer #SettingsPanel .ControlLabel {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
 }
-
 #MangaOnlineViewer #SettingsPanel .ControlLabelItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 #MangaOnlineViewer #SettingsPanel .ControlLabelItem:not(.show) {
   display: none;
 }
-
 #MangaOnlineViewer #ThemeSection{
   border: 1px solid var(--theme-body-text-color);
   border-radius: 10px;
   padding: 10px;
 }
-
 #MangaOnlineViewer .closeButton {
   width: fit-content;
   height: fit-content;
@@ -2023,7 +2002,6 @@ img {
   right: 10px;
   top: 10px;
 }
-
 #MangaOnlineViewer .overlay {
   position: fixed;
   display: none;
@@ -2040,7 +2018,6 @@ img {
 #MangaOnlineViewer .overlay.visible {
   display: block;
 }
-
 #MangaOnlineViewer .ThemeRadio {
   border: 1px solid var(--theme-text-color);
   color: var(--theme-primary-text-color);
@@ -2052,28 +2029,23 @@ img {
   margin: 2px 5px;
   position: relative;
 }
-
 #MangaOnlineViewer .ThemeRadio svg{
   position: absolute;
   top: 15%;
   right: 15%;
 }
-
 #MangaOnlineViewer .ThemeRadio.custom{
   /*background-image: url("${svgToUrl(IconPalette)}");*/
   /*background-position: center;*/
   /*background-repeat: no-repeat;*/
   /*background-size: 80%;*/
 }
-
 #MangaOnlineViewer .ThemeRadio.selected .icon-tabler-check {
   display: inline;
 }
-
 #MangaOnlineViewer .ThemeRadio:not(.selected) .icon-tabler-check {
   display: none;
 }
-
 #MangaOnlineViewer #KeybindingsPanel {
   padding: 8px;
   position: fixed;
@@ -2084,12 +2056,10 @@ img {
   line-height: 1.5em;
   z-index: 1000;
 }
-
 #MangaOnlineViewer #KeybindingsPanel.visible {
   transform: translateX(0);
   display: block;
 }
-
 #MangaOnlineViewer #BookmarksPanel {
   position: fixed;
   top: 10%;
@@ -2102,18 +2072,15 @@ img {
   transform: scaleY(0%);
   z-index: 1000;
 }
-
 #MangaOnlineViewer #BookmarksPanel.visible {
   transform: scaleY(100%);
   display: block;
 }
-
 #MangaOnlineViewer #BookmarksList {
   padding: 0 15px;
   overflow: auto;
   max-height: 60vh;
 }
-
 #MangaOnlineViewer #BookmarksList .BookmarkItem {
   display: flex;
   flex-flow: row;
@@ -2121,25 +2088,20 @@ img {
   align-items: center;
   padding: 2px;
 }
-
 #MangaOnlineViewer #BookmarksList .bookmarkData {
   flex-basis: 15%;
 }
-
 #MangaOnlineViewer #BookmarksList .bookmarkURl {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   flex-basis: 55%;
 }
-
-
 #MangaOnlineViewer select {
   height: 20px;
   padding: 0;
   margin-bottom: 5px;
 }
-
 #MangaOnlineViewer .ControlButton {
   cursor: pointer;
   border-radius: 5px;
@@ -2150,18 +2112,15 @@ img {
   background-color: var(--theme-primary-color);
   border-color: var(--theme-border-color);  
 }
-
 #MangaOnlineViewer .ControlButton:hover {
   opacity: 0.8;
 }
-
 #MangaOnlineViewer .panel {
   padding: 5px;
   position: inherit;
   border-radius: 5px;
   background-color: var(--theme-background-color);
 }
-
 #MangaOnlineViewer .MangaPage {
   width: 100%;
   display: inline-block;
@@ -2173,7 +2132,6 @@ img {
   min-height: 22px;
   min-width: 100%;
 }
-
 #MangaOnlineViewer .PageContent {
   text-align: center;
   display: inline-block;
@@ -2183,16 +2141,13 @@ img {
   height: 100%;
   overflow-y: hidden;
 }
-
 #MangaOnlineViewer .MangaPage.hide .PageContent {
   /*display: none;*/
   height: 0;
 }
-
 #MangaOnlineViewer .MangaPage.hide .PageFunctions {
   /*position:relative;*/
 }
-
 #MangaOnlineViewer .PageContent .PageImg[src=""],
 #MangaOnlineViewer .PageContent .PageImg:not([src]) {
   width: 40vw;
@@ -2204,7 +2159,6 @@ img {
   background-size: 20%;
   background-color: var(--theme-hightlight-color);
 }
-
 #MangaOnlineViewer .PageContent .PageImg.imgBroken {
   width: 40vw;
   height: 80vh;
@@ -2215,7 +2169,6 @@ img {
   background-size: 20%;
   background-color: var(--theme-hightlight-color);
 }
-
 #MangaOnlineViewer .Thumbnail .ThumbnailImg[src=""],
 #MangaOnlineViewer .Thumbnail .ThumbnailImg:not([src]) {
   width: 100px;
@@ -2226,19 +2179,15 @@ img {
   background-repeat: no-repeat;
   background-size: 20%;
 }
-
 #MangaOnlineViewer .fitWidthIfOversize .PageContent .PageImg {
   max-width: 100%;
 }
-
 #MangaOnlineViewer #gotoPage {
   min-width: 35px;
 }
-
 #MangaOnlineViewer #ThemeSelector {
   width: 110px;
 }
-
 #MangaOnlineViewer #Header {
   display: flex;
   justify-content: space-between;
@@ -2252,35 +2201,28 @@ img {
   background-color: inherit;
   z-index: 900;
 }
-
 #MangaOnlineViewer #Header.scroll-hide {
   transform: translateY(-100%);
 }
-
 #MangaOnlineViewer #Header.scroll-show {
   transform: translateY(-1%);
 }
-
 #MangaOnlineViewer #Header.mouseOverMenu {
   position: static;
   transform: none;
 }
-
 #MangaOnlineViewer #Header.scroll-end,
 #MangaOnlineViewer #Header.visible {
   transform: translateY(-1%);
   position: sticky;
 }
-
 #MangaOnlineViewer #Header.mouseOverMenu:hover {
   position: sticky;
 }
-
 #MangaOnlineViewer #Header:not(.mouseOverMenu) #menu,
 #MangaOnlineViewer #Header.mouseOverMenu:hover #menu {
   display: none;
 }
-
 #MangaOnlineViewer #menu {
   position: fixed;
   min-height: 70px;
@@ -2289,14 +2231,12 @@ img {
   z-index: 1;
   color: var(--theme-body-text-color);
 }
-
 #MangaOnlineViewer #MangaTitle {
   padding: 2px;
   margin: 0;
   font-size: 1.2rem;
   font-weight: normal;
 }
-
 #MangaOnlineViewer #GlobalFunctions{
   display: flex;
   gap: 3px;
@@ -2305,12 +2245,10 @@ img {
   width: 300px;
   z-index: 100;
 }
-
 #MangaOnlineViewer #GlobalFunctions .icon-tabler{
   width: 25px;
   height: 25px;
 }
-
 #MangaOnlineViewer #ChapterNavigation {
   display: flex;
   flex-flow: column nowrap;
@@ -2319,12 +2257,10 @@ img {
   padding-right: 10px;
   width: 300px;
 }
-
 #MangaOnlineViewer .ChapterControl {
   display: flex;
   flex-wrap: nowrap;
 }
-
 #MangaOnlineViewer .ChapterControl .NavigationControlButton {
   display: inline-flex;
   margin-left: 3px;
@@ -2333,24 +2269,20 @@ img {
   padding: 5px 10px;
   gap: 0.5em;
 }
-
 #MangaOnlineViewer .ChapterControl .NavigationControlButton .icon-tabler {
   flex-shrink: 0;
   align-self: center;
   width: 1rem;
   height: 1rem;
 }
-
-#MangaOnlineViewer .ChapterControl .NavigationControlLink[href='#'],
-#MangaOnlineViewer .ChapterControl .NavigationControlLink[href=''],
-#MangaOnlineViewer .ChapterControl .NavigationControlLink[href='undefined'] {
+#MangaOnlineViewer .ChapterControl .NavigationControlButton[value='#'],
+#MangaOnlineViewer .ChapterControl .NavigationControlButton[value=''],
+#MangaOnlineViewer .ChapterControl .NavigationControlButton[value='undefined'] {
   visibility: hidden;
 }
-
 #MangaOnlineViewer .ChapterControl .download.loading{
   cursor: not-allowed;
 }
-
 #MangaOnlineViewer .ViewerTitle {
   text-align: center;
   min-height: 60px;
@@ -2362,10 +2294,8 @@ img {
   padding: 5px;
   flex-basis: 60%;
 }
-
 #MangaOnlineViewer #Counters {
 }
-
 #MangaOnlineViewer .PageFunctions {
   font-family: monospace;
   display: flex;
@@ -2377,7 +2307,6 @@ img {
   position: absolute;
   right: 0;
 }
-
 #MangaOnlineViewer .PageFunctions > .PageIndex {
   background-color: var(--theme-primary-color);
   color: var(--theme-primary-text-color);
@@ -2390,7 +2319,6 @@ img {
   border-top-right-radius: 5px;
   border-top-right-radius: 0;
 }
-
 #MangaOnlineViewer .PageFunctions .ControlButton {
   padding: 3px;
   display: flex;
@@ -2401,15 +2329,12 @@ img {
   min-height: auto;
   opacity: 0.5;
 }
-
 #MangaOnlineViewer .PageFunctions:hover .ControlButton {
   opacity: 1;
 }
-
 #MangaOnlineViewer .PageFunctions .ControlButton:hover {
   opacity: 0.9;
 }
-
 #MangaOnlineViewer.light #ColorScheme > :not(.inverse),
 #MangaOnlineViewer:not(.light) #ColorScheme > .inverse,
 #MangaOnlineViewer .ChapterControl .download.loading > :not(.inverse),
@@ -2420,17 +2345,14 @@ img {
 #MangaOnlineViewer:not(.bookmarked) .ControlButton.Bookmark  > .inverse {
   display: none;
 }
-
 #MangaOnlineViewer.hideControls .PageFunctions {
   visibility: hidden;
 }
-
 #MangaOnlineViewer #NavigationCounters {
   margin: 5px;
   width: 100%;
   line-height: 1rem;
 }
-
 #MangaOnlineViewer #Navigation {
   color: var(--theme-text-color);
   background-color: var(--theme-hightlight-color);
@@ -2448,32 +2370,26 @@ img {
   border-bottom-right-radius: 0;
   line-height: 0rem;
 }
-
 #MangaOnlineViewer #Navigation #Thumbnails {
   overflow-x: auto;
   overflow-y: hidden;
   margin-right: 10px;
 }
-
 #MangaOnlineViewer #Navigation:hover {
   transform: translateY(-180px);
 }
-
 #MangaOnlineViewer #Navigation.disabled {
   display: none;
 }
-
 #MangaOnlineViewer #Navigation.visible {
   transform: translateY(-180px);
 }
-
 #MangaOnlineViewer #Navigation .Thumbnail {
   display: inline-block;
   height: 150px;
   margin: 0 5px;
   border: 1px solid var(--theme-primary-color);
 }
-
 #MangaOnlineViewer #Navigation .Thumbnail .ThumbnailIndex {
   color: var(--theme-text-color);
   background-color: var(--theme-hightlight-color);
@@ -2484,7 +2400,6 @@ img {
   width: 100%;
   line-height: 1rem;
 }
-
 #MangaOnlineViewer #Navigation .Thumbnail .ThumbnailImg {
   cursor: pointer;
   display: inline-block;
@@ -2493,7 +2408,6 @@ img {
   min-width: 80px;
   max-width: 160px;
 }
-
 #MangaOnlineViewer #menu .icon-tabler {
   position: absolute;
   top: 5px;
@@ -2501,21 +2415,17 @@ img {
   height: 32px;
   width: 32px;
 }
-
 @media (max-width: 992px) {
   #MangaOnlineViewer #Header {
       flex-direction: column;
   }
-
   #MangaOnlineViewer #Header.mouseOverMenu {
     position: sticky;
     transition: transform 0.3s ease-in;
   }
-
   #MangaOnlineViewer #Header.scroll-show {
     transform: translateY(-1%);
   }
-
   #MangaOnlineViewer #Header.scroll-hide {
     transform: translateY(-100%);
   }
@@ -2523,7 +2433,6 @@ img {
   #MangaOnlineViewer .PageContent .PageImg {
     max-width: 100%;
   }
-
   #MangaOnlineViewer .ViewerTitle {
     order: 1;
     min-height: auto;
@@ -2538,7 +2447,6 @@ img {
     order: 3;
     padding: 5px;
   }
-
   #MangaOnlineViewer #ChapterNavigation {
     order: 2;
   }
@@ -2546,7 +2454,6 @@ img {
   #MangaOnlineViewer #menu {
     display: none;
   }
-
   #MangaOnlineViewer #GlobalFunctions #keybindings {
     display: none;
   }
@@ -2559,7 +2466,6 @@ img {
     justify-content: center;
     align-items: center;
   }
-
   #MangaOnlineViewer #Header.mouseOverMenu {
     position: sticky;
     transition: transform 0.3s ease-in;
@@ -2572,56 +2478,44 @@ img {
   #MangaOnlineViewer #Header.scroll-hide {
     transform: translateY(-100%);
   }
-
   #MangaOnlineViewer .ViewerTitle {
     order: 1;
     flex-basis: 100%;
     margin-top: 0px;
   }
-
   #MangaOnlineViewer #GlobalFunctions {
     order: 2;
     padding: 0;
   }
-
   #MangaOnlineViewer #ChapterNavigation {
     order: 3;
     width: auto;
   }
-
   #MangaOnlineViewer #Navigation {
     display: none;
   }
-
   #MangaOnlineViewer .PageFunctions {
     padding: 0;
   }
-
   #MangaOnlineViewer .PageFunctions .ControlButton:not(.Bookmark) {
     display: none;
   }
-
   #MangaOnlineViewer .PageFunctions .ControlButton.Bookmark {
     opacity: 1;
   }
-
   #MangaOnlineViewer .PageContent {
     margin: 0;
     width: 100%;
   }
-
   #MangaOnlineViewer .PageContent .PageImg {
     max-width: 100%;
   }
-
   #MangaOnlineViewer #GlobalFunctions .ControlButton:not(#settings) {
     display: none;
   }
-
   #MangaOnlineViewer #GlobalFunctions {
     min-width: auto;
   }
-
   #MangaOnlineViewer #SettingsPanel .DefaultZoom,
   #MangaOnlineViewer #SettingsPanel .viewMode,
   #MangaOnlineViewer #SettingsPanel .fitIfOversize,
@@ -2633,11 +2527,9 @@ img {
   #MangaOnlineViewer #SettingsPanel .mouseOverMenu {
     display: none;
   }
-
   #MangaOnlineViewer #KeybindingsPanel {
     display: none;
   }  
-
   #MangaOnlineViewer #menu {
     display: none;
   }
@@ -2646,19 +2538,15 @@ img {
     height: auto;
     padding: 0;
   }
-
   #MangaOnlineViewer .ChapterControl {
   }
-
   #MangaOnlineViewer .ChapterControl .download {
     display: none;
   }
-
   #MangaOnlineViewer #Counters {
     display: none;
   }
 }
-
 @-webkit-keyframes spin {
   to {
     transform:rotate(360deg)
@@ -3081,23 +2969,179 @@ ${IconCheck}
 </div>
 `;
 
+    function scrollToElement(ele) {
+        window.scroll(0, ele?.offsetTop || 0);
+    }
+
+    const doClick = (selector) => document.querySelector(selector)?.dispatchEvent(new Event('click'));
+    function doScrolling(sign) {
+        if (useSettings().zoom === -1000) {
+            const currentPage = [...document.querySelectorAll('.MangaPage')].findIndex((element) => element.offsetTop - window.scrollY > 10);
+            scrollToElement(document.querySelector(`#Page${currentPage + sign}`));
+        }
+        else {
+            window.scrollBy({
+                top: (sign * window.innerHeight) / 2,
+                behavior: 'smooth',
+            });
+        }
+    }
+    const keybinds = [
+        {
+            name: 'Scroll Up',
+            keys: ['ArrowUp', 'KeyW', 'Numpad8'],
+            action() {
+                doScrolling(-1);
+            },
+        },
+        {
+            name: 'Scroll Down',
+            keys: ['ArrowDown', 'KeyS', 'Numpad2'],
+            action() {
+                doScrolling(1);
+            },
+        },
+        {
+            name: 'Next Chapter',
+            keys: ['ArrowRight', 'Period', 'KeyD', 'Numpad6'],
+            action() {
+                doClick('#next');
+            },
+        },
+        {
+            name: 'Prev Chapter',
+            keys: ['ArrowLeft', 'Comma', 'KeyA', 'Numpad4'],
+            action() {
+                doClick('#prev');
+            },
+        },
+        {
+            name: 'Zoom Enlarge',
+            keys: ['Equal', 'NumpadAdd', 'KeyE'],
+            action() {
+                doClick('#enlarge');
+            },
+        },
+        {
+            name: 'Zoom Reduce',
+            keys: ['Minus', 'NumpadSubtract', 'KeyQ'],
+            action() {
+                doClick('#reduce');
+            },
+        },
+        {
+            name: 'Zoom Restore',
+            keys: ['Digit9', 'NumpadDivide', 'KeyR'],
+            action() {
+                doClick('#restore');
+            },
+        },
+        {
+            name: 'Zoom Fit Width',
+            keys: ['Digit0', 'NumpadMultiply', 'KeyF'],
+            action() {
+                doClick('#fitWidth');
+            },
+        },
+        {
+            name: 'Zoom Fit Height',
+            keys: ['KeyH'],
+            action() {
+                doClick('#fitHeight');
+            },
+        },
+        {
+            name: 'Open Settings',
+            keys: ['Slash', 'Numpad5', 'KeyX'],
+            action() {
+                doClick('#settings');
+            },
+        },
+        {
+            name: 'View Mode WebComic',
+            keys: ['KeyC'],
+            action() {
+                doClick('#webComic');
+            },
+        },
+        {
+            name: 'View Mode Vertical',
+            keys: ['KeyV'],
+            action() {
+                doClick('#verticalMode');
+            },
+        },
+        {
+            name: 'View Mode Left to Right',
+            keys: ['KeyN'],
+            action() {
+                doClick('#rtlMode');
+            },
+        },
+        {
+            name: 'View Mode Right to Left',
+            keys: ['KeyB'],
+            action() {
+                doClick('#ltrMode');
+            },
+        },
+    ];
+    const usedKeys = keybinds.flatMap((kb) => kb.keys);
+    function processKey(e) {
+        if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey || !usedKeys.some((i) => i === e.code))
+            return true;
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        const keyBindings = keybinds.find((kb) => kb.keys.some((key) => key === e.code));
+        logScript('Keyboard:', e.code, /* ' Event:', e, */ 'Entry', keyBindings);
+        keyBindings?.action();
+        return false;
+    }
+    // Clean key press configurations and set some when specified
+    function hotkeys() {
+        document.onkeydown = null;
+        document.onkeyup = null;
+        document.onkeypress = null;
+        window.onkeydown = null;
+        window.onkeyup = null;
+        window.onkeypress = null;
+        window.onload = null;
+        document.body.onload = null;
+        document.addEventListener('keydown', processKey);
+    }
+
+    function formatKeyName(key) {
+        let formatted = key;
+        formatted = formatted.replace('Key', '');
+        formatted = formatted.replace('Digit', '');
+        formatted = formatted.replace('Numpad', 'Numpad ');
+        formatted = formatted.replace('Subtract', '-');
+        formatted = formatted.replace('Add', '+');
+        formatted = formatted.replace('Minus', '-');
+        formatted = formatted.replace('Equal', '=');
+        formatted = formatted.replace('Divide', '/');
+        formatted = formatted.replace('Multiply', '*');
+        formatted = formatted.replace('Comma', ',');
+        formatted = formatted.replace('Period', '.');
+        formatted = formatted.replace('Slash', '/');
+        formatted = formatted.replace('ArrowUp', '↑');
+        formatted = formatted.replace('ArrowDown', '↓');
+        formatted = formatted.replace('ArrowRight', '→');
+        formatted = formatted.replace('ArrowLeft', '←');
+        return formatted;
+    }
+    const keybindings = keybinds
+        .map((kb) => {
+        const keys = kb.keys.map((key) => `<kbd class='dark'>${formatKeyName(key)}</kbd>`).join(' / ');
+        return `${keys}: ${kb.name}<br/>`;
+    })
+        .join('\n');
     const KeybindingsPanel = `
 <div id='KeybindingsPanel' class='panel'>
     <h2>Keybindings</h2>
     <button id='CloseKeybindings' class='closeButton'>${IconX}</button>
-    <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Open Settings<br/>
-    <kbd class='dark'>Numpad +</kbd>/<kbd class='dark'>=</kbd>: Global Zoom in pages (enlarge)<br/>
-    <kbd class='dark'>Numpad -</kbd>/<kbd class='dark'>-</kbd>: Global Zoom out pages (reduce)<br/>
-    <kbd class='dark'>Numpad /</kbd>/<kbd class='dark'>9</kbd>: Global Restore pages to original<br/>
-    <kbd class='dark'>Numpad *</kbd>/<kbd class='dark'>0</kbd>: Global Fit window width<br/>
-    <kbd class='dark'>V</kbd>: Vertical Mode<br/>
-    <kbd class='dark'>C</kbd>: WebComic Mode<br/>
-    <kbd class='dark'>N</kbd>: Right to Left Mode<br/>
-    <kbd class='dark'>B</kbd>: Left to Right Mode<br/>
-    <kbd class='dark'>→</kbd>/<kbd class='dark'>D</kbd>/<kbd class='dark'>Numpad 6</kbd>/<kbd class='dark'>.</kbd> : Next Chapter<br/>
-    <kbd class='dark'>←</kbd>/<kbd class='dark'>A</kbd>/<kbd class='dark'>Numpad 4</kbd>/<kbd class='dark'>,</kbd> : Previous Chapter<br/>
-    <kbd class='dark'>↑</kbd>/<kbd class='dark'>W</kbd>/<kbd class='dark'>Numpad 8</kbd>: Scroll Up<br/>
-    <kbd class='dark'>↓</kbd>/<kbd class='dark'>S</kbd>/<kbd class='dark'>Numpad 2</kbd>: Scroll Down<br/>
+    ${keybindings}
 </div>`;
 
     const ThumbnailsPanel = (times, begin) => indexList(times, begin).map((index) => `
@@ -3195,18 +3239,16 @@ ${IconCheck}
           ${IconLoader2}
           Download
         </button>
-        <a class='prev NavigationControlLink' href='${manga.prev || ''}'>
-          <button id='prev' class='prev NavigationControlButton ControlButton' title='Previos Chapter' type='button'>          
+        <button id='prev' class='NavigationControlButton ControlButton' title='Previos Chapter' type='button' 
+          value='${manga.prev || ''}'>
           ${IconArrowBigLeft}
           Previous
         </button>
-        </a>        
-        <a class='next NavigationControlLink' href='${manga.next || ''}'>
-        <button id='next' class='next NavigationControlButton ControlButton' title='Next Chapter' type='button'>
+        <button id='next' class='NavigationControlButton ControlButton' title='Next Chapter' type='button' 
+          value='${manga.next || ''}'>
           Next
           ${IconArrowBigRight}
         </button>
-        </a>
       </div>
     </nav>
   </header>  
@@ -3389,21 +3431,26 @@ ${IconCheck}
         }
     }
 
+    function startDownload(event) {
+        const button = event.currentTarget;
+        logScript('Downloading Chapter');
+        button.disabled = true;
+        button.classList.add('loading');
+        generateZip();
+    }
+    function globalHideImageControls() {
+        document.querySelector('#MangaOnlineViewer')?.classList.toggle('hideControls');
+    }
+    function redirect(event) {
+        const url = event.target.getAttribute('value');
+        if (url)
+            window.location.href = url;
+    }
     function globals() {
-        // Download starter
-        function startDownload(event) {
-            const button = event.currentTarget;
-            logScript('Downloading Chapter');
-            button.disabled = true;
-            button.classList.add('loading');
-            generateZip();
-        }
         document.querySelector('.download')?.addEventListener('click', startDownload);
-        // Show/hide Image Controls Button
-        function globalHideImageControls() {
-            document.querySelector('#MangaOnlineViewer')?.classList.toggle('hideControls');
-        }
         document.querySelector('#pageControls')?.addEventListener('click', globalHideImageControls);
+        document.querySelector('#next')?.addEventListener('click', redirect);
+        document.querySelector('#prev')?.addEventListener('click', redirect);
     }
 
     /**
@@ -3439,143 +3486,6 @@ ${IconCheck}
         window.addEventListener('scroll', _.debounce(toggleScrollDirection, 50));
     }
 
-    function scrollToElement(ele) {
-        window.scroll(0, ele?.offsetTop || 0);
-    }
-
-    const doClick = (selector) => document.querySelector(selector)?.dispatchEvent(new Event('click'));
-    function processKey(e) {
-        const a = e.code;
-        const usedKeys = [
-            'KeyW',
-            'Numpad8',
-            'KeyS',
-            'Numpad2',
-            'ArrowRight',
-            'Period',
-            'KeyD',
-            'Numpad6',
-            'ArrowLeft',
-            'Comma',
-            'KeyA',
-            'Numpad4',
-            'Equal',
-            'NumpadAdd',
-            'KeyE',
-            'Minus',
-            'NumpadSubtract',
-            'KeyQ',
-            'Digit9',
-            'NumpadDivide',
-            'KeyR',
-            'Digit0',
-            'NumpadMultiply',
-            'KeyF',
-            'Slash',
-            'Numpad5',
-            'KeyX',
-            'KeyC',
-            'KeyV',
-            'KeyB',
-            'KeyN',
-        ];
-        if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey && usedKeys.some((i) => i === a)) {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            logScript('Keyboard:', a, ' Event:', e);
-            switch (a) {
-                case 'ArrowUp':
-                case 'KeyW':
-                case 'Numpad8':
-                    if (useSettings().zoom === -1000) {
-                        const next = [...document.querySelectorAll('.MangaPage')].find((element) => element.offsetTop - window.scrollY > 10);
-                        scrollToElement(next?.previousElementSibling);
-                    }
-                    else {
-                        window.scrollBy({
-                            top: -window.innerHeight / 2,
-                            behavior: 'smooth',
-                        });
-                    }
-                    break;
-                case 'ArrowDown':
-                case 'KeyS':
-                case 'Numpad2':
-                    if (useSettings().zoom === -1000) {
-                        const next = [...document.querySelectorAll('.MangaPage')].find((element) => element.offsetTop - window.scrollY > 10);
-                        scrollToElement(next);
-                    }
-                    else {
-                        window.scrollBy({
-                            top: window.innerHeight / 2,
-                            behavior: 'smooth',
-                        });
-                    }
-                    break;
-                case 'ArrowRight':
-                case 'Period':
-                case 'KeyD':
-                case 'Numpad6':
-                    doClick('#next');
-                    break;
-                case 'ArrowLeft':
-                case 'Comma':
-                case 'KeyA':
-                case 'Numpad4':
-                    doClick('#prev');
-                    break;
-                case 'Equal':
-                case 'NumpadAdd':
-                case 'KeyE':
-                    doClick('#enlarge');
-                    break;
-                case 'Minus':
-                case 'NumpadSubtract':
-                case 'KeyQ':
-                    doClick('#reduce');
-                    break;
-                case 'Digit9':
-                case 'NumpadDivide':
-                case 'KeyR':
-                    doClick('#restore');
-                    break;
-                case 'Digit0':
-                case 'NumpadMultiply':
-                case 'KeyF':
-                    doClick('#fitWidth');
-                    break;
-                case 'Slash':
-                case 'Numpad5':
-                case 'KeyX':
-                    doClick('#settings');
-                    break;
-                case 'KeyC':
-                    doClick('#webComic');
-                    break;
-                case 'KeyV':
-                    doClick('#verticalMode');
-                    break;
-                case 'KeyN':
-                    doClick('#rtlMode');
-                    break;
-                case 'KeyB':
-                    doClick('#ltrMode');
-                    break;
-            }
-            return false;
-        }
-        return true;
-    }
-    // Clean key press configurations and set some when specified
-    function hotkeys() {
-        document.onkeydown = null;
-        window.onkeydown = null;
-        window.onload = null;
-        document.body.onload = null;
-        document.addEventListener('keydown', processKey);
-    }
-
     function isImagesManga(manga) {
         return 'listImages' in manga && !isNothing(manga.listImages);
     }
@@ -3591,6 +3501,7 @@ ${IconCheck}
         Language["ENGLISH"] = "English";
         Language["SPANISH"] = "Spanish";
         Language["PORTUGUESE"] = "Portuguese";
+        Language["CHINESE"] = "Chinese";
         Language["RAW"] = "Raw";
     })(Language || (Language = {}));
     var Category;
@@ -3710,19 +3621,20 @@ ${IconCheck}
     // After pages load apply default Zoom
     function applyZoom(pages = '.PageContent img', zoom = useSettings().zoom) {
         const pg = [...document.querySelectorAll(pages)];
-        pg.forEach((value) => {
-            const img = value;
+        pg.forEach((img) => {
             img.removeAttribute('width');
             img.removeAttribute('height');
             img.removeAttribute('style');
+            img.classList.remove('FreeWidth');
             if (zoom === 1000) {
                 img.style.width = `${window.innerWidth}px`;
             }
             else if (zoom === -1000) {
                 const nav = document.querySelector('#Navigation')?.classList.contains('disabled');
                 const chap = document.querySelector('#Chapter')?.classList.contains('WebComic');
-                const nextHeight = window.innerHeight + (nav ? 0 : -34) + (chap ? 0 : -35);
+                const nextHeight = window.innerHeight + (nav ? 0 : -30) + (chap ? 0 : -35);
                 img.style.height = `${nextHeight}px`;
+                img.style.minWidth = 'unset';
             }
             else {
                 img.style.width = `${img.naturalWidth * (zoom / 100)}px`;
@@ -4314,16 +4226,13 @@ ${IconCheck}
     right: 10px;
     z-index: 10000;
 }
-
 #StartMOV:hover {
     background-position: 100% 0;
     transition: all 0.4s ease-in-out;
 }
-
 #StartMOV:focus {
     outline: none;
 }
-
 `;
         const style = document.createElement('style');
         style.appendChild(document.createTextNode(css));

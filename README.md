@@ -1,6 +1,6 @@
 # Manga OnlineViewer
 ### Leer
-No es un script originado por mi solo edito y traduzco el script.
+No es un script originado por mi, solo edito y traduzco el script.
 
 Script original por [TagoDR](https://github.com/TagoDR/MangaOnlineViewer)
 
@@ -30,13 +30,13 @@ Bookmarklet parece funcionar solo en Chrome, abra el capítulo y luego use la ba
 ###### Lector principal:
 
 ```JS
-javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.28/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
+javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.32/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
 ```
 
 ###### Lector adulto:
 
 ```JS
-javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.28/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer_Adult.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
+javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.32/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer_Adult.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
 ```
 
 ### Sitios de manga admitidos
@@ -44,8 +44,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 - [Asura Scans](https://www.asurascans.com/) / [Flame Scans](https://flamescans.org/) / [Realm Scans](https://realmscans.com/) / [Alpha-scans](https://alpha-scans.org/) _[English]_
 - [Batoto](http://bato.to/) _[English]_
 - [Dynasty-Scans](https://dynasty-scans.com/) _[English]_
-- [FoOlSlide](#) / [Kireicake](https://reader.kireicake.com) / [Yuri-ism](https://www.yuri-ism.net) / [Sense-Scans](https://sensescans.com/) _[English]_ **Obs: Any Site that uses FoOLSlide**
-- [LHTranslation](http://lhtranslation.net/) _[English]_
+- [LHTranslation](https://lhtranslation.net/) _[English]_
 - [MangaBuddy](https://mangabuddy.com/) _[English]_
 - [MangaDex](https://mangadex.org/) _[English]_
 - [MangaFox](https://fanfox.net/) / [MangaHere](https://www.mangahere.cc/) _[English]_
@@ -53,20 +52,22 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 - [Mangago](https://www.mangago.me/) _[English]_
 - [MangaHub](https://mangahub.io/) _[English]_
 - [MangaKakalot](https://mangakakalot.com/page) / [MangaNelo](https://www.manganelo.com/) / [MangaNato](https://www.manganato.com/) _[English]_
-- [MangaPark](http://mangapark.net/) _[English]_
+- [MangaPark](https://mangapark.net/) _[English]_
 - [MangaRaw](https://www.manga-raw.club/) _[English]_
 - [Mangareader](https://mangareader.to) _[English]_ **Obs: Some galleries will not be usable**
 - [MangaSee](https://mangasee123.com/) / [Manga4life](https://manga4life.com/) _[English]_
-- [MangaTown](http://www.mangatown.com/) _[English]_
+- [MangaTown](https://www.mangatown.com/) _[English]_
 - [ManhuaScan](https://manhuascan.io/) _[English]_
-- [NineManga](http://ninemanga.com/) _[English]_
+- [NineManga](https://ninemanga.com/) _[English]_
 - [PandaManga](https://www.pandamanga.com/) _[English]_
 - [ReadManga Today](https://www.readmng.com/) / [Funmanga](https://funmanga.com/) / [MangaDoom](https://mngdoom.com/) / [MangaInn](https://www.mangainn.net/) _[English]_
 - [ShimadaScans](https://shimadascans.com/) _[English]_
+- [KLManga](https://tapas.io/) _[English]_
 - [TenManga](https://www.tenmanga.com/) _[English]_
 - [WebToons](https://www.webtoons.com/) _[English]_
 - [Manga33](https://manga33.com/) _[English]_
 - [ZeroScans](https://zeroscans.com/) _[English]_
+- [FoOlSlide](#) / [Kireicake](https://reader.kireicake.com) / [Yuri-ism](https://www.yuri-ism.net) / [Sense-Scans](https://sensescans.com/) _[English]_ **Obs: Any Site that uses FoOLSlide**
 - [Madara WordPress Plugin](#) / [MangaHaus](https://manhuaus.com) / [Isekai Scan](https://isekaiscan.com/) / [Comic Kiba](https://comickiba.com/) / [Zinmanga](https://zinmanga.com/) / [mangatx](https://mangatx.com/) / [Toonily](https://toonily.net/) / [Mngazuki](https://mangazuki.me/) / [ReaperScans](https://reaperscans.com/) / [JaiminisBox](https://jaiminisbox.net) / [DisasterScans](https://disasterscans.com/) / [ManhuaPlus](https://manhuaplus.com/) _[English]_ **Obs: Any Site that uses Madara Wordpress Plugin**
 - [Leitor](https://leitor.net/) _[Portuguese]_
 - [mangahosted](https://mangahosted.com/) _[Portuguese]_
@@ -87,31 +88,31 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 
 > Adult Script available **_only_** on [Github](https://github.com/TagoDR/MangaOnlineViewer)
 
-- [8Muses](https://comics.8muses.com/) _[English]_
-- [9Hentai](https://9hentai.ru) _[English]_
-- [ASMHentai](https://asmhentai.com/) _[English]_
 - [BestPornComix](https://www.bestporncomix.com) _[English]_
 - [DoujinMoeNM](https://doujins.com/) _[English]_
+- [8Muses](https://comics.8muses.com/) _[English]_
 - [ExHentai](https://exhentai.org/) / [e-Hentai](https://e-hentai.org/) _[English]_ **Obs: May get your IP Banned, use with moderation**
-- [HBrowser](http://www.hbrowse.com/) _[English]_
+- [HBrowser](https://www.hbrowse.com/) _[English]_
+- [Hentai2Read](https://hentai2read.com/) _[English]_
+- [HentaiFox](https://www.hentaifox.com/) _[English]_
+- [HentaiHand](https://hentaihand.com/) / [nHentai.com](https://nhentai.com) _[English]_
 - [HentaIHere](https://www.hentaihere.com/) _[English]_
-- [Hentai2Read](http://hentai2read.com/) _[English]_
-- [HentaiFox](http://www.hentaifox.com/) _[English]_
-- [HentaiHand](https://hentaihand.com/) _[English]_
-- [HentaiMimi](https://hentaimimi.com/) _[English]_
-- [Imhentai](http://imhentai.xxx/) _[English]_
+- [hitomi](https://hitomi.la/) _[English]_
+- [Imhentai](https://imhentai.xxx/) _[English]_
 - [KingComix](https://kingcomix.com/) _[English]_
+- [Luscious](https://luscious.net/) _[English]_
 - [MultPorn](https://multporn.net/) _[English]_
 - [MyHentaiGallery](https://www.myhentaigallery.com) _[English]_
-- [PornComixOnline](https://www.porncomixone.net) _[English]_
-- [Pururin](http://pururin.io/) _[English]_
-- [Simply-Hentai](http://simply-hentai.com/) _[English]_
-- [Tsumino](http://tsumino.com/) _[English]_
-- [hitomi](https://hitomi.la/) _[English]_
-- [nHentai.com](https://nhentai.com/) _[English]_
 - [nHentai.net](https://nhentai.net/) / [nHentai.xxx](https://nhentai.xxx/) _[English]_
-- [xyzcomics](http://xyzcomics.com/) _[English]_
-- [TMOHentai](http://tmohentai.com/) _[Spanish]_
+- [9Hentai](https://9hentai.to) _[English]_
+- [PornComixOnline](https://www.porncomixone.net) _[English]_
+- [Pururin](https://pururin.to/) _[English]_
+- [Simply-Hentai](https://simply-hentai.com/) _[English]_
+- [Tsumino](http://tsumino.com/) _[English]_
+- [xyzcomics](https://xyzcomics.com/) _[English]_
+- [wnacg](https://wnacg.com/) _[English,Raw,Chinese]_
+- [GNTAI.net](https://www.gntai.net/) _[Spanish]_
+- [TMOHentai](https://tmohentai.com/) _[Spanish]_
 - [vermangasporno](https://vermangasporno.com/) / [vercomicsporno](https://vercomicsporno.com/) _[Spanish]_
 
 ### Sitios Agregados por wernser412

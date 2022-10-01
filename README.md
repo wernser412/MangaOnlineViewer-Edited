@@ -150,7 +150,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 - [Myotakuinfo](https://lectortmo.com/) _[Spanish]_
 - [Otakworld](https://lectortmo.com/) _[Spanish]_
 - [Vgmotor](https://lectortmo.com/) _[Spanish]_
-- [Motorbakery(https://lectortmo.com/) _[Spanish]_
+- [Motorbakery](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
 

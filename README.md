@@ -151,6 +151,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 - [Otakworld](https://lectortmo.com/) _[Spanish]_
 - [Vgmotor](https://lectortmo.com/) _[Spanish]_
 - [Motorbakery](https://lectortmo.com/) _[Spanish]_
+- [recipesist](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
 

@@ -4,8 +4,8 @@
 // @updateURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
-// @description Shows all pages at once in online view for these sites: Asura Scans, Flame Scans, Realm Scans, Alpha-scans, Batoto, ComiCastle, Dynasty-Scans, InManga, KLManga, Leitor, LHTranslation, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MangaPark, MangaRaw, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Yuri-ism, Sense-Scans, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, ReaperScans, JaiminisBox, DisasterScans, ManhuaPlus
-// @version 2022.10.05
+// @description Shows all pages at once in online view for these sites: Asura Scans, Flame Scans, Realm Scans, Alpha-scans, Batoto, ComiCastle, Dynasty-Scans, InManga, KLManga, Leitor, LHTranslation, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MangaPark, MReader, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Yuri-ism, Sense-Scans, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus
+// @version 2022.10.06
 // @license MIT
 // @grant GM_getValue
 // @grant GM_setValue
@@ -18,9 +18,8 @@
 // @require https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js
-// @require https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.32/sweetalert2.min.js
+// @require https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.35/sweetalert2.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js
-// @include /https?:\/\/(www.)?(asurascans|flamescans|realmscans|alpha-scans).(com|org)\/.+/
 // @include /https?:\/\/(www.)?bato.to\/chapter.*/
 // @include /https?:\/\/(www.)?comicastle.org\/read\/.+\/[0-9]+.*/
 // @include /https?:\/\/(www.)?dynasty-scans.com\/chapters\/.+/
@@ -37,7 +36,7 @@
 // @include /https?:\/\/(www.)?(mangahub).io\/chapter\/.+\/.+/
 // @include /https?:\/\/(www.)?((manganelo|mangakakalot).com\/chapter\/.+\/.+|(manganato|readmanganato).com\/manga-\w\w\d+\/chapter-\d+)/
 // @include /https?:\/\/(www.)?mangapark.(com|me|org|net)\/(manga|chapter|comic)\/.+\/.+/
-// @include /https?:\/\/(www.)?mcreader.net\/reader\/.*/
+// @include /https?:\/\/(www.)?mreader.co\/reader\/.*/
 // @include /https?:\/\/(www.)?mangareader.to\/read\/.+\/.+\/.+/
 // @include /https?:\/\/(www.)?(mangasee123|manga4life).com\/read-online\/.+/
 // @include /https?:\/\/(www.)?mangatigre.net\/.+\/.+\/.+/
@@ -48,12 +47,13 @@
 // @include /https?:\/\/(www.)?rawdevart.com\/comic\/.+\/.+\//
 // @include /https?:\/\/(www.)?readcomicsonline.ru\/comic\/.*\/\d*/
 // @include /https?:\/\/(www.)?(funmanga|mngdoom|readmng|mangainn).(com|net)\/.+\/\d+/
+// @include /https?:\/\/(www.)?reaperscans.com\/comics\/.+\/chapters\/.+/
 // @include /https?:\/\/raw.senmanga.com\/.+\/.+\/?/
 // @include /https?:\/\/(www.)?shimadascans.com\/.+series.+/
 // @include /https?:\/\/(www.)?tapas.io\/episode\/.+/
 // @include /https?:\/\/(www.)?(tenmanga|gardenmanage).com\/(chapter|statuses)\/.+/
 // @include /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/
-// @include /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion|cooker2love|vsrecipes|recipesaniki|dariusmotor|vgmotor|mynewsrecipes|animation2you|infopetworld|almtechnews|mygamesinfo|infogames2you|cookermania|recipesdo|motorpi|myotakuinfo|otakworld|vgmotor|motorbakery|recipesist).com\/.+\/.+\/(paginated|cascade)/
+// @include /https?:\/\/(www.)?(almtechnews|animalcanine|animation2you|animationforyou|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|panicmanga|recipesaniki|recipesdo|recipesist|recipesnk|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/
 // @include /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/
 // @include /https?:\/\/(www.)?webtoons.com\/.+viewer.+/
 // @include /https?:\/\/(www.)?(manga33).com\/manga\/.+/
@@ -70,9 +70,9 @@
     // == AsuraScans and FlameScans ====================================================================
     var asurasflamecans = {
         name: ['Asura Scans', 'Flame Scans', 'Realm Scans', 'Alpha-scans'],
-        url: /https?:\/\/(www.)?(asurascans|flamescans|realmscans|alpha-scans).(com|org)\/.+/,
+        url: /https?:\/\/(www.)?(asura|flamescans|realmscans|alpha-scans).(com|org|gg)\/.+/,
         homepage: [
-            'https://www.asurascans.com/',
+            'https://www.asura.gg/',
             'https://flamescans.org/',
             'https://realmscans.com/',
             'https://alpha-scans.org/',
@@ -306,7 +306,6 @@
             'mangatx',
             'Toonily',
             'Mngazuki',
-            'ReaperScans',
             'JaiminisBox',
             'DisasterScans',
             'ManhuaPlus',
@@ -321,7 +320,6 @@
             'https://mangatx.com/',
             'https://toonily.net/',
             'https://mangazuki.me/',
-            'https://reaperscans.com/',
             'https://jaiminisbox.net',
             'https://disasterscans.com/',
             'https://manhuaplus.com/',
@@ -586,26 +584,6 @@
         },
     };
 
-    // == MangaRaw =====================================================================================
-    var mangaraw = {
-        name: 'MangaRaw',
-        url: /https?:\/\/(www.)?mcreader.net\/reader\/.*/,
-        homepage: 'https://www.manga-raw.club/',
-        language: ['English'],
-        category: 'manga',
-        run() {
-            const images = [...document.querySelectorAll('#chapter-reader img')];
-            return {
-                title: document.querySelector('.titles')?.textContent?.trim(),
-                series: document.querySelector('.titles a')?.getAttribute('href'),
-                pages: images.length,
-                prev: document.querySelector('.chnav.prev')?.getAttribute('href'),
-                next: document.querySelector('.chnav.next')?.getAttribute('href'),
-                listImages: images.map((img) => img.getAttribute('src')),
-            };
-        },
-    };
-
     // == Mangareader ==================================================================================
     var mangareader = {
         name: 'Mangareader',
@@ -769,6 +747,26 @@
         },
     };
 
+    // == MReader ======================================================================================
+    var mreader = {
+        name: 'MReader',
+        url: /https?:\/\/(www.)?mreader.co\/reader\/.*/,
+        homepage: 'https://www.mreader.co/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('#chapter-reader img')];
+            return {
+                title: document.querySelector('.titles')?.textContent?.trim(),
+                series: document.querySelector('.titles a')?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('.chnav.prev')?.getAttribute('href'),
+                next: document.querySelector('.chnav.next')?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('src')),
+            };
+        },
+    };
+
     // == NineManga ====================================================================================
     var ninemanga = {
         name: 'NineManga',
@@ -881,6 +879,26 @@
                 prev: W.prev_chapter_url,
                 next: W.next_chapter_url,
                 listImages: W.images.map((item) => item.url),
+            };
+        },
+    };
+
+    // == ReaperScans ==================================================================================
+    var reaperscans = {
+        name: 'ReaperScans',
+        url: /https?:\/\/(www.)?reaperscans.com\/comics\/.+\/chapters\/.+/,
+        homepage: 'https://reaperscans.com/',
+        language: ['English'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('main img')];
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('.fa-list')?.parentElement?.getAttribute('href'),
+                pages: images.length,
+                prev: document.querySelector('.fa-arrow-left')?.parentElement?.getAttribute('href'),
+                next: document.querySelector('.fa-arrow-right')?.parentElement?.getAttribute('href'),
+                listImages: images.map((img) => img.getAttribute('data-src') || img.getAttribute('src')),
             };
         },
     };
@@ -1014,7 +1032,7 @@
 
   var tmofans2 = {
     name: 'TuMangaOnline',
-    url: /https?:\/\/(www.)?(wtechnews|otakuworldgames|animationforyou|animalcanine|gamesnk|cook2love|mangalong|motornk|panicmanga|mistermanga|worldmangas|recipesnk|fanaticmanga|cookerready|anitoc|enginepassion|cooker2love|vsrecipes|recipesaniki|dariusmotor|vgmotor|mynewsrecipes|animation2you|infopetworld|almtechnews|mygamesinfo|infogames2you|cookermania|recipesdo|motorpi|myotakuinfo|otakworld|vgmotor|motorbakery|recipesist).com\/.+\/.+\/(paginated|cascade)/,
+    url: /https?:\/\/(www.)?(almtechnews|animalcanine|animation2you|animationforyou|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|panicmanga|recipesaniki|recipesdo|recipesist|recipesnk|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/,
     homepage: 'https://lectortmo.com/',
     language: ['Spanish'],
     category: 'manga',
@@ -1151,7 +1169,7 @@
         mangahub,
         mangakakalot,
         mangapark,
-        mangaraw,
+        mreader,
         mangareader,
         mangasee,
         mangatigre,
@@ -1162,6 +1180,7 @@
         rawdevart,
         readcomicsonline,
         readmangatoday,
+        reaperscans,
         senmanga,
         shimadascans,
         tapas,
@@ -1323,23 +1342,6 @@
             isEmpty(value) ||
             (typeof value === 'object' && isEmptyObject(value)));
     }
-    function testUtil(test, fn) {
-        test.map((value) => console.log(`${fn.name}(${JSON.stringify(value)}) // ${fn(value)}`));
-    }
-    const testValues = [
-        null,
-        undefined,
-        [],
-        {},
-        '',
-        false,
-        0,
-        [{}, { 0: false }, { '': 0 }, { 0: 0 }],
-        42,
-        [{ '': 1 }, { 0: 1 }], // Should be Something
-    ];
-    testUtil(testValues, isEmpty);
-    testUtil(testValues, isNothing);
 
     const colors = {
         dark: {
@@ -1888,12 +1890,14 @@ img {
   vertical-align: middle;
   border: 0 none;
 }
+
 .icon-tabler {
   height: 1rem;
   width: 1rem;
   align-self: center;
   vertical-align: sub;
 }
+
 #nprogress .bar {
   background: #29d;
   position: fixed;
@@ -1903,6 +1907,7 @@ img {
   width: 100%;
   height: 4px;
 }
+
 #MangaOnlineViewer {
   padding-bottom: 40px;
   min-height: 760px;
@@ -1913,49 +1918,61 @@ img {
   color: var(--theme-body-text-color);
   background-color: var(--theme-body-background);
 }
+
 #MangaOnlineViewer #Chapter {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   min-width: 225px;
 }
+
 #MangaOnlineViewer #Chapter.FluidLTR {
   direction: ltr;
 }
+
 #MangaOnlineViewer #Chapter.FluidRTL {
   direction: rtl;
 }
+
 #MangaOnlineViewer #Chapter.FluidLTR,
 #MangaOnlineViewer #Chapter.FluidRTL {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+
 #MangaOnlineViewer #Chapter.FluidLTR .PageImg,
 #MangaOnlineViewer #Chapter.FluidRTL .PageImg {
   min-width: unset;
 }
+
 #MangaOnlineViewer #Chapter.FluidLTR .MangaPage.DoublePage,
 #MangaOnlineViewer #Chapter.FluidRTL .MangaPage.DoublePage {
   grid-column: span 2;
 }
+
 #MangaOnlineViewer #Chapter.FluidLTR .MangaPage:not(.DoublePage):nth-child(2n),
 #MangaOnlineViewer #Chapter.FluidRTL .MangaPage:not(.DoublePage):nth-child(2n) {
   justify-self: flex-start;
 }
+
 #MangaOnlineViewer #Chapter.FluidLTR .MangaPage:not(.DoublePage):nth-child(2n-1),
 #MangaOnlineViewer #Chapter.FluidRTL .MangaPage:not(.DoublePage):nth-child(2n-1) {
   justify-self: flex-end;
 }
+
 #MangaOnlineViewer #Chapter.Vertical .PageContent {
   margin-bottom: 15px;
 }
+
 #MangaOnlineViewer #Chapter.FluidLTR .MangaPage,
 #MangaOnlineViewer #Chapter.FluidRTL .MangaPage {
   width: auto;
 }
+
 #MangaOnlineViewer #Chapter.FluidLTR .ZoomWidth .icon-tabler,
 #MangaOnlineViewer #Chapter.FluidRTL .ZoomWidth .icon-tabler {
   color: red;
 }
+
 #MangaOnlineViewer #SettingsPanel {
   color: var(--theme-text-color);
   padding: 10px;
@@ -1973,28 +1990,34 @@ img {
   max-width: 100vw;
   width: 305px;
 }
+
 #MangaOnlineViewer #SettingsPanel.visible {
   transform: translateX(0);
 }
+
 #MangaOnlineViewer #SettingsPanel .ControlLabel {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
 }
+
 #MangaOnlineViewer #SettingsPanel .ControlLabelItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 #MangaOnlineViewer #SettingsPanel .ControlLabelItem:not(.show) {
   display: none;
 }
+
 #MangaOnlineViewer #ThemeSection{
   border: 1px solid var(--theme-body-text-color);
   border-radius: 10px;
   padding: 10px;
 }
+
 #MangaOnlineViewer .closeButton {
   width: fit-content;
   height: fit-content;
@@ -2002,6 +2025,7 @@ img {
   right: 10px;
   top: 10px;
 }
+
 #MangaOnlineViewer .overlay {
   position: fixed;
   display: none;
@@ -2018,6 +2042,7 @@ img {
 #MangaOnlineViewer .overlay.visible {
   display: block;
 }
+
 #MangaOnlineViewer .ThemeRadio {
   border: 1px solid var(--theme-text-color);
   color: var(--theme-primary-text-color);
@@ -2029,23 +2054,28 @@ img {
   margin: 2px 5px;
   position: relative;
 }
+
 #MangaOnlineViewer .ThemeRadio svg{
   position: absolute;
   top: 15%;
   right: 15%;
 }
+
 #MangaOnlineViewer .ThemeRadio.custom{
   /*background-image: url("${svgToUrl(IconPalette)}");*/
   /*background-position: center;*/
   /*background-repeat: no-repeat;*/
   /*background-size: 80%;*/
 }
+
 #MangaOnlineViewer .ThemeRadio.selected .icon-tabler-check {
   display: inline;
 }
+
 #MangaOnlineViewer .ThemeRadio:not(.selected) .icon-tabler-check {
   display: none;
 }
+
 #MangaOnlineViewer #KeybindingsPanel {
   padding: 8px;
   position: fixed;
@@ -2056,10 +2086,12 @@ img {
   line-height: 1.5em;
   z-index: 1000;
 }
+
 #MangaOnlineViewer #KeybindingsPanel.visible {
   transform: translateX(0);
   display: block;
 }
+
 #MangaOnlineViewer #BookmarksPanel {
   position: fixed;
   top: 10%;
@@ -2072,15 +2104,18 @@ img {
   transform: scaleY(0%);
   z-index: 1000;
 }
+
 #MangaOnlineViewer #BookmarksPanel.visible {
   transform: scaleY(100%);
   display: block;
 }
+
 #MangaOnlineViewer #BookmarksList {
   padding: 0 15px;
   overflow: auto;
   max-height: 60vh;
 }
+
 #MangaOnlineViewer #BookmarksList .BookmarkItem {
   display: flex;
   flex-flow: row;
@@ -2088,20 +2123,25 @@ img {
   align-items: center;
   padding: 2px;
 }
+
 #MangaOnlineViewer #BookmarksList .bookmarkData {
   flex-basis: 15%;
 }
+
 #MangaOnlineViewer #BookmarksList .bookmarkURl {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   flex-basis: 55%;
 }
+
+
 #MangaOnlineViewer select {
   height: 20px;
   padding: 0;
   margin-bottom: 5px;
 }
+
 #MangaOnlineViewer .ControlButton {
   cursor: pointer;
   border-radius: 5px;
@@ -2112,15 +2152,18 @@ img {
   background-color: var(--theme-primary-color);
   border-color: var(--theme-border-color);  
 }
+
 #MangaOnlineViewer .ControlButton:hover {
   opacity: 0.8;
 }
+
 #MangaOnlineViewer .panel {
   padding: 5px;
   position: inherit;
   border-radius: 5px;
   background-color: var(--theme-background-color);
 }
+
 #MangaOnlineViewer .MangaPage {
   width: 100%;
   display: inline-block;
@@ -2132,6 +2175,7 @@ img {
   min-height: 22px;
   min-width: 100%;
 }
+
 #MangaOnlineViewer .PageContent {
   text-align: center;
   display: inline-block;
@@ -2141,13 +2185,16 @@ img {
   height: 100%;
   overflow-y: hidden;
 }
+
 #MangaOnlineViewer .MangaPage.hide .PageContent {
   /*display: none;*/
   height: 0;
 }
+
 #MangaOnlineViewer .MangaPage.hide .PageFunctions {
   /*position:relative;*/
 }
+
 #MangaOnlineViewer .PageContent .PageImg[src=""],
 #MangaOnlineViewer .PageContent .PageImg:not([src]) {
   width: 40vw;
@@ -2159,6 +2206,7 @@ img {
   background-size: 20%;
   background-color: var(--theme-hightlight-color);
 }
+
 #MangaOnlineViewer .PageContent .PageImg.imgBroken {
   width: 40vw;
   height: 80vh;
@@ -2169,6 +2217,7 @@ img {
   background-size: 20%;
   background-color: var(--theme-hightlight-color);
 }
+
 #MangaOnlineViewer .Thumbnail .ThumbnailImg[src=""],
 #MangaOnlineViewer .Thumbnail .ThumbnailImg:not([src]) {
   width: 100px;
@@ -2179,15 +2228,19 @@ img {
   background-repeat: no-repeat;
   background-size: 20%;
 }
+
 #MangaOnlineViewer .fitWidthIfOversize .PageContent .PageImg {
   max-width: 100%;
 }
+
 #MangaOnlineViewer #gotoPage {
   min-width: 35px;
 }
+
 #MangaOnlineViewer #ThemeSelector {
   width: 110px;
 }
+
 #MangaOnlineViewer #Header {
   display: flex;
   justify-content: space-between;
@@ -2201,28 +2254,35 @@ img {
   background-color: inherit;
   z-index: 900;
 }
+
 #MangaOnlineViewer #Header.scroll-hide {
   transform: translateY(-100%);
 }
+
 #MangaOnlineViewer #Header.scroll-show {
   transform: translateY(-1%);
 }
+
 #MangaOnlineViewer #Header.mouseOverMenu {
   position: static;
   transform: none;
 }
+
 #MangaOnlineViewer #Header.scroll-end,
 #MangaOnlineViewer #Header.visible {
   transform: translateY(-1%);
   position: sticky;
 }
+
 #MangaOnlineViewer #Header.mouseOverMenu:hover {
   position: sticky;
 }
+
 #MangaOnlineViewer #Header:not(.mouseOverMenu) #menu,
 #MangaOnlineViewer #Header.mouseOverMenu:hover #menu {
   display: none;
 }
+
 #MangaOnlineViewer #menu {
   position: fixed;
   min-height: 70px;
@@ -2231,12 +2291,14 @@ img {
   z-index: 1;
   color: var(--theme-body-text-color);
 }
+
 #MangaOnlineViewer #MangaTitle {
   padding: 2px;
   margin: 0;
   font-size: 1.2rem;
   font-weight: normal;
 }
+
 #MangaOnlineViewer #GlobalFunctions{
   display: flex;
   gap: 3px;
@@ -2245,10 +2307,12 @@ img {
   width: 300px;
   z-index: 100;
 }
+
 #MangaOnlineViewer #GlobalFunctions .icon-tabler{
   width: 25px;
   height: 25px;
 }
+
 #MangaOnlineViewer #ChapterNavigation {
   display: flex;
   flex-flow: column nowrap;
@@ -2257,10 +2321,12 @@ img {
   padding-right: 10px;
   width: 300px;
 }
+
 #MangaOnlineViewer .ChapterControl {
   display: flex;
   flex-wrap: nowrap;
 }
+
 #MangaOnlineViewer .ChapterControl .NavigationControlButton {
   display: inline-flex;
   margin-left: 3px;
@@ -2269,20 +2335,24 @@ img {
   padding: 5px 10px;
   gap: 0.5em;
 }
+
 #MangaOnlineViewer .ChapterControl .NavigationControlButton .icon-tabler {
   flex-shrink: 0;
   align-self: center;
   width: 1rem;
   height: 1rem;
 }
+
 #MangaOnlineViewer .ChapterControl .NavigationControlButton[value='#'],
 #MangaOnlineViewer .ChapterControl .NavigationControlButton[value=''],
 #MangaOnlineViewer .ChapterControl .NavigationControlButton[value='undefined'] {
   visibility: hidden;
 }
+
 #MangaOnlineViewer .ChapterControl .download.loading{
   cursor: not-allowed;
 }
+
 #MangaOnlineViewer .ViewerTitle {
   text-align: center;
   min-height: 60px;
@@ -2294,8 +2364,10 @@ img {
   padding: 5px;
   flex-basis: 60%;
 }
+
 #MangaOnlineViewer #Counters {
 }
+
 #MangaOnlineViewer .PageFunctions {
   font-family: monospace;
   display: flex;
@@ -2307,6 +2379,7 @@ img {
   position: absolute;
   right: 0;
 }
+
 #MangaOnlineViewer .PageFunctions > .PageIndex {
   background-color: var(--theme-primary-color);
   color: var(--theme-primary-text-color);
@@ -2319,6 +2392,7 @@ img {
   border-top-right-radius: 5px;
   border-top-right-radius: 0;
 }
+
 #MangaOnlineViewer .PageFunctions .ControlButton {
   padding: 3px;
   display: flex;
@@ -2329,12 +2403,15 @@ img {
   min-height: auto;
   opacity: 0.5;
 }
+
 #MangaOnlineViewer .PageFunctions:hover .ControlButton {
   opacity: 1;
 }
+
 #MangaOnlineViewer .PageFunctions .ControlButton:hover {
   opacity: 0.9;
 }
+
 #MangaOnlineViewer.light #ColorScheme > :not(.inverse),
 #MangaOnlineViewer:not(.light) #ColorScheme > .inverse,
 #MangaOnlineViewer .ChapterControl .download.loading > :not(.inverse),
@@ -2345,14 +2422,17 @@ img {
 #MangaOnlineViewer:not(.bookmarked) .ControlButton.Bookmark  > .inverse {
   display: none;
 }
+
 #MangaOnlineViewer.hideControls .PageFunctions {
   visibility: hidden;
 }
+
 #MangaOnlineViewer #NavigationCounters {
   margin: 5px;
   width: 100%;
   line-height: 1rem;
 }
+
 #MangaOnlineViewer #Navigation {
   color: var(--theme-text-color);
   background-color: var(--theme-hightlight-color);
@@ -2370,26 +2450,32 @@ img {
   border-bottom-right-radius: 0;
   line-height: 0rem;
 }
+
 #MangaOnlineViewer #Navigation #Thumbnails {
   overflow-x: auto;
   overflow-y: hidden;
   margin-right: 10px;
 }
+
 #MangaOnlineViewer #Navigation:hover {
   transform: translateY(-180px);
 }
+
 #MangaOnlineViewer #Navigation.disabled {
   display: none;
 }
+
 #MangaOnlineViewer #Navigation.visible {
   transform: translateY(-180px);
 }
+
 #MangaOnlineViewer #Navigation .Thumbnail {
   display: inline-block;
   height: 150px;
   margin: 0 5px;
   border: 1px solid var(--theme-primary-color);
 }
+
 #MangaOnlineViewer #Navigation .Thumbnail .ThumbnailIndex {
   color: var(--theme-text-color);
   background-color: var(--theme-hightlight-color);
@@ -2400,6 +2486,7 @@ img {
   width: 100%;
   line-height: 1rem;
 }
+
 #MangaOnlineViewer #Navigation .Thumbnail .ThumbnailImg {
   cursor: pointer;
   display: inline-block;
@@ -2408,6 +2495,7 @@ img {
   min-width: 80px;
   max-width: 160px;
 }
+
 #MangaOnlineViewer #menu .icon-tabler {
   position: absolute;
   top: 5px;
@@ -2415,17 +2503,21 @@ img {
   height: 32px;
   width: 32px;
 }
+
 @media (max-width: 992px) {
   #MangaOnlineViewer #Header {
       flex-direction: column;
   }
+
   #MangaOnlineViewer #Header.mouseOverMenu {
     position: sticky;
     transition: transform 0.3s ease-in;
   }
+
   #MangaOnlineViewer #Header.scroll-show {
     transform: translateY(-1%);
   }
+
   #MangaOnlineViewer #Header.scroll-hide {
     transform: translateY(-100%);
   }
@@ -2433,6 +2525,7 @@ img {
   #MangaOnlineViewer .PageContent .PageImg {
     max-width: 100%;
   }
+
   #MangaOnlineViewer .ViewerTitle {
     order: 1;
     min-height: auto;
@@ -2447,6 +2540,7 @@ img {
     order: 3;
     padding: 5px;
   }
+
   #MangaOnlineViewer #ChapterNavigation {
     order: 2;
   }
@@ -2454,6 +2548,7 @@ img {
   #MangaOnlineViewer #menu {
     display: none;
   }
+
   #MangaOnlineViewer #GlobalFunctions #keybindings {
     display: none;
   }
@@ -2466,6 +2561,7 @@ img {
     justify-content: center;
     align-items: center;
   }
+
   #MangaOnlineViewer #Header.mouseOverMenu {
     position: sticky;
     transition: transform 0.3s ease-in;
@@ -2478,44 +2574,56 @@ img {
   #MangaOnlineViewer #Header.scroll-hide {
     transform: translateY(-100%);
   }
+
   #MangaOnlineViewer .ViewerTitle {
     order: 1;
     flex-basis: 100%;
     margin-top: 0px;
   }
+
   #MangaOnlineViewer #GlobalFunctions {
     order: 2;
     padding: 0;
   }
+
   #MangaOnlineViewer #ChapterNavigation {
     order: 3;
     width: auto;
   }
+
   #MangaOnlineViewer #Navigation {
     display: none;
   }
+
   #MangaOnlineViewer .PageFunctions {
     padding: 0;
   }
+
   #MangaOnlineViewer .PageFunctions .ControlButton:not(.Bookmark) {
     display: none;
   }
+
   #MangaOnlineViewer .PageFunctions .ControlButton.Bookmark {
     opacity: 1;
   }
+
   #MangaOnlineViewer .PageContent {
     margin: 0;
     width: 100%;
   }
+
   #MangaOnlineViewer .PageContent .PageImg {
     max-width: 100%;
   }
+
   #MangaOnlineViewer #GlobalFunctions .ControlButton:not(#settings) {
     display: none;
   }
+
   #MangaOnlineViewer #GlobalFunctions {
     min-width: auto;
   }
+
   #MangaOnlineViewer #SettingsPanel .DefaultZoom,
   #MangaOnlineViewer #SettingsPanel .viewMode,
   #MangaOnlineViewer #SettingsPanel .fitIfOversize,
@@ -2527,9 +2635,11 @@ img {
   #MangaOnlineViewer #SettingsPanel .mouseOverMenu {
     display: none;
   }
+
   #MangaOnlineViewer #KeybindingsPanel {
     display: none;
   }  
+
   #MangaOnlineViewer #menu {
     display: none;
   }
@@ -2538,15 +2648,19 @@ img {
     height: auto;
     padding: 0;
   }
+
   #MangaOnlineViewer .ChapterControl {
   }
+
   #MangaOnlineViewer .ChapterControl .download {
     display: none;
   }
+
   #MangaOnlineViewer #Counters {
     display: none;
   }
 }
+
 @-webkit-keyframes spin {
   to {
     transform:rotate(360deg)
@@ -2641,6 +2755,7 @@ img {
         lazyStart: 50,
         hidePageControls: false,
         mouseOverMenu: true,
+        maxReload: 5,
     };
     // Configuration
     let settings$1 = _.defaultsDeep(getSettings(defaultSettings), defaultSettings);
@@ -2665,9 +2780,12 @@ img {
     }
     // Clear old Bookmarks
     const bookmarkTimeLimit = 1000 * 60 * 60 * 24 * 30 * 12; // year
-    updateSettings({
-        bookmarks: settings$1.bookmarks.filter((el) => Date.now() - el.date < bookmarkTimeLimit),
-    });
+    const refreshedBookmark = settings$1.bookmarks.filter((el) => Date.now() - el.date < bookmarkTimeLimit);
+    if (settings$1.bookmarks.length !== refreshedBookmark.length)
+        updateSettings({ bookmarks: refreshedBookmark });
+    function isBookmarked(url = window.location.href) {
+        return useSettings().bookmarks.some((el) => el.url === url);
+    }
 
     // Creates the style element
     function createStyleElement(id, content) {
@@ -3195,7 +3313,9 @@ ${IconCheck}
     const listOptions = (times, begin) => indexList(times, begin).map((index) => `<option value='${index}'>${index}</option>`);
     const app = (manga, begin = 1) => `
 <div id='MangaOnlineViewer'
-  class="${useSettings().colorScheme} ${useSettings().hidePageControls ? 'hideControls' : ''}"
+  class="${useSettings().colorScheme} 
+    ${useSettings().hidePageControls ? 'hideControls' : ''}
+    ${isBookmarked() ? 'bookmarked' : ''}"
   data-theme='${useSettings().theme}'>
   <header id="Header" class="${useSettings().mouseOverMenu ? 'mouseOverMenu' : ''}">
     <div id='menu'>
@@ -3302,8 +3422,7 @@ ${IconCheck}
                 page: num,
                 date: Date.now(),
             };
-            const found = useSettings().bookmarks.some((el) => el.url === mark.url);
-            if (found) {
+            if (isBookmarked(mark.url)) {
                 updateSettings({ bookmarks: useSettings().bookmarks.filter((el) => el.url !== mark.url) });
                 Swal.fire({
                     title: 'Bookmark Removed',
@@ -3641,15 +3760,25 @@ ${IconCheck}
             }
         });
     }
+    function invalidateImageCache(src, repeat) {
+        const url = src.replace(/[?&]cache=\d+$/, '');
+        const symbol = url.indexOf('?') === -1 ? '?' : '&';
+        return `${url + symbol}cache=${repeat}`;
+    }
+    function getRepeatValue(src) {
+        let repeat = 1;
+        const cache = src?.match(/cache=(\d+)$/);
+        if (cache && cache[1])
+            repeat = parseInt(cache[1], 10) + 1;
+        return repeat;
+    }
     // Force reload the image
     function reloadImage(img) {
         const src = img.getAttribute('src');
-        if (src) {
-            img.removeAttribute('src');
-            setTimeout(() => {
-                img.setAttribute('src', src);
-            }, 500);
-        }
+        if (!src)
+            return;
+        img.removeAttribute('src');
+        img.setAttribute('src', invalidateImageCache(src, getRepeatValue(src)));
     }
     function onImagesDone() {
         logScript('Images Loading Complete');
@@ -3679,28 +3808,31 @@ ${IconCheck}
         if (loaded === total)
             onImagesDone();
     }
-    // change class if the image is loaded or broken
-    function onImagesProgress(_instance, image) {
-        if (image) {
-            if (image.isLoaded) {
-                image.img.classList.add('imgLoaded');
-                image.img.classList.remove('imgBroken');
-                image.img.getAttribute('id');
-                const thumbId = image.img.getAttribute('id').replace('PageImg', 'ThumbnailImg');
-                const thumb = document.getElementById(thumbId);
-                if (thumb) {
-                    thumb.onload = () => applyZoom(`#${image.img.getAttribute('id')}`);
-                    thumb.setAttribute('src', image.img.getAttribute('src'));
-                }
+    function onImagesSuccess(instance) {
+        instance.images.forEach((image) => {
+            image.img.classList.add('imgLoaded');
+            image.img.classList.remove('imgBroken');
+            const thumbId = image.img.id.replace('PageImg', 'ThumbnailImg');
+            const thumb = document.getElementById(thumbId);
+            if (thumb)
+                thumb.setAttribute('src', image.img.getAttribute('src'));
+            applyZoom(`#${image.img.id}`);
+            updateProgress();
+        });
+    }
+    function onImagesFail(instance) {
+        instance.images.forEach((image) => {
+            image.img.classList.add('imgBroken');
+            const src = image.img.getAttribute('src');
+            if (src && getRepeatValue(src) <= useSettings().maxReload) {
+                setTimeout(() => {
+                    reloadImage(image.img);
+                    const imgLoad = imagesLoaded(image.img.parentElement);
+                    imgLoad.on('done', onImagesSuccess);
+                    imgLoad.on('fail', onImagesFail);
+                }, 2000);
             }
-            else {
-                image.img.classList.add('imgBroken');
-                reloadImage(image.img);
-                const imgLoad = imagesLoaded(image.img.parentElement);
-                imgLoad.on('progress', onImagesProgress);
-            }
-        }
-        updateProgress();
+        });
     }
     // Corrects urls
     function normalizeUrl(url = '') {
@@ -3717,9 +3849,10 @@ ${IconCheck}
         if (img) {
             if (!useSettings().lazyLoadImages || position <= useSettings().lazyStart) {
                 setTimeout(() => {
-                    img.setAttribute('src', src);
                     const imgLoad = imagesLoaded(img.parentElement);
-                    imgLoad.on('progress', onImagesProgress);
+                    imgLoad.on('done', onImagesSuccess);
+                    imgLoad.on('fail', onImagesFail);
+                    img.setAttribute('src', src);
                     logScript('Loaded Image:', index, 'Source:', src);
                 }, (manga.timer || useSettings().throttlePageLoad) * position);
             }
@@ -3727,7 +3860,8 @@ ${IconCheck}
                 img.setAttribute('data-src', src);
                 lazyLoad(img, () => {
                     const imgLoad = imagesLoaded(img.parentElement);
-                    imgLoad.on('progress', onImagesProgress);
+                    imgLoad.on('done', onImagesSuccess);
+                    imgLoad.on('fail', onImagesFail);
                     logScript('Lazy Image: ', index, ' Source: ', img.getAttribute('src'));
                 });
             }
@@ -3738,10 +3872,11 @@ ${IconCheck}
             const src = await getElementAttribute(pageUrl, manga.img, manga.lazyAttr ?? 'src');
             const img = document.querySelector(`#PageImg${index}`);
             if (src && img) {
-                img.setAttribute('src', src);
                 img.style.width = 'auto';
                 const imgLoad = imagesLoaded(img.parentElement);
-                imgLoad.on('progress', onImagesProgress);
+                imgLoad.on('done', onImagesSuccess);
+                imgLoad.on('fail', onImagesFail);
+                img.setAttribute('src', src);
                 logScript(`${lazy && 'Lazy '}Page: `, index, ' Source: ', img.getAttribute('src'));
             }
         };
@@ -4226,13 +4361,16 @@ ${IconCheck}
     right: 10px;
     z-index: 10000;
 }
+
 #StartMOV:hover {
     background-position: 100% 0;
     transition: all 0.4s ease-in-out;
 }
+
 #StartMOV:focus {
     outline: none;
 }
+
 `;
         const style = document.createElement('style');
         style.appendChild(document.createTextNode(css));

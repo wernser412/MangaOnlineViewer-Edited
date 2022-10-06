@@ -148,7 +148,6 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 - [Recipesist](https://lectortmo.com/) _[Spanish]_
 - [Recipesnk](https://lectortmo.com/) _[Spanish]_
 - [Vgmotor](https://lectortmo.com/) _[Spanish]_
-- [Vgmotor](https://lectortmo.com/) _[Spanish]_
 - [Vsrecipes](https://lectortmo.com/) _[Spanish]_
 - [Worldmangas](https://lectortmo.com/) _[Spanish]_
 - [Wtechnews](https://lectortmo.com/) _[Spanish]_

@@ -1184,6 +1184,7 @@
         tapas,
         tenmanga,
         tmofans,
+        tmofans2,
         unionmangas,
         webtoons,
         wpmanga,

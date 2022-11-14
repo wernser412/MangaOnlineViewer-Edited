@@ -41,7 +41,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 
 ### Sitios de manga admitidos
 
-- [Asura Scans](https://www.asura.gg/) / [Flame Scans](https://flamescans.org/) / [Realm Scans](https://realmscans.com/) / [Alpha-scans](https://alpha-scans.org/) / [Voids-Scans](https://void-scans.com/) _[English]_
+- [Asura Scans](https://www.asura.gg/) / [Flame Scans](https://flamescans.org/) / [Realm Scans](https://realmscans.com/) / [Voids-Scans](https://void-scans.com/) / [Luminous Scans](https://luminousscans.com/) _[English]_
 - [Batoto](http://bato.to/) _[English]_
 - [Dynasty-Scans](https://dynasty-scans.com/) _[English]_
 - [LHTranslation](https://lhtranslation.net/) _[English]_
@@ -104,12 +104,14 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 - [Luscious](https://luscious.net/) _[English]_
 - [MultPorn](https://multporn.net/) _[English]_
 - [MyHentaiGallery](https://www.myhentaigallery.com) _[English]_
+- [Nana](https://nana.my.id/) _[English]_
 - [nHentai.net](https://nhentai.net/) / [nHentai.xxx](https://nhentai.xxx/) _[English]_
 - [9Hentai](https://9hentai.to) _[English]_
 - [OmegaScans](https://omegascans.org/) _[English]_
 - [PornComixOnline](https://www.porncomixone.net) _[English]_
 - [Pururin](https://pururin.to/) _[English]_
 - [Simply-Hentai](https://simply-hentai.com/) _[English]_
+- [3Hentai](https://3hentai.net/) _[English]_
 - [Tsumino](http://tsumino.com/) _[English]_
 - [xyzcomics](https://xyzcomics.com/) _[English]_
 - [wnacg](https://wnacg.com/) _[English,Raw,Chinese]_

@@ -5,7 +5,7 @@
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
 // @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, InManga, KLManga, Leitor, LHTranslation, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MangaPark, MReader, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus
-// @version 2022.11.15
+// @version 2022.11.28
 // @license MIT
 // @grant GM_getValue
 // @grant GM_setValue
@@ -1054,13 +1054,13 @@
         },
     };
 
-  var tmofans2 = {
-    name: 'TuMangaOnline',
-    url: /https?:\/\/(www.)?(almtechnews|animalcanine|animation2you|animationforyou|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|panicmanga|recipesaniki|recipesdo|recipesist|recipesnk|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/,
-    homepage: 'https://lectortmo.com/',
-    language: ['Spanish'],
-    category: 'manga',
-    run() {
+    var tmofans2 = {
+        name: 'TuMangaOnline',
+        url: /https?:\/\/(www.)?(almtechnews|animalcanine|animation2you|animationforyou|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|panicmanga|recipesaniki|recipesdo|recipesist|recipesnk|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/,
+        homepage: 'https://lectortmo.com/',
+        language: ['Spanish'],
+        category: 'manga',
+        run() {
             const images = [...document.querySelectorAll('.viewer-image-container img')];
             const pages = [
                 ...document.querySelectorAll('div.container:nth-child(4) select#viewer-pages-select option'),
@@ -2334,6 +2334,8 @@
     cursor: pointer;
   }
 
+  #MangaOnlineViewer #Header.click:not(.headroom-hide) #menu,
+  #MangaOnlineViewer #Header.click.headroom-end #menu,
   #MangaOnlineViewer #Header.click.visible #menu {
     position: static;
     width: 50px;
@@ -5138,14 +5140,12 @@ template {
 
     function head(manga) {
         return `
-<head>
-  <title>${manga.title}</title>
-  <meta charset='UTF-8'>
-  ${wrapStyle('externals', sweetalertStyle)}
-  ${wrapStyle('reader', cssStyles)}
-  ${themesCSS}
-  ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${useSettings().minZoom}vw;}`)}
-</head>
+<title>${manga.title}</title>
+<meta charset='UTF-8'>
+${wrapStyle('externals', sweetalertStyle)}
+${wrapStyle('reader', cssStyles)}
+${themesCSS}
+${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${useSettings().minZoom}vw;}`)}
 `;
     }
 
@@ -5735,16 +5735,16 @@ template {
           ${IconLoader2}
           ${getLocaleString('BUTTON_DOWNLOAD')}
         </button>
-        <button id="prev" class="NavigationControlButton ControlButton" type="button" 
-          value="${manga.prev || ''}" title="${getLocaleString('PREVIOUS_CHAPTER')}">
+        <a id="prev" class="NavigationControlButton ControlButton" type="button" 
+          href="${manga.prev || ''}" title="${getLocaleString('PREVIOUS_CHAPTER')}">
           ${IconArrowBigLeft}
           ${getLocaleString('BUTTON_PREVIOUS')}
-        </button>
-        <button id="next" class="NavigationControlButton ControlButton" type="button" 
-          value="${manga.next || ''}" title="${getLocaleString('NEXT_CHAPTER')}">
+        </a>
+        <a id="next" class="NavigationControlButton ControlButton" type="button" 
+          href="${manga.next || ''}" title="${getLocaleString('NEXT_CHAPTER')}">
           ${getLocaleString('BUTTON_NEXT')}
           ${IconArrowBigRight}
-        </button>
+        </a>
       </div>
     </nav>
   </header>  
@@ -5911,7 +5911,8 @@ template {
         document.querySelector('#MangaOnlineViewer')?.classList.toggle('hideControls');
     }
     function redirect(event) {
-        const url = event.target.getAttribute('value');
+        const element = event.target;
+        const url = element.getAttribute('value') || element.getAttribute('href');
         if (url)
             window.location.href = url;
     }
@@ -6518,10 +6519,9 @@ template {
         function changeColorScheme() {
             const isDark = useSettings().colorScheme === 'dark';
             updateSettings({ colorScheme: isDark ? 'light' : 'dark' });
-            [...document.querySelectorAll('#MangaOnlineViewer , body')].forEach((elem) => {
-                elem.classList.remove(isDark ? 'dark' : 'light');
-                elem.classList.add(useSettings().colorScheme);
-            });
+            const elem = document.getElementById('MangaOnlineViewer');
+            elem?.classList.remove(isDark ? 'dark' : 'light');
+            elem?.classList.add(useSettings().colorScheme);
         }
         document.querySelector('#ColorScheme')?.addEventListener('click', changeColorScheme);
         // Theme Control Selector
@@ -6529,9 +6529,7 @@ template {
             const target = event.currentTarget;
             [...document.querySelectorAll('.ThemeRadio')].forEach((elem) => elem.classList.remove('selected'));
             target.classList.add('selected');
-            [...document.querySelectorAll('#MangaOnlineViewer , body')].forEach((elem) => {
-                elem.setAttribute('data-theme', target.title);
-            });
+            document.getElementById('MangaOnlineViewer')?.setAttribute('data-theme', target.title);
             updateSettings({ theme: target.title });
             const hue = document.querySelector('#Hue');
             const shade = document.querySelector('#Shade');
@@ -6650,10 +6648,11 @@ template {
         if (manga.before !== undefined) {
             manga.before();
         }
+        [document.documentElement, document.head, document.body].forEach((element) => {
+            element.getAttributeNames().forEach((attr) => element.removeAttribute(attr));
+        });
         document.head.innerHTML = head(manga);
         document.body.innerHTML = app(manga, begin);
-        document.body.className = '';
-        document.body.removeAttribute('style');
         logScript('Rebuilding Site');
         setTimeout(() => {
             try {

@@ -4,8 +4,8 @@
 // @updateURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
-// @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, InManga, KLManga, Leitor, LHTranslation, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MangaPark, MReader, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus
-// @version 2022.11.28
+// @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, InManga, KLManga, Leitor, LHTranslation, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MangaPark, MReader, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus, TopManhua
+// @version 2022.12.08
 // @license MIT
 // @grant GM_getValue
 // @grant GM_setValue
@@ -61,7 +61,7 @@
 // @include /https?:\/\/(www.)?(manga33).com\/manga\/.+/
 // @include /https?:\/\/(www.)?zeroscans.com\/comics\/.+/
 // @include /^(?!.*jaiminisbox).*\/read\/.+/
-// @include /https?:\/\/.+\/(manga|series)\/.+\/.+/
+// @include /https?:\/\/.+\/(manga|series|manhua)\/.+\/.+/
 // @exclude /https?:\/\/(www.)?tsumino.com\/.+/
 // @exclude /https?:\/\/(www.)?pururin.io\/.+/
 // ==/UserScript==
@@ -174,7 +174,9 @@
                 pages: images.length,
                 prev: chapter?.nextElementSibling?.getAttribute('value'),
                 next: chapter?.previousElementSibling?.getAttribute('value'),
-                listImages: images.map((img) => img.getAttribute('data-src') || img.getAttribute('src')),
+                listImages: images.map((img) => img.getAttribute('data-src') ||
+                    img.getAttribute('data-lazy-src') ||
+                    img.getAttribute('src')),
             };
         },
     };
@@ -328,8 +330,9 @@
             'JaiminisBox',
             'DisasterScans',
             'ManhuaPlus',
+            'TopManhua',
         ],
-        url: /https?:\/\/.+\/(manga|series)\/.+\/.+/,
+        url: /https?:\/\/.+\/(manga|series|manhua)\/.+\/.+/,
         homepage: [
             '#',
             'https://manhuaus.com',
@@ -342,6 +345,7 @@
             'https://jaiminisbox.net',
             'https://disasterscans.com/',
             'https://manhuaplus.com/',
+            'https://www.topmanhua.com/',
         ],
         language: ['English'],
         obs: 'Any Site that uses Madara Wordpress Plugin',
@@ -920,8 +924,8 @@
                 title: document.querySelector('title')?.textContent?.trim(),
                 series: document.querySelector('.fa-list')?.parentElement?.getAttribute('href'),
                 pages: images.length,
-                prev: document.querySelector('.fa-arrow-left')?.parentElement?.getAttribute('href'),
-                next: document.querySelector('.fa-arrow-right')?.parentElement?.getAttribute('href'),
+                prev: document.querySelector('.fa-arrow-left-long')?.parentElement?.getAttribute('href'),
+                next: document.querySelector('.fa-arrow-right-long')?.parentElement?.getAttribute('href'),
                 listImages: images.map((img) => img.getAttribute('data-src') || img.getAttribute('src')),
             };
         },
@@ -1082,6 +1086,7 @@
             };
         },
     };
+
 
     // == UnionMangas =================================================================================
     var unionmangas = {
@@ -2393,9 +2398,9 @@
     height: 1rem;
   }
 
-  #MangaOnlineViewer .ChapterControl .NavigationControlButton[value='#'],
-  #MangaOnlineViewer .ChapterControl .NavigationControlButton[value=''],
-  #MangaOnlineViewer .ChapterControl .NavigationControlButton[value='undefined'] {
+  #MangaOnlineViewer .ChapterControl .NavigationControlButton[href='#'],
+  #MangaOnlineViewer .ChapterControl .NavigationControlButton[href=''],
+  #MangaOnlineViewer .ChapterControl .NavigationControlButton[href='undefined'] {
     visibility: hidden;
   }
 
@@ -5831,7 +5836,6 @@ ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${u
     }
 
     let zip;
-    // const filenameRegex = /^(?<name>.*?)(?<index>\d+)\.(?<ext>\w+)$/;
     const base64Regex = /^data:(?<mimeType>image\/\w+);base64,+(?<data>.+)/;
     const getExtension = (mimeType) => ((/image\/(?<ext>jpe?g|png|webp)/.exec(mimeType) || {}).groups || {}).ext || '' || 'png';
     const getFilename = (name, index, total, ext) => `${name}${(index + 1).toString().padStart(Math.floor(Math.log10(total)) + 1, '0')}.${ext.replace('jpeg', 'jpg')}`;
@@ -5844,7 +5848,6 @@ ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${u
                 headers: { referer: src, origin: src },
                 responseType: 'blob',
                 onload(response) {
-                    // logScript(`Received image: ${src}`);
                     resolve(response);
                 },
             });
@@ -5893,7 +5896,7 @@ ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${u
             .then((content) => {
             logScript('Download Ready');
             const zipName = `${document.querySelector('#MangaTitle')?.textContent?.trim()}.zip`;
-            saveAs(content, zipName);
+            saveAs(content, zipName, true);
             document.getElementById('download')?.classList.remove('loading');
         })
             .catch(logScript);
@@ -6643,7 +6646,7 @@ ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${u
         zoom();
     }
 
-    function display(manga, begin) {
+    function display(manga, begin = 0) {
         window.stop();
         if (manga.before !== undefined) {
             manga.before();
@@ -6677,9 +6680,6 @@ ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${u
         }
     }
 
-    async function formatPage(manga, begin = 0) {
-        display(manga, begin);
-    }
     async function lateStart(site, begin = 1) {
         const manga = await site.run();
         logScript('LateStart');
@@ -6701,7 +6701,7 @@ ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${u
         Swal.fire(options).then((result) => {
             if (result.value) {
                 logScript(`Choice: ${result.value}`);
-                formatPage(manga, result.value);
+                display(manga, result.value);
             }
             else {
                 logScript(result.dismiss);
@@ -6721,85 +6721,91 @@ ${wrapStyle('MinZoom', `#MangaOnlineViewer .PageContent .PageImg {min-width: ${u
         document.head.appendChild(style);
         logScript('Start Button added to page', button);
     }
+    function showWaitPopup(beginning, manga, site) {
+        Swal.fire({
+            title: getLocaleString('STARTING'),
+            html: `${beginning > 1 ? `${getLocaleString('RESUME')}${beginning}.<br/>` : ''}${getLocaleString('WAITING')}`,
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            reverseButtons: true,
+            timer: 3000,
+        }).then((result) => {
+            if (result.value || result.dismiss === Swal.DismissReason.timer) {
+                display(manga, beginning);
+            }
+            else {
+                createLateStartButton(site, beginning);
+                logScript(result.dismiss);
+            }
+        });
+    }
     // Organize the site adding place-holders for the manga pages
     function preparePage(site, manga, begin = 0) {
         logScript(`Found Pages: ${manga.pages}`);
-        if (manga.pages > 0) {
-            let beginning = begin;
-            if (beginning <= 1) {
-                beginning = useSettings()?.bookmarks?.find((b) => b.url === window.location.href)?.page || 1;
-            }
-            const style = document.createElement('style');
-            style.appendChild(document.createTextNode(sweetalertStyle));
-            document.body.appendChild(style);
-            switch (site.start || useSettings()?.loadMode) {
-                case 'never':
-                    createLateStartButton(site, beginning);
-                    break;
-                case 'always':
-                    formatPage(manga, 0);
-                    break;
-                case 'wait':
-                default:
-                    Swal.fire({
-                        title: getLocaleString('STARTING'),
-                        html: `${beginning > 1 ? `${getLocaleString('RESUME')}${beginning}.<br/>` : ''}${getLocaleString('WAITING')}`,
-                        showCancelButton: true,
-                        cancelButtonColor: '#d33',
-                        reverseButtons: true,
-                        timer: 3000,
-                    }).then((result) => {
-                        if (result.value || result.dismiss === Swal.DismissReason.timer) {
-                            formatPage(manga, beginning);
-                        }
-                        else {
-                            createLateStartButton(site, beginning);
-                            logScript(result.dismiss);
-                        }
-                    });
-                    break;
-            }
+        if (manga.pages <= 0)
+            return;
+        let beginning = begin;
+        if (beginning <= 1) {
+            beginning = useSettings()?.bookmarks?.find((b) => b.url === window.location.href)?.page || 1;
+        }
+        const style = document.createElement('style');
+        style.appendChild(document.createTextNode(sweetalertStyle));
+        document.body.appendChild(style);
+        switch (site.start ?? useSettings()?.loadMode) {
+            case 'never':
+                createLateStartButton(site, beginning);
+                break;
+            case 'always':
+                display(manga, 0);
+                break;
+            case 'wait':
+            default:
+                showWaitPopup(beginning, manga, site);
+                break;
         }
     }
-    // Wait for something on the site to be ready before executing the script
-    async function waitExec(site, waitElapsed = 0) {
-        if (waitElapsed >= (site.waitMax || 5000)) {
-            preparePage(site, await site.run());
-            return;
-        }
+    function testAttribute(site) {
         if (site.waitAttr !== undefined) {
             const wait = document.querySelector(site.waitAttr[0])?.getAttribute(site.waitAttr[1]);
             if (isNothing(wait)) {
                 logScript(`Waiting for Attribute ${site.waitAttr[1]} of ${site.waitAttr[0]} = ${wait}`);
-                setTimeout(() => {
-                    waitExec(site, waitElapsed + (site.waitStep || 1000));
-                }, site.waitStep || 1000);
-                return;
+                return true;
             }
             logScript(`Found Attribute ${site.waitAttr[1]} of ${site.waitAttr[0]} = ${wait}`);
         }
+        return false;
+    }
+    function testElement(site) {
         if (site.waitEle !== undefined) {
             const wait = document.querySelector(site.waitEle);
             if (isNothing(wait?.tagName)) {
                 logScript(`Waiting for Element ${site.waitEle} = `, wait);
-                setTimeout(() => {
-                    waitExec(site, waitElapsed + (site.waitStep || 1000));
-                }, site.waitStep || 1000);
-                return;
+                return true;
             }
             logScript(`Found Element ${site.waitEle} = `, wait);
         }
+        return false;
+    }
+    function testVariable(site) {
         if (site.waitVar !== undefined) {
             const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
             const wait = W[site.waitVar];
             if (isNothing(wait)) {
                 logScript(`Waiting for Variable ${site.waitVar} = ${wait}`);
-                setTimeout(() => {
-                    waitExec(site, waitElapsed + (site.waitStep || 1000));
-                }, site.waitStep || 1000);
-                return;
+                return true;
             }
             logScript(`Found Variable ${site.waitVar} = ${wait}`);
+        }
+        return false;
+    }
+    // Wait for something on the site to be ready before executing the script
+    async function waitExec(site, waitElapsed = 0) {
+        if (waitElapsed < (site.waitMax || 5000) &&
+            (testAttribute(site) || testElement(site) || testVariable(site))) {
+            setTimeout(() => {
+                waitExec(site, waitElapsed + (site.waitStep || 1000));
+            }, site.waitStep || 1000);
+            return;
         }
         preparePage(site, await site.run());
     }

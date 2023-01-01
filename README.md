@@ -1,5 +1,5 @@
 # Manga OnlineViewer
-### Leer
+## Leer
 No es un script originado por mi, solo edito y traduzco el script.
 
 Script original por [TagoDR](https://github.com/TagoDR/MangaOnlineViewer)
@@ -13,30 +13,33 @@ Carga todas las páginas de un capítulo en una vista agradable, lo que permite 
 
 ## Instalación
 
-##### [Main Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
-##### [Adult Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
-##### Official Source: [GitHub](https://github.com/wernser412)
+#### [Main Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
 
-### Navegadores compatibles
+#### [Adult Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
+
+#### Official Source: [GitHub](https://github.com/wernser412)
+
+## Navegadores compatibles
+
 Firefox y Chrome con [Tampermonkey](https://tampermonkey.net/) o [Violentmonkey](https://violentmonkey.github.io/).
 Otros navegadores con otros complementos también pueden funcionar, pero no son oficialmente compatibles.
 
 ### Marcador móvil
 
-*La configuración no se puede guardar, es posible que deba solicitar una página de escritorio*:
+_La configuración no se puede guardar, es posible que deba solicitar una página de escritorio_:
 
 Bookmarklet parece funcionar solo en Chrome, abra el capítulo y luego use la barra de búsqueda para activar su bookmarklet.
 
-###### Lector principal:
+##### Lector principal:
 
 ```JS
-javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.35/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
+javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.5.1/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.16/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
 ```
 
 ###### Lector adulto:
 
 ```JS
-javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.35/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer_Adult.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
+javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.5.1/tinycolor.min.js", "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js", "https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js", "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.16/sweetalert2.min.js", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js", "https://cdn.jsdelivr.net/gh/TagoDR/MangaOnlineViewer@latest/Manga_OnlineViewer_Adult.user.min.js"].map( s => document.body.appendChild(document.createElement('script')).src=s)})();
 ```
 
 ### Sitios de manga admitidos
@@ -159,40 +162,39 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 
 ### Teclas de acceso directo
 
-  <kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Abrir Settings<br/>
-  <kbd class='dark'>Numpad +</kbd>/<kbd class='dark'>=</kbd>: Global Zoom in pages (enlarge)<br/>
-  <kbd class='dark'>Numpad -</kbd>/<kbd class='dark'>-</kbd>: Global Zoom out pages (reduce)<br/>
-  <kbd class='dark'>Numpad /</kbd>/<kbd class='dark'>9</kbd>: Global Restore pages to original<br/>
-  <kbd class='dark'>Numpad *</kbd>/<kbd class='dark'>0</kbd>: Global Fit window width<br/>
-  <kbd class='dark'>V</kbd>: Vertical Mode<br/>
-  <kbd class='dark'>C</kbd>: WebComic Mode<br/>
-  <kbd class='dark'>N</kbd>: Modo de derecha a izquierda<br/>
-  <kbd class='dark'>B</kbd>: Modo de izquierda a derecha<br/>
-  <kbd class='dark'>→</kbd>/<kbd class='dark'>D</kbd>/<kbd class='dark'>Numpad 6</kbd>/<kbd class='dark'>.</kbd> : Siguiente capítulo<br/>
-  <kbd class='dark'>←</kbd>/<kbd class='dark'>A</kbd>/<kbd class='dark'>Numpad 4</kbd>/<kbd class='dark'>,</kbd> : Capítulo anterior<br/>
-  <kbd class='dark'>↑</kbd>/<kbd class='dark'>W</kbd>/<kbd class='dark'>Numpad 8</kbd>: Desplazarse hacia arriba<br/>
-  <kbd class='dark'>↓</kbd>/<kbd class='dark'>S</kbd>/<kbd class='dark'>Numpad 2</kbd>: Desplazarse hacia abajo<br/>
+<kbd class='dark'>Numpad 5</kbd>/<kbd class='dark'>/</kbd>: Abrir Settings<br/>
+<kbd class='dark'>Numpad +</kbd>/<kbd class='dark'>=</kbd>: Global Zoom in pages (enlarge)<br/>
+<kbd class='dark'>Numpad -</kbd>/<kbd class='dark'>-</kbd>: Global Zoom out pages (reduce)<br/>
+<kbd class='dark'>Numpad /</kbd>/<kbd class='dark'>9</kbd>: Global Restore pages to original<br/>
+<kbd class='dark'>Numpad *</kbd>/<kbd class='dark'>0</kbd>: Global Fit window width<br/>
+<kbd class='dark'>V</kbd>: Vertical Mode<br/>
+<kbd class='dark'>C</kbd>: WebComic Mode<br/>
+<kbd class='dark'>N</kbd>: Modo de derecha a izquierda<br/>
+<kbd class='dark'>B</kbd>: Modo de izquierda a derecha<br/>
+<kbd class='dark'>→</kbd>/<kbd class='dark'>D</kbd>/<kbd class='dark'>Numpad 6</kbd>/<kbd class='dark'>.</kbd> : Siguiente capítulo<br/>
+<kbd class='dark'>←</kbd>/<kbd class='dark'>A</kbd>/<kbd class='dark'>Numpad 4</kbd>/<kbd class='dark'>,</kbd> : Capítulo anterior<br/>
+<kbd class='dark'>↑</kbd>/<kbd class='dark'>W</kbd>/<kbd class='dark'>Numpad 8</kbd>: Desplazarse hacia arriba<br/>
+<kbd class='dark'>↓</kbd>/<kbd class='dark'>S</kbd>/<kbd class='dark'>Numpad 2</kbd>: Desplazarse hacia abajo<br/>
 
-### Características
+## Características
 
 - Ver modos:
-  - Vertical [Default]
-  - WebComic
-  - Fluido de izquierda a derecha
-  - Fluido de derecha a izquierda
+    - Vertical [Default]
+    - Fluido de izquierda a derecha
+    - Fluido de derecha a izquierda
 - Páginas de marcadores (para reanudar la lectura)
 - Temas completos y personalizables
 - Zoom de imágenes globales e individuales
-  - En (Global uno puede estirar las imágenes más allá del ancho de la ventana)
-  - Fuera
-  - Restaurar original (alternar ancho de ajuste si es demasiado grande)
-  - Ajuste ancho
-  - Ajustar ancho si es demasiado grande [Predeterminado activado]
-  - Altura de ajuste (con páginas de desplazamiento)
-  - Esconder
+    - En (Global uno puede estirar las imágenes más allá del ancho de la ventana)
+    - Fuera
+    - Restaurar original (alternar ancho de ajuste si es demasiado grande)
+    - Ajuste ancho
+    - Ajustar ancho si es demasiado grande [Predeterminado activado]
+    - Altura de ajuste (con páginas de desplazamiento)
+    - Esconder
 - Imágenes de recarga automática
-  - Contador de imágenes cargadas
-  - Recarga de imagen individual, por si acaso
+    - Contador de imágenes cargadas
+    - Recarga de imagen individual, por si acaso
 - Teclas de acceso directo
 - Ir a página
 - Temporizador de carga de imagen [Default 1s](Some sites require longer timers. eg.:ExHentai,e-hentai)
@@ -200,7 +202,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 - Descargar todas las imágenes como archivo ZIP [Automatic Default off]
 - Imágenes de carga diferida [Default off]
 
-### Reglas para agregar nuevos sitios de Manga
+## Reglas para agregar nuevos sitios de Manga
 
 1. El sitio debe tener mangas raros/únicos (Significado: no está disponible en otros sitios, o es un mejor calidad)
 2. El sitio debe ser lo suficientemente fuerte o, de lo contrario, mi secuencia de comandos puede fallar.
@@ -210,6 +212,6 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/
 
 Permito que este script se publique o se use en cualquier lugar siempre que se me dé crédito y se me proporcione un enlace a este sitio.  Permito que partes de mi guión se usen libremente.
 
-### Descargo de responsabilidad
+## Descargo de responsabilidad
 
 En caso de que el propietario/administrador de uno de los sitios compatibles no quiera que mi script se ejecute en su sitio, lo desactivaré de forma predeterminada.  Obligar a los usuarios a activarlo manualmente.

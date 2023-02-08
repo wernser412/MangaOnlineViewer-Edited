@@ -46,8 +46,10 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.5.2/
 
 - [Asura Scans](https://beta.asurascans.com/) _[English]_
 - [Batoto](http://bato.to/) _[English]_
+- [BilibiliComics](https://www.bilibilicomics.com/) _[English]_
 - [Dynasty-Scans](https://dynasty-scans.com/) _[English]_
 - [Asura Scans](https://www.asura.gg/) / [Flame Scans](https://flamescans.org/) / [Realm Scans](https://realmscans.com/) / [Voids-Scans](https://void-scans.com/) / [Luminous Scans](https://luminousscans.com/) _[English]_
+- [INKR](https://inkr.com/) _[English]_
 - [LHTranslation](https://lhtranslation.net/) _[English]_
 - [LynxScans](https://lynxscans.com/home) _[English]_
 - [MangaBuddy](https://mangabuddy.com/) _[English]_
@@ -56,7 +58,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.5.2/
 - [MangaFreak](https://mangafreak.net/) _[English]_
 - [MangaHub](https://mangahub.io/) _[English]_
 - [MangaKakalot](https://mangakakalot.com/page) / [MangaNelo](https://www.manganelo.com/) / [MangaNato](https://www.manganato.com/) _[English]_
-- [MReader](https://www.mreader.co/) _[English]_
+- [MReader](https://www.mreader.co/) / [MangaGeko](https://www.mangageko.com/) _[English]_
 - [Mangareader](https://mangareader.to) _[English]_ **Obs: Some galleries will not be usable**
 - [MangaSee](https://mangasee123.com/) / [Manga4life](https://manga4life.com/) _[English]_
 - [MangaTown](https://www.mangatown.com/) _[English]_

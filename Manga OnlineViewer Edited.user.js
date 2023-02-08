@@ -4,8 +4,8 @@
 // @updateURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
-// @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, InManga, KLManga, Leitor, LHTranslation, LynxScans, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MReader, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NaniScans, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus, TopManhua, LeviatanScans
-// @version 2023.01.28
+// @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, BilibiliComics, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, INKR, InManga, KLManga, Leitor, LHTranslation, LynxScans, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MReader, MangaGeko, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NaniScans, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus, TopManhua, LeviatanScans
+// @version 2023.02.08
 // @license MIT
 // @grant GM_getValue
 // @grant GM_setValue
@@ -23,9 +23,11 @@
 // @require https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js
 // @include /https?:\/\/beta.asurascans.com\/read\/.+\/.+/
 // @include /https?:\/\/(www.)?bato.to\/chapter.*/
+// @include /https?:\/\/(www.)?(bilibilicomics).com\/.+\/.+/
 // @include /https?:\/\/(www.)?comicastle.org\/read\/.+\/[0-9]+.*/
 // @include /https?:\/\/(www.)?dynasty-scans.com\/chapters\/.+/
 // @include /https?:\/\/(www.)?(asurascans|flamescans|realmscans|void-scans|luminousscans).(com|org|gg)\/.+/
+// @include /https?:\/\/(comics.)?inkr.com\/title\/.+\/chapter\/.+/
 // @include /https?:\/\/(www.)?inmanga.com\/ver\/manga\/.+\/.+/
 // @include /https?:\/\/(www.)?klmanga.com\/.+chapter.+/
 // @include /https?:\/\/(www.)?leitor.net\/manga\/.+\/.+\/.+/
@@ -38,7 +40,7 @@
 // @include /https?:\/\/(www.)?mangahosted.com\/manga\/.+\/.+/
 // @include /https?:\/\/(www.)?(mangahub).io\/chapter\/.+\/.+/
 // @include /https?:\/\/(www.)?((manganelo|mangakakalot).com\/chapter\/.+\/.+|(manganato|readmanganato|chapmanganato).com\/manga-\w\w\d+\/chapter-\d+)/
-// @include /https?:\/\/(www.)?mreader.co\/reader\/.*/
+// @include /https?:\/\/(www.)?(mreader|mangageko).com?\/reader\/.*/
 // @include /https?:\/\/(www.)?mangareader.to\/read\/.+\/.+\/.+/
 // @include /https?:\/\/(www.)?(mangasee123|manga4life).com\/read-online\/.+/
 // @include /https?:\/\/(www.)?mangatigre.net\/.+\/.+\/.+/
@@ -108,6 +110,54 @@
         prev: document.querySelector(".nav-prev a")?.getAttribute("href"),
         next: document.querySelector(".nav-next a")?.getAttribute("href"),
         listImages: images.map((img) => img.getAttribute("src"))
+      };
+    }
+  };
+
+  const bilibilicomics = {
+    name: "BilibiliComics",
+    url: /https?:\/\/(www.)?(bilibilicomics).com\/.+\/.+/,
+    homepage: "https://www.bilibilicomics.com/",
+    language: ["English"],
+    category: "manga",
+    waitEle: ".read-nav",
+    async run() {
+      const W = typeof unsafeWindow !== "undefined" ? unsafeWindow : window;
+      const api = await fetch(
+        "https://www.bilibilicomics.com/twirp/comic.v1.Comic/GetImageIndex?device=pc&platform=web&lang=en&sys_lang=en",
+        {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            ep_id: W.location.href.split("/").pop(),
+            credential: ""
+          })
+        }
+      ).then((res) => res.json()).then(({ data }) => data.images.map((image) => `${image.path}@2000w.webp`)).then(JSON.stringify).then(
+        (urls) => fetch(
+          "https://www.bilibilicomics.com/twirp/comic.v1.Comic/ImageToken?device=pc&platform=web&lang=en&sys_lang=en",
+          {
+            method: "post",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ urls })
+          }
+        )
+      ).then((res) => res.json()).then(
+        (tokens) => tokens.data.map((i) => `${i.url}?token=${i.token}`)
+      );
+      return {
+        title: document.querySelector(".read-nav")?.textContent?.trim(),
+        series: document.querySelector(".manga-title")?.getAttribute("href"),
+        pages: api.length,
+        prev: document.querySelector(".navigate a button[title=Previous]")?.parentElement?.getAttribute("href"),
+        next: document.querySelector(".navigate a button[title=Next]")?.parentElement?.getAttribute("href"),
+        listImages: api
       };
     }
   };
@@ -209,6 +259,26 @@
         listPages: images.length > 1 ? null : Array(num).fill(0).map((_, i) => `${window.location.href.replace(/\/\d+$/, "")}/${i + 1}`),
         listImages: images.length > 1 ? images.map((img) => img.getAttribute("src")) : null,
         img: "img.open"
+      };
+    }
+  };
+
+  const inkr = {
+    name: "INKR",
+    url: /https?:\/\/(comics.)?inkr.com\/title\/.+\/chapter\/.+/,
+    homepage: "https://inkr.com/",
+    language: ["English"],
+    category: "manga",
+    waitFunc: () => document.querySelector("#editor-v2-scroll-view-id img")?.style.width !== "",
+    run() {
+      const images = [...document.querySelectorAll("#editor-v2-scroll-view-id img")];
+      return {
+        title: document.querySelector("title")?.textContent?.trim(),
+        series: document.querySelector("#chapter-detail-viewer-page div div div a")?.getAttribute("href"),
+        pages: images.length,
+        prev: document.querySelector('a[aria-label="Previous Chapter"]')?.getAttribute("href"),
+        next: document.querySelector('a[aria-label="Next Chapter"]')?.getAttribute("href"),
+        listImages: images.map((img) => img.getAttribute("src")?.replace("/t.", "/p."))
       };
     }
   };
@@ -531,14 +601,16 @@
       const api = await fetch("https://api.mghubcdn.com/graphql", options).then(
         (res) => res.json()
       );
-      const images = Object.values(JSON.parse(api?.data.chapter.pages.toString()));
+      const images = JSON.parse(api?.data.chapter.pages.toString());
       return {
         title: document.querySelector("#mangareader h3")?.textContent?.trim(),
         series: document.querySelector("#mangareader a")?.getAttribute("href"),
-        pages: images.length,
+        pages: images.i.length,
         prev: document.querySelector(".previous a")?.getAttribute("href"),
         next: document.querySelector(".next a")?.getAttribute("href"),
-        listImages: images.map((i) => `https://img.mghubcdn.com/file/imghub/${i}`)
+        listImages: images.i.map(
+          (i) => `https://img.mghubcdn.com/file/imghub/${images.p + i}`
+        )
       };
     }
   };
@@ -721,9 +793,9 @@
   };
 
   const mreader = {
-    name: "MReader",
-    url: /https?:\/\/(www.)?mreader.co\/reader\/.*/,
-    homepage: "https://www.mreader.co/",
+    name: ["MReader", "MangaGeko"],
+    url: /https?:\/\/(www.)?(mreader|mangageko).com?\/reader\/.*/,
+    homepage: ["https://www.mreader.co/", "https://www.mangageko.com/"],
     language: ["English"],
     category: "manga",
     run() {
@@ -1006,34 +1078,32 @@
     }
   };
 
-  const tmofans2 = {
-        name: 'TuMangaOnline',
-        url: /https?:\/\/(www.)?(almtechnews|animalcanine|animation2you|animationforyou|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|panicmanga|recipesaniki|recipesdo|recipesist|recipesnk|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/,
-        homepage: 'https://lectortmo.com/',
-        language: ['Spanish'],
-        category: 'manga',
-        run() {
-            const images = [...document.querySelectorAll('.viewer-image-container img')];
-            const pages = [
-                ...document.querySelectorAll('div.container:nth-child(4) select#viewer-pages-select option'),
-            ];
-            const num = images.length > 1 ? images.length : pages.length;
-            return {
-                title: document.querySelector('title')?.textContent?.trim(),
-                series: document.querySelector('a[title="Volver"]')?.getAttribute('href'),
-                pages: num,
-                prev: document.querySelector('.chapter-prev a')?.getAttribute('href'),
-                next: document.querySelector('.chapter-next a')?.getAttribute('href'),
-                listPages: images.length > 1
-                    ? null
-                    : Array(num)
-                        .fill(0)
-                        .map((_, i) => `${window.location.href.replace(/\/\d+$/, '')}/${i + 1}`),
-                listImages: images.length > 1 ? images.map((item) => $(item).attr('data-src')) : null,
-                img: '#viewer-container img, .viewer-page',
-            };
-        },
-    };
+  const tmofans = {
+    name: "TuMangaOnline",
+    url: /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/,
+    homepage: "https://lectortmo.com/",
+    language: ["Spanish"],
+    category: "manga",
+    run() {
+      const images = [...document.querySelectorAll(".img-container img")];
+      const pages = [
+        ...document.querySelectorAll(
+          "div.container:nth-child(4) select#viewer-pages-select option"
+        )
+      ];
+      const num = images.length > 1 ? images.length : pages.length;
+      return {
+        title: document.querySelector("title")?.textContent?.trim(),
+        series: document.querySelector('a[title="Volver"]')?.getAttribute("href"),
+        pages: num,
+        prev: document.querySelector(".chapter-prev a")?.getAttribute("href"),
+        next: document.querySelector(".chapter-next a")?.getAttribute("href"),
+        listPages: images.length > 1 ? null : Array(num).fill(0).map((_, i) => `${window.location.href.replace(/\/\d+$/, "")}/${i + 1}`),
+        listImages: images.length > 1 ? images.map((item) => $(item).attr("data-src")) : null,
+        img: "#viewer-container img, .viewer-page"
+      };
+    }
+  };
 
   const unionmangas = {
     name: "UnionMangas",
@@ -1125,9 +1195,11 @@
   const sites = [
     asurascans,
     batoto,
+    bilibilicomics,
     comicastle,
     dysnatyscans,
     flamecans,
+    inkr,
     inmanga,
     klmanga,
     leitor,
@@ -6611,6 +6683,17 @@ ${wrapStyle(
     }
     return false;
   }
+  function testFunc(site) {
+    if (site.waitFunc !== void 0) {
+      const wait = site.waitFunc();
+      if (!wait) {
+        logScript(`Waiting to pass Function check ${site.waitFunc} = ${wait}`);
+        return true;
+      }
+      logScript(`Found Function check ${site.waitFunc} = ${wait}`);
+    }
+    return false;
+  }
 
   async function lateStart(site, begin = 1) {
     const manga = await site.run();
@@ -6730,7 +6813,7 @@ ${wrapStyle(
     }
   }
   function waitExec(site, waitElapsed = 0) {
-    if (waitElapsed < (site.waitMax || 5e3) && (testAttribute(site) || testElement(site) || testVariable(site))) {
+    if (waitElapsed < (site.waitMax || 5e3) && (testAttribute(site) || testElement(site) || testVariable(site) || testFunc(site))) {
       setTimeout(() => {
         waitExec(site, waitElapsed + (site.waitStep || 1e3));
       }, site.waitStep || 1e3);

@@ -5,7 +5,7 @@
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
 // @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, BilibiliComics, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, INKR, InManga, KLManga, Leitor, LHTranslation, LynxScans, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MReader, MangaGeko, Mangareader, MangaSee, Manga4life, MangaTigre, MangaTown, ManhuaScan, NaniScans, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus, TopManhua, LeviatanScans
-// @version 2023.02.08
+// @version 2023.02.11
 // @license MIT
 // @grant GM_getValue
 // @grant GM_setValue
@@ -1078,32 +1078,34 @@
     }
   };
 
-  const tmofans = {
-    name: "TuMangaOnline",
-    url: /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/,
-    homepage: "https://lectortmo.com/",
-    language: ["Spanish"],
-    category: "manga",
-    run() {
-      const images = [...document.querySelectorAll(".img-container img")];
-      const pages = [
-        ...document.querySelectorAll(
-          "div.container:nth-child(4) select#viewer-pages-select option"
-        )
-      ];
-      const num = images.length > 1 ? images.length : pages.length;
-      return {
-        title: document.querySelector("title")?.textContent?.trim(),
-        series: document.querySelector('a[title="Volver"]')?.getAttribute("href"),
-        pages: num,
-        prev: document.querySelector(".chapter-prev a")?.getAttribute("href"),
-        next: document.querySelector(".chapter-next a")?.getAttribute("href"),
-        listPages: images.length > 1 ? null : Array(num).fill(0).map((_, i) => `${window.location.href.replace(/\/\d+$/, "")}/${i + 1}`),
-        listImages: images.length > 1 ? images.map((item) => $(item).attr("data-src")) : null,
-        img: "#viewer-container img, .viewer-page"
-      };
-    }
-  };
+  const tmofans2 = {
+        name: 'TuMangaOnline',
+        url: /https?:\/\/(www.)?(almtechnews|animalcanine|animation2you|animationforyou|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|panicmanga|recipesaniki|recipesdo|recipesist|recipesnk|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/,
+        homepage: 'https://lectortmo.com/',
+        language: ['Spanish'],
+        category: 'manga',
+        run() {
+            const images = [...document.querySelectorAll('.viewer-image-container img')];
+            const pages = [
+                ...document.querySelectorAll('div.container:nth-child(4) select#viewer-pages-select option'),
+            ];
+            const num = images.length > 1 ? images.length : pages.length;
+            return {
+                title: document.querySelector('title')?.textContent?.trim(),
+                series: document.querySelector('a[title="Volver"]')?.getAttribute('href'),
+                pages: num,
+                prev: document.querySelector('.chapter-prev a')?.getAttribute('href'),
+                next: document.querySelector('.chapter-next a')?.getAttribute('href'),
+                listPages: images.length > 1
+                    ? null
+                    : Array(num)
+                        .fill(0)
+                        .map((_, i) => `${window.location.href.replace(/\/\d+$/, '')}/${i + 1}`),
+                listImages: images.length > 1 ? images.map((item) => $(item).attr('data-src')) : null,
+                img: '#viewer-container img, .viewer-page',
+            };
+        },
+    };
 
   const unionmangas = {
     name: "UnionMangas",

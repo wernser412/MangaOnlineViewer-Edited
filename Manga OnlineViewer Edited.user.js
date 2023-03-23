@@ -4,9 +4,10 @@
 // @updateURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
-// @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, BilibiliComics, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, INKR, InManga, KLManga, Leitor, LHTranslation, LynxScans, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, Mangareader, MangaSee, Manga4life, MangaTigre, MangaToons, MangaTown, ManhuaScan, MReader, MangaGeko, NaniScans, NineManga, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebNovel, WebToons, Manga33, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus, TopManhua, LeviatanScans, NovelMic
-// @version 2023.02.24
+// @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, BilibiliComics, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, INKR, InManga, KLManga, Leitor, LHTranslation, LynxScans, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, Mangareader, MangaSee, Manga4life, MangaTigre, MangaToons, MangaTown, ManhuaScan, MReader, MangaGeko, NaniScans, NineManga, OlympusScans, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, Reset-Scans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebNovel, WebToons, Manga33, YugenMangas, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus, TopManhua, LeviatanScans, NovelMic
+// @version 2023.03.22
 // @license MIT
+// @grant unsafeWindow
 // @grant GM_getValue
 // @grant GM_setValue
 // @grant GM_listValues
@@ -21,6 +22,7 @@
 // @require https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js
+// @require https://cdn.jsdelivr.net/npm/hotkeys-js@3.10.1/dist/hotkeys.min.js
 // @include /https?:\/\/beta.asurascans.com\/read\/.+\/.+/
 // @include /https?:\/\/(www.)?bato.to\/chapter.*/
 // @include /https?:\/\/(www.)?(bilibilicomics).com\/.+\/.+/
@@ -32,7 +34,7 @@
 // @include /https?:\/\/(www.)?klmanga.com\/.+chapter.+/
 // @include /https?:\/\/(www.)?leitor.net\/manga\/.+\/.+\/.+/
 // @include /https?:\/\/(www.)?lhtranslation.net\/read.+/
-// @include /https?:\/\/(www.)?lynxscans.com\/comics\/.+/
+// @include /https?:\/\/(www.)?lynxscans.com\/comics?\/.+/
 // @include /https?:\/\/(www.)?mangabuddy.com\/.+\/chapter.+/
 // @include /https?:\/\/(www.)?mangadex.org\/chapter\/.+(\/.+)?/
 // @include /https?:\/\/(www.)?(fanfox.net|mangahere.cc)\/manga\/.+\/.+\//
@@ -49,11 +51,13 @@
 // @include /https?:\/\/(www.)?(mreader|mangageko).com?\/reader\/.*/
 // @include /https?:\/\/(www.)?(naniscans).com\/chapters\/.+\/read/
 // @include /https?:\/\/(www.)?ninemanga.com\/chapter\/.+\/.+\.html/
+// @include /https?:\/\/(www.)?olympusscans.com\/capitulo\/.+\/.+/
 // @include /https?:\/\/(www.)?pandamanga.xyz\/.+\/.+\/.+/
 // @include /https?:\/\/(www.)?rawdevart.com\/comic\/.+\/.+\//
 // @include /https?:\/\/(www.)?readcomicsonline.ru\/comic\/.*\/\d*/
 // @include /https?:\/\/(www.)?(funmanga|mngdoom|readmng|mangainn).(com|net)\/.+\/\d+/
 // @include /https?:\/\/(www.)?reaperscans.com\/comics\/.+\/chapters\/.+/
+// @include /https?:\/\/(www.)?reset-scans.com\/manga\/.+\/chapter.+/
 // @include /https?:\/\/raw.senmanga.com\/.+\/.+\/?/
 // @include /https?:\/\/(www.)?shimadascans.com\/.+(series|chapter).+/
 // @include /https?:\/\/(www.)?tapas.io\/episode\/.+/
@@ -64,6 +68,7 @@
 // @include /https?:\/\/(www.)?webnovel.com\/comic\/.+/
 // @include /https?:\/\/(www.)?webtoons.com\/.+viewer.+/
 // @include /https?:\/\/(www.)?(manga33).com\/manga\/.+/
+// @include /https?:\/\/(www.)?(yugenmangas).com\/series\/.+/
 // @include /https?:\/\/(www.)?zeroscans.com\/comics\/.+/
 // @include /^(?!.*jaiminisbox).*\/read\/.+/
 // @include /https?:\/\/.+\/(manga|series|manhua|comic)\/.+\/.+/
@@ -376,20 +381,20 @@
 
   const lynxscans = {
     name: "LynxScans",
-    url: /https?:\/\/(www.)?lynxscans.com\/comics\/.+/,
-    homepage: "https://lynxscans.com/home",
+    url: /https?:\/\/(www.)?lynxscans.com\/comics?\/.+/,
+    homepage: "https://lynxscans.com/",
     language: ["English"],
     category: "manga",
-    waitVar: "chapterPages",
+    waitAttr: ["#app", "data-page"],
     run() {
-      const W = typeof unsafeWindow !== "undefined" ? unsafeWindow : window;
+      const data = JSON.parse(document.querySelector("#app").getAttribute("data-page"));
       return {
         title: document.querySelector("title")?.textContent?.trim(),
-        series: document.querySelector(".fa-home-alt")?.parentElement?.getAttribute("href"),
-        pages: W.chapterPages.length,
-        prev: W.previousChapter.number,
-        next: W.nextChapter.number,
-        listImages: W.chapterPages
+        series: data.props.home,
+        pages: data.props.pages.length,
+        prev: data.props.previousChapter,
+        next: data.props.nextChapter,
+        listImages: data.props.pages.map((img) => img.url)
       };
     }
   };
@@ -444,7 +449,16 @@
         prev: document.querySelector(".prev_page")?.getAttribute("href"),
         next: document.querySelector(".next_page")?.getAttribute("href"),
         listImages: images.map(
-          (img) => img.getAttribute("src") || img.getAttribute("data-src") || img.getAttribute("data-full-url")
+          (img) => _.without(
+            [
+              img?.getAttribute("src"),
+              img?.getAttribute("data-src"),
+              img?.getAttribute("data-full-url")
+            ],
+            null,
+            void 0,
+            ""
+          ).pop()
         )
       };
     }
@@ -876,6 +890,27 @@
     }
   };
 
+  const olympusscans = {
+    name: "OlympusScans",
+    url: /https?:\/\/(www.)?olympusscans.com\/capitulo\/.+\/.+/,
+    homepage: "https://olympusscans.com/",
+    language: ["Spanish"],
+    category: "manga",
+    waitVar: "__NUXT__",
+    run() {
+      const W = typeof unsafeWindow !== "undefined" ? unsafeWindow : window;
+      const images = W.__NUXT__.data[W.location.pathname].chapter.pages;
+      return {
+        title: document.querySelector("title")?.textContent?.trim(),
+        series: document.querySelector("h1")?.parentElement?.getAttribute("href"),
+        pages: images.length,
+        prev: document.querySelector(".i-heroicons-chevron-left-20-solid")?.parentElement?.getAttribute("href"),
+        next: document.querySelector(".i-heroicons-chevron-right-20-solid")?.parentElement?.getAttribute("href"),
+        listImages: images
+      };
+    }
+  };
+
   const pandamanga = {
     name: "PandaManga",
     url: /https?:\/\/(www.)?pandamanga.xyz\/.+\/.+\/.+/,
@@ -979,6 +1014,50 @@
         prev: document.querySelector(".fa-arrow-left-long")?.parentElement?.getAttribute("href"),
         next: document.querySelector(".fa-arrow-right-long")?.parentElement?.getAttribute("href"),
         listImages: images.map((img) => img.getAttribute("data-src") || img.getAttribute("src"))
+      };
+    }
+  };
+
+  const resetscans = {
+    name: "Reset-Scans",
+    url: /https?:\/\/(www.)?reset-scans.com\/manga\/.+\/chapter.+/,
+    homepage: "https://reset-scans.com/",
+    language: ["English"],
+    category: "manga",
+    waitVar: "chapter_data",
+    run() {
+      const W = typeof unsafeWindow !== "undefined" ? unsafeWindow : window;
+      const images = Array.isArray(W.chapter_data) ? JSON.parse(W.chapter_data) : JSON.parse(
+        JSON.parse(
+          CryptoJS.AES.decrypt(W.chapter_data, W.wpmangaprotectornonce, {
+            format: {
+              stringify(data) {
+                const cypher = {
+                  ct: data.ciphertext.toString(CryptoJS.enc.Base64),
+                  iv: data.iv?.toString(),
+                  s: data.salt?.toString()
+                };
+                return JSON.stringify(cypher);
+              },
+              parse(text) {
+                const result = JSON.parse(text);
+                return CryptoJS.lib.CipherParams.create({
+                  ciphertext: CryptoJS.enc.Base64.parse(result.ct),
+                  iv: CryptoJS.enc.Hex.parse(result.iv),
+                  salt: CryptoJS.enc.Hex.parse(result.s)
+                });
+              }
+            }
+          }).toString(CryptoJS.enc.Utf8)
+        )
+      );
+      return {
+        title: document.querySelector("#chapter-heading")?.textContent?.trim(),
+        series: document.querySelector(".back")?.getAttribute("href"),
+        pages: images.length,
+        prev: document.querySelector(".prev_page")?.getAttribute("href"),
+        next: document.querySelector(".next_page")?.getAttribute("href"),
+        listImages: images
       };
     }
   };
@@ -1217,6 +1296,31 @@
     }
   };
 
+  const yugenmangas = {
+    name: "YugenMangas",
+    url: /https?:\/\/(www.)?(yugenmangas).com\/series\/.+/,
+    homepage: "https://yugenmangas.com/",
+    language: ["Spanish"],
+    category: "manga",
+    async run() {
+      const data = JSON.parse(document.querySelector("#__NEXT_DATA__")?.textContent ?? "");
+      const { id } = data.props.pageProps.data ?? (await fetch(
+        window.location.href.replace("series", `_next/data/${data.buildId}/series`).concat(".json")
+      ).then((res) => res.json())).pageProps.data;
+      const api = await fetch(`https://api.yugenmangas.com/series/chapter/${id}`).then(
+        (res) => res.json()
+      );
+      return {
+        title: document.querySelector("title")?.textContent?.trim(),
+        series: document.querySelector(".chapter-heading h5 a")?.getAttribute("href"),
+        pages: api.content.images.length,
+        prev: document.querySelector(".prev-chap a")?.getAttribute("href"),
+        next: document.querySelector(".next-chap a")?.getAttribute("href"),
+        listImages: api.content.images.map((url) => `https://api.yugenmangas.com/${url}`)
+      };
+    }
+  };
+
   const zeroscans = {
     name: "ZeroScans",
     url: /https?:\/\/(www.)?zeroscans.com\/comics\/.+/,
@@ -1250,7 +1354,6 @@
     inmanga,
     klmanga,
     leitor,
-    // leviatanscans, depricated
     lhtranslation,
     lynxscans,
     mangabuddy,
@@ -1271,11 +1374,13 @@
     mreader,
     naniscans,
     ninemanga,
+    olympusscans,
     pandamanga,
     rawdevart,
     readcomicsonline,
     readmangatoday,
     reaperscans,
+    resetscans,
     senmanga,
     shimadascans,
     tapas,
@@ -1286,6 +1391,7 @@
     webnovel,
     webtoons,
     wpmanga,
+    yugenmangas,
     zeroscans,
     foolslide,
     // Must be at the end because is a generic check
@@ -1353,11 +1459,8 @@
       return String(value);
     }
   }
-  function setJsonGM(name, value) {
-    return setValueGM(name, JSON.stringify(value));
-  }
   function setSettings(value) {
-    return setJsonGM("settings", value);
+    return setValueGM("settings", value);
   }
   function getBrowser() {
     const ua = navigator.userAgent;
@@ -1869,6 +1972,19 @@
    <line color='orange' x1='3' y1='3' x2='21' y2='21'></line>
    <path color='silver' d='M16.32 12.34c.577 -.059 1.162 .162 1.68 .66l2 2'></path>
 </svg>`;
+  const IconPencil = `
+<svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-pencil' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+   <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+   <path d='M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4'></path>
+   <path d='M13.5 6.5l4 4'></path>
+</svg>`;
+  const IconDeviceFloppy = `
+<svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-device-floppy' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+   <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+   <path d='M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2'></path>
+   <path d='M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0'></path>
+   <path d='M14 4l0 4l-6 0l0 -4'></path>
+</svg>`;
 
   const cssStyles = `
   :root,
@@ -1988,12 +2104,14 @@
 
   #MangaOnlineViewer #Chapter.FluidLTR .MangaPage:not(.DoublePage):nth-child(2n),
   #MangaOnlineViewer #Chapter.FluidRTL .MangaPage:not(.DoublePage):nth-child(2n) {
-    justify-self: flex-start;
+    display: flex;
+    justify-content: start;
   }
 
   #MangaOnlineViewer #Chapter.FluidLTR .MangaPage:not(.DoublePage):nth-child(2n-1),
   #MangaOnlineViewer #Chapter.FluidRTL .MangaPage:not(.DoublePage):nth-child(2n-1) {
-    justify-self: flex-end;
+    display: flex;
+    justify-content: end;
   }
 
   #MangaOnlineViewer #Chapter.Vertical .PageContent {
@@ -2143,19 +2261,38 @@
   }
 
   #MangaOnlineViewer #KeybindingsPanel {
-    padding: 8px;
+    padding: 10px;
     position: fixed;
-    top: 65px;
+    top: 0;
     right: 0;
-    transition: transform 0.3s ease-in-out;;
+    bottom: 0;
+    transition: transform 0.3s ease-in-out;
     transform: translateX(100%);
     line-height: 1.5em;
     z-index: 1000;
+    overflow-y: auto;
+    width: 360px;
+    max-width: 100vw;
   }
 
   #MangaOnlineViewer #KeybindingsPanel.visible {
     transform: translateX(0);
     display: block;
+  }
+
+  #MangaOnlineViewer #KeybindingsPanel #KeybindingsList {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5px;
+  }
+
+  #MangaOnlineViewer #KeybindingsPanel input {
+    display: inline-block;
+    width: 100%;
+  }
+
+  #MangaOnlineViewer #KeybindingsPanel #HotKeysRules {
+    grid-column: span 2;
   }
 
   #MangaOnlineViewer #BookmarksPanel {
@@ -2166,7 +2303,7 @@
     right: 25%;
     text-align: center;
     max-height: 70%;
-    transition: transform 0.3s ease-in-out;;
+    transition: transform 0.3s ease-in-out;
     transform: scaleY(0%);
     z-index: 1000;
   }
@@ -2481,9 +2618,6 @@
     visibility: hidden;
   }
 
-  #MangaOnlineViewer #Counters {
-  }
-
   #MangaOnlineViewer .PageFunctions {
     font-family: monospace;
     display: flex;
@@ -2528,6 +2662,7 @@
     opacity: 0.9;
   }
 
+  #MangaOnlineViewer .ControlButton.hidden,
   #MangaOnlineViewer.light #ColorScheme > :not(.inverse),
   #MangaOnlineViewer:not(.light) #ColorScheme > .inverse,
   #MangaOnlineViewer .ChapterControl #download.loading > :not(.inverse),
@@ -2639,7 +2774,6 @@
 
     #MangaOnlineViewer #GlobalFunctions {
       flex-wrap: nowrap;
-      padding: 0;
       width: auto;
       order: 3;
       padding: 5px;
@@ -2668,11 +2802,14 @@
       order: 1;
       flex-basis: 100%;
       margin-top: 0px;
+      height: auto;
+      padding: 0;
     }
 
     #MangaOnlineViewer #GlobalFunctions {
       order: 2;
       padding: 0;
+      min-width: auto;
     }
 
     #MangaOnlineViewer #ChapterNavigation {
@@ -2710,10 +2847,6 @@
       display: none;
     }
 
-    #MangaOnlineViewer #GlobalFunctions {
-      min-width: auto;
-    }
-
     #MangaOnlineViewer #SettingsPanel .DefaultZoomMode,
     #MangaOnlineViewer #SettingsPanel .DefaultZoom,
     #MangaOnlineViewer #SettingsPanel .viewMode,
@@ -2729,14 +2862,6 @@
 
     #MangaOnlineViewer #KeybindingsPanel {
       display: none;
-    }
-
-    #MangaOnlineViewer .ViewerTitle {
-      height: auto;
-      padding: 0;
-    }
-
-    #MangaOnlineViewer .ChapterControl {
     }
 
     #MangaOnlineViewer .ChapterControl .download {
@@ -2888,6 +3013,16 @@
     BOOKMARK_SAVED: "Bookmark Saved",
     BOOKMARK_MESSAGE: "Next time you open this chapter it will resume from:<h4>Page ##num##</h4>(Only <i>ONCE</i> per Bookmark)",
     KEYBINDINGS: "Keybindings",
+    EDIT_KEYBINDS: "Edit KeyBindings",
+    SAVE_KEYBINDS: "Save KeyBindings",
+    BUTTON_EDIT: "Edit",
+    BUTTON_SAVE: "Save",
+    KEYBIND_RULES: `
+    <h3>Supported Keys</h3>
+    Allowed modifiers: shift, option, alt, ctrl, control, command. </br>
+    Special keys: backspace, tab, clear, enter, return, esc, escape, space, up, down, left, right, home, end, pageup, pagedown, del, delete, f1 - f19, num_0 - num_9, num_multiply, num_add, num_enter, num_subtract, num_decimal, num_divide. </br>
+    Examples: <kbd>a</kbd>, <kbd>ctrl+a</kbd> , <kbd>shift+a</kbd> , <kbd>num_2</kbd> , <kbd>2</kbd> 
+  `,
     ATTENTION: "Attention",
     WARNING: "Warning",
     BUTTON_RESET_SETTINGS: "Reset Settings",
@@ -2973,6 +3108,16 @@
     BOOKMARK_SAVED: "Marca pagina Salvo",
     BOOKMARK_MESSAGE: "Proxima vez que abrir este capitulo continuará a partir da <h4>Pagina ##num##</h4>(Apenas <i>UMA VEZ</i> por marca pagina)",
     KEYBINDINGS: "Atalhos",
+    EDIT_KEYBINDS: "Editar Atalhos",
+    SAVE_KEYBINDS: "Salvar Atalhos",
+    BUTTON_EDIT: "Editar",
+    BUTTON_SAVE: "Salvar",
+    KEYBIND_RULES: `
+    <h3>Teclas Suportadas</h3>
+    Modificadores permitidos: shift, option, alt, ctrl, control, command. </br>
+    Teclas Especiais: backspace, tab, clear, enter, return, esc, escape, space, up, down, left, right, home, end, pageup, pagedown, del, delete, f1 - f19, num_0 - num_9, num_multiply, num_add, num_enter, num_subtract, num_decimal, num_divide.</br>
+    Exemplos: <kbd>a</kbd>, <kbd>ctrl+a</kbd> , <kbd>shift+a</kbd> , <kbd>num_2</kbd> , <kbd>2</kbd> 
+  `,
     ATTENTION: "Atenção",
     WARNING: "Alerta",
     BUTTON_RESET_SETTINGS: "Limpar Configurações",
@@ -3058,6 +3203,16 @@
     BOOKMARK_SAVED: "保存书签",
     BOOKMARK_MESSAGE: "下次打开本章时，将从:<h4>页码 ##num##</h4>(<i>仅一次</i> 每个书签)",
     KEYBINDINGS: "快捷键",
+    EDIT_KEYBINDS: "编辑键绑定",
+    SAVE_KEYBINDS: "保存键绑定",
+    BUTTON_EDIT: "编辑",
+    BUTTON_SAVE: "救",
+    KEYBIND_RULES: `
+    <h3>支持的密钥</h3>
+    允许的修饰符: shift, option, alt, ctrl, control, command. </br>
+    特殊键: backspace, tab, clear, enter, return, esc, escape, space, up, down, left, right, home, end, pageup, pagedown, del, delete, f1 - f19, num_0 - num_9, num_multiply, num_add, num_enter, num_subtract, num_decimal, num_divide.</br>
+    例子: <kbd>a</kbd>, <kbd>ctrl+a</kbd> , <kbd>shift+a</kbd> , <kbd>num_2</kbd> , <kbd>2</kbd> 
+  `,
     ATTENTION: "注意",
     WARNING: "警告",
     BUTTON_RESET_SETTINGS: "重置设置",
@@ -3096,6 +3251,30 @@
 
   const locales = [en_US, pt_BR, zh_CN];
 
+  function isEmpty(value) {
+    return value === null || // check for null
+    typeof value === "undefined" || value === void 0 || // check for undefined
+    typeof value === "string" && value === "" || // check for empty string
+    Array.isArray(value) && value.length === 0 || // check for empty array
+    typeof value === "object" && Object.keys(value).length === 0;
+  }
+  function isNothing(value) {
+    const isEmptyObject = (a) => {
+      if (!Array.isArray(a)) {
+        const hasNonempty = Object.keys(a).some((element) => !isNothing(a[element]));
+        return hasNonempty ? false : isEmptyObject(Object.keys(a));
+      }
+      return !a.some(
+        (element) => !isNothing(element)
+        //
+      );
+    };
+    return (
+      // eslint-disable-next-line eqeqeq
+      value == false || value === 0 || isEmpty(value) || typeof value === "object" && isEmptyObject(value)
+    );
+  }
+
   const defaultSettings = {
     locale: "en_US",
     theme: "darkblue",
@@ -3117,7 +3296,23 @@
     lazyStart: 50,
     hidePageControls: false,
     header: "hover",
-    maxReload: 5
+    maxReload: 5,
+    keybinds: {
+      SCROLL_UP: ["up", "W", "num_8"],
+      SCROLL_DOWN: ["down", "S", "num_2"],
+      NEXT_CHAPTER: ["right", "/", "D", "num_6"],
+      PREVIOUS_CHAPTER: ["left", ";", "A", "num_4"],
+      ENLARGE: ["-", "num_add", "E"],
+      REDUCE: ["=", "num_subtract", "Q"],
+      RESTORE: ["9", "num_divide", "R"],
+      FIT_WIDTH: ["0", "num_multiply", "F"],
+      FIT_HEIGHT: ["H"],
+      SETTINGS: ["num_divide", "num_5", "X"],
+      VIEW_MODE_WEBCOMIC: ["C"],
+      VIEW_MODE_VERTICAL: ["V"],
+      VIEW_MODE_LEFT: ["N"],
+      VIEW_MODE_RIGHT: ["B"]
+    }
   };
   let settings$1 = _.defaultsDeep(getSettings(defaultSettings), defaultSettings);
   if (isMobile) {
@@ -3149,15 +3344,21 @@
     getListGM().forEach((setting) => removeValueGM(setting));
     updateSettings(defaultSettings);
   }
+  function isBookmarked(url = window.location.href) {
+    return settings$1.bookmarks.find((el) => el.url === url)?.page;
+  }
   const bookmarkTimeLimit = 1e3 * 60 * 60 * 24 * 30 * 12;
   const refreshedBookmark = settings$1.bookmarks.filter(
-    (el) => Date.now() - el.date < bookmarkTimeLimit
+    (el) => Date.now() - new Date(el.date).valueOf() < bookmarkTimeLimit
   );
   if (settings$1.bookmarks.length !== refreshedBookmark.length) {
     updateSettings({ bookmarks: refreshedBookmark });
   }
-  function isBookmarked(url = window.location.href) {
-    return useSettings().bookmarks.some((el) => el.url === url);
+  if (!isNothing(isBookmarked())) {
+    logScript(`Bookmark Removed ${window.location.href}`);
+    updateSettings({
+      bookmarks: settings$1.bookmarks.filter((el) => el.url !== window.location.href)
+    });
   }
 
   function createStyleElement(id, content) {
@@ -5469,195 +5670,37 @@ ${wrapStyle(
   </div>
 `;
 
-  function scrollToElement(ele) {
-    window.scroll(0, ele?.offsetTop || 0);
-  }
-
-  const doClick = (selector) => document.querySelector(selector)?.dispatchEvent(new Event("click"));
-  function doScrolling(sign) {
-    if (useSettings().zoomMode === "height") {
-      const pages = [...document.querySelectorAll(".MangaPage")];
-      const distance = pages.map((element) => Math.abs(element.offsetTop - window.scrollY));
-      const currentPage = distance.findIndex((d) => d <= 5);
-      const target = currentPage + sign;
-      const header = document.querySelector("#Header");
-      if (target < 0) {
-        scrollToElement(header);
-      } else if (target >= pages.length) {
-        header.classList.add("headroom-end");
-      } else {
-        logScript(`Current array page ${currentPage},`, `Scrolling to page ${target}`);
-        scrollToElement(pages.at(target));
-      }
-    } else {
-      window.scrollBy({
-        top: sign * window.innerHeight / 2,
-        behavior: "smooth"
-      });
-    }
-  }
-  const keybinds = [
-    {
-      name: "SCROLL_UP",
-      keys: ["ArrowUp", "KeyW", "Numpad8"],
-      action() {
-        doScrolling(-1);
-      }
-    },
-    {
-      name: "SCROLL_DOWN",
-      keys: ["ArrowDown", "KeyS", "Numpad2"],
-      action() {
-        doScrolling(1);
-      }
-    },
-    {
-      name: "NEXT_CHAPTER",
-      keys: ["ArrowRight", "Period", "KeyD", "Numpad6"],
-      action() {
-        doClick("#next");
-      }
-    },
-    {
-      name: "PREVIOUS_CHAPTER",
-      keys: ["ArrowLeft", "Comma", "KeyA", "Numpad4"],
-      action() {
-        doClick("#prev");
-      }
-    },
-    {
-      name: "ENLARGE",
-      keys: ["Equal", "NumpadAdd", "KeyE"],
-      action() {
-        doClick("#enlarge");
-      }
-    },
-    {
-      name: "REDUCE",
-      keys: ["Minus", "NumpadSubtract", "KeyQ"],
-      action() {
-        doClick("#reduce");
-      }
-    },
-    {
-      name: "RESTORE",
-      keys: ["Digit9", "NumpadDivide", "KeyR"],
-      action() {
-        doClick("#restore");
-      }
-    },
-    {
-      name: "FIT_WIDTH",
-      keys: ["Digit0", "NumpadMultiply", "KeyF"],
-      action() {
-        doClick("#fitWidth");
-      }
-    },
-    {
-      name: "FIT_HEIGHT",
-      keys: ["KeyH"],
-      action() {
-        doClick("#fitHeight");
-      }
-    },
-    {
-      name: "SETTINGS",
-      keys: ["Slash", "Numpad5", "KeyX"],
-      action() {
-        doClick("#settings");
-      }
-    },
-    {
-      name: "VIEW_MODE_WEBCOMIC",
-      keys: ["KeyC"],
-      action() {
-        doClick("#webComic");
-      }
-    },
-    {
-      name: "VIEW_MODE_VERTICAL",
-      keys: ["KeyV"],
-      action() {
-        doClick("#verticalMode");
-      }
-    },
-    {
-      name: "VIEW_MODE_LEFT",
-      keys: ["KeyN"],
-      action() {
-        doClick("#rtlMode");
-      }
-    },
-    {
-      name: "VIEW_MODE_RIGHT",
-      keys: ["KeyB"],
-      action() {
-        doClick("#ltrMode");
-      }
-    }
-  ];
-  const usedKeys = keybinds.flatMap((kb) => kb.keys);
-  function processKey(e) {
-    if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey || !usedKeys.some((i) => i === e.code)) {
-      return true;
-    }
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    const keyBindings = keybinds.find((kb) => kb.keys.some((key) => key === e.code));
-    logScript(
-      "Keyboard:",
-      e.code,
-      /* ' Event:', e, */
-      "Entry",
-      keyBindings
-    );
-    keyBindings?.action();
-    return false;
-  }
-  function hotkeys() {
-    document.onkeydown = null;
-    document.onkeyup = null;
-    document.onkeypress = null;
-    window.onkeydown = null;
-    window.onkeyup = null;
-    window.onkeypress = null;
-    window.onload = null;
-    document.body.onload = null;
-    document.addEventListener("keydown", processKey);
-  }
-
-  function formatKeyName(key) {
-    let formatted = key;
-    formatted = formatted.replace("Key", "");
-    formatted = formatted.replace("Digit", "");
-    formatted = formatted.replace("Numpad", "Numpad ");
-    formatted = formatted.replace("Subtract", "-");
-    formatted = formatted.replace("Add", "+");
-    formatted = formatted.replace("Minus", "-");
-    formatted = formatted.replace("Equal", "=");
-    formatted = formatted.replace("Divide", "/");
-    formatted = formatted.replace("Multiply", "*");
-    formatted = formatted.replace("Comma", ",");
-    formatted = formatted.replace("Period", ".");
-    formatted = formatted.replace("Slash", "/");
-    formatted = formatted.replace("ArrowUp", "↑");
-    formatted = formatted.replace("ArrowDown", "↓");
-    formatted = formatted.replace("ArrowRight", "→");
-    formatted = formatted.replace("ArrowLeft", "←");
-    return formatted;
-  }
-  const keybindings = keybinds.map((kb) => {
-    const keys = kb.keys.map((key) => `<kbd class='dark'>${formatKeyName(key)}</kbd>`).join(" / ");
-    return `${keys}: ${getLocaleString(kb.name)}<br/>`;
-  }).join("\n");
+  const keybindList = () => Object.keys(useSettings().keybinds).map((kb) => {
+    const keys = useSettings().keybinds[kb]?.length ? useSettings().keybinds[kb]?.map((key) => `<kbd class='dark'>${key}</kbd>`).join(" / ") : "";
+    return `<span>${getLocaleString(kb)}:</span> <span>${keys}</span>`;
+  });
+  const keybindEditor = () => Object.keys(useSettings().keybinds).map(
+    (kb) => `<label for='${kb}'>${getLocaleString(kb)}:</label>
+        <input type='text' class='KeybindInput' id='${kb}' name='${kb}'
+         value='${useSettings().keybinds[kb]?.join(" , ") || ""}'>`
+  ).concat(`<div id='HotKeysRules'> ${getLocaleString("KEYBIND_RULES")}</div>`);
   const KeybindingsPanel = `
+<div id='KeybindingsOverlay' class='overlay'></div>
 <div id='KeybindingsPanel' class='panel'>
     <h2>${getLocaleString("KEYBINDINGS")}</h2>
     <button id='CloseKeybindings' class='closeButton' title='${getLocaleString("CLOSE")}'>
       ${IconX}
     </button>
-    ${keybindings}
+    <div class='controls'>
+      <button id='EditKeybindings' class='ControlButton' type='button'
+            title='${getLocaleString("EDIT_KEYBINDS")}'>
+            ${IconPencil}
+            ${getLocaleString("BUTTON_EDIT")}
+      </button>
+      <button id='SaveKeybindings' class='ControlButton hidden' type='button'
+            title='${getLocaleString("SAVE_KEYBINDS")}'>
+            ${IconDeviceFloppy}
+            ${getLocaleString("BUTTON_SAVE")}
+      </button>
+    </div>
+    <div id='KeybindingsList'>
+      ${keybindList().join("\n")}
+    </div>    
 </div>`;
 
   const ThumbnailsPanel = (times, begin) => indexList(times, begin).map(
@@ -5668,30 +5711,6 @@ ${wrapStyle(
 </div>`
   );
 
-  function isEmpty(value) {
-    return value === null || // check for null
-    typeof value === "undefined" || value === void 0 || // check for undefined
-    typeof value === "string" && value === "" || // check for empty string
-    Array.isArray(value) && value.length === 0 || // check for empty array
-    typeof value === "object" && Object.keys(value).length === 0;
-  }
-  function isNothing(value) {
-    const isEmptyObject = (a) => {
-      if (!Array.isArray(a)) {
-        const hasNonempty = Object.keys(a).some((element) => !isNothing(a[element]));
-        return hasNonempty ? false : isEmptyObject(Object.keys(a));
-      }
-      return !a.some(
-        (element) => !isNothing(element)
-        //
-      );
-    };
-    return (
-      // eslint-disable-next-line eqeqeq
-      value == false || value === 0 || isEmpty(value) || typeof value === "object" && isEmptyObject(value)
-    );
-  }
-
   const listBookmarks = () => {
     if (isEmpty(useSettings().bookmarks))
       return [getLocaleString("LIST_EMPTY")];
@@ -5699,7 +5718,7 @@ ${wrapStyle(
       (mark, index) => `
 <div id='Bookmark${index + 1}' class='BookmarkItem'>
   <span class='bookmarkData bookmarkDate'>
-    ${new Date(mark.date).toLocaleDateString()}
+    ${new Date(mark.date).toISOString().slice(0, 10)}
   </span>
   <span class='bookmarkData bookmarkURl'
     title='${mark.url}'>
@@ -5903,7 +5922,7 @@ ${wrapStyle(
       const mark = {
         url: window.location.href,
         page: num,
-        date: Date.now()
+        date: (/* @__PURE__ */ new Date()).toISOString().slice(0, 10)
       };
       if (isBookmarked(mark.url)) {
         updateSettings({ bookmarks: useSettings().bookmarks.filter((el) => el.url !== mark.url) });
@@ -6048,6 +6067,98 @@ ${wrapStyle(
       prevOffset = scrollY;
     }
     window.addEventListener("scroll", _.debounce(toggleScrollDirection, 50));
+  }
+
+  function scrollToElement(ele) {
+    window.scroll(0, ele?.offsetTop || 0);
+  }
+
+  const doClick = (selector) => document.querySelector(selector)?.dispatchEvent(new Event("click"));
+  function doScrolling(sign) {
+    if (useSettings().zoomMode === "height") {
+      const pages = [...document.querySelectorAll(".MangaPage")];
+      const distance = pages.map((element) => Math.abs(element.offsetTop - window.scrollY));
+      const currentPage = distance.findIndex((d) => d <= 5);
+      const target = currentPage + sign;
+      const header = document.querySelector("#Header");
+      if (target < 0) {
+        scrollToElement(header);
+      } else if (target >= pages.length) {
+        header.classList.add("headroom-end");
+      } else {
+        logScript(`Current array page ${currentPage},`, `Scrolling to page ${target}`);
+        scrollToElement(pages.at(target));
+      }
+    } else {
+      window.scrollBy({
+        top: sign * window.innerHeight / 2,
+        behavior: "smooth"
+      });
+    }
+  }
+  const actions = {
+    SCROLL_UP: () => {
+      doScrolling(-1);
+    },
+    SCROLL_DOWN: () => {
+      doScrolling(1);
+    },
+    NEXT_CHAPTER: () => {
+      doClick("#next");
+    },
+    PREVIOUS_CHAPTER: () => {
+      doClick("#prev");
+    },
+    ENLARGE: () => {
+      doClick("#enlarge");
+    },
+    REDUCE: () => {
+      doClick("#reduce");
+    },
+    RESTORE: () => {
+      doClick("#restore");
+    },
+    FIT_WIDTH: () => {
+      doClick("#fitWidth");
+    },
+    FIT_HEIGHT: () => {
+      doClick("#fitHeight");
+    },
+    SETTINGS: () => {
+      doClick("#settings");
+    },
+    VIEW_MODE_WEBCOMIC: () => {
+      doClick("#webComic");
+    },
+    VIEW_MODE_VERTICAL: () => {
+      doClick("#verticalMode");
+    },
+    VIEW_MODE_LEFT: () => {
+      doClick("#rtlMode");
+    },
+    VIEW_MODE_RIGHT: () => {
+      doClick("#ltrMode");
+    }
+  };
+  function keybindings() {
+    const W = typeof unsafeWindow !== "undefined" ? unsafeWindow : window;
+    document.onkeydown = null;
+    document.onkeyup = null;
+    document.onkeypress = null;
+    W.onkeydown = null;
+    W.onkeyup = null;
+    W.onkeypress = null;
+    W.onload = null;
+    document.body.onload = null;
+    hotkeys.unbind();
+    Object.keys(useSettings().keybinds).forEach((key) => {
+      hotkeys(useSettings().keybinds[key]?.join(",") || "", (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        event.stopPropagation();
+        actions[key]();
+      });
+    });
   }
 
   function isImagesManga(manga) {
@@ -6483,10 +6594,34 @@ ${wrapStyle(
     document.querySelector("#CloseSettings")?.addEventListener("click", buttonSettingsClose);
     document.querySelector("#SettingsOverlay")?.addEventListener("click", buttonSettingsClose);
     function buttonKeybindings() {
+      document.querySelector("#KeybindingsList").innerHTML = keybindList().join("\n");
+      document.querySelector("#SaveKeybindings")?.classList.add("hidden");
+      document.querySelector("#EditKeybindings")?.classList.remove("hidden");
       document.querySelector("#KeybindingsPanel")?.classList.toggle("visible");
+      document.querySelector("#KeybindingsOverlay")?.classList.toggle("visible");
+    }
+    function saveKeybindings() {
+      const newkeybinds = useSettings().keybinds;
+      Object.keys(useSettings().keybinds).forEach((kb) => {
+        const keys = document.querySelector(`#${kb}`)?.value.split(",")?.map((value) => value.trim());
+        newkeybinds[kb] = isNothing(keys) ? void 0 : keys;
+      });
+      updateSettings({ keybinds: newkeybinds });
+      document.querySelector("#KeybindingsList").innerHTML = keybindList().join("\n");
+      document.querySelector("#SaveKeybindings")?.classList.add("hidden");
+      document.querySelector("#EditKeybindings")?.classList.remove("hidden");
+      keybindings();
+    }
+    function editKeybindings() {
+      document.querySelector("#KeybindingsList").innerHTML = keybindEditor().join("\n");
+      document.querySelector("#SaveKeybindings")?.classList.remove("hidden");
+      document.querySelector("#EditKeybindings")?.classList.add("hidden");
     }
     document.querySelector("#keybindings")?.addEventListener("click", buttonKeybindings);
     document.querySelector("#CloseKeybindings")?.addEventListener("click", buttonKeybindings);
+    document.querySelector("#KeybindingsOverlay")?.addEventListener("click", buttonKeybindings);
+    document.querySelector("#EditKeybindings")?.addEventListener("click", editKeybindings);
+    document.querySelector("#SaveKeybindings")?.addEventListener("click", saveKeybindings);
   }
 
   function size() {
@@ -6653,7 +6788,7 @@ ${wrapStyle(
     bookmarks();
     globals();
     headroom(100);
-    hotkeys();
+    keybindings();
     individual();
     navigation();
     options();
@@ -6682,13 +6817,6 @@ ${wrapStyle(
           window.scrollTo(0, 0);
           loadManga(manga, manga.begin);
         }, 50);
-        if (!isNothing(useSettings().bookmarks.filter((el) => el.url === window.location.href))) {
-          logScript(`Bookmark Removed ${window.location.href}`);
-          useSettings().bookmarks = useSettings().bookmarks.filter(
-            (el) => el.url !== window.location.href
-          );
-          setValueGM("Bookmarks", JSON.stringify(useSettings().bookmarks));
-        }
       } catch (e) {
         logScript(e);
       }
@@ -6836,7 +6964,7 @@ ${wrapStyle(
     logScript(`Found Pages: ${manga.pages}`);
     if (manga.pages <= 0)
       return;
-    manga.begin = useSettings()?.bookmarks?.find((b) => b.url === window.location.href)?.page || manga.begin || 1;
+    manga.begin = isBookmarked() || manga.begin || 1;
     const style = document.createElement("style");
     style.appendChild(document.createTextNode(sweetalertStyle));
     document.body.appendChild(style);

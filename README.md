@@ -13,7 +13,7 @@ Carga todas las páginas de un capítulo en una vista agradable, lo que permite 
 
 ## Instalación
 
-#### [Main Reader](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
+#### [Link](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
 
 #### Official Source: [GitHub](https://github.com/wernser412)
 
@@ -88,7 +88,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [ComiCastle](http://www.comicastle.org/) _[English]_
 - [ReadComicsOnline](http://readcomicsonline.ru/) _[English]_
 
-### Sitios Agregados por wernser412
+### Sitios agregados por wernser412
 
 - [Almtechnews](https://lectortmo.com/) _[Spanish]_
 - [Animalcanine](https://lectortmo.com/) _[Spanish]_

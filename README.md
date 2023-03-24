@@ -118,6 +118,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Paleomotor](https://lectortmo.com/) _[Spanish]
 - [Panicmanga](https://lectortmo.com/) _[Spanish]_
 - [Recipesaniki](https://lectortmo.com/) _[Spanish]_
+- [Recipescoaching](https://lectortmo.com/) _[Spanish]_
 - [Recipesdo](https://lectortmo.com/) _[Spanish]_
 - [Recipesist](https://lectortmo.com/) _[Spanish]_
 - [Recipesnk](https://lectortmo.com/) _[Spanish]_

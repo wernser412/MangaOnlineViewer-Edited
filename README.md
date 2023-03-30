@@ -15,7 +15,6 @@ Carga todas las páginas de un capítulo en una vista agradable, lo que permite 
 
 #### [Link](https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js)
 
-#### Official Source: [GitHub](https://github.com/wernser412)
 
 ## Navegadores compatibles
 
@@ -117,6 +116,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Otakworld](https://lectortmo.com/) _[Spanish]_
 - [Paleomotor](https://lectortmo.com/) _[Spanish]
 - [Panicmanga](https://lectortmo.com/) _[Spanish]_
+- [recetchef](https://lectortmo.com/) _[Spanish]_
 - [Recipesaniki](https://lectortmo.com/) _[Spanish]_
 - [Recipescoaching](https://lectortmo.com/) _[Spanish]_
 - [Recipesdo](https://lectortmo.com/) _[Spanish]_

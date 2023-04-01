@@ -62,7 +62,7 @@
 // @include /https?:\/\/(www.)?tapas.io\/episode\/.+/
 // @include /https?:\/\/(www.)?(tenmanga|gardenmanage).com\/(chapter|statuses)\/.+/
 // @include /https?:\/\/(www.)?(tmofans|lectortmo|followmanga).com\/.+\/.+\/(paginated|cascade)/
-// @include /https?:\/\/(www.)?(almtechnews|animalcanine|animalslegacy|animation2you|animationforyou|anitirion|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|paleomotor|panicmanga|recetchef|recipesaniki|recipescoaching|recipesdo|recipesist|recipesnk|sucrecipes|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/
+// @include /https?:\/\/(www.)?(almtechnews|animalcanine|animalslegacy|animation2you|animationforyou|anisurion|anitirion|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|paleomotor|panicmanga|recetchef|recipesaniki|recipescoaching|recipesdo|recipesist|recipesnk|sucrecipes|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/
 // @include /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/
 // @include /https?:\/\/(www.)?webnovel.com\/comic\/.+/
 // @include /https?:\/\/(www.)?webtoons.com\/.+viewer.+/
@@ -1145,7 +1145,7 @@
 
   const tmofans2 = {
         name: 'TuMangaOnline',
-        url: /https?:\/\/(www.)?(almtechnews|animalcanine|animalslegacy|animation2you|animationforyou|anitirion|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|paleomotor|panicmanga|recetchef|recipesaniki|recipescoaching|recipesdo|recipesist|recipesnk|sucrecipes|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/,
+        url: /https?:\/\/(www.)?(almtechnews|animalcanine|animalslegacy|animation2you|animationforyou|anisurion|anitirion|anitoc|cook2love|cooker2love|cookermania|cookerready|dariusmotor|enginepassion|fanaticmanga|gamesnk|infogames2you|infopetworld|mangalong|mistermanga|motorbakery|motornk|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakuworldgames|otakworld|paleomotor|panicmanga|recetchef|recipesaniki|recipescoaching|recipesdo|recipesist|recipesnk|sucrecipes|vgmotor|vsrecipes|worldmangas|wtechnews).com\/.+\/.+\/(paginated|cascade)/,
         homepage: 'https://lectortmo.com/',
         language: ['Spanish'],
         category: 'manga',

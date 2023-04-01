@@ -93,6 +93,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Animalslegacy](https://lectortmo.com/) _[Spanish]_
 - [Animation2you](https://lectortmo.com/) _[Spanish]_
 - [Animationforyou](https://lectortmo.com/) _[Spanish]_
+- [Anisurion](https://lectortmo.com/) _[Spanish]_
 - [Anitirion](https://lectortmo.com/) _[Spanish]_
 - [Anitoc](https://lectortmo.com/) _[Spanish]_
 - [Cook2love](https://lectortmo.com/) _[Spanish]_

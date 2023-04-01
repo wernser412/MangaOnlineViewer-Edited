@@ -60,7 +60,6 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [PandaManga](https://www.pandamanga.com/) _[English]_
 - [ReadManga Today](https://www.readmng.com/) / [Funmanga](https://funmanga.com/) / [MangaDoom](https://mngdoom.com/) / [MangaInn](https://www.mangainn.net/) _[English]_
 - [ReaperScans](https://reaperscans.com/) _[English]_
-- [Reset-Scans](https://reset-scans.com/) _[English]_
 - [ShimadaScans](https://shimadascans.com/) _[English]_
 - [KLManga](https://tapas.io/) _[English]_
 - [TenManga](https://www.tenmanga.com/) _[English]_
@@ -69,7 +68,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Manga33](https://manga33.com/) _[English]_
 - [ZeroScans](https://zeroscans.com/) _[English]_
 - [FoOlSlide](#) / [Kireicake](https://reader.kireicake.com) _[English]_ **Obs: Any Site that uses FoOLSlide**
-- [Madara WordPress Plugin](#) / [MangaHaus](https://manhuaus.com) / [Isekai Scan](https://isekaiscan.com/) / [Comic Kiba](https://comickiba.com/) / [Zinmanga](https://zinmanga.com/) / [mangatx](https://mangatx.com/) / [Toonily](https://toonily.net/) / [Mngazuki](https://mangazuki.me/) / [JaiminisBox](https://jaiminisbox.net) / [DisasterScans](https://disasterscans.com/) / [ManhuaPlus](https://manhuaplus.com/) / [TopManhua](https://www.topmanhua.com/) / [LeviatanScans](https://en.leviatanscans.com/home/) / [NovelMic](https://novelmic.com/) _[English]_ **Obs: Any Site that uses Madara Wordpress Plugin**
+- [Madara WordPress Plugin](#) / [MangaHaus](https://manhuaus.com) / [Isekai Scan](https://isekaiscan.com/) / [Comic Kiba](https://comickiba.com/) / [Zinmanga](https://zinmanga.com/) / [mangatx](https://mangatx.com/) / [Toonily](https://toonily.net/) / [Mngazuki](https://mangazuki.me/) / [JaiminisBox](https://jaiminisbox.net) / [DisasterScans](https://disasterscans.com/) / [ManhuaPlus](https://manhuaplus.com/) / [TopManhua](https://www.topmanhua.com/) / [LeviatanScans](https://en.leviatanscans.com/home/) / [NovelMic](https://novelmic.com/) / [Reset-Scans](https://reset-scans.com/) _[English]_ **Obs: Any Site that uses Madara Wordpress Plugin**
 - [Leitor](https://leitor.net/) _[Portuguese]_
 - [mangahosted](https://mangahosted.com/) _[Portuguese]_
 - [UnionMangas](https://unionleitor.top/) _[Portuguese]_
@@ -91,6 +90,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 
 - [Almtechnews](https://lectortmo.com/) _[Spanish]_
 - [Animalcanine](https://lectortmo.com/) _[Spanish]_
+- [Animalslegacy](https://lectortmo.com/) _[Spanish]_
 - [Animation2you](https://lectortmo.com/) _[Spanish]_
 - [Animationforyou](https://lectortmo.com/) _[Spanish]_
 - [Anitoc](https://lectortmo.com/) _[Spanish]_
@@ -146,29 +146,29 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 
 ## Características
 
-- Ver modos:
-    - Vertical [Default]
-    - Fluido de izquierda a derecha
-    - Fluido de derecha a izquierda
-- Páginas de marcadores (para reanudar la lectura)
-- Temas completos y personalizables
-- Zoom de imágenes globales e individuales
-    - En (Global uno puede estirar las imágenes más allá del ancho de la ventana)
-    - Fuera
-    - Restaurar original (alternar ancho de ajuste si es demasiado grande)
-    - Ajuste ancho
-    - Ajustar ancho si es demasiado grande [Predeterminado activado]
-    - Altura de ajuste (con páginas de desplazamiento)
-    - Esconder
-- Imágenes de recarga automática
-    - Contador de imágenes cargadas
-    - Recarga de imagen individual, por si acaso
-- Teclas de acceso directo
-- Ir a página
-- Temporizador de carga de imagen [Default 1s](Some sites require longer timers. eg.:ExHentai,e-hentai)
-- Navegación de miniaturas [Default on]
-- Descargar todas las imágenes como archivo ZIP [Automatic Default off]
-- Imágenes de carga diferida [Default off]
+-   Ver modos:
+    -   Vertical [Default]
+    -   Fluido de izquierda a derecha
+    -   Fluido de derecha a izquierda
+-     Páginas de marcadores (para reanudar la lectura)
+-   Temas completos y personalizables
+-   Zoom de imágenes globales e individuales
+    -   En (Global uno puede estirar las imágenes más allá del ancho de la ventana)
+    -   Fuera
+    -   Restaurar original (alternar ancho de ajuste si es demasiado grande)
+    -   Ajuste ancho
+    -   Ajustar ancho si es demasiado grande [Predeterminado activado]
+    -   Altura de ajuste (con páginas de desplazamiento)
+    -   Esconder
+-   Imágenes de recarga automática
+    -   Contador de imágenes cargadas
+    -   Recarga de imagen individual, por si acaso
+-   Teclas de acceso directo
+-   Ir a página
+-   Temporizador de carga de imagen [Default 1s](Some sites require longer timers. eg.:ExHentai,e-hentai)
+-   Navegación de miniaturas [Default on]
+-   Descargar todas las imágenes como archivo ZIP [Automatic Default off]
+-   Imágenes de carga diferida [Default off]
 
 ## Reglas para agregar nuevos sitios de Manga
 

@@ -92,6 +92,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 
 - [Animalsside](https://lectortmo.com/) _[Spanish]_
 - [keepfooding](https://lectortmo.com/) _[Spanish]_
+- [motoroilblood](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
 

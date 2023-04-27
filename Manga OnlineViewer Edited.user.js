@@ -5,7 +5,7 @@
 // @downloadURL https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace https://github.com/wernser412
 // @description Shows all pages at once in online view for these sites: Asura Scans, Batoto, BilibiliComics, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, INKR, InManga, KLManga, Leitor, LHTranslation, LynxScans, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangaKakalot, MangaNelo, MangaNato, MangaPark, Mangareader, MangaSee, Manga4life, MangaTigre, MangaToons, MangaTown, ManhuaScan, MReader, MangaGeko, NaniScans, NineManga, OlympusScans, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), ShimadaScans, KLManga, TenManga, TuMangaOnline, UnionMangas, WebNovel, WebToons, Manga33, YugenMangas, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus, TopManhua, LeviatanScans, NovelMic, Reset-Scans
-// @version 2023.04.17
+// @version 2023.04.27
 // @license MIT
 // @grant unsafeWindow
 // @grant GM_getValue
@@ -63,7 +63,7 @@
 // @include /https?:\/\/(www.)?shimadascans.com\/.+(series|chapter).+/
 // @include /https?:\/\/(www.)?tapas.io\/episode\/.+/
 // @include /https?:\/\/(www.)?(tenmanga|gardenmanage).com\/(chapter|statuses)\/.+/
-// @include /https?:\/\/(www.)?(almtechnews|animalcanine|animalslegacy|animalsside|animation2you|animationforyou|anisurion|anitirion|anitoc|cook2love|cooker2love|cookermania|cookernice|cookerready|dariusmotor|enginepassion|fanaticmanga|followmanga|gamesnk|gamesxo|infogames2you|infopetworld|keepfooding|lectortmo|mangalong|mistermanga|motorbakery|motornk|motoroilblood|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakunice|otakuworldgames|otakworld|paleomotor|panicmanga|recetchef|recipesaniki|recipescoaching|recipesdo|recipesist|recipesnk|sucrecipes|tmofans|vgmotor|vsrecipes|worldmangas|wtechnews).com\/(viewer|news)\/.+\/(paginated|cascade)/
+// @include /https?:\/\/(www.)?(almtechnews|animalcanine|animalslegacy|animalsside|animation2you|animationforyou|anisurion|anitirion|anitoc|cook2love|cooker2love|cookermania|cookernice|cookerready|dariusmotor|enginepassion|fanaticmanga|feelthecook|followmanga|gamesnk|gamesxo|infogames2you|infopetworld|keepfooding|lectortmo|mangalong|mistermanga|motorbakery|motornk|motoroilblood|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakunice|otakuworldgames|otakworld|paleomotor|panicmanga|recetchef|recipesaniki|recipescoaching|recipesdo|recipesist|recipesnk|sucrecipes|tmofans|vgmotor|vsrecipes|worldmangas|wtechnews).com\/(viewer|news)\/.+\/(paginated|cascade)/
 // @include /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/
 // @include /https?:\/\/(www.)?webnovel.com\/comic\/.+/
 // @include /https?:\/\/(www.)?webtoons.com\/.+viewer.+/
@@ -1186,6 +1186,7 @@
     "dariusmotor",
     "enginepassion",
     "fanaticmanga",
+    "feelthecook",
     "followmanga",
     "gamesnk",
     "gamesxo",

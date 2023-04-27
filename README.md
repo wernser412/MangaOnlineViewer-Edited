@@ -95,6 +95,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Feelthecook](https://lectortmo.com/) _[Spanish]_
 - [Keepfooding](https://lectortmo.com/) _[Spanish]_
 - [Motoroilblood](https://lectortmo.com/) _[Spanish]_
+- [Techinroll](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo
 

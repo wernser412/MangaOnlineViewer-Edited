@@ -39,7 +39,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Batoto](http://bato.to/) _[English]_
 - [BilibiliComics](https://www.bilibilicomics.com/) _[English]_
 - [Dynasty-Scans](https://dynasty-scans.com/) _[English]_
-- [Asura Scans](https://www.asura.gg/) / [Flame Scans](https://flamescans.org/) / [Realm Scans](https://realmscans.com/) / [Voids-Scans](https://void-scans.com/) / [Luminous Scans](https://luminousscans.com/) _[English]_
+- [Asura Scans](https://www.asura.gg/) / [Flame Scans](https://flamescans.org/) / [Realm Scans](https://realmscans.com/) / [Voids-Scans](https://void-scans.com/) / [Luminous Scans](https://luminousscans.com/) / [Shimada Scans](https://shimadascans.com/) / [Night Scans](https://nightscans.org/) _[English]_
 - [INKR](https://inkr.com/) _[English]_
 - [LHTranslation](https://lhtranslation.net/) _[English]_
 - [LynxScans](https://lynxscans.com/) _[English]_
@@ -62,7 +62,6 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [PandaManga](https://www.pandamanga.com/) _[English]_
 - [ReadManga Today](https://www.readmng.com/) / [Funmanga](https://funmanga.com/) / [MangaDoom](https://mngdoom.com/) / [MangaInn](https://www.mangainn.net/) _[English]_
 - [ReaperScans](https://reaperscans.com/) _[English]_
-- [ShimadaScans](https://shimadascans.com/) _[English]_
 - [KLManga](https://tapas.io/) _[English]_
 - [TenManga](https://www.tenmanga.com/) _[English]_
 - [WebNovel](https://www.webnovel.com/) _[English]_
@@ -94,6 +93,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Checkingcars](https://lectortmo.com/) _[Spanish]_
 - [Cocinaconlupita](https://lectortmo.com/) _[Spanish]_
 - [Feelthecook](https://lectortmo.com/) _[Spanish]_
+- [Fitfooders](https://lectortmo.com/) _[Spanish]_
 - [Keepfooding](https://lectortmo.com/) _[Spanish]_
 - [Motoroilblood](https://lectortmo.com/) _[Spanish]_
 - [recetasdelupita](https://lectortmo.com/) _[Spanish]_

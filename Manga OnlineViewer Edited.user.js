@@ -63,7 +63,7 @@
 // @include       /https?:\/\/raw.senmanga.com\/.+\/.+\/?/
 // @include       /https?:\/\/(www.)?tapas.io\/episode\/.+/
 // @include       /https?:\/\/(www.)?(tenmanga|gardenmanage).com\/(chapter|statuses)\/.+/
-// @include       /https?:\/\/(www.)?(almtechnews|animalcanine|animalslegacy|animalsside|animation2you|animationforyou|anisurion|anitirion|anitoc|checkingcars|cocinaconlupita|cook2love|cooker2love|cookermania|cookernice|cookerready|dariusmotor|enginepassion|fanaticmanga|feelthecook|fitfooders|followmanga|gamesnk|gamesxo|infogames2you|infopetworld|keepfooding|lectortmo|mangalong|mistermanga|motorbakery|motornk|motoroilblood|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakunice|otakuworldgames|otakworld|paleomotor|panicmanga|recetasdelupita|recetchef|recipesaniki|recipescoaching|recipesdo|recipesist|recipesnk|releasingcars|sucrecipes|techinroll|tmofans|vgmotor|vsrecipes|worldmangas|worldrecipesu|wtechnews).com\/(viewer|news)\/.+\/(paginated|cascade)/
+// @include       /https?:\/\/(www.)?(almtechnews|animalcanine|animalslegacy|animalsside|animation2you|animationforyou|anisurion|anitirion|anitoc|checkingcars|cocinaconlupita|cook2love|cooker2love|cookermania|cookernice|cookerready|dariusmotor|enginepassion|fanaticmanga|feelthecook|fitfooders|followmanga|gamesnk|gamesxo|infogames2you|infopetworld|keepfooding|lectortmo|lupitaalosfogones|mangalong|mistermanga|motorbakery|motornk|motoroilblood|motorpi|mygamesinfo|mynewsrecipes|myotakuinfo|otakunice|otakuworldgames|otakworld|paleomotor|panicmanga|recetasdelupita|recetchef|recipesaniki|recipescoaching|recipesdo|recipesist|recipesnk|releasingcars|sucrecipes|techinroll|tmofans|vgmotor|vsrecipes|worldmangas|worldrecipesu|wtechnews).com\/(viewer|news)\/.+\/(paginated|cascade)/
 // @include       /https?:\/\/(www.)?tumanhwas.com\/view\/.+/
 // @include       /https?:\/\/(www.)?unionleitor.top\/leitor\/.+\/.+/
 // @include       /https?:\/\/(www.)?webnovel.com\/comic\/.+/
@@ -1186,6 +1186,7 @@
     "infopetworld",
     "keepfooding",
     "lectortmo",
+    "lupitaalosfogones",
     "mangalong",
     "mistermanga",
     "motorbakery",

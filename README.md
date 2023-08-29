@@ -93,6 +93,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Animalsside](https://lectortmo.com/) _[Spanish]_
 - [Checkingcars](https://lectortmo.com/) _[Spanish]_
 - [Cocinaconlupita](https://lectortmo.com/) _[Spanish]_
+- [Cocinarporelmundo](https://lectortmo.com/) _[Spanish]_
 - [Disfrutacocina](https://lectortmo.com/) _[Spanish]_
 - [Feelthecook](https://lectortmo.com/) _[Spanish]_
 - [Fitfooders](https://lectortmo.com/) _[Spanish]_

@@ -104,6 +104,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Recetasviaje](https://lectortmo.com/) _[Spanish]_
 - [Recipestravelworld](https://lectortmo.com/) _[Spanish]_
 - [Techinroll](https://lectortmo.com/) _[Spanish]_
+- [Worldcuisineis](https://lectortmo.com/) _[Spanish]_
 - [Worldrecipes](https://lectortmo.com/) _[Spanish]_
 
 ### Teclas de acceso directo

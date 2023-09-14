@@ -104,6 +104,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Recetasdelupita](https://lectortmo.com/) _[Spanish]_
 - [Recetasviaje](https://lectortmo.com/) _[Spanish]_
 - [Recipestravelworld](https://lectortmo.com/) _[Spanish]_
+- [Recipestraveling](https://lectortmo.com/) _[Spanish]_
 - [Techinroll](https://lectortmo.com/) _[Spanish]_
 - [Worldcuisineis](https://lectortmo.com/) _[Spanish]_
 - [Worldrecipes](https://lectortmo.com/) _[Spanish]_

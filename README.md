@@ -100,6 +100,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Keepfooding](https://lectortmo.com/) _[Spanish]_
 - [Lupitaalosfogones](https://lectortmo.com/) _[Spanish]_
 - [Motoroilblood](https://lectortmo.com/) _[Spanish]_
+- [Mundorecetascuriosas](https://lectortmo.com/) _[Spanish]_
 - [Recetasdelupita](https://lectortmo.com/) _[Spanish]_
 - [Recetasviaje](https://lectortmo.com/) _[Spanish]_
 - [Recipestravelworld](https://lectortmo.com/) _[Spanish]_

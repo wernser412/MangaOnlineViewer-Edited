@@ -5,7 +5,7 @@
 // @downloadURL   https://github.com/wernser412/MangaOnlineViewer-edited/raw/main/Manga%20OnlineViewer%20Edited.user.js
 // @namespace     https://github.com/wernser412
 // @description   Shows all pages at once in online view for these sites: Batoto, BilibiliComics, ComiCastle, Dynasty-Scans, Asura Scans, Flame Scans, Realm Scans, Voids-Scans, Luminous Scans, Shimada Scans, Night Scans, Manhwa-Freak, OzulScansEn, AzureManga, INKR, InManga, KLManga, Leitor, LHTranslation, LynxScans, MangaBuddy, MangaDex, MangaFox, MangaHere, MangaFreak, Mangago, mangahosted, MangaHub, MangasIn, MangaKakalot, MangaNelo, MangaNato, MangaPark, Mangareader, MangaSee, Manga4life, MangaTigre, MangaToons, MangaTown, ManhuaScan, MReader, MangaGeko, NaniScans, NineManga, OlympusScans, PandaManga, RawDevart, ReadComicsOnline, ReadManga Today, Funmanga, MangaDoom, MangaInn, ReaperScans, SenManga(Raw), KLManga, TenManga, TuMangaOnline, TuManhwas, UnionMangas, WebNovel, WebToons, Manga33, YugenMangas, ZeroScans, FoOlSlide, Kireicake, Madara WordPress Plugin, MangaHaus, Isekai Scan, Comic Kiba, Zinmanga, mangatx, Toonily, Mngazuki, JaiminisBox, DisasterScans, ManhuaPlus, TopManhua, NovelMic, Reset-Scans, LeviatanScans, Dragon Tea, SetsuScans
-// @version       2023.09.14
+// @version       2023.09.21
 // @license       MIT
 // @grant         unsafeWindow
 // @grant         GM_getValue
@@ -28,7 +28,7 @@
 // @include       /https?:\/\/(www.)?(bilibilicomics).com\/.+\/.+/
 // @include       /https?:\/\/(www.)?comicastle.org\/read\/.+\/\d+.*/
 // @include       /https?:\/\/(www.)?dynasty-scans.com\/chapters\/.+/
-// @include       /https?:\/\/(www.)?(asura.nacm|asurascans|asuracomics|asura|flamescans|realmscans|void-scans|luminousscans|shimascans|nightscans|manhwafreak|manhwa-freak|ozulscansen|azuremanga).(com|org|gg|xyz|to)\/.+/
+// @include       /https?:\/\/(www.)?(asura.nacm|asurascans|asuracomics|asura|flamescans|realmscans|void-scans|luminousscans|shimascans|nightscans|manhwafreak|manhwa-freak|ozulscansen|azuremanga).(com|org|gg|xyz|to|net)\/.+/
 // @include       /https?:\/\/(comics.)?inkr.com\/title\/.+\/chapter\/.+/
 // @include       /https?:\/\/(www.)?inmanga.com\/ver\/manga\/.+\/.+/
 // @include       /https?:\/\/(www.)?klmanga.com\/.+chapter.+/
@@ -199,7 +199,7 @@
       "OzulScansEn",
       "AzureManga"
     ],
-    url: /https?:\/\/(www.)?(asura.nacm|asurascans|asuracomics|asura|flamescans|realmscans|void-scans|luminousscans|shimascans|nightscans|manhwafreak|manhwa-freak|ozulscansen|azuremanga).(com|org|gg|xyz|to)\/.+/,
+    url: /https?:\/\/(www.)?(asura.nacm|asurascans|asuracomics|asura|flamescans|realmscans|void-scans|luminousscans|shimascans|nightscans|manhwafreak|manhwa-freak|ozulscansen|azuremanga).(com|org|gg|xyz|to|net)\/.+/,
     homepage: [
       "https://asura.nacm.xyz/",
       "https://flamescans.org/",
@@ -207,7 +207,7 @@
       "https://void-scans.com/",
       "https://luminousscans.com/",
       "https://shimadascans.com/",
-      "https://nightscans.org/",
+      "https://nightscans.net/",
       "https://manhwa-freak.com/",
       "https://ozulscansen.com/",
       "https://azuremanga.com/"
@@ -1163,10 +1163,10 @@
   };
 
   const TMODomains = [
-	  "animalsside",
     "almtechnews",
     "animalcanine",
     "animalslegacy",
+    "animalsside",
     "animation2you",
     "animationforyou",
     "anisurion",
@@ -1181,6 +1181,7 @@
     "cookernice",
     "cookerready",
     "dariusmotor",
+    "disfrutacocina",
     "disfrutacocina",
     "enginepassion",
     "fanaticmanga",
@@ -1217,9 +1218,8 @@
     "recipesdo",
     "recipesist",
     "recipesnk",
-    "recipestravelworld",
     "recipestraveling",
-    "releasingcars",
+    "recipestravelworld",
     "sucrecipes",
     "techinroll",
     "tmofans",
@@ -1227,7 +1227,7 @@
     "vsrecipes",
     "worldcuisineis",
     "worldmangas",
-    "worldrecipesu",
+    "worldrecipes",
     "wtechnews"
   ];
   const tmofans = {
@@ -2626,11 +2626,13 @@
   if (settings$1.bookmarks.length !== refreshedBookmark.length) {
     updateSettings({ bookmarks: refreshedBookmark });
   }
-  if (!isNothing(isBookmarked())) {
-    logScript(`Bookmark Removed ${window.location.href}`);
-    updateSettings({
-      bookmarks: settings$1.bookmarks.filter((el) => el.url !== window.location.href)
-    });
+  function clearBookmark(url = window.location.href) {
+    if (!isNothing(isBookmarked())) {
+      logScript(`Bookmark Removed ${window.location.href}`);
+      updateSettings({
+        bookmarks: settings$1.bookmarks.filter((el) => el.url !== url)
+      });
+    }
   }
 
   function createStyleElement(id, content) {
@@ -3070,23 +3072,24 @@ ${wrapStyle(
     return useSettings().bookmarks.map(
       (mark, index) => `
       <div id='Bookmark${index + 1}' class='BookmarkItem'>
-  <span class='bookmarkData bookmarkDate'>
-    ${new Date(mark.date).toISOString().slice(0, 10)}
-  </span>
-        <span class='bookmarkData bookmarkURl'
-              title='${mark.url}'>
-    ${mark.url}
-  </span>
+        <span class='bookmarkData bookmarkDate'>
+          ${new Date(mark.date).toISOString().slice(0, 10)}
+        </span>
+        <span class='bookmarkData bookmarkURl'>
+          <a class='' href='${mark.url}' target="_blank">${mark.url}</a>
+        </span>
         <span class='bookmarkData bookmarkPage'>Page: ${mark.page}</span>
         <span class='bookmarkData bookmarkFunctions'>
-    <button class='ControlButton open' title='Open Bookmark' type='button'
-            onclick="window.open('${mark.url}','_blank')">
-      ${IconExternalLink}
-    </button>
-    <button class='ControlButton erase' title='Delete Bookmark' type='button' value='${mark.url}'>
-      ${IconTrash}
-    </button>
-          </pan>
+          <a class='' href='${mark.url}' target="_blank">
+            <button class='ControlButton open' title='Open Bookmark' type='button'>
+              ${IconExternalLink}
+            </button>
+          </a>
+          <button class='ControlButton erase' title='Delete Bookmark'
+           type='button' value='${mark.url}'>
+            ${IconTrash}
+          </button>
+        </span>
       </div>`
     );
   };
@@ -3267,7 +3270,7 @@ ${wrapStyle(
         title: getLocaleString("BOOKMARK_REMOVED"),
         timer: 1e4,
         icon: "error"
-      }).catch(logScript);
+      });
       updateSettings({ bookmarks: marks });
       reloadBookmarks();
       document.querySelectorAll(".BookmarkItem .erase")?.forEach(eraseBookmarks);
@@ -3291,14 +3294,14 @@ ${wrapStyle(
           title: getLocaleString("BOOKMARK_REMOVED"),
           timer: 1e4,
           icon: "error"
-        }).catch(logScript);
+        });
       } else {
         updateSettings({ bookmarks: [...useSettings().bookmarks, mark] });
         Swal.fire({
           title: getLocaleString("BOOKMARK_SAVED"),
           html: getLocaleString("BOOKMARK_SAVED").replace("##NUM##", num.toString()),
           icon: "success"
-        }).catch(logScript);
+        });
       }
       reloadBookmarks();
       document.querySelectorAll(".BookmarkItem .erase")?.forEach(eraseBookmarks);
@@ -3849,7 +3852,7 @@ ${wrapStyle(
         icon: "info"
       };
       resetSettings();
-      Swal.fire(msg).catch(logScript);
+      Swal.fire(msg);
     }
     document.querySelector("#ResetSettings")?.addEventListener("click", buttonResetSettings);
     function changeLocale(event) {
@@ -3860,7 +3863,7 @@ ${wrapStyle(
         text: getLocaleString("LANGUAGE_CHANGED"),
         timer: 1e4,
         icon: "info"
-      }).catch(logScript);
+      });
     }
     document.querySelector("#locale")?.addEventListener("change", changeLocale);
     function checkFitWidthOversize(event) {
@@ -3887,7 +3890,7 @@ ${wrapStyle(
           text: getLocaleString("AUTO_DOWNLOAD"),
           timer: 1e4,
           icon: "info"
-        }).catch(logScript);
+        });
       }
     }
     document.querySelector("#downloadZip")?.addEventListener("change", changeAutoDownload);
@@ -3904,7 +3907,7 @@ ${wrapStyle(
           title: getLocaleString("WARNING"),
           html: getLocaleString("LAZY_LOAD"),
           icon: "warning"
-        }).catch(logScript);
+        });
       }
     }
     document.querySelector("#lazyLoadImages")?.addEventListener("change", checkLazyLoad);
@@ -3921,7 +3924,7 @@ ${wrapStyle(
           title: getLocaleString("SPEED_WARNING"),
           html: getLocaleString("SPEED_WARNING_MESSAGE"),
           icon: "warning"
-        }).catch(logScript);
+        });
       }
     }
     document.querySelector("#PagesPerSecond")?.addEventListener("change", changePagesPerSecond);
@@ -4206,6 +4209,7 @@ ${wrapStyle(
       } catch (e) {
         logScript(e);
       }
+      clearBookmark();
     }, 50);
   }
 
@@ -4417,7 +4421,7 @@ ${wrapStyle(
       } else {
         logScript(result.dismiss);
       }
-    }).catch(logScript);
+    });
   }
   function createLateStartButton(site, beginning) {
     const button = document.createElement("button");
@@ -4447,7 +4451,7 @@ ${wrapStyle(
         createLateStartButton(site, manga.begin);
         logScript(result.dismiss);
       }
-    }).catch(logScript);
+    });
   }
   async function preparePage(site) {
     const manga = await site.run();

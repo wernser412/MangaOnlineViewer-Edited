@@ -1227,6 +1227,7 @@
     "worldcuisineis",
     "worldmangas",
     "worldrecipes",
+    "worldrecipesu",
     "wtechnews"
   ];
   const tmofans = {

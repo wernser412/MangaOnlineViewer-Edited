@@ -108,7 +108,8 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Techinroll](https://lectortmo.com/) _[Spanish]_
 - [Worldcuisineis](https://lectortmo.com/) _[Spanish]_
 - [Worldrecipes](https://lectortmo.com/) _[Spanish]_
-
+- [Worldrecipesu](https://lectortmo.com/) _[Spanish]_
+  
 ### Teclas de acceso directo
 
 -   <span>Desplazarse hacia arriba:</span> <span><kbd class="dark">up</kbd> / <kbd class="dark">W</kbd> / <kbd class="dark">num_8</kbd></span>

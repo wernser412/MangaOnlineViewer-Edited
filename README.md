@@ -98,6 +98,7 @@ javascript:(function(){["https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/
 - [Disfrutacocina](https://lectortmo.com/) _[Spanish]_
 - [Feelthecook](https://lectortmo.com/) _[Spanish]_
 - [Fitfooders](https://lectortmo.com/) _[Spanish]_
+- [Gastronomiaporpaises](https://lectortmo.com/) _[Spanish]_
 - [Keepfooding](https://lectortmo.com/) _[Spanish]_
 - [Lupitaalosfogones](https://lectortmo.com/) _[Spanish]_
 - [Motoroilblood](https://lectortmo.com/) _[Spanish]_
